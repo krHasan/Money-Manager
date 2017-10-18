@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import system.DatabaseConnection;
+import database.DatabaseConnection;
 
 public class DashboardController extends DatabaseConnection {
 	@FXML

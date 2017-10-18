@@ -8,7 +8,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import system.DatabaseConnection;
+import database.DatabaseConnection;
 
 public class SettingsController extends DatabaseConnection {
 ///////////////////////////////////////// Settings //////////////////////////////

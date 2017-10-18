@@ -11,7 +11,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import system.DatabaseConnection;
+import database.DatabaseConnection;
 
 public class MakeATransactionController extends DatabaseConnection {
 	///////////////////////////////////  Get Money  ////////////////////////////////

@@ -1,14 +1,18 @@
 package gui;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import system.DatabaseConnection;
+import database.SignInSQL;
 
-public class SignInController extends DatabaseConnection {
+public class SignInController extends SignInSQL implements Initializable {
 	@FXML
 	private Label lblUserFullName;
 	@FXML
@@ -17,10 +21,6 @@ public class SignInController extends DatabaseConnection {
 	private Label lblOutdateMsg;
 	@FXML
 	private Label lblWrongAuthentication;
-	@FXML
-	private Label lblUsername;
-	@FXML
-	private Label lblPassword;
 	@FXML
 	private Label lblForgetPassword;
 	@FXML
@@ -46,4 +46,46 @@ public class SignInController extends DatabaseConnection {
 	
 	@FXML
 	private ImageView imgSignIn;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		lblUserFullName.setText(ownerNameSQL());
+		
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

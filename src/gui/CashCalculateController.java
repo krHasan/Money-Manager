@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import system.DatabaseConnection;
+import database.DatabaseConnection;
 
 public class CashCalculateController extends DatabaseConnection {
 	@FXML

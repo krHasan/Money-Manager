@@ -377,7 +377,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <DatePicker fx:id="bnkdateDate" layoutX="552.0" layoutY="14.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" showWeekNumbers="true" />
+                  <DatePicker fx:id="bnkdateDate" editable="false" layoutX="552.0" layoutY="14.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" showWeekNumbers="true" />
                   <Label fx:id="bnklblShortClock" alignment="CENTER" contentDisplay="CENTER" layoutX="447.0" layoutY="14.0" prefHeight="28.0" prefWidth="103.0" text="22:01:39" textAlignment="CENTER">
                      <font>
                         <Font name="Arial Bold" size="16.0" />

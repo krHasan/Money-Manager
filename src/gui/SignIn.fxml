@@ -16,13 +16,13 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblUsername" layoutX="464.0" layoutY="132.0" prefHeight="20.0" prefWidth="100.0" text="Username">
+      <Label layoutX="464.0" layoutY="132.0" prefHeight="20.0" prefWidth="100.0" text="Username">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="txtUsername" layoutX="464.0" layoutY="159.0" prefHeight="30.0" prefWidth="230.0" promptText="Username" />
-      <Label fx:id="lblPassword" layoutX="464.0" layoutY="202.0" prefHeight="20.0" prefWidth="100.0" text="Password">
+      <Label layoutX="464.0" layoutY="202.0" prefHeight="20.0" prefWidth="100.0" text="Password">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
