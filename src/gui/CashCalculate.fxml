@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="gui.CashCalculateController">
+   <children>
+      <MenuBar prefHeight="30.0" prefWidth="800.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="mnuCreateSource" mnemonicParsing="false" text="Create Source" />
+                  <MenuItem fx:id="mnuCreateSector" mnemonicParsing="false" text="Create Sector" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mnuExit" mnemonicParsing="false" text="Exit" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Operation">
+            <items>
+              <MenuItem fx:id="mnuDashboard" mnemonicParsing="false" text="Dashboard" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mnuGetMoney" mnemonicParsing="false" text="Get Money" />
+                  <MenuItem fx:id="mnuExpense" mnemonicParsing="false" text="Expense" />
+                  <MenuItem fx:id="mnuLend" mnemonicParsing="false" text="Lend" />
+                  <MenuItem fx:id="mnuBank" mnemonicParsing="false" text="Bank" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" text="Transaction Hirtory" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Tools">
+            <items>
+              <MenuItem fx:id="mnuBankSettings" mnemonicParsing="false" text="Bank Settings" />
+                  <MenuItem fx:id="mnuSourceSettings" mnemonicParsing="false" text="Source Settings" />
+                  <MenuItem fx:id="mnuSectorSettings" mnemonicParsing="false" text="Sector Settings" />
+                  <MenuItem fx:id="mnuSystemSettings" mnemonicParsing="false" text="System Settings" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Button fx:id="btnDashboard" layoutX="515.0" layoutY="285.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Dashboard" />
+      <Button fx:id="btnMakeATransaction" layoutX="515.0" layoutY="325.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Make A Transaction" />
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="144.0" prefHeight="30.0" prefWidth="60.0" text="1000 X ">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblLongClock" alignment="CENTER" layoutX="546.0" layoutY="53.0" prefHeight="30.0" prefWidth="200.0" text="Sat, 04-Nov-2017  17:31:23" />
+      <Label layoutX="358.0" layoutY="304.0" prefHeight="30.0" prefWidth="60.0" text=" Total = ">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="183.0" layoutY="109.0" prefHeight="30.0" prefWidth="170.0" text="Number of Notes" />
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="424.0" prefHeight="30.0" prefWidth="60.0" text="2 X ">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="384.0" prefHeight="30.0" prefWidth="60.0" text="5 X ">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="344.0" prefHeight="30.0" prefWidth="60.0" text="10 X ">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="304.0" prefHeight="30.0" prefWidth="60.0" text="20 X ">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="264.0" prefHeight="30.0" prefWidth="60.0" text="50 X ">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="224.0" prefHeight="30.0" prefWidth="60.0" text="100 X ">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="184.0" prefHeight="30.0" prefWidth="60.0" text="500 X ">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="464.0" prefHeight="30.0" prefWidth="60.0" text="1 X ">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt1000" alignment="CENTER" layoutX="243.0" layoutY="144.0" prefHeight="30.0" prefWidth="45.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt500" alignment="CENTER" layoutX="243.0" layoutY="184.0" prefHeight="30.0" prefWidth="45.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt100" alignment="CENTER" layoutX="243.0" layoutY="224.0" prefHeight="30.0" prefWidth="45.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt50" alignment="CENTER" layoutX="243.0" layoutY="264.0" prefHeight="30.0" prefWidth="45.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt20" alignment="CENTER" layoutX="243.0" layoutY="304.0" prefHeight="30.0" prefWidth="45.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt10" alignment="CENTER" layoutX="243.0" layoutY="344.0" prefHeight="30.0" prefWidth="45.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt5" alignment="CENTER" layoutX="243.0" layoutY="384.0" prefHeight="30.0" prefWidth="45.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt2" alignment="CENTER" layoutX="243.0" layoutY="424.0" prefHeight="30.0" prefWidth="45.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt1" alignment="CENTER" layoutX="243.0" layoutY="464.0" prefHeight="30.0" prefWidth="45.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <Label fx:id="lbl1000" layoutX="288.0" layoutY="144.0" prefHeight="30.0" prefWidth="70.0" text=" = 12345">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl500" layoutX="288.0" layoutY="184.0" prefHeight="30.0" prefWidth="70.0" text=" = 12345">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl100" layoutX="288.0" layoutY="224.0" prefHeight="30.0" prefWidth="70.0" text=" = 12345">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl50" layoutX="288.0" layoutY="264.0" prefHeight="30.0" prefWidth="70.0" text=" = 12345">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl20" layoutX="288.0" layoutY="304.0" prefHeight="30.0" prefWidth="70.0" text=" = 12345">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl2" layoutX="288.0" layoutY="424.0" prefHeight="30.0" prefWidth="70.0" text=" = 12345">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl5" layoutX="288.0" layoutY="384.0" prefHeight="30.0" prefWidth="70.0" text=" = 12345">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl10" layoutX="288.0" layoutY="344.0" prefHeight="30.0" prefWidth="70.0" text=" = 12345">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl1" layoutX="288.0" layoutY="464.0" prefHeight="30.0" prefWidth="70.0" text=" = 12345">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotal" alignment="CENTER" layoutX="418.0" layoutY="304.0" prefHeight="30.0" prefWidth="70.0" text="12345">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="154.0" layoutY="48.0" prefHeight="40.0" prefWidth="150.0" text="Wallet Balance : ">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblWalletBalance" alignment="CENTER" layoutX="304.0" layoutY="48.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;" text="12345">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnSignOut" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
+      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="496.0" prefHeight="30.0" prefWidth="200.0" text="Khandoker Rakib Hasan" />
+   </children>
+</AnchorPane>
