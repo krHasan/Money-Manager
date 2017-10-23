@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import system.DateAndClock;
-
-public class DatabaseConnection extends DateAndClock {
+public class DatabaseConnection {
 	public static Connection connector() {
 		// SQLite connection string
         Connection conn = null;

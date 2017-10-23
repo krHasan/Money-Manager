@@ -6,9 +6,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import database.DatabaseConnection;
 
-public class RegistrationIssueController extends DatabaseConnection {
+public class NewUserRegistrationController {
+	@FXML
+	private TextField txtName;
 	@FXML
 	private TextField txtUsername;
 	@FXML
@@ -22,16 +23,10 @@ public class RegistrationIssueController extends DatabaseConnection {
 	private ComboBox cmboSecurityQuestion;
 	
 	@FXML
-	private Button btnDelete;
+	private Button btnRegistration;
 	@FXML
 	private Button btnCancel;
-	@FXML
-	private Button btnRegister;
 	
 	@FXML
-	private Label lblMsgPassword;
-	@FXML
-	private Label lblMsgDelete;
-	@FXML
-	private Label lblMsgInformation;
+	private Label lblMsg;
 }

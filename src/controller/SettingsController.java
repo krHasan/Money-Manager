@@ -8,9 +8,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import database.DatabaseConnection;
 
-public class SettingsController extends DatabaseConnection {
+public class SettingsController {
 ///////////////////////////////////////// Settings //////////////////////////////
 	@FXML
 	private MenuItem mnuCreateSource;

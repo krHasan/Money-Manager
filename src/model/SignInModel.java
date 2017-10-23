@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class SignInSQL extends DatabaseConnection {
+import system.DateAndClock;
+
+public class SignInSQL extends DateAndClock{
 	
 	public static String ownerNameSQL() {
 //		query to get owner name form database

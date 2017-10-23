@@ -11,9 +11,8 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import database.DatabaseConnection;
 
-public class MakeATransactionController extends DatabaseConnection {
+public class MakeATransactionController {
 	///////////////////////////////////  Get Money  ////////////////////////////////
 	@FXML
 	private Button gmbtnCreateSource;
