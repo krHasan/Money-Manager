@@ -1,4 +1,4 @@
-package gui;
+package view;
 	
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ public class SignInStage extends Application {
 	@Override
 	public void start(Stage SignInStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/gui/SignIn.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
 			Scene scene = new Scene(root,750,450);
 			scene.getStylesheets().add(getClass().getResource("SignIn.css").toExternalForm());
 			SignInStage.setScene(scene);

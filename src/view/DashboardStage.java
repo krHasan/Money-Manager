@@ -1,4 +1,4 @@
-package gui;
+package view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ public class DashboardStage extends Application {
 	@Override
 	public void start(Stage DashboardStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/gui/Dashboard.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
 			Scene scene = new Scene(root,800,550);
 //			scene.getStylesheets().add(getClass().getResource("SignIn.css").toExternalForm());
 			DashboardStage.setScene(scene);

@@ -1,4 +1,4 @@
-package gui;
+package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -6,9 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import database.SignInSQL;
+import model.SignInModel;
 
-public class SignInController extends SignInSQL {
+public class SignInController extends SignInModel {
 	@FXML
 	private Label lblUserFullName;
 	@FXML

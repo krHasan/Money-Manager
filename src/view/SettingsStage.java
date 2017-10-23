@@ -1,4 +1,4 @@
-package gui;
+package view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ public class SettingsStage extends Application {
 	@Override
 	public void start(Stage SettingsStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/gui/Settings.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/Settings.fxml"));
 			Scene scene = new Scene(root,800,550);
 //			scene.getStylesheets().add(getClass().getResource("SignIn.css").toExternalForm());
 			SettingsStage.setScene(scene);

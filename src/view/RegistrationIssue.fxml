@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="gui.RegistrationIssueController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="controller.RegistrationIssueController">
    <children>
       <Label alignment="CENTER" layoutX="288.0" layoutY="71.0" prefHeight="16.0" prefWidth="273.0" text="Registration Issue" textFill="#d413aa">
          <font>
