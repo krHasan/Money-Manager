@@ -28,12 +28,12 @@
          </font>
       </Label>
       <PasswordField fx:id="passPassword" layoutX="464.0" layoutY="229.0" prefHeight="30.0" prefWidth="230.0" promptText="Password" />
-      <Button fx:id="btnSignIn" layoutX="522.0" layoutY="276.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="Sign In">
+      <Button fx:id="btnSignIn" layoutX="522.0" layoutY="276.0" mnemonicParsing="false" onAction="#logIn" prefHeight="30.0" prefWidth="110.0" text="Sign In">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Label fx:id="lblSecurityQuetion" alignment="CENTER" layoutX="80.0" layoutY="155.0" prefHeight="30.0" prefWidth="270.0" text="What is Your First Phone Number?">
+      <Label fx:id="lblSecurityQuetion" alignment="CENTER" layoutX="80.0" layoutY="155.0" prefHeight="30.0" prefWidth="270.0">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
@@ -60,7 +60,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblNewUser" alignment="CENTER" layoutX="479.0" layoutY="364.0" prefHeight="30.0" prefWidth="200.0" text="New User">
+      <Label fx:id="lblNewUser" alignment="CENTER" layoutX="479.0" layoutY="364.0" onMouseClicked="#newUser" prefHeight="30.0" prefWidth="200.0" text="New User">
          <font>
             <Font size="16.0" />
          </font>

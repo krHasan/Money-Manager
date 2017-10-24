@@ -1,7 +1,5 @@
 package operation;
 
-import database.DatabaseConnection;
-
-public class BalanceStatus extends DatabaseConnection {
+public class BalanceStatus {
 
 }
