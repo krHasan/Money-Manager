@@ -24,6 +24,7 @@ public class SignInModel extends DateAndClock{
 	
 	
 	public static boolean authentication(String username, String password) {
+		boolean feedback = false;
 		String sql = "SELECT ownerName \n"
 				+ "FROM Credentials \n"
 				+ "WHERE username = ? AND password = ?";
@@ -33,14 +34,14 @@ public class SignInModel extends DateAndClock{
 			pstmt.setString(2, password);
 			ResultSet result = pstmt.executeQuery();
 			if (result.next()) {
-				return true;
+				feedback =  true;
 			} else {
-				return false;
+				feedback =  false;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return false;
+		return feedback;
 	}
 	
 	
@@ -60,7 +61,29 @@ public class SignInModel extends DateAndClock{
 	}
 	
 	
+	public boolean securityQuestionAnswerIsOk(String answer) {
+		boolean feedback = false;
+		String sql = "SELECT securityQuestionAnswer \n"
+				+ "FROM Credentials \n"
+				+ "WHERE securityQuestionAnswer = ?";
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, answer);
+			ResultSet result = pstmt.executeQuery();
+			
+			if (result.next()) {
+				feedback = true;
+			} else {
+				feedback = false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return feedback;
+	}
+	
 //	public static void main(String[] args) {
 //		System.out.println(authentication("rakib", "1123"));
+//		System.out.println((new SignInModel()).securityQuestionAnswerIsOk("01199518105"));
 //	}
 }

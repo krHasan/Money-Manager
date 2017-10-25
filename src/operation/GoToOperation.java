@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class GoToOperation extends DatabaseConnection {
 	
-	public void goToDashboard() {
+	public void goToDashboard(double positionX, double positionY) {
 		try {
 			Stage DashboardStage = new Stage();
 			Parent root = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
@@ -16,6 +16,8 @@ public class GoToOperation extends DatabaseConnection {
 			DashboardStage.setScene(scene);
 			DashboardStage.setResizable(false);
 			DashboardStage.setTitle("Dashboard");
+			DashboardStage.setX(positionX);
+			DashboardStage.setY(positionY);
 			DashboardStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

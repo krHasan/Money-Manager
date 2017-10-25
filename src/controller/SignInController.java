@@ -2,7 +2,6 @@ package controller;
 
 import java.util.Optional;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -74,8 +73,8 @@ public class SignInController extends SignInModel {
 	@FXML
 	private void logIn(ActionEvent event) {
 		if (authentication(txtUsername.getText(), passPassword.getText())) {
-			goToDashboard();
 			Stage SignInStage = (Stage) btnSignIn.getScene().getWindow();
+			goToDashboard(SignInStage.getX(), SignInStage.getY());
 			SignInStage.hide();
 		} else {
 			lblWrongAuthentication.setText("Username or Password is Wrong");
@@ -92,17 +91,46 @@ public class SignInController extends SignInModel {
 			alert.setContentText("User exists, Delete this one?");
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
-				imgSignIn.setVisible(false);
-				lblForgetPassMsg.setText("Answer it as a permission of previous user");
-				lblSecurityQuetion.setText(showSecurityQuestion());
-			} else {
-				imgSignIn.setVisible(true);
+				Stage SignInStage = (Stage) lblNewUser.getScene().getWindow();
+				(new GoToRegistration()).goToReRegistration(SignInStage.getX(), SignInStage.getY());
+				SignInStage.hide();
 			}
 		} else {
-			(new GoToRegistration()).goToRegistration();
 			Stage SignInStage = (Stage) lblNewUser.getScene().getWindow();
+			(new GoToRegistration()).goToRegistration(SignInStage.getX(), SignInStage.getY());
 			SignInStage.hide();
 		}
+	}
+	
+	@FXML
+	private void forgotPassword(MouseEvent event) {
+		imgSignIn.setVisible(false);
+		lblForgetPassMsg.setText("Answer the security question");
+		lblSecurityQuetion.setText(showSecurityQuestion());
+		txtUsername.clear();
+		passPassword.clear();
+	}
+	
+	@FXML
+	private void passwordChangeOk(ActionEvent event) {
+		if (new SignInModel().securityQuestionAnswerIsOk(txtSQAnswer.getText())) {
+			Stage SignInStage = (Stage) btnOk.getScene().getWindow();
+			(new GoToRegistration()).goToReRegistration(SignInStage.getX(), SignInStage.getY());
+			SignInStage.hide();
+		} else {
+			lblForgetPassMsg.setText("Answer didn't match");
+			txtSQAnswer.clear();
+		}
+	}
+	
+	@FXML
+	private void passwordChangeCancel(ActionEvent event) {
+		imgSignIn.setVisible(true);
+	}
+	
+	@FXML
+	private void forgotPasswordtxtFieldFocus(MouseEvent event) {
+		lblForgetPassMsg.setText("Answer the security question");
 	}
 	
 }

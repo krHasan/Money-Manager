@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -9,69 +10,84 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInController">
    <children>
-      <Label fx:id="lblUserFullName" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutY="9.0" prefHeight="30.0" prefWidth="750.0" text="Your" textAlignment="CENTER" textOverrun="CLIP">
+      <Label fx:id="lblUserFullName" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutY="16.0" prefHeight="30.0" prefWidth="800.0" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="464.0" layoutY="132.0" prefHeight="20.0" prefWidth="100.0" text="Username">
+      <Label layoutX="464.0" layoutY="155.0" prefHeight="20.0" prefWidth="100.0" text="Username">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUsername" layoutX="464.0" layoutY="159.0" prefHeight="30.0" prefWidth="230.0" promptText="Username" />
-      <Label layoutX="464.0" layoutY="202.0" prefHeight="20.0" prefWidth="100.0" text="Password">
+      <TextField fx:id="txtUsername" layoutX="464.0" layoutY="182.0" prefHeight="30.0" prefWidth="270.0" promptText="Username" />
+      <Label layoutX="464.0" layoutY="230.0" prefHeight="20.0" prefWidth="100.0" text="Password">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passPassword" layoutX="464.0" layoutY="229.0" prefHeight="30.0" prefWidth="230.0" promptText="Password" />
-      <Button fx:id="btnSignIn" layoutX="522.0" layoutY="276.0" mnemonicParsing="false" onAction="#logIn" prefHeight="30.0" prefWidth="110.0" text="Sign In">
+      <PasswordField fx:id="passPassword" layoutX="464.0" layoutY="257.0" prefHeight="30.0" prefWidth="270.0" promptText="Password" />
+      <Button fx:id="btnSignIn" layoutX="544.0" layoutY="315.0" mnemonicParsing="false" onAction="#logIn" prefHeight="30.0" prefWidth="110.0" text="Sign In">
          <font>
             <Font size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Label fx:id="lblSecurityQuetion" alignment="CENTER" layoutX="80.0" layoutY="155.0" prefHeight="30.0" prefWidth="270.0">
+      <Label fx:id="lblSecurityQuetion" alignment="CENTER" layoutX="80.0" layoutY="214.0" prefHeight="30.0" prefWidth="270.0">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btnCancel" layoutX="125.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Cancel" />
-      <Button fx:id="btnOk" layoutX="231.0" layoutY="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="OK" />
-      <Label fx:id="lblApplicationName" alignment="CENTER" contentDisplay="CENTER" layoutY="39.0" prefHeight="30.0" prefWidth="750.0" text="Money Manager" textAlignment="CENTER" textOverrun="CLIP">
+      <Button fx:id="btnCancel" layoutX="125.0" layoutY="302.0" mnemonicParsing="false" onAction="#passwordChangeCancel" prefHeight="25.0" prefWidth="70.0" text="Cancel">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnOk" layoutX="231.0" layoutY="302.0" mnemonicParsing="false" onAction="#passwordChangeOk" prefHeight="25.0" prefWidth="70.0" text="OK">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label fx:id="lblApplicationName" alignment="CENTER" contentDisplay="CENTER" layoutY="52.0" prefHeight="30.0" prefWidth="800.0" text="Money Manager" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="lblOutdateMsg" alignment="TOP_CENTER" contentDisplay="CENTER" layoutY="77.0" prefHeight="10.0" prefWidth="750.0" textAlignment="CENTER" textFill="RED" textOverrun="CLIP">
+      <Label fx:id="lblOutdateMsg" alignment="TOP_CENTER" contentDisplay="CENTER" layoutY="99.0" prefHeight="10.0" prefWidth="800.0" textAlignment="CENTER" textFill="RED" textOverrun="CLIP" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lblWrongAuthentication" contentDisplay="CENTER" layoutX="464.0" layoutY="104.0" prefHeight="19.0" prefWidth="230.0" textAlignment="CENTER" textFill="RED" textOverrun="CLIP">
+      <Label fx:id="lblWrongAuthentication" contentDisplay="CENTER" layoutX="464.0" layoutY="125.0" prefHeight="19.0" prefWidth="230.0" textAlignment="CENTER" textFill="RED" textOverrun="CLIP">
          <font>
             <Font size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lblForgetPassword" alignment="CENTER" layoutX="479.0" layoutY="326.0" prefHeight="30.0" prefWidth="200.0" text="Forget Password">
+      <Label fx:id="lblForgetPassword" alignment="CENTER" layoutX="498.0" layoutY="379.0" onMouseClicked="#forgotPassword" prefHeight="30.0" prefWidth="200.0" text="Forget Password">
          <font>
-            <Font size="16.0" />
+            <Font name="Arial" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Label fx:id="lblNewUser" alignment="CENTER" layoutX="498.0" layoutY="417.0" onMouseClicked="#newUser" prefHeight="30.0" prefWidth="200.0" text="New User">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <TextField fx:id="txtSQAnswer" layoutX="80.0" layoutY="256.0" onMouseClicked="#forgotPasswordtxtFieldFocus" prefHeight="30.0" prefWidth="270.0" promptText="Answer Here" />
+      <Label fx:id="lblForgetPassMsg" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="193.0" prefHeight="20.0" prefWidth="270.0" textAlignment="CENTER" textFill="RED" textOverrun="CLIP">
+         <font>
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblNewUser" alignment="CENTER" layoutX="479.0" layoutY="364.0" onMouseClicked="#newUser" prefHeight="30.0" prefWidth="200.0" text="New User">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtSQAnswer" layoutX="80.0" layoutY="197.0" prefHeight="30.0" prefWidth="270.0" promptText="Answer Here" />
-      <Label fx:id="lblForgetPassMsg" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="134.0" prefHeight="20.0" prefWidth="270.0" textAlignment="CENTER" textFill="RED" textOverrun="CLIP">
-         <font>
-            <Font size="12.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="imgSignIn" fitHeight="300.0" fitWidth="350.0" layoutX="73.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgSignIn" fitHeight="331.0" fitWidth="355.0" layoutX="63.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imges/signin3.jpg" />
          </image>
