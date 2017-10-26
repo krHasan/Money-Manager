@@ -23,6 +23,23 @@ public class GoToOperation extends DatabaseConnection {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void goToSettings(double positionX, double positionY) {
+		try {
+			Stage SettingsStage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("/view/Settings.fxml"));
+			Scene scene = new Scene(root,800,550);
+			SettingsStage.setScene(scene);
+			SettingsStage.setResizable(false);
+			SettingsStage.setTitle("Settings");
+			SettingsStage.setX(positionX);
+			SettingsStage.setY(positionY);
+			SettingsStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 
 }

@@ -21,7 +21,7 @@ public class DateAndClock extends UserBasic {
     	Date todayDate = null;
 		
 //    	get today's date as string
-		DateFormat dateFormat = new SimpleDateFormat((new FormatManager()).getDateFormat());
+		DateFormat dateFormat = new SimpleDateFormat((new DateFormatManager()).getDateFormat());
 		todayDateString = dateFormat.format(Calendar.getInstance().getTime());
 		
 //		get last opening date from database as string
@@ -39,8 +39,8 @@ public class DateAndClock extends UserBasic {
     	
 //		convert both sting date to Date format
 		try {
-			DbDate = new SimpleDateFormat((new FormatManager()).getDateFormat()).parse(DbDateString);
-			todayDate = new SimpleDateFormat((new FormatManager()).getDateFormat()).parse(todayDateString);
+			DbDate = new SimpleDateFormat((new DateFormatManager()).getDateFormat()).parse(DbDateString);
+			todayDate = new SimpleDateFormat((new DateFormatManager()).getDateFormat()).parse(todayDateString);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -57,7 +57,16 @@ public class DateAndClock extends UserBasic {
     	return true;
 	}
 	
+	
+	public String shortClock() {
+		DateFormat dateFormat = new SimpleDateFormat(new DateFormatManager().getTimeFormate());
+		Calendar now = Calendar.getInstance();
+    	String dateNow = dateFormat.format(now.getTime());
+		return dateNow;
+	}
+	
 //	public static void main(String[] args) {
 //		System.out.println(dateChecker());
+//		System.out.println(shortClock());
 //	}
 }

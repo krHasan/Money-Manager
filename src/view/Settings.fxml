@@ -57,9 +57,9 @@
       <Button fx:id="btnDashboard" layoutX="43.0" layoutY="42.0" mnemonicParsing="false" prefHeight="28.0" text="Dashboard" />
       <Button fx:id="btnMakeATransaction" layoutX="173.0" layoutY="42.0" mnemonicParsing="false" prefHeight="28.0" text="Make a Transaction" />
       <Button fx:id="btnTransactionHistory" layoutX="360.0" layoutY="42.0" mnemonicParsing="false" prefHeight="28.0" text="Transaction History" />
-      <TabPane layoutY="81.0" prefHeight="470.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPane" layoutY="81.0" prefHeight="470.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="     Bank     ">
+          <Tab fx:id="tabBank" text="     Bank     ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -232,7 +232,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="     Source     ">
+          <Tab fx:id="tabSource" text="     Source     ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -266,7 +266,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="     Sector     ">
+            <Tab fx:id="tabSector" text="     Sector     ">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -300,7 +300,7 @@
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="     System     ">
+            <Tab fx:id="tabSystem" text="     System     ">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import operation.GoToOperation;
+import operation.BalanceStatus;
 
-public class UserBasic extends GoToOperation {
+public class UserBasic extends BalanceStatus {
 //	query to get owner name form database
 	static String ownerNameSQL = "SELECT ownerName \n"
 								+ "FROM Credentials \n"

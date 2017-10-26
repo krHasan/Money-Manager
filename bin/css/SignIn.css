@@ -1,0 +1,22 @@
+/* commenting */
+.root {
+	-fx-background-color: #a3e6df;	
+}
+
+#lblForgetPassword:hover {
+	-fx-background-color: #039BE5;
+    -fx-text-fill: rgba(150,255,255,255);
+    -fx-font: 16 Arial;
+    -fx-focus-color: #FFEB3B;
+    -fx-faint-focus-color: #FFEB3B;
+    -fx-accent: #FFEB3B;
+}
+
+#lblNewUser:hover {
+	-fx-background-color: #039BE5;
+    -fx-text-fill: rgba(150,255,255,255);
+    -fx-font: 16 Arial;
+    -fx-focus-color: #FFEB3B;
+    -fx-faint-focus-color: #FFEB3B;
+    -fx-accent: #FFEB3B;
+}

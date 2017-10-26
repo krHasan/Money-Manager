@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -7,10 +10,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import tab.TabAccess;
 
 public class SettingsController {
 ///////////////////////////////////////// Settings //////////////////////////////
+	@FXML
+	private TabPane tabPane;
+	
 	@FXML
 	private MenuItem mnuCreateSource;
 	@FXML
@@ -56,6 +65,9 @@ public class SettingsController {
 	
 //////////////////// Bank ////////////////////////
 	@FXML
+	private Tab tabBank;
+	
+	@FXML
 	private Button bnkbtnSave;
 	
 	@FXML
@@ -97,6 +109,9 @@ public class SettingsController {
 	
 //////////////////// Source ////////////////////////
 	@FXML
+	private Tab tabSource;
+	
+	@FXML
 	private Button sourcebtnCreate;
 	@FXML
 	private Button sourcebtnArchive;
@@ -112,6 +127,9 @@ public class SettingsController {
 	private ComboBox sourcecmboUnArchive;
 	
 //////////////////// Sector ////////////////////////
+	@FXML
+	private Tab tabSector;
+	
 	@FXML
 	private Button sectorbtnCreate;
 	@FXML
@@ -129,6 +147,9 @@ public class SettingsController {
 	
 //////////////////// System ////////////////////////	
 	@FXML
+	private Tab tabSystem;
+	
+	@FXML
 	private Button systembtnChangeName;
 	@FXML
 	private Button systembtnChangePassword;
@@ -145,4 +166,59 @@ public class SettingsController {
 	
 	@FXML
 	private Label systemlblRePassword;
+	
+	
+	@FXML
+	public void initialize() {
+		tabTimer();
+	
+	}
+	
+	
+	public void tabTimer() {
+		new Timer().schedule(
+			new TimerTask() {
+				@Override
+				public void run() {
+					showTab();
+				}
+			}, 1000);
+	}
+	public void showTab() {
+		String tabName = (new TabAccess()).getTabName();
+		if (tabName.equals("tabSource")) {
+			tabPane.getSelectionModel().select(tabSource);
+		} else if (tabName.equals("tabSector")){
+			tabPane.getSelectionModel().select(tabSector);
+		} else if (tabName.equals("tabSystem")) {
+			tabPane.getSelectionModel().select(tabSystem);
+		} else {
+			tabPane.getSelectionModel().select(tabBank);			
+		}
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,8 @@
 /controller/
+/database/
 /model/
-/view/
-/system/
 /operation/
-/css/
+/system/
+/tab/
+/tableAndgraph/
+/view/

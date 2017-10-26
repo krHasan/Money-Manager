@@ -1,5 +1,10 @@
 package controller;
 
+import java.time.LocalDate;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -11,8 +16,13 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import model.MakeATransactionModel;
+import operation.GoToOperation;
+import system.DateFormatManager;
+import tab.TabAccess;
 
-public class MakeATransactionController {
+public class MakeATransactionController extends MakeATransactionModel {
 	///////////////////////////////////  Get Money  ////////////////////////////////
 	@FXML
 	private Button gmbtnCreateSource;
@@ -35,6 +45,8 @@ public class MakeATransactionController {
 	@FXML
 	private TextField gmtxtAmount;
 	@FXML
+	private TextField gmtxtShortClock;
+	@FXML
 	private TextArea gmtxtDescription;
 	
 	@FXML
@@ -45,8 +57,6 @@ public class MakeATransactionController {
 	@FXML
 	private DatePicker gmdateDate;
 	
-	@FXML
-	private Label gmlblShortClock;
 	@FXML
 	private Label gmlblWalletBalance;
 	@FXML
@@ -71,6 +81,8 @@ public class MakeATransactionController {
 	@FXML
 	private TextField extxtAmount;
 	@FXML
+	private TextField extxtShortClock;
+	@FXML
 	private TextArea extxtDescription;
 	
 	@FXML
@@ -79,8 +91,6 @@ public class MakeATransactionController {
 	@FXML
 	private DatePicker exdateDate;
 	
-	@FXML
-	private Label exlblShortClock;
 	@FXML
 	private Label exlblWalletBalance;
 	@FXML
@@ -95,7 +105,8 @@ public class MakeATransactionController {
 	private Button lendbtnGoToDashboard;
 	
 	@FXML
-	private Label lendlblShortClock;
+	private TextField lendtxtShortClock;
+	
 	@FXML
 	private Label lendlblTableHeading;
 	
@@ -199,7 +210,7 @@ public class MakeATransactionController {
 	private Button bnkbtnGoToDashboard;
 	
 	@FXML
-	private Label bnklblShortClock;
+	private TextField bnktxtShortClock;
 	
 	@FXML
 	private DatePicker bnkdateDate;
@@ -299,7 +310,83 @@ public class MakeATransactionController {
 	private Label perlblAccountBalance;
 	
 	
+	DateFormatManager formatManager = new DateFormatManager();
 	
 	
+	@FXML
+	public void initialize() {
+		startClock();
+		gmdateDate.setConverter(formatManager);
+		exdateDate.setConverter(formatManager);
+		lenddateDate.setConverter(formatManager);
+		bnkdateDate.setConverter(formatManager);
+		String dateString = formatManager.toString(LocalDate.now());
+		LocalDate date = formatManager.fromString(dateString);
+		gmdateDate.setValue(date);
+		exdateDate.setValue(date);
+		lenddateDate.setValue(date);
+		bnkdateDate.setValue(date);
+		showWalletBalance();
+		
+	}
+	
+	public void startClock() {
+		new Timer().schedule(
+			new TimerTask() {
+				@Override
+				public void run() {
+					gmtxtShortClock.setText(shortClock());
+					extxtShortClock.setText(shortClock());
+					lendtxtShortClock.setText(shortClock());
+					bnktxtShortClock.setText(shortClock());
+				}
+			},0 , 1000);
+	}
+	
+	
+	@FXML
+	private void returnToDashboard(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) gmbtnGoToDashboard.getScene().getWindow();
+		(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.hide();
+	}
+	
+	
+	@FXML
+	private void showWalletBalance() {
+		gmlblWalletBalance.setText(getWalletBalance());
+	}
+	
+	
+	@FXML
+	public void settingBtn(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) gmbtnSettings.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		(new TabAccess()).setTabName("tabBank");
+		MakeATransactionStage.hide();
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

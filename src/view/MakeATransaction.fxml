@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -25,17 +26,17 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="gmbtnSettings" layoutX="635.0" layoutY="216.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Settings">
+                  <Button fx:id="gmbtnSettings" layoutX="635.0" layoutY="216.0" mnemonicParsing="false" onAction="#settingBtn" prefHeight="32.0" prefWidth="120.0" text="Settings">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="gmbtnSave" cancelButton="true" layoutX="469.0" layoutY="456.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="111.0" text="Cancel">
+                  <Button fx:id="gmbtnCancel" cancelButton="true" layoutX="469.0" layoutY="456.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="111.0" text="Cancel">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="gmbtnCancel" defaultButton="true" layoutX="622.0" layoutY="456.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="111.0" text="Save">
+                  <Button fx:id="gmbtnSave" defaultButton="true" layoutX="622.0" layoutY="456.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="111.0" text="Save">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -47,7 +48,7 @@
                   </TextField>
                   <ComboBox fx:id="gmcmboSource" layoutX="418.0" layoutY="142.0" prefHeight="32.0" prefWidth="200.0" />
                   <ComboBox fx:id="gmcmboMethod" layoutX="418.0" layoutY="216.0" prefHeight="32.0" prefWidth="200.0" />
-                  <DatePicker fx:id="gmdateDate" layoutX="554.0" layoutY="28.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" showWeekNumbers="true" />
+                  <DatePicker fx:id="gmdateDate" editable="false" layoutX="555.0" layoutY="28.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
                   <Label layoutX="420.0" layoutY="118.0" prefHeight="20.0" prefWidth="150.0" text="Source of Money">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
@@ -73,12 +74,7 @@
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gmlblShortClock" alignment="CENTER" contentDisplay="CENTER" layoutX="449.0" layoutY="28.0" prefHeight="28.0" prefWidth="103.0" text="22:01:39" textAlignment="CENTER">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="gmlblWalletBalance" alignment="CENTER" layoutX="218.0" layoutY="364.0" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;" text="5000">
+                  <Label fx:id="gmlblWalletBalance" alignment="CENTER" layoutX="218.0" layoutY="364.0" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
@@ -102,7 +98,15 @@
                   <RadioButton fx:id="gmrbtnSendMoney" layoutX="454.0" layoutY="337.0" mnemonicParsing="false" text="Send Money" />
                   <RadioButton fx:id="gmrbtnBranch" layoutX="454.0" layoutY="362.0" mnemonicParsing="false" text="Branch" />
                   <TextArea fx:id="gmtxtDescription" layoutX="80.0" layoutY="196.0" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description" />
-                  <Button fx:id="gmbtnGoToDashboard" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" prefHeight="28.0" text="Go To Dashboard" />
+                  <Button fx:id="gmbtnGoToDashboard" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
+                  <TextField fx:id="gmtxtShortClock" alignment="CENTER" editable="false" layoutX="445.0" layoutY="28.0" prefHeight="28.0" prefWidth="100.0">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DISAPPEAR" />
+                     </cursor>
+                  </TextField>
                </children></AnchorPane>
       </content>
     </Tab>
@@ -131,7 +135,7 @@
                      </font>
                   </TextField>
                   <ComboBox fx:id="excmboSector" layoutX="425.0" layoutY="151.0" prefHeight="32.0" prefWidth="200.0" />
-                  <DatePicker fx:id="exdateDate" layoutX="554.0" layoutY="28.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" showWeekNumbers="true" />
+                  <DatePicker fx:id="exdateDate" editable="false" layoutX="555.0" layoutY="28.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
                   <Label layoutX="427.0" layoutY="127.0" prefHeight="20.0" prefWidth="150.0" text="Expenditure Sector">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
@@ -150,11 +154,6 @@
                   <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="364.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="exlblShortClock" alignment="CENTER" contentDisplay="CENTER" layoutX="449.0" layoutY="28.0" prefHeight="28.0" prefWidth="103.0" text="22:01:39" textAlignment="CENTER">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
                   <Label fx:id="exlblWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="364.0" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;" text="5000">
@@ -178,6 +177,14 @@
                      </font>
                   </Button>
                   <Button fx:id="exbtnGoToDashboard" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" prefHeight="28.0" text="Go To Dashboard" />
+                  <TextField fx:id="extxtShortClock" alignment="CENTER" editable="false" layoutX="445.0" layoutY="28.0" prefHeight="28.0" prefWidth="100.0">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DISAPPEAR" />
+                     </cursor>
+                  </TextField>
                </children></AnchorPane>
       </content>
     </Tab>
@@ -195,15 +202,10 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <DatePicker fx:id="lenddateDate" layoutX="552.0" layoutY="14.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" showWeekNumbers="true" />
+                  <DatePicker fx:id="lenddateDate" editable="false" layoutX="555.0" layoutY="14.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
                   <Label fx:id="lendlblTableHeading" alignment="CENTER" layoutX="85.0" layoutY="61.0" prefHeight="20.0" prefWidth="179.0" text="Money Borrow History">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lendlblShortClock" alignment="CENTER" contentDisplay="CENTER" layoutX="447.0" layoutY="14.0" prefHeight="28.0" prefWidth="103.0" text="22:01:39" textAlignment="CENTER">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
                   <TabPane fx:id="lendTabPane" layoutX="342.0" layoutY="56.0" prefHeight="400.0" prefWidth="458.0" tabClosingPolicy="UNAVAILABLE">
@@ -360,6 +362,14 @@
                     </columns>
                   </TableView>
                   <Button fx:id="lendbtnGoToDashboard" layoutX="109.0" layoutY="14.0" mnemonicParsing="false" prefHeight="28.0" text="Go To Dashboard" />
+                  <TextField fx:id="lendtxtShortClock" alignment="CENTER" editable="false" layoutX="445.0" layoutY="14.0" prefHeight="28.0" prefWidth="100.0">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DISAPPEAR" />
+                     </cursor>
+                  </TextField>
                </children></AnchorPane>
         </content>
       </Tab>
@@ -377,12 +387,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <DatePicker fx:id="bnkdateDate" editable="false" layoutX="552.0" layoutY="14.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" showWeekNumbers="true" />
-                  <Label fx:id="bnklblShortClock" alignment="CENTER" contentDisplay="CENTER" layoutX="447.0" layoutY="14.0" prefHeight="28.0" prefWidth="103.0" text="22:01:39" textAlignment="CENTER">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                  </Label>
+                  <DatePicker fx:id="bnkdateDate" editable="false" layoutX="555.0" layoutY="14.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
                   <Button fx:id="bnkbtnGoToDashboard" layoutX="130.0" layoutY="14.0" mnemonicParsing="false" prefHeight="28.0" text="Go To Dashboard" />
                   <TabPane fx:id="bnkTabPane" layoutY="53.0" prefHeight="402.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
@@ -572,6 +577,14 @@
                         </Tab>
                     </tabs>
                   </TabPane>
+                  <TextField fx:id="bnktxtShortClock" alignment="CENTER" editable="false" layoutX="445.0" layoutY="14.0" prefHeight="28.0" prefWidth="100.0">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DISAPPEAR" />
+                     </cursor>
+                  </TextField>
                </children></AnchorPane>
         </content>
       </Tab>

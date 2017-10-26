@@ -12,7 +12,6 @@ public class MakeATransactionStage extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/MakeATransaction.fxml"));
 			Scene scene = new Scene(root,800,550);
-//			scene.getStylesheets().add(getClass().getResource("SignIn.css").toExternalForm());
 			MakeATransactionStage.setScene(scene);
 			MakeATransactionStage.setResizable(false);
 			MakeATransactionStage.setTitle("Make A Transaction");
