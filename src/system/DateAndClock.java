@@ -58,15 +58,24 @@ public class DateAndClock extends UserBasic {
 	}
 	
 	
-	public String shortClock() {
-		DateFormat dateFormat = new SimpleDateFormat(new DateFormatManager().getTimeFormate());
+	public static String timeNow() {
+		DateFormat timeFormat = new SimpleDateFormat(new DateFormatManager().getTimeFormate());
 		Calendar now = Calendar.getInstance();
-    	String dateNow = dateFormat.format(now.getTime());
-		return dateNow;
+    	String timeNow = timeFormat.format(now.getTime());
+		return timeNow;
+	}
+	
+	
+	public static String getMonth() {
+		DateFormat monthFormat = new SimpleDateFormat("MMM-yyyy");
+		Calendar today = Calendar.getInstance();
+    	String thisMonth = monthFormat.format(today.getTime());
+		return thisMonth;
 	}
 	
 //	public static void main(String[] args) {
 //		System.out.println(dateChecker());
 //		System.out.println(shortClock());
+//		System.out.println(getMonth());
 //	}
 }

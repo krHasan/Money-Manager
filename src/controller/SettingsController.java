@@ -182,7 +182,7 @@ public class SettingsController {
 				public void run() {
 					showTab();
 				}
-			}, 1000);
+			}, 500);
 	}
 	public void showTab() {
 		String tabName = (new TabAccess()).getTabName();

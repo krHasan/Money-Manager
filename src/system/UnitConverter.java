@@ -21,6 +21,11 @@ public class UnitConverter {
 		return Integer.toString(balance);
 	}
 	
+	
+	public Double stringToDouble(String balance) {
+		return Double.parseDouble(balance);
+	}
+	
 //	public static void main(String[] args) {
 //		UnitConverter access = new UnitConverter();
 //		System.out.println(access.intToDouble(1909));

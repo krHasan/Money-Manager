@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -15,13 +14,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MakeATransactionController">
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MakeATransactionController">
   <tabs>
-    <Tab text="     Get Money     ">
+    <Tab fx:id="tabGetMoney" onSelectionChanged="#tabGetMoney" text="     Get Money     ">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0">
                <children>
-                  <Button fx:id="gmbtnCreateSource" layoutX="635.0" layoutY="142.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Create Source">
+                  <Button fx:id="gmbtnCreateSource" layoutX="635.0" layoutY="142.0" mnemonicParsing="false" onAction="#createSourceBtn" prefHeight="32.0" prefWidth="120.0" text="Create Source">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -31,24 +30,11 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="gmbtnCancel" cancelButton="true" layoutX="469.0" layoutY="456.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="111.0" text="Cancel">
+                  <Button fx:id="gmbtnCancel" cancelButton="true" layoutX="469.0" layoutY="456.0" mnemonicParsing="false" onAction="#cancelBtn" prefHeight="28.0" prefWidth="111.0" text="Cancel">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="gmbtnSave" defaultButton="true" layoutX="622.0" layoutY="456.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="111.0" text="Save">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <TextField fx:id="gmtxtAmount" alignment="CENTER" layoutX="80.0" layoutY="117.0" prefHeight="32.0" prefWidth="240.0" promptText="00">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font>
-                  </TextField>
-                  <ComboBox fx:id="gmcmboSource" layoutX="418.0" layoutY="142.0" prefHeight="32.0" prefWidth="200.0" />
-                  <ComboBox fx:id="gmcmboMethod" layoutX="418.0" layoutY="216.0" prefHeight="32.0" prefWidth="200.0" />
-                  <DatePicker fx:id="gmdateDate" editable="false" layoutX="555.0" layoutY="28.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
                   <Label layoutX="420.0" layoutY="118.0" prefHeight="20.0" prefWidth="150.0" text="Source of Money">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
@@ -79,7 +65,7 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gmlblWarningMsg" layoutX="147.0" layoutY="98.0" text="Field must not empty or zero" textFill="RED">
+                  <Label fx:id="gmlblWarningMsg" layoutX="80.0" layoutY="152.0" textFill="RED">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -97,20 +83,29 @@
                   <RadioButton fx:id="gmrbtnAgent" layoutX="454.0" layoutY="312.0" mnemonicParsing="false" text="Agent" />
                   <RadioButton fx:id="gmrbtnSendMoney" layoutX="454.0" layoutY="337.0" mnemonicParsing="false" text="Send Money" />
                   <RadioButton fx:id="gmrbtnBranch" layoutX="454.0" layoutY="362.0" mnemonicParsing="false" text="Branch" />
-                  <TextArea fx:id="gmtxtDescription" layoutX="80.0" layoutY="196.0" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description" />
-                  <Button fx:id="gmbtnGoToDashboard" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
-                  <TextField fx:id="gmtxtShortClock" alignment="CENTER" editable="false" layoutX="445.0" layoutY="28.0" prefHeight="28.0" prefWidth="100.0">
+                  <TextArea fx:id="gmtxtDescription" focusTraversable="false" layoutX="80.0" layoutY="196.0" onKeyReleased="#gmDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
                      <font>
-                        <Font name="Arial Bold" size="15.0" />
+                        <Font name="Arial" size="14.0" />
+                     </font></TextArea>
+                  <TextField fx:id="gmtxtAmount" alignment="CENTER" layoutX="80.0" layoutY="117.0" onKeyReleased="#gmAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00.00">
+                     <font>
+                        <Font name="Arial" size="14.0" />
                      </font>
-                     <cursor>
-                        <Cursor fx:constant="DISAPPEAR" />
-                     </cursor>
                   </TextField>
+                  <DatePicker fx:id="gmdateDate" editable="false" layoutX="555.0" layoutY="28.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
+                  <ComboBox fx:id="gmcmboSource" layoutX="418.0" layoutY="142.0" prefHeight="32.0" prefWidth="200.0" />
+                  <ComboBox fx:id="gmcmboMethod" layoutX="418.0" layoutY="216.0" onAction="#methodAction" prefHeight="32.0" prefWidth="200.0" />
+                  <Button fx:id="gmbtnSave" defaultButton="true" layoutX="622.0" layoutY="456.0" mnemonicParsing="false" onAction="#savebtn" prefHeight="28.0" prefWidth="111.0" text="Save">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="gmbtnGoToDashboard" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
+                  <Label fx:id="gmlblLetterRemainmsg" layoutX="80.0" layoutY="314.0" />
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="      Expense      ">
+    <Tab fx:id="tabExpense" onSelectionChanged="#tabExpense" text="      Expense      ">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0">
                <children>
@@ -177,18 +172,10 @@
                      </font>
                   </Button>
                   <Button fx:id="exbtnGoToDashboard" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" prefHeight="28.0" text="Go To Dashboard" />
-                  <TextField fx:id="extxtShortClock" alignment="CENTER" editable="false" layoutX="445.0" layoutY="28.0" prefHeight="28.0" prefWidth="100.0">
-                     <font>
-                        <Font name="Arial Bold" size="15.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="DISAPPEAR" />
-                     </cursor>
-                  </TextField>
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="       Lend       ">
+      <Tab fx:id="tabLend" onSelectionChanged="#tabLend" text="       Lend       ">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0">
                <children>
@@ -210,7 +197,7 @@
                   </Label>
                   <TabPane fx:id="lendTabPane" layoutX="342.0" layoutY="56.0" prefHeight="400.0" prefWidth="458.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab fx:id="boTab" text="     Borrow     ">
+                      <Tab fx:id="tabBorrow" text="     Borrow     ">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="428.0">
                                  <children>
@@ -281,7 +268,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab fx:id="leTab" text="      Lend      ">
+                      <Tab fx:id="tabLe" text="      Lend      ">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="445.0">
                                  <children>
@@ -362,18 +349,10 @@
                     </columns>
                   </TableView>
                   <Button fx:id="lendbtnGoToDashboard" layoutX="109.0" layoutY="14.0" mnemonicParsing="false" prefHeight="28.0" text="Go To Dashboard" />
-                  <TextField fx:id="lendtxtShortClock" alignment="CENTER" editable="false" layoutX="445.0" layoutY="14.0" prefHeight="28.0" prefWidth="100.0">
-                     <font>
-                        <Font name="Arial Bold" size="15.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="DISAPPEAR" />
-                     </cursor>
-                  </TextField>
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab text="       Bank       ">
+      <Tab fx:id="tabBank" onSelectionChanged="#tabBank" text="       Bank       ">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0">
                <children>
@@ -391,7 +370,7 @@
                   <Button fx:id="bnkbtnGoToDashboard" layoutX="130.0" layoutY="14.0" mnemonicParsing="false" prefHeight="28.0" text="Go To Dashboard" />
                   <TabPane fx:id="bnkTabPane" layoutY="53.0" prefHeight="402.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab fx:id="bkTab" text="      bKash      ">
+                      <Tab fx:id="tabbKash" text="      bKash      ">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -466,7 +445,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab fx:id="rocTab" text="      Rocket      ">
+                      <Tab fx:id="tabRocket" text="      Rocket      ">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -541,7 +520,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab fx:id="perTab" text="     Personal     ">
+                        <Tab fx:id="tabPersonal" text="     Personal     ">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -577,14 +556,6 @@
                         </Tab>
                     </tabs>
                   </TabPane>
-                  <TextField fx:id="bnktxtShortClock" alignment="CENTER" editable="false" layoutX="445.0" layoutY="14.0" prefHeight="28.0" prefWidth="100.0">
-                     <font>
-                        <Font name="Arial Bold" size="15.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="DISAPPEAR" />
-                     </cursor>
-                  </TextField>
                </children></AnchorPane>
         </content>
       </Tab>
