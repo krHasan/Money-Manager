@@ -1,35 +1,43 @@
 package system;
 
-public class UnitConverter {
+import database.DatabaseConnection;
+
+public class UnitConverter extends DatabaseConnection {
 	
-	public double intToDouble(int balance) {
+	public static double longToDouble(long balance) {
 		return balance/100.00;
 	}
 	
 	
-	public int doubleToInt(double balance) {
-		return (int) (balance*100);
+	public static long doubleTolong(double balance) {
+		return (long) (balance*100);
 	}
 	
 	
-	public String doubleToString(double balance) {
+	public static String doubleToString(double balance) {
 		return Double.toString(balance);
 	}
 	
 	
-	public String intToString(int balance) {
-		return Integer.toString(balance);
-	}
-	
-	
-	public Double stringToDouble(String balance) {
+	public static Double stringToDouble(String balance) {
 		return Double.parseDouble(balance);
 	}
 	
+	
+	public static long stringToLong(String balance) {
+		return (long) (Double.parseDouble(balance)*100);
+	}
+
+	
+	public static String longToString(long balance) {
+		return Double.toString(balance/100.00);
+	}
+	
+	
 //	public static void main(String[] args) {
 //		UnitConverter access = new UnitConverter();
-//		System.out.println(access.intToDouble(1909));
-//		System.out.println(access.doubleToInt(12.89));
+//		System.out.println(access.longToDouble(1909));
+//		System.out.println(access.doubleTolong(12.89));
 //	}
 	
 }

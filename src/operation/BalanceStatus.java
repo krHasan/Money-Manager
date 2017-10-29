@@ -1,21 +1,23 @@
 package operation;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import system.UnitConverter;
+
 public class BalanceStatus extends GoToOperation {
 	
-	
-	public int currentWalletBalance() {
-		int balance = 0;
+	public static long currentWalletBalance() {
+		long balance = 0;
 		String sql = "SELECT walletBalance \n"
 				+ "FROM Current_Status \n"
 				+ "WHERE ID=1";
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
 				ResultSet result = stmt.executeQuery(sql)) {
-			balance = result.getInt("walletBalance");
+			balance = result.getLong("walletBalance");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -23,15 +25,30 @@ public class BalanceStatus extends GoToOperation {
 	}
 	
 	
-	public int currentbKashBalance() {
-		int balance = 0;
+	public void setCurrentWalletBalance(String balance) {
+		long balancelong = UnitConverter.stringToLong(balance);
+		String sql = "UPDATE Current_Status \n"
+				+ " SET walletBalance = ? \n"
+				+ "WHERE ID = 1 ";
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setLong(1, balancelong);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static long currentbKashBalance() {
+		long balance = 0;
 		String sql = "SELECT bkashBalance \n"
 				+ "FROM Current_Status \n"
 				+ "WHERE ID=1";
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
 				ResultSet result = stmt.executeQuery(sql)) {
-			balance = result.getInt("bkashBalance");
+			balance = result.getLong("bkashBalance");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -39,15 +56,30 @@ public class BalanceStatus extends GoToOperation {
 	}
 	
 	
-	public int currentRocketBalance() {
-		int balance = 0;
+	public void setCurrentbKashBalance(String balance) {
+		long balancelong = UnitConverter.stringToLong(balance);
+		String sql = "UPDATE Current_Status \n"
+				+ " SET bkashBalance = ? \n"
+				+ "WHERE ID = 1 ";
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setLong(1, balancelong);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static long currentRocketBalance() {
+		long balance = 0;
 		String sql = "SELECT rocketBalance \n"
 				+ "FROM Current_Status \n"
 				+ "WHERE ID=1";
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
 				ResultSet result = stmt.executeQuery(sql)) {
-			balance = result.getInt("rocketBalance");
+			balance = result.getLong("rocketBalance");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -55,15 +87,30 @@ public class BalanceStatus extends GoToOperation {
 	}
 
 	
-	public int currentPersonalBalance() {
-		int balance = 0;
+	public void setCurrentRocketBalance(String balance) {
+		long balancelong = UnitConverter.stringToLong(balance);
+		String sql = "UPDATE Current_Status \n"
+				+ " SET rocketBalance = ? \n"
+				+ "WHERE ID = 1 ";
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setLong(1, balancelong);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	public static long currentPersonalBalance() {
+		long balance = 0;
 		String sql = "SELECT personalBalance \n"
 				+ "FROM Current_Status \n"
 				+ "WHERE ID=1";
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
 				ResultSet result = stmt.executeQuery(sql)) {
-			balance = result.getInt("personalBalance");
+			balance = result.getLong("personalBalance");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -71,15 +118,30 @@ public class BalanceStatus extends GoToOperation {
 	}
 	
 	
-	public int totalBorrowTk() {
-		int balance = 0;
+	public void setCurrentPersonalBalance(String balance) {
+		long balancelong = UnitConverter.stringToLong(balance);
+		String sql = "UPDATE Current_Status \n"
+				+ " SET personalBalance = ? \n"
+				+ "WHERE ID = 1 ";
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setLong(1, balancelong);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	public static long totalBorrowTk() {
+		long balance = 0;
 		String sql = "SELECT totalBorrowTk \n"
 				+ "FROM Current_Status \n"
 				+ "WHERE ID=1";
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
 				ResultSet result = stmt.executeQuery(sql)) {
-			balance = result.getInt("totalBorrowTk");
+			balance = result.getLong("totalBorrowTk");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -87,20 +149,50 @@ public class BalanceStatus extends GoToOperation {
 	}
 	
 	
-	public int totalLendTk() {
-		int balance = 0;
+	public void setTotalBorrowTk(String balance) {
+		long balancelong = UnitConverter.stringToLong(balance);
+		String sql = "UPDATE Current_Status \n"
+				+ " SET totalBorrowTk = ? \n"
+				+ "WHERE ID = 1 ";
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setLong(1, balancelong);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	public static long totalLendTk() {
+		long balance = 0;
 		String sql = "SELECT totalLendTk \n"
 				+ "FROM Current_Status \n"
 				+ "WHERE ID=1";
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
 				ResultSet result = stmt.executeQuery(sql)) {
-			balance = result.getInt("totalLendTk");
+			balance = result.getLong("totalLendTk");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return balance;
 	}
+	
+	public void setTotalLendTk(String balance) {
+		long balancelong = UnitConverter.stringToLong(balance);
+		String sql = "UPDATE Current_Status \n"
+				+ " SET totalLendTk = ? \n"
+				+ "WHERE ID = 1 ";
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setLong(1, balancelong);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	
 //	public static void main(String[] args) {
 //		BalanceStatus access = new BalanceStatus();

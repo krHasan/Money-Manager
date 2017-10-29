@@ -37,7 +37,7 @@ public class GlobalId extends DatabaseConnection {
 		try (Connection conn = connector();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			
-			pstmt.setInt(1, oldId+1);
+			pstmt.setLong(1, oldId+1);
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {

@@ -1,12 +1,12 @@
 package operation;
 
-import database.DatabaseConnection;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import system.UnitConverter;
 
-public class GoToOperation extends DatabaseConnection {
+public class GoToOperation extends UnitConverter {
 	
 	public void goToDashboard(double positionX, double positionY) {
 		try {

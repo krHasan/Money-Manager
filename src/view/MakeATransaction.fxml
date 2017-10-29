@@ -20,17 +20,17 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0">
                <children>
-                  <Button fx:id="gmbtnCreateSource" layoutX="635.0" layoutY="142.0" mnemonicParsing="false" onAction="#createSourceBtn" prefHeight="32.0" prefWidth="120.0" text="Create Source">
+                  <Button fx:id="gmbtnCreateSource" layoutX="635.0" layoutY="142.0" mnemonicParsing="false" onAction="#gmGoToSourceBtn" prefHeight="32.0" prefWidth="120.0" text="Create Source">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="gmbtnSettings" layoutX="635.0" layoutY="216.0" mnemonicParsing="false" onAction="#settingBtn" prefHeight="32.0" prefWidth="120.0" text="Settings">
+                  <Button fx:id="gmbtnSettings" layoutX="635.0" layoutY="216.0" mnemonicParsing="false" onAction="#gmSettingBtn" prefHeight="32.0" prefWidth="120.0" text="Settings">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="gmbtnCancel" cancelButton="true" layoutX="469.0" layoutY="456.0" mnemonicParsing="false" onAction="#cancelBtn" prefHeight="28.0" prefWidth="111.0" text="Cancel">
+                  <Button fx:id="gmbtnCancel" cancelButton="true" layoutX="469.0" layoutY="456.0" mnemonicParsing="false" onAction="#gmCancelBtn" prefHeight="28.0" prefWidth="111.0" text="Cancel">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -70,7 +70,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gmlblBalanceUpdateMsg" layoutX="418.0" layoutY="259.0" text="After this transaction your Rocket balance will be 113.89 TK.">
+                  <Label fx:id="gmlblBalanceUpdateMsg" layoutX="418.0" layoutY="259.0">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -80,9 +80,9 @@
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="gmrbtnAgent" layoutX="454.0" layoutY="312.0" mnemonicParsing="false" text="Agent" />
-                  <RadioButton fx:id="gmrbtnSendMoney" layoutX="454.0" layoutY="337.0" mnemonicParsing="false" text="Send Money" />
-                  <RadioButton fx:id="gmrbtnBranch" layoutX="454.0" layoutY="362.0" mnemonicParsing="false" text="Branch" />
+                  <RadioButton fx:id="gmrbtnAgent" layoutX="454.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#gmRbtnAgentClick" text="Agent" />
+                  <RadioButton fx:id="gmrbtnSendMoney" layoutX="454.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#gmRbtnSendMoneyClick" text="Send Money" />
+                  <RadioButton fx:id="gmrbtnBranch" layoutX="454.0" layoutY="362.0" mnemonicParsing="false" onMouseClicked="#gmRbtnBranceClick" text="Branch" />
                   <TextArea fx:id="gmtxtDescription" focusTraversable="false" layoutX="80.0" layoutY="196.0" onKeyReleased="#gmDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
                      <font>
                         <Font name="Arial" size="14.0" />
@@ -94,8 +94,8 @@
                   </TextField>
                   <DatePicker fx:id="gmdateDate" editable="false" layoutX="555.0" layoutY="28.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
                   <ComboBox fx:id="gmcmboSource" layoutX="418.0" layoutY="142.0" prefHeight="32.0" prefWidth="200.0" />
-                  <ComboBox fx:id="gmcmboMethod" layoutX="418.0" layoutY="216.0" onAction="#methodAction" prefHeight="32.0" prefWidth="200.0" />
-                  <Button fx:id="gmbtnSave" defaultButton="true" layoutX="622.0" layoutY="456.0" mnemonicParsing="false" onAction="#savebtn" prefHeight="28.0" prefWidth="111.0" text="Save">
+                  <ComboBox fx:id="gmcmboMethod" layoutX="418.0" layoutY="216.0" onAction="#gmMethodAction" prefHeight="32.0" prefWidth="200.0" />
+                  <Button fx:id="gmbtnSave" defaultButton="true" layoutX="622.0" layoutY="456.0" mnemonicParsing="false" onAction="#gmSavebtn" prefHeight="28.0" prefWidth="111.0" text="Save">
                      <font>
                         <Font size="14.0" />
                      </font>

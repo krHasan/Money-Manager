@@ -8,28 +8,28 @@ import database.DatabaseConnection;
 
 public class BankIssue extends DatabaseConnection {
 	
-	public int bKashChargeCalculate(int amount, String nature) {
-		int charge = 0;
+	public long bKashChargeCalculate(long amount, String nature) {
+		long charge = 0;
 		
 		switch (nature) {
 			case "Cash Out":
-				charge = (amount*bKashbnkCharge("Cash Out")/100000);
+				charge = (amount*bKashbnkCharge(nature)/100000);
 				break;
 				
 			case "Buy Airtime":
-				charge = 0;
+				charge = bKashbnkCharge(nature);
 				break;
 				
 			case "Send Money":
-				charge = bKashbnkCharge("Send Money");
+				charge = bKashbnkCharge(nature);
 				break;
 			
 			case "Payment":
-				charge = 0;
+				charge = bKashbnkCharge(nature);
 				break;
 				
 			case "ATM":
-				charge = (amount*bKashbnkCharge("ATM")/100000);
+				charge = (amount*bKashbnkCharge(nature)/100000);
 				break;
 				
 			default:
@@ -40,8 +40,8 @@ public class BankIssue extends DatabaseConnection {
 	}
 	
 	
-	private static int bKashbnkCharge(String nature) {
-		int charge = 0;
+	private static long bKashbnkCharge(String nature) {
+		long charge = 0;
 		String sql = "SELECT * \n"
 				+ "FROM bKash_Settings \n"
 				+ "WHERE ID = 1";
@@ -52,7 +52,7 @@ public class BankIssue extends DatabaseConnection {
 			
 			switch (nature) {
 			case "Cash Out": 
-				charge = result.getInt("bkCashOutAgentCharge");
+				charge = result.getLong("bkCashOutAgentCharge");
 				break;
 				
 			case "Buy Airtime":
@@ -60,7 +60,7 @@ public class BankIssue extends DatabaseConnection {
 				break;
 				
 			case "Send Money":
-				charge = result.getInt("bkSendMoneyCharge");
+				charge = result.getLong("bkSendMoneyCharge");
 				break;
 			
 			case "Payment":
@@ -68,7 +68,7 @@ public class BankIssue extends DatabaseConnection {
 				break;
 				
 			case "ATM":
-				charge = result.getInt("bkATMCharge");
+				charge = result.getLong("bkATMCharge");
 				break;
 				
 			default:
@@ -82,74 +82,79 @@ public class BankIssue extends DatabaseConnection {
 	}
 	
 	
-//	public int rocketChargeCalculate(int amount, String method, String nature) {
-//		int charge = 0;
-//		
-//		if (method.equals("Cash In")) {
-//			if (true) {
-//				
-//			} else {
-//
-//			}
-//		} else {
-//
-//		}
-//		switch (nature) {
-//			case "Cash Out":
-//				charge = (amount*bKashbnkCharge("Cash Out")/100000);
-//				break;
-//				
-//			case "Buy Airtime":
-//				charge = 0;
-//				break;
-//				
-//			case "Send Money":
-//				charge = bKashbnkCharge("Send Money");
-//				break;
-//			
-//			case "Payment":
-//				charge = 0;
-//				break;
-//				
-//			case "ATM":
-//				charge = (amount*bKashbnkCharge("ATM")/100000);
-//				break;
-//				
-//			default:
-//				charge = 0;
-//				break;
-//		}
-//		return charge;
-//	}
-	
-	
-	private static int rocketbnkCharge(String method, String nature) {
-		int charge = 0;
-		boolean atmFree = true;
+	public long rocketChargeCalculate(long amount, String method, String nature) {
+		long charge = 0;
 		
-		String sqlATM = "SELECT atmFree \n"
-				+ "FROM Rocket_Settings \n"
-				+ "WHERE ID = 1";
-		try (Connection conn = connector();
-				Statement stmt = conn.createStatement();
-				ResultSet result = stmt.executeQuery(sqlATM)) {
-			atmFree = result.getBoolean("atmFree");
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (method.equals("Cash In")) {
+			switch (nature) {
+			case "Agent":
+				charge = (amount*rocketbnkCharge(method, nature)/100000);
+				break;
+				
+			case "Send Money":
+				charge = rocketbnkCharge(method, nature);
+				break;
+				
+			case "Branch":
+				charge = rocketbnkCharge(method, nature);
+				break;
+						
+			default:
+				charge = 0;
+				break;
+			}
+		} else {
+			switch (nature) {
+			case "ATM":
+				charge = (amount*rocketbnkCharge(method, nature)/100000);
+				break;
+				
+			case "TopUp":
+				charge = rocketbnkCharge(method, nature);
+				break;
+				
+			case "Agent":
+				charge = (amount*rocketbnkCharge(method, nature)/100000);
+				break;
+			
+			case "Send Money":
+				charge = rocketbnkCharge(method, nature);
+				break;
+				
+			case "Branch":
+				if (isATMFree()) {
+					charge = rocketbnkCharge(method, nature);
+				} else {
+					charge = (amount*rocketbnkCharge(method, nature)/100000);
+				}
+				break;
+				
+			default:
+				charge = 0;
+				break;
+			}
 		}
+		
+		return charge;
+	}
+	
+	
+	private static long rocketbnkCharge(String method, String nature) {
+		long charge = 0;
 		
 		String sqlAll = "SELECT * \n"
 				+ "FROM Rocket_Settings \n"
 				+ "WHERE ID = 1";
+		
 		if (method.equals("Cash In")) {
-			if (atmFree) {
+			if (isATMFree()) {
 				try (Connection conn = connector();
 						Statement stmt = conn.createStatement();
 						ResultSet result = stmt.executeQuery(sqlAll)){
 
 					switch (nature) {
 					case "Agent": 
-						charge = result.getInt("rocATMCashInAgentCharge");
+						charge = result.getLong("rocATMCashInAgentCharge");
 						break;
 						
 					case "Send Money":
@@ -157,7 +162,7 @@ public class BankIssue extends DatabaseConnection {
 						break;
 						
 					case "Branch":
-						charge = result.getInt("rocATMCashInBranchCharge");
+						charge = result.getLong("rocATMCashInBranchCharge");
 						break;
 					
 					default:
@@ -174,7 +179,7 @@ public class BankIssue extends DatabaseConnection {
 
 					switch (nature) {
 					case "Agent": 
-						charge = result.getInt("rocCashCashInAgentCharge");
+						charge = result.getLong("rocCashCashInAgentCharge");
 						break;
 						
 					case "Send Money":
@@ -182,7 +187,7 @@ public class BankIssue extends DatabaseConnection {
 						break;
 						
 					case "Branch":
-						charge = result.getInt("rocCashCashInBranchCharge");
+						charge = result.getLong("rocCashCashInBranchCharge");
 						break;
 					
 					default:
@@ -194,14 +199,14 @@ public class BankIssue extends DatabaseConnection {
 				}
 			}
 		} else {
-			if (atmFree) {
+			if (isATMFree()) {
 				try (Connection conn = connector();
 						Statement stmt = conn.createStatement();
 						ResultSet result = stmt.executeQuery(sqlAll)){
 
 					switch (nature) {
 					case "ATM": 
-						charge = result.getInt("rocATMCashOutATMCharge");
+						charge = result.getLong("rocATMCashOutATMCharge");
 						break;
 						
 					case "TopUp": 
@@ -209,15 +214,15 @@ public class BankIssue extends DatabaseConnection {
 						break;
 						
 					case "Agent": 
-						charge = result.getInt("rocATMCashOutAgentCharge");
+						charge = result.getLong("rocATMCashOutAgentCharge");
 						break;
 						
 					case "Send Money":
-						charge = result.getInt("rocATMSendMoneyCharge");
+						charge = result.getLong("rocATMSendMoneyCharge");
 						break;
 						
 					case "Branch":
-						charge = result.getInt("rocATMCashOutBranchCharge");
+						charge = result.getLong("rocATMCashOutBranchCharge");
 						break;
 					
 					default:
@@ -234,7 +239,7 @@ public class BankIssue extends DatabaseConnection {
 
 					switch (nature) {
 					case "ATM": 
-						charge = result.getInt("rocCashCashOutATMCharge");
+						charge = result.getLong("rocCashCashOutATMCharge");
 						break;
 						
 					case "TopUp": 
@@ -242,15 +247,15 @@ public class BankIssue extends DatabaseConnection {
 						break;
 						
 					case "Agent": 
-						charge = result.getInt("rocCashCashOutAgentCharge");
+						charge = result.getLong("rocCashCashOutAgentCharge");
 						break;
 						
 					case "Send Money":
-						charge = result.getInt("rocCashSendMoneyCharge");
+						charge = result.getLong("rocCashSendMoneyCharge");
 						break;
 						
 					case "Branch":
-						charge = result.getInt("rocCashCashOutBranchCharge");
+						charge = result.getLong("rocCashCashOutBranchCharge");
 						break;
 					
 					default:
@@ -267,9 +272,35 @@ public class BankIssue extends DatabaseConnection {
 	}
 	
 	
+	private static boolean isATMFree() {
+		String atmFree = null;
+		boolean atmFreeb = false;
+		
+		String sqlATM = "SELECT atmFree \n"
+				+ "FROM Rocket_Settings \n"
+				+ "WHERE ID = 1";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlATM)) {
+			
+			atmFree = result.getString("atmFree");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if (atmFree.equals("true")) {
+			atmFreeb = true;
+		}
+		return atmFreeb;
+	}
+	
+	
+	
 //	public static void main(String[] args) {
 //		BankIssue access = new BankIssue();
 //		System.out.println(access.bKashChargeCalculate(100000, "ATM"));
+//		System.out.println(access.rocketChargeCalculate(1500000, "Cash Out", "Agent"));
 //	}
 	
 }

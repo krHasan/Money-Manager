@@ -1,9 +1,13 @@
 package controller;
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -15,10 +19,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.MakeATransactionModel;
 import operation.GoToOperation;
 import system.DateFormatManager;
+import tab.Bkash;
+import tab.GetMoney;
+import tab.Rocket;
 import tab.TabAccess;
 
 public class MakeATransactionController extends MakeATransactionModel {
@@ -319,6 +327,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Label perlblAccountBalance;
 	
 	
+////////////////////////////////////////////   General Function  ////////////////////////////////////////////
+//---------------------------------------------------------------------------------------------------------//
+
 	DateFormatManager formatManager = new DateFormatManager();
 	String dateString = formatManager.toString(LocalDate.now());
 	LocalDate date = formatManager.fromString(dateString);
@@ -328,26 +339,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	public void initialize() {
 		
 	}
-
 	
-////////////////////////////////////////////  Get Money Function ////////////////////////////////////////////
-//---------------------------------------------------------------------------------------------------------//
-	private boolean cancelbtnPressed = false;
 	
 	@FXML
-	private void tabGetMoney() {
-		gmdateDate.setConverter(formatManager);
-		gmdateDate.setValue(date);
-		loadSource();
-		loadMethod();
-		showWalletBalance();
-		gmlblLetterRemainmsg.setText("");
-				
-		gmlblBalanceUpdateMsg.setText(" ");
-		gmlblAmountNature.setText(" ");
-		gmrbtnAgent.setVisible(false);
-		gmrbtnSendMoney.setVisible(false);
-		gmrbtnBranch.setVisible(false);
+	private void showWalletBalance() {
+		gmlblWalletBalance.setText(getWalletBalance());
 	}
 	
 	
@@ -357,58 +353,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 		(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
 		MakeATransactionStage.hide();
 	}
-
-	
-	@FXML
-	private void showWalletBalance() {
-		gmlblWalletBalance.setText(getWalletBalance());
-	}
-	
-	
-	@FXML
-	public void settingBtn(ActionEvent event) {
-		Stage MakeATransactionStage = (Stage) gmbtnSettings.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		(new TabAccess()).setTabName("tabBank");
-		MakeATransactionStage.hide();
-	}
-	
-	
-	@FXML
-	private void createSourceBtn(ActionEvent event) {
-		Stage MakeATransactionStage = (Stage) gmbtnCreateSource.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		(new TabAccess()).setTabName("tabSource");
-		MakeATransactionStage.hide();
-	}
-	
-	
-	@FXML
-	private void cancelBtn(ActionEvent event) {
-		gmdateDate.setConverter(formatManager);
-		gmdateDate.setValue(date);
-		gmtxtAmount.clear();
-		gmlblWarningMsg.setText("");
-		gmtxtDescription.clear();
-		gmtxtDescription.setEditable(true);
-		gmlblLetterRemainmsg.setText("");
-		cancelbtnPressed = true;
-		loadSource();
-		loadMethod();
-		
-		gmlblBalanceUpdateMsg.setText(" ");
-		gmlblAmountNature.setText(" ");
-		gmrbtnAgent.setVisible(false);
-		gmrbtnSendMoney.setVisible(false);
-		gmrbtnBranch.setVisible(false);
-	}
-	
-	
-	@FXML
-	private void loadSource() {
-		gmcmboSource.setItems(getSource());
-		gmcmboSource.getSelectionModel().selectFirst();
-	}
 	
 	
 	@FXML
@@ -417,76 +361,264 @@ public class MakeATransactionController extends MakeATransactionModel {
 		gmcmboMethod.getSelectionModel().selectFirst();
 	}
 	
+////////////////////////////////////////////  Get Money Function ////////////////////////////////////////////
+//---------------------------------------------------------------------------------------------------------//
+	private boolean cancelbtnPressed = false;
+	final ToggleGroup gmrbtnGroup = new ToggleGroup();
 	
 	@FXML
-	public void methodAction(ActionEvent event) {
-		if (!cancelbtnPressed) {
-			
-			if ((gmcmboMethod.getValue()).equals("bKash")) {
-				
-				if (amountIsZero(gmtxtAmount.getText())) {
-					gmlblBalanceUpdateMsg.setText(" ");
-				} else {
-					gmlblBalanceUpdateMsg.setText("Your update bKash Balance will be : " + updatedbKashBalance(gmtxtAmount.getText()));
-				}
-				gmlblAmountNature.setText(" ");
-				gmrbtnAgent.setVisible(false);
-				gmrbtnSendMoney.setVisible(false);
-				gmrbtnBranch.setVisible(false);
-				
-			} else if ((gmcmboMethod.getValue()).equals("Rocket")) {
-				final ToggleGroup rbtnGroup = new ToggleGroup();
-				
-				if (amountIsZero(gmtxtAmount.getText())) {
-					gmlblBalanceUpdateMsg.setText(" ");
-				} else {
-					gmlblBalanceUpdateMsg.setText("Your update Rocket Balance will be : " + updatedRocketBalance(gmtxtAmount.getText()));
-				}
+	private void tabGetMoney() {
+		gmInitialize();
+	}
+	
+	
+	private void gmInitialize() {
+		gmdateDate.setConverter(formatManager);
+		gmdateDate.setValue(date);
+		gmlblLetterRemainmsg.setText("");
+		gmlblBalanceUpdateMsg.setText(" ");
+		gmtxtAmount.clear();
+		gmlblWarningMsg.setText("");
+		gmtxtDescription.clear();
+		gmtxtDescription.setEditable(true);
+		gmLoadSource();
+		loadMethod();
+		showWalletBalance();
+		gmRocInRbtnHide();
 
-				gmlblAmountNature.setText("Amount Nature");
-				gmrbtnAgent.setVisible(true);
-				gmrbtnSendMoney.setVisible(true);
-				gmrbtnBranch.setVisible(true);
-				
-				gmrbtnAgent.setToggleGroup(rbtnGroup);
-				gmrbtnAgent.setSelected(true);
-				gmrbtnSendMoney.setToggleGroup(rbtnGroup);
-				gmrbtnBranch.setToggleGroup(rbtnGroup);
-				
-			} else {
-				gmlblBalanceUpdateMsg.setText(" ");
-				gmlblAmountNature.setText(" ");
-				gmrbtnAgent.setVisible(false);
-				gmrbtnSendMoney.setVisible(false);
-				gmrbtnBranch.setVisible(false);
-			}
-		}
+	}
+	
+	
+	private void gmRocInRbtnHide() {
+		gmlblAmountNature.setText(" ");
+		gmrbtnAgent.setVisible(false);
+		gmrbtnSendMoney.setVisible(false);
+		gmrbtnBranch.setVisible(false);
+	}
+	
+	private void gmRocInRbtnShow() {
+		gmlblAmountNature.setText("Amount Nature");
 		
+		gmrbtnAgent.setVisible(true);
+		gmrbtnAgent.setToggleGroup(gmrbtnGroup);
+		gmrbtnAgent.setSelected(true);
+		gmrbtnAgent.setUserData("Agent");
+		
+		gmrbtnSendMoney.setVisible(true);
+		gmrbtnSendMoney.setToggleGroup(gmrbtnGroup);
+		gmrbtnSendMoney.setUserData("Send Money");
+		
+		gmrbtnBranch.setVisible(true);
+		gmrbtnBranch.setToggleGroup(gmrbtnGroup);
+		gmrbtnBranch.setUserData("Branch");
+		
+	}
+	
+	@FXML
+	public String gmGetSelectedrbtnName() {
+		return (String) gmrbtnGroup.getSelectedToggle().getUserData();
 	}
 	
 	
 	@FXML
-	private void savebtn(ActionEvent event) {
+	public void gmSettingBtn(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) gmbtnSettings.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		(new TabAccess()).setTabName("tabBank");
+		MakeATransactionStage.hide();
+	}
+	
+	
+	@FXML
+	private void gmGoToSourceBtn(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) gmbtnCreateSource.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		(new TabAccess()).setTabName("tabSource");
+		MakeATransactionStage.hide();
+	}
+	
+	
+	@FXML
+	private void gmCancelBtn(ActionEvent event) {
+		gmInitialize();
+		cancelbtnPressed = true;
+	}
+	
+	
+	@FXML
+	private void gmLoadSource() {
+		try {
+			gmcmboSource.setItems(gmGetSource());
+			gmcmboSource.getSelectionModel().selectFirst();
+		} catch (Exception e) {}
+	}
+	
+	
+	@FXML
+	public void gmMethodAction(ActionEvent event) {
+		try {
+			if (!cancelbtnPressed) {
+				gmUpdateBalanceShow();
+			} else {
+				cancelbtnPressed = false;
+			}
+		} catch (Exception e) {}
 		
+	}
+		
+	
+	@FXML
+	private void gmUpdateBalanceShow() {
+		
+		try {
+			if ((gmcmboMethod.getValue()).equals("bKash")) {
+				
+				if (letterCount(gmtxtAmount.getText())==100) {
+					gmlblBalanceUpdateMsg.setText(" ");
+				} else {
+					gmlblBalanceUpdateMsg.setText("Your update bKash Balance will be : " + updatedbKashBalance(gmtxtAmount.getText(), "Cash In"));
+				}
+				gmRocInRbtnHide();
+				
+			} else if ((gmcmboMethod.getValue()).equals("Rocket")) {
+				
+				gmRocInRbtnShow();
+				if (letterCount(gmtxtAmount.getText())==100) {
+					gmlblBalanceUpdateMsg.setText(" ");
+				} else {
+					gmlblBalanceUpdateMsg.setText("Your update Rocket Balance will be : " + updatedRocketBalance(gmtxtAmount.getText(), "Cash In", gmGetSelectedrbtnName()));
+				}
+					
+			} else {
+				gmlblBalanceUpdateMsg.setText(" ");
+				gmRocInRbtnHide();
+			}
+		} catch (Exception e) {}
+	}
+	
+	
+	private void gmRocUpdateBalanceShow() {
+		if (letterCount(gmtxtAmount.getText())==100) {
+			gmlblBalanceUpdateMsg.setText(" ");
+		} else {
+			gmlblBalanceUpdateMsg.setText("Your update Rocket Balance will be : " + updatedRocketBalance(gmtxtAmount.getText(), "Cash In", gmGetSelectedrbtnName()));
+		}
+	}
+	
+	
+	@FXML
+	private void gmRbtnAgentClick(MouseEvent event) {
+		gmRocUpdateBalanceShow();
+	}
+
+	
+	@FXML
+	private void gmRbtnSendMoneyClick(MouseEvent event) {
+		gmRocUpdateBalanceShow();
+	}
+	
+	
+	@FXML
+	private void gmRbtnBranceClick(MouseEvent event) {
+		gmRocUpdateBalanceShow();
+	}
+	
+	
+	@FXML
+	private void gmSavebtn(ActionEvent event) {
+		if (amountIsZero(gmtxtAmount.getText())) {
+			
+			gmlblWarningMsg.setText("Empty or Zero is not approved.");
+		
+		} else {
+			try {
+				Map<String, String> stringData = new HashMap<>();
+				
+				int globalId = globalIdToSave();
+				
+				stringData.put("gmTime", timeToSave());
+				stringData.put("gmDate", (new DateFormatManager()).toString(gmdateDate.getValue()));
+				stringData.put("gmMonth", monthToSave());
+				stringData.put("gmAmount", gmtxtAmount.getText());
+				
+				if ((gmcmboMethod.getValue()).equals("bKash")) {
+					stringData.put("gmBankCharge", bkashBnkCharge(gmtxtAmount.getText(), "Cash In"));
+				} else if((gmcmboMethod.getValue()).equals("Rocket")){
+					stringData.put("gmBankCharge", rocketBnkCharge(gmtxtAmount.getText(), "Cash In", gmGetSelectedrbtnName()));
+				} else {
+					stringData.put("gmBankCharge", "0");
+				}
+				
+				if ((gmcmboMethod.getValue()).equals("bKash")) {
+					stringData.put("gmAmountNature", "Cash In from Agent");
+				} else if ((gmcmboMethod.getValue()).equals("Rocket")) {
+					stringData.put("gmAmountNature", gmGetSelectedrbtnName());
+				} else {
+					stringData.put("gmAmountNature", "None");
+				}
+				
+				if ((gmcmboMethod.getValue()).equals("bKash")) {
+					stringData.put("bkBalanceAfter", updatedbKashBalance(gmtxtAmount.getText(), "Cash In"));
+					(new Bkash()).saveGmBkashData(stringData);
+				} else if ((gmcmboMethod.getValue()).equals("Rocket")) {
+					stringData.put("rocBalanceAfter", updatedRocketBalance(gmtxtAmount.getText(), "Cash In", gmGetSelectedrbtnName()));
+					(new Rocket()).saveGmRocketData(stringData);
+				}
+				
+				stringData.put("gmSource", gmcmboSource.getValue());
+				
+				if (gmIsDescripionEmpty()) {
+					stringData.put("gmDescription", "None");
+				} else {
+					stringData.put("gmDescription", gmtxtDescription.getText());
+				}
+
+				stringData.put("gmMethod", gmcmboMethod.getValue());
+				stringData.put("gmWalletBalanceBefore", getWalletBalance());
+				
+				if ((gmcmboMethod.getValue()).equals("Hand to Hand")) {
+					stringData.put("gmWalletBalanceAfter", getWalletBalanceAfter(gmtxtAmount.getText()));
+					setCurrentWalletBalance(getWalletBalanceAfter(gmtxtAmount.getText()));
+				} else {
+					stringData.put("gmWalletBalanceAfter", getWalletBalance());
+				}
+				
+				(new GetMoney()).saveGetMoneyData(globalId, stringData);
+				
+				gmInitialize();
+				
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Successfull Transaction");
+				alert.setHeaderText(null);
+				alert.setContentText("Your transaction completed successfully.");
+				alert.showAndWait();
+				
+			} catch (Exception e) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Transaction Failed");
+				alert.setHeaderText(null);
+				alert.setContentText("There something is wrong.");
+				alert.showAndWait();
+			}
+		}
+
 	}
 	
 	
 	@FXML
 	private void gmAmountValidation() {
 		if (!validAmount(gmtxtAmount.getText())) {
+			
 			gmlblWarningMsg.setText("Invalid Input. Type within 0.00 to 9999999.99");
 			gmtxtAmount.clear();
+		
 		} else {
-			gmlblWarningMsg.setText(" ");
 			
+			gmlblWarningMsg.setText(" ");
 			try {
-				if ((gmcmboMethod.getValue()).equals("bKash")) {
-					gmlblBalanceUpdateMsg.setText("Your update bKash Balance will be : " + updatedbKashBalance(gmtxtAmount.getText()));
-						
-				} else if ((gmcmboMethod.getValue()).equals("Rocket")) {
-					gmlblBalanceUpdateMsg.setText("Your update Rocket Balance will be : " + updatedRocketBalance(gmtxtAmount.getText()));
-								
-				}
+				
+				gmUpdateBalanceShow();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -507,6 +639,15 @@ public class MakeATransactionController extends MakeATransactionModel {
 		}
 	}
 	
+	
+	@FXML
+	private boolean gmIsDescripionEmpty() {
+		if (letterCount(gmtxtDescription.getText()) == 100) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	
 ////////////////////////////////////////////  Expense Function  ////////////////////////////////////////////

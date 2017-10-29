@@ -1,9 +1,8 @@
 package model;
 
-import java.util.Scanner;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import operation.BankIssue;
 import operation.ComboboxList;
 import operation.GlobalId;
 import system.DateAndClock;
@@ -19,14 +18,18 @@ public class MakeATransactionModel extends DateAndClock {
 	
 	
 	public boolean amountIsZero(String amount) {
-		if ((new UnitConverter()).stringToDouble(amount)<=0) {
+		try {
+			if (UnitConverter.stringToDouble(amount)<=0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
 			return true;
-		} else {
-			return false;
 		}
-		
+
 	}
-	
+
 	
 	public boolean validAmount(String amount) {
 		if (amount.matches("[0-9]{1,7}(\\.[0-9]{1,2}){0,7}")) {
@@ -40,28 +43,47 @@ public class MakeATransactionModel extends DateAndClock {
 	
 	
 	public String getWalletBalance() {
-		UnitConverter convert = new UnitConverter();
-		return convert.doubleToString(convert.intToDouble(currentWalletBalance()));		
+		return UnitConverter.longToString(currentWalletBalance());
 	}
 	
 	
-	public double updatedbKashBalance(String oldBalance) {
-		double newBalance = 0;
-		
-		UnitConverter convert = new UnitConverter();
-		int updateBalance = currentbKashBalance() + convert.doubleToInt(convert.stringToDouble(oldBalance));
-		
-		return newBalance = convert.intToDouble(updateBalance);
+	public String getWalletBalanceAfter(String amount) {
+		long dbBalance = currentWalletBalance();
+		long typedBalance = UnitConverter.stringToLong(amount);
+		String updateBalance = UnitConverter.longToString(dbBalance + typedBalance);
+		return updateBalance;
 	}
 	
 	
-	public double updatedRocketBalance(String oldBalance) {
-		double newBalance = 0;
-		
-		UnitConverter convert = new UnitConverter();
-		int updateBalance = currentRocketBalance() + convert.doubleToInt(convert.stringToDouble(oldBalance));
-
-		return newBalance = convert.intToDouble(updateBalance);
+	public String updatedbKashBalance(String amount, String nature) {
+		long amountlong = UnitConverter.stringToLong(amount);
+		long charge = new BankIssue().bKashChargeCalculate(amountlong, nature);
+		long dbBkashBalance = currentbKashBalance();
+		String newBalance = UnitConverter.longToString((amountlong-charge)+dbBkashBalance);
+		return newBalance;
+	}
+	
+	
+	public String updatedRocketBalance(String amount, String method, String nature) {
+		long amountlong = UnitConverter.stringToLong(amount);
+		long charge = new BankIssue().rocketChargeCalculate(amountlong, method, nature);
+		long dbRocketBalance = currentRocketBalance();
+		String newBalance = UnitConverter.longToString((amountlong-charge)+dbRocketBalance);
+		return newBalance;
+	}
+	
+	
+	public String bkashBnkCharge(String amount, String nature) {
+		long amountlong = UnitConverter.stringToLong(amount);
+		long charge = (new BankIssue()).bKashChargeCalculate(amountlong, nature);
+		return UnitConverter.longToString(charge);
+	}
+	
+	
+	public String rocketBnkCharge(String amount, String method, String nature) {
+		long amountlong = UnitConverter.stringToLong(amount);
+		long charge = (new BankIssue()).rocketChargeCalculate(amountlong, method, nature);
+		return UnitConverter.longToString(charge);
 	}
 	
 	
@@ -71,9 +93,8 @@ public class MakeATransactionModel extends DateAndClock {
 	}
 	
 	
-	@SuppressWarnings("static-access")
 	public int globalIdToSave() {
-		return (new GlobalId()).getGlobalid();
+		return GlobalId.getGlobalid();
 	}
 	
 	
@@ -87,24 +108,20 @@ public class MakeATransactionModel extends DateAndClock {
 	}
 	
 	
-	public double bkashBnkCharge(String amount) {
-		UnitConverter convert = new UnitConverter();
-		return convert.doubleToInt(convert.stringToDouble(amount));
-	}
-	
+		
 //////////////////////////////////////////// Get Money Function  ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
 	
-	public ObservableList<String> getSource() {
+	public ObservableList<String> gmGetSource() {
 		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getSourceList());
 		return list;
 	}
 
 	
-	public int gmAmountToSave(String amount) {
-		UnitConverter convert = new UnitConverter();
-		return convert.doubleToInt(convert.stringToDouble(amount));
-	}
+//	public long gmAmountToSave(String amount) {
+//		UnitConverter convert = new UnitConverter();
+//		return convert.doubleTolong(convert.stringToDouble(amount));
+//	}
 	
 	
 	
@@ -119,14 +136,7 @@ public class MakeATransactionModel extends DateAndClock {
 	
 //	public static void main(String[] args) {
 //		MakeATransactionModel access = new MakeATransactionModel();
-//		while(false) {
-//			Scanner scan = new Scanner(System.in);
-//			System.out.print("Amount: ");
-//			String amount = scan.nextLine();
-//			System.out.println(access.validAmount(amount));
-//		}
-//		System.out.println(access.amountIsZero("0000000.01"));
-//		System.out.println(access.updatedRocketBalance("30.89"));
+//		System.out.println(access.updatedbKashBalance("5000", "Cash In"));
 //	}
 	
 }
