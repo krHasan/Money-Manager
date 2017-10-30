@@ -47,14 +47,6 @@ public class MakeATransactionModel extends DateAndClock {
 	}
 	
 	
-	public String getWalletBalanceAfter(String amount) {
-		long dbBalance = currentWalletBalance();
-		long typedBalance = UnitConverter.stringToLong(amount);
-		String updateBalance = UnitConverter.longToString(dbBalance + typedBalance);
-		return updateBalance;
-	}
-	
-	
 	public String updatedbKashBalance(String amount, String nature) {
 		long amountlong = UnitConverter.stringToLong(amount);
 		long charge = new BankIssue().bKashChargeCalculate(amountlong, nature);
@@ -116,18 +108,33 @@ public class MakeATransactionModel extends DateAndClock {
 		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getSourceList());
 		return list;
 	}
-
-	
-//	public long gmAmountToSave(String amount) {
-//		UnitConverter convert = new UnitConverter();
-//		return convert.doubleTolong(convert.stringToDouble(amount));
-//	}
 	
 	
+	public String gmWalletBalanceAfter(String amount) {
+		long dbBalance = currentWalletBalance();
+		long typedBalance = UnitConverter.stringToLong(amount);
+		String updateBalance = UnitConverter.longToString(dbBalance + typedBalance);
+		return updateBalance;
+	}
 	
 	
 ////////////////////////////////////////////   Expense Function  ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
+	
+	public ObservableList<String> exGetSector() {
+		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getSectorList());
+		return list;
+	}
+	
+	
+	public String exWalletBalanceAfter(String amount) {
+		long dbBalance = currentWalletBalance();
+		long typedBalance = UnitConverter.stringToLong(amount);
+		String updateBalance = UnitConverter.longToString(dbBalance - typedBalance);
+		return updateBalance;
+	}
+	
+	
 ////////////////////////////////////////////      Lend Function  ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
 ////////////////////////////////////////////      Bank Function  ////////////////////////////////////////////

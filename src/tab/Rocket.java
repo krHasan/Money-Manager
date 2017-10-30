@@ -10,16 +10,14 @@ import system.UnitConverter;
 
 public class Rocket  extends BalanceStatus {
 	
-	@SuppressWarnings("static-access")
 	public void saveGmRocketData(Map<String, String> gmData) {
 		
-		UnitConverter convert = new UnitConverter();
 		String sql = "INSERT INTO Rocket (globalID, rocTime, rocDate, rocMonth, rocType, rocNature, rocAmount, \n"
 				+ "rocBnkCharge, rocBalanceBefore, rocBalanceAfter) \n"
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 		
-		int globalId = (new GlobalId()).getGlobalid();
-		String rocBalanceBefore = convert.longToString(currentRocketBalance());
+		int globalId = GlobalId.getGlobalid();
+		String rocBalanceBefore = UnitConverter.longToString(currentRocketBalance());
 		
 		try (Connection conn = connector();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {

@@ -18,7 +18,7 @@
   <tabs>
     <Tab fx:id="tabGetMoney" onSelectionChanged="#tabGetMoney" text="     Get Money     ">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0">
+        <AnchorPane fx:id="gmAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#anchorPaneAction" prefHeight="550.0" prefWidth="800.0">
                <children>
                   <Button fx:id="gmbtnCreateSource" layoutX="635.0" layoutY="142.0" mnemonicParsing="false" onAction="#gmGoToSourceBtn" prefHeight="32.0" prefWidth="120.0" text="Create Source">
                      <font>
@@ -101,30 +101,34 @@
                      </font>
                   </Button>
                   <Button fx:id="gmbtnGoToDashboard" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
-                  <Label fx:id="gmlblLetterRemainmsg" layoutX="80.0" layoutY="314.0" />
+                  <Label fx:id="gmlblLetterRemainmsg" layoutX="80.0" layoutY="314.0">
+                  	<font>
+                        <Font name="Arial" size="13.0" />
+                    </font>
+                  </Label>
                </children></AnchorPane>
       </content>
     </Tab>
     <Tab fx:id="tabExpense" onSelectionChanged="#tabExpense" text="      Expense      ">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0">
+        <AnchorPane fx:id="exAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#anchorPaneAction" prefHeight="550.0" prefWidth="800.0">
                <children>
-                  <Button fx:id="exbtnCreateSector" layoutX="642.0" layoutY="151.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Create Sector">
+                  <Button fx:id="exbtnCreateSector" layoutX="642.0" layoutY="151.0" mnemonicParsing="false" onAction="#exGoToSectorBtn" prefHeight="32.0" prefWidth="120.0" text="Create Sector">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="exbtnCancel" cancelButton="true" layoutX="469.0" layoutY="456.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="111.0" text="Cancel">
+                  <Button fx:id="exbtnCancel" cancelButton="true" layoutX="469.0" layoutY="456.0" mnemonicParsing="false" onAction="#exCancelBtn" prefHeight="28.0" prefWidth="111.0" text="Cancel">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="exbtnSave" defaultButton="true" layoutX="622.0" layoutY="456.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="111.0" text="Save">
+                  <Button fx:id="exbtnSave" defaultButton="true" layoutX="622.0" layoutY="456.0" mnemonicParsing="false" onAction="#exSaveBtn" prefHeight="28.0" prefWidth="111.0" text="Save">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="extxtAmount" alignment="CENTER" layoutX="80.0" layoutY="117.0" prefHeight="32.0" prefWidth="240.0" promptText="00">
+                  <TextField fx:id="extxtAmount" alignment="CENTER" layoutX="80.0" layoutY="117.0" onKeyReleased="#exAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -156,22 +160,27 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="exlblWarningMsg" layoutX="80.0" layoutY="151.0" text="Field must not empty or zero" textFill="RED">
+                  <Label fx:id="exlblWarningMsg" layoutX="80.0" layoutY="151.0" textFill="RED">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="extxtDescription" layoutX="80.0" layoutY="206.0" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description">
+                  <TextArea fx:id="extxtDescription" layoutX="80.0" layoutY="206.0" onKeyReleased="#exDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Arial" size="14.0" />
                      </font>
                   </TextArea>
-                  <Button fx:id="exbtnAdjustBalance" layoutX="119.0" layoutY="421.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="135.0" text="Adjust Balance">
+                  <Button fx:id="exbtnAdjustBalance" layoutX="119.0" layoutY="421.0" mnemonicParsing="false" onAction="#exAdjustBalance" prefHeight="32.0" prefWidth="135.0" text="Adjust Balance">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="exbtnGoToDashboard" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" prefHeight="28.0" text="Go To Dashboard" />
+                  <Button fx:id="exbtnGoToDashboard" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
+                  <Label fx:id="exlblLetterRemainmsg" layoutX="80.0" layoutY="323.0">
+                  	<font>
+                        <Font name="Arial" size="13.0" />
+                    </font>
+                  </Label>
                </children></AnchorPane>
       </content>
     </Tab>

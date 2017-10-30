@@ -3,6 +3,7 @@ package controller;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,13 +19,17 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.MakeATransactionModel;
 import operation.GoToOperation;
 import system.DateFormatManager;
+import system.UnitConverter;
 import tab.Bkash;
+import tab.Expense;
 import tab.GetMoney;
 import tab.Rocket;
 import tab.TabAccess;
@@ -37,6 +42,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 	///////////////////////////////////  Get Money  ////////////////////////////////
 	@FXML
 	private Tab tabGetMoney;
+	
+	@FXML
+	private AnchorPane gmAnchorPane;
 	
 	@FXML
 	private Button gmbtnCreateSource;
@@ -85,6 +93,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Tab tabExpense;
 	
 	@FXML
+	private AnchorPane exAnchorPane;
+	
+	@FXML
 	private Button exbtnCreateSector;
 	@FXML
 	private Button exbtnAdjustBalance;
@@ -110,6 +121,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Label exlblWalletBalance;
 	@FXML
 	private Label exlblWarningMsg;
+	@FXML
+	private Label exlblLetterRemainmsg;
 	
 	///////////////////////////////////  Lend  ////////////////////////////////
 	@FXML
@@ -333,6 +346,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	DateFormatManager formatManager = new DateFormatManager();
 	String dateString = formatManager.toString(LocalDate.now());
 	LocalDate date = formatManager.fromString(dateString);
+	final String InvalidInput = "Invalid Input. Type within 0.00 to 9999999.99";
 	
 	
 	@FXML
@@ -341,9 +355,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	}
 	
 	
-	@FXML
 	private void showWalletBalance() {
-		gmlblWalletBalance.setText(getWalletBalance());
+		try {
+			gmlblWalletBalance.setText(getWalletBalance());
+			exlblWalletBalance.setText(getWalletBalance());
+		} catch (Exception e) {}
 	}
 	
 	
@@ -361,10 +377,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 		gmcmboMethod.getSelectionModel().selectFirst();
 	}
 	
+	
+	@FXML
+	private void anchorPaneAction(MouseEvent ev) {
+		try {
+			gmlblWarningMsg.setText("");
+			exlblWarningMsg.setText("");
+		} catch (Exception e) {}
+	}
+
+	
 ////////////////////////////////////////////  Get Money Function ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
 	private boolean cancelbtnPressed = false;
 	final ToggleGroup gmrbtnGroup = new ToggleGroup();
+	
 	
 	@FXML
 	private void tabGetMoney() {
@@ -414,8 +441,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 		
 	}
 	
-	@FXML
-	public String gmGetSelectedrbtnName() {
+
+	private String gmGetSelectedrbtnName() {
 		return (String) gmrbtnGroup.getSelectedToggle().getUserData();
 	}
 	
@@ -445,7 +472,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 	}
 	
 	
-	@FXML
 	private void gmLoadSource() {
 		try {
 			gmcmboSource.setItems(gmGetSource());
@@ -534,8 +560,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 			try {
 				Map<String, String> stringData = new HashMap<>();
 				
-				int globalId = globalIdToSave();
-				
 				stringData.put("gmTime", timeToSave());
 				stringData.put("gmDate", (new DateFormatManager()).toString(gmdateDate.getValue()));
 				stringData.put("gmMonth", monthToSave());
@@ -546,7 +570,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				} else if((gmcmboMethod.getValue()).equals("Rocket")){
 					stringData.put("gmBankCharge", rocketBnkCharge(gmtxtAmount.getText(), "Cash In", gmGetSelectedrbtnName()));
 				} else {
-					stringData.put("gmBankCharge", "0");
+					stringData.put("gmBankCharge", "0.00");
 				}
 				
 				if ((gmcmboMethod.getValue()).equals("bKash")) {
@@ -577,21 +601,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 				stringData.put("gmWalletBalanceBefore", getWalletBalance());
 				
 				if ((gmcmboMethod.getValue()).equals("Hand to Hand")) {
-					stringData.put("gmWalletBalanceAfter", getWalletBalanceAfter(gmtxtAmount.getText()));
-					setCurrentWalletBalance(getWalletBalanceAfter(gmtxtAmount.getText()));
+					stringData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(gmtxtAmount.getText()));
+					setCurrentWalletBalance(gmWalletBalanceAfter(gmtxtAmount.getText()));
 				} else {
 					stringData.put("gmWalletBalanceAfter", getWalletBalance());
 				}
 				
-				(new GetMoney()).saveGetMoneyData(globalId, stringData);
+				(new GetMoney()).saveGetMoneyData(stringData);
 				
 				gmInitialize();
 				
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Successfull Transaction");
-				alert.setHeaderText(null);
-				alert.setContentText("Your transaction completed successfully.");
-				alert.showAndWait();
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Successfull Transaction");
+				confirmationMsg.setHeaderText(null);
+				confirmationMsg.setContentText("Your transaction completed successfully.");
+				confirmationMsg.showAndWait();
 				
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.WARNING);
@@ -609,7 +633,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private void gmAmountValidation() {
 		if (!validAmount(gmtxtAmount.getText())) {
 			
-			gmlblWarningMsg.setText("Invalid Input. Type within 0.00 to 9999999.99");
+			gmlblWarningMsg.setText(InvalidInput);
 			gmtxtAmount.clear();
 		
 		} else {
@@ -640,7 +664,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 	}
 	
 	
-	@FXML
 	private boolean gmIsDescripionEmpty() {
 		if (letterCount(gmtxtDescription.getText()) == 100) {
 			return true;
@@ -652,13 +675,198 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 ////////////////////////////////////////////  Expense Function  ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
+	private boolean adjustBtnPressed = false;
+	String exAdjustBalAfter = null;
+	String exAdjustAmount = null;
+	
 	@FXML
 	private void tabExpense() {
-		exdateDate.setConverter(formatManager);
-		exdateDate.setValue(date);
+		exInitialize();
 	}
 	
 	
+	private void exInitialize() {
+		exdateDate.setConverter(formatManager);
+		exdateDate.setValue(date);
+		extxtAmount.clear();
+		extxtDescription.clear();
+		exlblWarningMsg.setText("");
+		exlblLetterRemainmsg.setText("");
+		showWalletBalance();
+		exLoadSector();
+	}
+	
+	
+	@FXML
+	private void exGoToSectorBtn(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) exbtnCreateSector.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		(new TabAccess()).setTabName("tabSector");
+		MakeATransactionStage.hide();
+	}
+	
+	
+	@FXML
+	private void exCancelBtn(ActionEvent event) {
+		exInitialize();
+	}
+	
+	
+	private void exLoadSector() {
+		try {
+			excmboSector.setItems(exGetSector());
+			excmboSector.getSelectionModel().selectFirst();
+		} catch (Exception e) {}
+	}
+	
+	
+	@FXML
+	private void exAmountValidation() {
+		if (!validAmount(extxtAmount.getText())) {
+			exlblWarningMsg.setText(InvalidInput);
+			extxtAmount.clear();
+		} else {
+			exlblWarningMsg.setText(" ");
+		}
+	}
+	
+	
+	@FXML
+	private void exDescriptionValidation() {
+		int wordRemain = letterCount(extxtDescription.getText());
+		
+		if (wordRemain<0) {
+			extxtDescription.setEditable(false);
+			exlblLetterRemainmsg.setText("You cross the limit");
+		} else {
+			exlblLetterRemainmsg.setText("Word remain: "+wordRemain+" out of 100");
+		}
+	}
+	
+	
+	private boolean exIsDescripionEmpty() {
+		if (letterCount(extxtDescription.getText()) == 100) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
+	@FXML
+	private void exAdjustBalance(ActionEvent event) {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Adjust Wallet Balance");
+		dialog.setHeaderText("Provide Balance Status at Your Hand Now.");
+		dialog.setContentText("Please enter the amount:");
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+			String typedAmount = result.get();
+			if (!validAmount(typedAmount)) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Transaction Failed");
+				alert.setHeaderText(null);
+				alert.setContentText(InvalidInput);
+				alert.showAndWait();
+			} else if (amountIsZero(typedAmount)) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Transaction Failed");
+				alert.setHeaderText(null);
+				alert.setContentText("Zero is not approved.");
+				alert.showAndWait();
+			} else {
+				adjustBtnPressed = true;
+				long dbWalletBalance = currentWalletBalance();
+				long typedBalance = UnitConverter.stringToLong(typedAmount);
+				exAdjustBalAfter = typedAmount;
+				if (dbWalletBalance<typedBalance) {
+					exAdjustAmount = "added "+UnitConverter.longToString(typedBalance - dbWalletBalance)+" to Wallet";
+				} else if(dbWalletBalance>typedBalance) {
+					exAdjustAmount = exWalletBalanceAfter(typedAmount);
+				} else {
+					exAdjustAmount = "0.0";
+				}
+				exSaveFunction();
+			}
+		}
+		adjustBtnPressed = false;
+	}
+	
+	
+	@FXML
+	private void exSaveBtn(ActionEvent event) {
+		if (amountIsZero(extxtAmount.getText())) {
+			exlblWarningMsg.setText("Empty or Zero is not approved.");
+		} else {
+			exSaveFunction();
+		}
+	}
+	
+	
+	private void exSaveFunction() {
+		try {
+			Map<String, String> expenseData = new HashMap<>();
+			
+			expenseData.put("exTime", timeToSave());
+			expenseData.put("exDate", (new DateFormatManager()).toString(exdateDate.getValue()));
+			expenseData.put("exMonth", monthToSave());
+			
+			if (adjustBtnPressed) {
+				expenseData.put("exAmount", exAdjustAmount);
+			} else {
+				expenseData.put("exAmount", extxtAmount.getText());
+			}
+							
+			if (adjustBtnPressed) {
+				if (exIsDescripionEmpty()) {
+					expenseData.put("exDescription", "You have adjusted your Wallet Balance");
+				} else {
+					expenseData.put("exDescription", extxtDescription.getText());
+				}
+			} else {
+				if (exIsDescripionEmpty()) {
+					expenseData.put("exDescription", "None");
+				} else {
+					expenseData.put("exDescription", extxtDescription.getText());
+				}
+			}
+			
+			if (adjustBtnPressed) {
+				expenseData.put("exSector", "Adjusted Balance");
+			} else {
+				expenseData.put("exSector", excmboSector.getValue());
+			}
+
+			expenseData.put("exWalletBalanceBefore", getWalletBalance());
+			
+			if (adjustBtnPressed) {
+				expenseData.put("exWalletBalanceAfter", exAdjustBalAfter);
+				setCurrentWalletBalance(exAdjustBalAfter);
+			} else {
+				expenseData.put("exWalletBalanceAfter", exWalletBalanceAfter(extxtAmount.getText()));
+				setCurrentWalletBalance(exWalletBalanceAfter(extxtAmount.getText()));
+			}
+			
+			(new Expense()).saveExpenseData(expenseData);
+			
+			exInitialize();
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Successfull Transaction");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText("Your transaction completed successfully.");
+			confirmationMsg.showAndWait();
+			
+		} catch (Exception e) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Transaction Failed");
+			alert.setHeaderText(null);
+			alert.setContentText("There something is wrong.");
+			alert.showAndWait();
+		}
+	}
+	
+		
 ////////////////////////////////////////////     Lend Function    ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
 	@FXML

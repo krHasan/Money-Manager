@@ -10,15 +10,13 @@ import system.UnitConverter;
 
 public class Bkash extends BalanceStatus {
 	
-	@SuppressWarnings("static-access")
 	public void saveGmBkashData(Map<String, String> gmData) {
-		UnitConverter convert = new UnitConverter();
 		String sql = "INSERT INTO bKash (globalID, bkTime, bkDate, bkMonth, bkType, bkNature, bkAmount, \n"
 				+ "bkBnkCharge, bkBalanceBefore, bkBalanceAfter) \n"
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 		
-		int globalId = (new GlobalId()).getGlobalid();
-		String bkBalanceBefore = convert.longToString(currentbKashBalance());
+		int globalId = GlobalId.getGlobalid();
+		String bkBalanceBefore = UnitConverter.longToString(currentbKashBalance());
 		
 		try (Connection conn = connector();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {

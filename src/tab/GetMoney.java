@@ -5,30 +5,32 @@ import java.sql.PreparedStatement;
 import java.util.Map;
 
 import database.DatabaseConnection;
+import operation.GlobalId;
 
 public class GetMoney extends DatabaseConnection {
 	
-	public void saveGetMoneyData(int globalId, Map<String, String> stringData) {
+	public void saveGetMoneyData(Map<String, String> getMoneyData) {
 		String sql = "INSERT INTO Get_Money(globalID, gmTime, gmDate, gmMonth, gmAmount, gmSource, \n"
 				+ "gmBankCharge,  gmDescription, gmMethod, gmAmountNature, \n"
 				+ "gmWalletBalanceBefore, gmWalletBalanceAfter) \n"
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
-		
+		int globalId = GlobalId.getGlobalid();
+
 		try (Connection conn = connector();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			
 			pstmt.setLong(1,globalId);
-			pstmt.setString(2, stringData.get("gmTime"));
-			pstmt.setString(3, stringData.get("gmDate"));
-			pstmt.setString(4, stringData.get("gmMonth"));
-			pstmt.setString(5, stringData.get("gmAmount"));
-			pstmt.setString(6, stringData.get("gmSource"));
-			pstmt.setString(7, stringData.get("gmBankCharge"));
-			pstmt.setString(8, stringData.get("gmDescription"));
-			pstmt.setString(9, stringData.get("gmMethod"));
-			pstmt.setString(10, stringData.get("gmAmountNature"));
-			pstmt.setString(11, stringData.get("gmWalletBalanceBefore"));
-			pstmt.setString(12, stringData.get("gmWalletBalanceAfter"));
+			pstmt.setString(2, getMoneyData.get("gmTime"));
+			pstmt.setString(3, getMoneyData.get("gmDate"));
+			pstmt.setString(4, getMoneyData.get("gmMonth"));
+			pstmt.setString(5, getMoneyData.get("gmAmount"));
+			pstmt.setString(6, getMoneyData.get("gmSource"));
+			pstmt.setString(7, getMoneyData.get("gmBankCharge"));
+			pstmt.setString(8, getMoneyData.get("gmDescription"));
+			pstmt.setString(9, getMoneyData.get("gmMethod"));
+			pstmt.setString(10, getMoneyData.get("gmAmountNature"));
+			pstmt.setString(11, getMoneyData.get("gmWalletBalanceBefore"));
+			pstmt.setString(12, getMoneyData.get("gmWalletBalanceAfter"));
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
