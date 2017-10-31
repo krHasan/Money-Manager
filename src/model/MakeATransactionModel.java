@@ -137,6 +137,19 @@ public class MakeATransactionModel extends DateAndClock {
 	
 ////////////////////////////////////////////      Lend Function  ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
+	
+	public ObservableList<String> boGetBorrowType() {
+		ObservableList<String> list = FXCollections.observableArrayList("Money Take","Return Borrowed Money");
+		return list;
+	}
+	
+	
+	public ObservableList<String> boGetRepayPersonName() {
+		ObservableList<String> list = FXCollections.observableArrayList(new ComboboxList().getBoRepayPersonNameList());
+		return list;
+	}
+	
+	
 ////////////////////////////////////////////      Bank Function  ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
 
@@ -147,3 +160,8 @@ public class MakeATransactionModel extends DateAndClock {
 //	}
 	
 }
+
+
+
+
+

@@ -188,32 +188,32 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0">
                <children>
-                  <Button fx:id="lendbtnCancel" cancelButton="true" layoutX="465.0" layoutY="468.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="111.0" text="Cancel">
+                  <Button fx:id="lendbtnCancel" cancelButton="true" layoutX="465.0" layoutY="463.0" mnemonicParsing="false" onAction="#LendCancelBtn" prefHeight="28.0" prefWidth="111.0" text="Cancel">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="lendbtnSave" defaultButton="true" layoutX="618.0" layoutY="468.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="111.0" text="Save">
+                  <Button fx:id="lendbtnSave" defaultButton="true" layoutX="618.0" layoutY="463.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="111.0" text="Save">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
                   <DatePicker fx:id="lenddateDate" editable="false" layoutX="555.0" layoutY="14.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
-                  <Label fx:id="lendlblTableHeading" alignment="CENTER" layoutX="85.0" layoutY="61.0" prefHeight="20.0" prefWidth="179.0" text="Money Borrow History">
+                  <Label fx:id="lendlblTableHeading" alignment="CENTER" layoutX="85.0" layoutY="61.0" prefHeight="20.0" prefWidth="179.0">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TabPane fx:id="lendTabPane" layoutX="342.0" layoutY="56.0" prefHeight="400.0" prefWidth="458.0" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane fx:id="lendTabPane" layoutX="342.0" layoutY="56.0" prefHeight="393.0" prefWidth="458.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab fx:id="tabBorrow" text="     Borrow     ">
+                      <Tab fx:id="tabBorrow" onSelectionChanged="#boInitialize" text="     Borrow     ">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="428.0">
                                  <children>
-                                    <ComboBox fx:id="bocmboType" layoutX="223.0" layoutY="15.0" prefHeight="27.0" prefWidth="201.0" />
-                                    <ComboBox fx:id="bocmboMethod" layoutX="223.0" layoutY="52.0" prefHeight="27.0" prefWidth="201.0" />
-                                    <ComboBox fx:id="bocmboRepaidPerson" layoutX="223.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0" />
-                                    <TextField fx:id="botxtAmountWithCharge" layoutX="223.0" layoutY="126.0" prefHeight="27.0" prefWidth="120.0">
+                                    <ComboBox fx:id="bocmboType" layoutX="208.0" layoutY="15.0" onAction="#boTypeAction" prefHeight="27.0" prefWidth="216.0" />
+                                    <ComboBox fx:id="bocmboMethod" layoutX="208.0" layoutY="52.0" onAction="#boMethodAction" prefHeight="27.0" prefWidth="216.0" />
+                                    <ComboBox fx:id="bocmboRepaidPerson" layoutX="208.0" layoutY="89.0" onAction="#boRepayPersonCmboAction" prefHeight="27.0" prefWidth="135.0" />
+                                    <TextField fx:id="botxtAmountWithCharge" layoutX="208.0" layoutY="126.0" onKeyReleased="#boAmountValidation" prefHeight="27.0" prefWidth="135.0">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
@@ -223,61 +223,71 @@
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="botxtFromWhom" layoutX="223.0" layoutY="89.0" prefHeight="27.0" prefWidth="120.0" />
+                                    <TextField fx:id="botxtFromWhom" layoutX="208.0" layoutY="89.0" prefHeight="27.0" prefWidth="135.0" />
                                     <Label layoutX="25.0" layoutY="52.0" prefHeight="27.0" prefWidth="171.0" text="Method :">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblPersonName" layoutX="25.0" layoutY="89.0" prefHeight="27.0" prefWidth="171.0" text="Repaid Person :">
+                                    <Label fx:id="bolblPersonName" layoutX="25.0" layoutY="89.0" prefHeight="27.0" prefWidth="171.0">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblAmountWithCharge" layoutX="25.0" layoutY="126.0" prefHeight="27.0" prefWidth="171.0" text="Amount with Charge :">
+                                    <Label fx:id="bolblAmountWithCharge" layoutX="25.0" layoutY="126.0" prefHeight="27.0" prefWidth="171.0">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblBankChargeName" alignment="CENTER" layoutX="350.0" layoutY="95.0" prefHeight="27.0" prefWidth="97.0" text="Bank Charge">
+                                    <Label fx:id="bolblBankChargeName" alignment="CENTER" layoutX="350.0" layoutY="95.0" prefHeight="27.0" prefWidth="97.0">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblAmountNature" layoutX="223.0" layoutY="165.0" prefHeight="27.0" prefWidth="142.0" text="Cash Repay Mehtod">
+                                    <Label fx:id="bolblAmountNature" layoutX="208.0" layoutY="165.0" prefHeight="27.0" prefWidth="142.0">
                                        <font>
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblExactAmount" layoutX="25.0" layoutY="332.0" prefHeight="27.0" prefWidth="194.0" text="Exact Returnable Amount :">
+                                    <Label fx:id="bolblExactAmount" layoutX="25.0" layoutY="312.0" prefHeight="27.0" prefWidth="194.0">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblWarningMsg" layoutX="25.0" layoutY="314.0" text="Due to Bank Charges, amount may not be accurate. Type exact amount" textFill="RED">
+                                    <Label fx:id="bolblWarningMsg" layoutX="25.0" layoutY="295.0" textFill="RED">
                                        <font>
                                           <Font name="Arial" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="botxtExactAmount" layoutX="223.0" layoutY="332.0" prefHeight="27.0" prefWidth="120.0">
+                                    <TextField fx:id="botxtExactAmount" layoutX="223.0" layoutY="312.0" onKeyReleased="#boExactAmountValidation" prefHeight="27.0" prefWidth="150.0">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <RadioButton fx:id="borbtnSendMoney" layoutX="233.0" layoutY="195.0" mnemonicParsing="false" text="Send Money" />
-                                    <Label fx:id="bolblBankCharge" alignment="CENTER" layoutX="350.0" layoutY="119.0" prefHeight="27.0" prefWidth="97.0" text="00">
+                                    <RadioButton fx:id="borbtn1" layoutX="218.0" layoutY="195.0" mnemonicParsing="false" onAction="#boRbtn1Action" />
+                                    <Label fx:id="bolblBankCharge" alignment="CENTER" layoutX="350.0" layoutY="119.0" prefHeight="27.0" prefWidth="97.0">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="borbtnCashOut" layoutX="233.0" layoutY="219.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="105.0" text="Cash Out" />
-                                    <RadioButton fx:id="borbtnBuyAirtime" layoutX="233.0" layoutY="243.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="105.0" text="Buy Airtime" />
-                                    <RadioButton fx:id="borbtnATM" layoutX="233.0" layoutY="267.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="105.0" text="ATM" />
+                                    <RadioButton fx:id="borbtn2" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#boRbtn2Action" prefHeight="18.0" prefWidth="105.0" />
+                                    <RadioButton fx:id="borbtn3" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#boRbtn3Action" prefHeight="18.0" prefWidth="105.0" />
+                                    <RadioButton fx:id="borbtn4" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#boRbtn4Action" prefHeight="18.0" prefWidth="105.0" />
+                                    <Label fx:id="bolblAmountValidationMsg" layoutX="180.0" layoutY="153.0" textFill="#c30606">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="bolblAmountValidationMsg2" layoutX="180.0" layoutY="341.0" textFill="#da0c0c">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab fx:id="tabLe" text="      Lend      ">
+                      <Tab fx:id="tabLe" onSelectionChanged="#leInitialize" text="      Lend      ">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="445.0">
                                  <children>
@@ -350,14 +360,14 @@
                       </Tab>
                     </tabs>
                   </TabPane>
-                  <TableView fx:id="lendTableView" layoutX="6.0" layoutY="89.0" prefHeight="367.0" prefWidth="336.0">
+                  <TableView fx:id="lendTable" layoutX="6.0" layoutY="89.0" prefHeight="367.0" prefWidth="336.0">
                     <columns>
-                      <TableColumn prefWidth="95.0" text="Name" />
-                      <TableColumn prefWidth="160.0" text="Date" />
-                        <TableColumn prefWidth="79.0" text="Amount" />
+                      <TableColumn fx:id="lendTblColumnName" prefWidth="95.0" text="Name" />
+                      <TableColumn fx:id="lendTblColumnDate" prefWidth="160.0" text="Date" />
+                        <TableColumn fx:id="lendTblColumnAmount" prefWidth="79.0" text="Amount" />
                     </columns>
                   </TableView>
-                  <Button fx:id="lendbtnGoToDashboard" layoutX="109.0" layoutY="14.0" mnemonicParsing="false" prefHeight="28.0" text="Go To Dashboard" />
+                  <Button fx:id="lendbtnGoToDashboard" layoutX="109.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
                </children></AnchorPane>
         </content>
       </Tab>
