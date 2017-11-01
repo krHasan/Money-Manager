@@ -150,6 +150,53 @@ public class MakeATransactionModel extends DateAndClock {
 	}
 	
 	
+	public String getTotalBorrowTk() {
+		return UnitConverter.longToString(totalBorrowTk());
+	}
+	
+	
+	public String boBkBalanceAfter(String amountWithCharge, String bnkCharge) {
+		long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
+		long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
+		long amountWithoutCharge = (amountWithChargeL - bnkChargeL);
+		long dbBkBalance = currentbKashBalance();
+		return UnitConverter.longToString(dbBkBalance + amountWithoutCharge);
+	}
+	
+	
+	public String boRocBalanceAfter(String amountWithCharge, String bnkCharge) {
+		long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
+		long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
+		long amountWithoutCharge = (amountWithChargeL - bnkChargeL);
+		long dbRocBalance = currentRocketBalance();
+		return UnitConverter.longToString(dbRocBalance + amountWithoutCharge);
+	}
+	
+	
+	public String updatedTotalBorrowTk(String amountToAdd) {
+		long dbBalance = UnitConverter.stringToLong(getTotalBorrowTk());
+		long amountL = UnitConverter.stringToLong(amountToAdd);
+		return UnitConverter.longToString(dbBalance + amountL);
+	}
+	
+//////////////////////////// lend //////////////////////////////
+	
+	public ObservableList<String> leGetLendType() {
+		ObservableList<String> list = FXCollections.observableArrayList("Give Money","Take Back Lended Money");
+		return list;
+	}
+	
+	
+	public ObservableList<String> leGetRepayPersonName() {
+		ObservableList<String> list = FXCollections.observableArrayList(new ComboboxList().getLeRepayPersonNameList());
+		return list;
+	}
+	
+	
+	public String getTotalLendTk() {
+		return UnitConverter.longToString(totalLendTk());
+	}
+	
 ////////////////////////////////////////////      Bank Function  ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
 

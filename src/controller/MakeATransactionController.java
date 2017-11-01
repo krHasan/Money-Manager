@@ -31,8 +31,10 @@ import operation.GoToOperation;
 import system.DateFormatManager;
 import system.UnitConverter;
 import tab.Bkash;
+import tab.Borrow;
 import tab.Expense;
 import tab.GetMoney;
+import tab.Lend;
 import tab.Rocket;
 import tab.TabAccess;
 import tableAndgraph.BorrowTableDataModel;
@@ -141,6 +143,14 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private Label lendlblTableHeading;
+	@FXML
+	private Label lendlblWalletBalance;
+	@FXML
+	private Label lendlblTotalLendName;
+	@FXML
+	private Label lendlblTotalBorrowTk;
+	@FXML
+	private Label lendlblTotalLendTk;
 	
 	@FXML
 	private DatePicker lenddateDate;
@@ -225,13 +235,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private TextField letxtExactAmount;
 	
 	@FXML
-	private RadioButton lerbtnSendMoney;
+	private RadioButton lerbtn1;
 	@FXML
-	private RadioButton lerbtnCashOut;
+	private RadioButton lerbtn2;
 	@FXML
-	private RadioButton lerbtnBuyAirtime;
+	private RadioButton lerbtn3;
 	@FXML
-	private RadioButton lerbtnATM;
+	private RadioButton lerbtn4;
 	
 	@FXML
 	private Label lelblPersonName;
@@ -247,6 +257,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Label lelblExactAmount;
 	@FXML
 	private Label lelblWarningMsg;
+	@FXML
+	private Label lelblAmountValidationMsg;
+	@FXML
+	private Label lelblAmountValidationMsg2;
 	
 	///////////////////////////////////  Bank  ////////////////////////////////
 	@FXML
@@ -378,6 +392,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 		try {
 			gmlblWalletBalance.setText(getWalletBalance());
 			exlblWalletBalance.setText(getWalletBalance());
+			lendlblWalletBalance.setText(getWalletBalance());
 		} catch (Exception e) {}
 	}
 	
@@ -397,6 +412,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 			gmcmboMethod.getSelectionModel().selectFirst();
 			bocmboMethod.setItems(getMethod());
 			bocmboMethod.getSelectionModel().selectFirst();
+			lecmboMethod.setItems(getMethod());
+			lecmboMethod.getSelectionModel().selectFirst();
 		} catch (Exception e) {}
 	}
 	
@@ -923,11 +940,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private void boInitialize() {
 		selectedTabName = "Borrow";
 		showBorroTblData();
+		showWalletBalance();
+		showTotalBorrowTk();
 		lenddateDate.setConverter(formatManager);
 		lenddateDate.setValue(date);
 		boLoadType();
 		loadMethod();
-		boBankChargeShow(botxtAmountWithCharge.getText());
+		boBankChargeShow();
 		boLoadRepayPersonName();
 		bolblPersonName.setText("From Whom :");
 		bolblAmountWithCharge.setText("Borrowed Amount :");
@@ -951,8 +970,29 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private void leInitialize() {
 		selectedTabName = "Lend";
 		showLendTblData();
+		showWalletBalance();
+		showTotalLendTk();
 		lenddateDate.setConverter(formatManager);
 		lenddateDate.setValue(date);
+		leLoadType();
+		loadMethod();
+		leBankChargeShow();
+		leLoadRepayPersonName();
+		lelblPersonName.setText("To Whom :");
+		lelblAmountWithCharge.setText("Lended Amount :");
+		lelblBankChargeName.setText("");
+		lelblWarningMsg.setText("");
+		lelblExactAmount.setText("");
+		lelblAmountNature.setText("");
+		letxtFromWhom.clear();
+		letxtAmountWithCharge.clear();
+		letxtExactAmount.clear();
+		leRbtnHide();
+		lecmboRepaidPerson.setVisible(false);
+		letxtExactAmount.setVisible(false);
+		lelblAmountValidationMsg.setText("");
+		lelblAmountValidationMsg2.setText("");
+		letxtFromWhom.setVisible(true);
 	}
 	
 	
@@ -983,6 +1023,16 @@ public class MakeATransactionController extends MakeATransactionModel {
 	}
 	
 	
+	private void showTotalBorrowTk() {
+		try {
+			lendlblTotalLendName.setText("Total Borrowed Amount :");
+			lendlblTotalBorrowTk.setVisible(true);
+			lendlblTotalBorrowTk.setText(getTotalBorrowTk());
+			lendlblTotalLendTk.setVisible(false);
+		} catch (Exception e) {}
+	}
+	
+	
 	private void boLoadType() {
 		try {
 			bocmboType.setItems(boGetBorrowType());
@@ -1001,6 +1051,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void boRepayPersonCmboAction(ActionEvent event) {
+		bolblAmountValidationMsg.setText("");
+		bolblAmountValidationMsg2.setText("");
+		bolblWarningMsg.setText("");
+		String boRepayPersonBorrowedAmount = new Borrow().boRepayPersonBorrowedAmount(bocmboRepaidPerson.getValue());
+		botxtExactAmount.setText(boRepayPersonBorrowedAmount);
+		botxtAmountWithCharge.setText(boRepayPersonBorrowedAmount);
 		
 	}
 	
@@ -1008,6 +1064,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void boTypeAction(ActionEvent event) {
 		borrowAction();
+		botxtAmountWithCharge.clear();
+		botxtExactAmount.clear();
+		botxtFromWhom.clear();
 	}
 	
 	
@@ -1019,25 +1078,25 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void boRbtn1Action() {
-		boBankChargeShow(botxtAmountWithCharge.getText());
+		boBankChargeShow();
 	}
 	
 	
 	@FXML
 	private void boRbtn2Action() {
-		boBankChargeShow(botxtAmountWithCharge.getText());
+		boBankChargeShow();
 	}
 	
 	
 	@FXML
 	private void boRbtn3Action() {
-		boBankChargeShow(botxtAmountWithCharge.getText());
+		boBankChargeShow();
 	}
 	
 	
 	@FXML
 	private void boRbtn4Action() {
-		boBankChargeShow(botxtAmountWithCharge.getText());
+		boBankChargeShow();
 	}
 	
 	
@@ -1050,7 +1109,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			bolblAmountValidationMsg.setText(" ");
 			bolblAmountValidationMsg2.setText(" ");
 			try {
-				boBankChargeShow(botxtAmountWithCharge.getText());				
+				boBankChargeShow();				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -1069,7 +1128,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			bolblAmountValidationMsg.setText(" ");
 			bolblWarningMsg.setText("");
 			try {
-				boBankChargeShow(botxtAmountWithCharge.getText());				
+				boBankChargeShow();				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -1102,11 +1161,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	}
 	
 	
-	private String boBankChargeShow(String amount) {
-		String charge = null;
+	private String boBankChargeShow() {
+		String charge = "0";
 		try {
 			if (bocmboType.getValue().equals("Money Take")) {
-				if (amountIsZero(amount)) {
+				if (amountIsZero(botxtAmountWithCharge.getText())) {
 					if (bocmboMethod.getValue().equals("Hand to Hand")) {
 						bolblBankCharge.setText("");
 					} else {
@@ -1114,10 +1173,14 @@ public class MakeATransactionController extends MakeATransactionModel {
 					}
 				} else {
 					if (bocmboMethod.getValue().equals("bKash")) {
-						charge = bkashBnkCharge(amount, "Cash In");
+						charge = bkashBnkCharge(botxtAmountWithCharge.getText(), "Cash In");
 						bolblBankCharge.setText(charge);
 					} else if(bocmboMethod.getValue().equals("Rocket")) {
-						charge = rocketBnkCharge(amount, "Cash In", boGetSelectedrbtnName());
+						if (boGetSelectedrbtnName().isEmpty()) {
+							charge = rocketBnkCharge(botxtAmountWithCharge.getText(), "Cash In", "Agent");
+						} else {
+							charge = rocketBnkCharge(botxtAmountWithCharge.getText(), "Cash In", boGetSelectedrbtnName());
+						}
 						bolblBankCharge.setText(charge);
 					} else {
 						bolblBankCharge.setText("");
@@ -1126,7 +1189,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				
 			} else {
 				
-				if (amountIsZero(amount)) {
+				if (amountIsZero(botxtAmountWithCharge.getText())) {
 					if (bocmboMethod.getValue().equals("Hand to Hand")) {
 						bolblBankCharge.setText("");
 					} else {
@@ -1134,10 +1197,18 @@ public class MakeATransactionController extends MakeATransactionModel {
 					}
 				} else {
 					if (bocmboMethod.getValue().equals("bKash")) {
-						charge = bkashBnkCharge(amount, boGetSelectedrbtnName());
+						if (boGetSelectedrbtnName().isEmpty()) {
+							charge = bkashBnkCharge(botxtAmountWithCharge.getText(), "Send Money");
+						} else {
+							charge = bkashBnkCharge(botxtAmountWithCharge.getText(), boGetSelectedrbtnName());
+						}
 						bolblBankCharge.setText(charge);
 					} else if(bocmboMethod.getValue().equals("Rocket")) {
-						charge = rocketBnkCharge(amount, "Cash Out", boGetSelectedrbtnName());
+						if (boGetSelectedrbtnName().isEmpty()) {
+							charge = rocketBnkCharge(botxtAmountWithCharge.getText(), "Cash Out", "Send Money");
+						} else {
+							charge = rocketBnkCharge(botxtAmountWithCharge.getText(), "Cash Out", boGetSelectedrbtnName());
+						}
 						bolblBankCharge.setText(charge);
 					} else {
 						bolblBankCharge.setText("");
@@ -1147,7 +1218,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return charge;
 	}
 	
@@ -1231,13 +1302,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 				
 				if (bocmboMethod.getValue().equals("bKash")) {
 					bolblPersonName.setText("From Whom :");
-					bolblAmountWithCharge.setText("Borrowed Amount :");
+					bolblAmountWithCharge.setText("Amount With Charge :");
 					bolblBankChargeName.setText("Bank Charge");
 					bolblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
-					bolblExactAmount.setText("Exact Borrowed Amount :");
+					bolblExactAmount.setText("Amount Without Charge :");
 					bolblAmountNature.setText("");
 					boRbtnHide();
-					boBankChargeShow(botxtAmountWithCharge.getText());
+					boBankChargeShow();
 					bocmboRepaidPerson.setVisible(false);
 					botxtExactAmount.setVisible(true);
 					bolblAmountValidationMsg.setText("");
@@ -1245,12 +1316,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 					botxtFromWhom.setVisible(true);
 				} else if (bocmboMethod.getValue().equals("Rocket")) {
 					bolblPersonName.setText("From Whom :");
-					bolblAmountWithCharge.setText("Borrowed Amount :");
+					bolblAmountWithCharge.setText("Amount With Charge :");
 					bolblBankChargeName.setText("Bank Charge");
 					bolblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
-					bolblExactAmount.setText("Exact Borrowed Amount :");
+					bolblExactAmount.setText("Amount Without Charge :");
 					bolblAmountNature.setText("Cash In From");
-					boBankChargeShow(botxtAmountWithCharge.getText());
+					boBankChargeShow();
 					boRocInRbtnShow();
 					bocmboRepaidPerson.setVisible(false);
 					botxtExactAmount.setVisible(true);
@@ -1264,7 +1335,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 					bolblWarningMsg.setText("");
 					bolblExactAmount.setText("");
 					bolblAmountNature.setText("");
-					boBankChargeShow(botxtAmountWithCharge.getText());
+					boBankChargeShow();
 					boRbtnHide();
 					bocmboRepaidPerson.setVisible(false);
 					botxtExactAmount.setVisible(false);
@@ -1277,12 +1348,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 				
 				if (bocmboMethod.getValue().equals("bKash")) {
 					bolblPersonName.setText("Return to :");
-					bolblAmountWithCharge.setText("Returnable Amount :");
+					bolblAmountWithCharge.setText("Amount With Charge :");
 					bolblBankChargeName.setText("Bank Charge");
 					bolblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
-					bolblExactAmount.setText("Exact Returnable Amount :");
+					bolblExactAmount.setText("Amount Without Charge :");
 					bolblAmountNature.setText("Cash Return Using");
-					boBankChargeShow(botxtAmountWithCharge.getText());
+					boBankChargeShow();
 					boBkRbtnShow();
 					bocmboRepaidPerson.setVisible(true);
 					boLoadRepayPersonName();
@@ -1292,12 +1363,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 					botxtFromWhom.setVisible(false);
 				} else if (bocmboMethod.getValue().equals("Rocket")) {
 					bolblPersonName.setText("Return to :");
-					bolblAmountWithCharge.setText("Returnable Amount :");
+					bolblAmountWithCharge.setText("Amount With Charge :");
 					bolblBankChargeName.setText("Bank Charge");
 					bolblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
-					bolblExactAmount.setText("Exact Returnable Amount :");
+					bolblExactAmount.setText("Amount Without Charge :");
 					bolblAmountNature.setText("Cash Return Using");
-					boBankChargeShow(botxtAmountWithCharge.getText());
+					boBankChargeShow();
 					boRocOutRbtnShow();
 					bocmboRepaidPerson.setVisible(true);
 					boLoadRepayPersonName();
@@ -1312,7 +1383,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 					bolblWarningMsg.setText("");
 					bolblExactAmount.setText("");
 					bolblAmountNature.setText("");
-					boBankChargeShow(botxtAmountWithCharge.getText());
+					boBankChargeShow();
 					boRbtnHide();
 					bocmboRepaidPerson.setVisible(true);
 					boLoadRepayPersonName();
@@ -1324,7 +1395,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 			}
 		} catch (Exception e) {}
 	}
+	
+	
 ///////////////////////// Lend ////////////////////////////
+	final ToggleGroup leRocInRbtnGroup = new ToggleGroup();
+	final ToggleGroup leBkRbtnGroup = new ToggleGroup();
+	final ToggleGroup leRocOutRbtnGroup = new ToggleGroup();
+	
 	@SuppressWarnings("unchecked")
 	private void showLendTblData() {
 		lendlblTableHeading.setText("Money Lend History");
@@ -1336,6 +1413,587 @@ public class MakeATransactionController extends MakeATransactionModel {
 		} catch (Exception e) {}
 	}
 
+	
+	private void showTotalLendTk() {
+		try {
+			lendlblTotalLendName.setText("Total Lended Amount :");
+			lendlblTotalLendTk.setVisible(true);
+			lendlblTotalLendTk.setText(getTotalLendTk());
+			lendlblTotalBorrowTk.setVisible(false);
+		} catch (Exception e) {}
+	}
+
+	
+	private void leLoadType() {
+		try {
+			lecmboType.setItems(leGetLendType());
+			lecmboType.getSelectionModel().selectFirst();
+		} catch (Exception e) {}
+	}
+	
+	
+	private void leLoadRepayPersonName() {
+		try {
+			lecmboRepaidPerson.setItems(leGetRepayPersonName());
+			lecmboRepaidPerson.getSelectionModel().selectFirst();
+		} catch (Exception e) {}
+	}
+	
+	
+	@FXML
+	private void leRepayPersonCmboAction(ActionEvent event) {
+		lelblAmountValidationMsg.setText("");
+		lelblAmountValidationMsg2.setText("");
+		lelblWarningMsg.setText("");
+		String leRepayPersonLendedAmount = new Lend().leRepayPersonLendedAmount(lecmboRepaidPerson.getValue());
+		letxtExactAmount.setText(leRepayPersonLendedAmount);
+		letxtAmountWithCharge.setText(leRepayPersonLendedAmount);
+		
+	}
+	
+	
+	@FXML
+	private void leTypeAction(ActionEvent event) {
+		lendAction();
+		letxtAmountWithCharge.clear();
+		letxtExactAmount.clear();
+		letxtFromWhom.clear();
+	}
+	
+	
+	@FXML
+	private void leMethodAction(ActionEvent event) {
+		lendAction();
+	}
+	
+	
+	@FXML
+	private void leRbtn1Action() {
+		leBankChargeShow();
+	}
+	
+	
+	@FXML
+	private void leRbtn2Action() {
+		leBankChargeShow();
+	}
+	
+	
+	@FXML
+	private void leRbtn3Action() {
+		leBankChargeShow();
+	}
+	
+	
+	@FXML
+	private void leRbtn4Action() {
+		leBankChargeShow();
+	}
+	
+	
+	@FXML
+	private void leAmountValidation() {
+		if (!validAmount(letxtAmountWithCharge.getText())) {	
+			lelblAmountValidationMsg.setText(InvalidInput);
+			letxtAmountWithCharge.clear();
+		} else {
+			lelblAmountValidationMsg.setText(" ");
+			lelblAmountValidationMsg2.setText(" ");
+			try {
+				leBankChargeShow();				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	@FXML
+	private void leExactAmountValidation() {
+		if (!validAmount(letxtExactAmount.getText())) {	
+			lelblAmountValidationMsg2.setText(InvalidInput);
+			lelblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
+			letxtExactAmount.clear();
+		} else {
+			lelblAmountValidationMsg2.setText(" ");
+			lelblAmountValidationMsg.setText(" ");
+			lelblWarningMsg.setText("");
+			try {
+				leBankChargeShow();				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	private String leGetSelectedrbtnName() {
+		try {
+			if (lecmboType.getValue().equals("Give Money")) {
+				if (lecmboMethod.getValue().equals("bKash")) {
+					return (String) leBkRbtnGroup.getSelectedToggle().getUserData();
+				} else if(lecmboMethod.getValue().equals("Rocket")) {
+					return (String) leRocOutRbtnGroup.getSelectedToggle().getUserData();
+				} else {
+					return "";
+				}
+			} else {
+				if (lecmboMethod.getValue().equals("bKash")) {
+					return "Cash In";
+				} else if(lecmboMethod.getValue().equals("Rocket")) {
+					return (String) leRocInRbtnGroup.getSelectedToggle().getUserData();
+				} else {
+					return "";
+				}
+			}
+		} catch (Exception e) {
+			return "";
+		}
+	}
+	
+	
+	private String leBankChargeShow() {
+		String charge = "0";
+		try {
+			if (lecmboType.getValue().equals("Give Money")) {
+				if (amountIsZero(letxtAmountWithCharge.getText())) {
+					if (lecmboMethod.getValue().equals("Hand to Hand")) {
+						lelblBankCharge.setText("");
+					} else {
+						lelblBankCharge.setText("0.00");
+					}
+				} else {
+					if (lecmboMethod.getValue().equals("bKash")) {
+						if (leGetSelectedrbtnName().isEmpty()) {
+							charge = bkashBnkCharge(letxtAmountWithCharge.getText(), "Send Money");
+						} else {
+							charge = bkashBnkCharge(letxtAmountWithCharge.getText(), leGetSelectedrbtnName());
+						}
+						lelblBankCharge.setText(charge);
+					} else if(lecmboMethod.getValue().equals("Rocket")) {
+						if (leGetSelectedrbtnName().isEmpty()) {
+							charge = rocketBnkCharge(letxtAmountWithCharge.getText(), "Cash Out", "Send Money");
+						} else {
+							charge = rocketBnkCharge(letxtAmountWithCharge.getText(), "Cash Out", leGetSelectedrbtnName());
+						}
+						lelblBankCharge.setText(charge);
+					} else {
+						lelblBankCharge.setText("");
+					}
+				}
+				
+			} else {
+				
+				if (amountIsZero(letxtAmountWithCharge.getText())) {
+					if (lecmboMethod.getValue().equals("Hand to Hand")) {
+						lelblBankCharge.setText("");
+					} else {
+						lelblBankCharge.setText("0.00");
+					}
+				} else {
+					if (lecmboMethod.getValue().equals("bKash")) {
+						charge = bkashBnkCharge(letxtAmountWithCharge.getText(), "Cash In");
+						lelblBankCharge.setText(charge);
+					} else if(lecmboMethod.getValue().equals("Rocket")) {
+						if (leGetSelectedrbtnName().isEmpty()) {
+							charge = rocketBnkCharge(letxtAmountWithCharge.getText(), "Cash In", "Agent");
+						} else {
+							charge = rocketBnkCharge(letxtAmountWithCharge.getText(), "Cash In", leGetSelectedrbtnName());
+						}
+						lelblBankCharge.setText(charge);
+					} else {
+						lelblBankCharge.setText("");
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return charge;
+	}
+	
+	
+	private void leRbtnHide() {
+		lerbtn1.setVisible(false);
+		lerbtn2.setVisible(false);
+		lerbtn3.setVisible(false);
+		lerbtn4.setVisible(false);
+	}
+	
+	
+	private void leRocInRbtnShow() {
+		lerbtn1.setVisible(true);
+		lerbtn1.setText("Agent");
+		lerbtn1.setToggleGroup(leRocInRbtnGroup);
+		lerbtn1.setSelected(true);
+		lerbtn1.setUserData("Agent");
+		
+		lerbtn2.setVisible(true);
+		lerbtn2.setText("Send Money");
+		lerbtn2.setToggleGroup(leRocInRbtnGroup);
+		lerbtn2.setUserData("Send Money");
+		
+		lerbtn3.setVisible(true);
+		lerbtn3.setText("Branch");
+		lerbtn3.setToggleGroup(leRocInRbtnGroup);
+		lerbtn3.setUserData("Branch");
+		
+		lerbtn4.setVisible(false);
+	}
+	
+	
+	private void leBkRbtnShow() {
+		lerbtn1.setVisible(true);
+		lerbtn1.setText("Send Money");
+		lerbtn1.setToggleGroup(leBkRbtnGroup);
+		lerbtn1.setSelected(true);
+		lerbtn1.setUserData("Send Money");
+		
+		lerbtn2.setVisible(true);
+		lerbtn2.setText("Cash Out");
+		lerbtn2.setToggleGroup(leBkRbtnGroup);
+		lerbtn2.setUserData("Cash Out");
+		
+		lerbtn3.setVisible(true);
+		lerbtn3.setText("Buy Airtime");
+		lerbtn3.setToggleGroup(leBkRbtnGroup);
+		lerbtn3.setUserData("Buy Airtime");
+		
+		lerbtn4.setVisible(true);
+		lerbtn4.setText("ATM");
+		lerbtn4.setToggleGroup(leBkRbtnGroup);
+		lerbtn4.setUserData("ATM");
+	}
+	
+
+	private void leRocOutRbtnShow() {
+		lerbtn1.setVisible(true);
+		lerbtn1.setText("Send Money");
+		lerbtn1.setToggleGroup(leRocOutRbtnGroup);
+		lerbtn1.setSelected(true);
+		lerbtn1.setUserData("Send Money");
+		
+		lerbtn2.setVisible(true);
+		lerbtn2.setText("TopUp");
+		lerbtn2.setToggleGroup(leRocOutRbtnGroup);
+		lerbtn2.setUserData("TopUp");
+		
+		lerbtn3.setVisible(true);
+		lerbtn3.setText("ATM");
+		lerbtn3.setToggleGroup(leRocOutRbtnGroup);
+		lerbtn3.setUserData("ATM");
+		
+		lerbtn4.setVisible(false);
+	}
+	
+	
+	private void lendAction() {
+		try {
+			if (lecmboType.getValue().equals("Give Money")) {
+				
+				if (lecmboMethod.getValue().equals("bKash")) {
+					lelblPersonName.setText("To Whom :");
+					lelblAmountWithCharge.setText("Amount With Charge :");
+					lelblBankChargeName.setText("Bank Charge");
+					lelblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
+					lelblExactAmount.setText("Amount Without Charge :");
+					lelblAmountNature.setText("Cash Given Using");
+					leBkRbtnShow();
+					leBankChargeShow();
+					lecmboRepaidPerson.setVisible(false);
+					letxtExactAmount.setVisible(true);
+					lelblAmountValidationMsg.setText("");
+					lelblAmountValidationMsg2.setText("");
+					letxtFromWhom.setVisible(true);
+				} else if (lecmboMethod.getValue().equals("Rocket")) {
+					lelblPersonName.setText("To Whom :");
+					lelblAmountWithCharge.setText("Amount With Charge :");
+					lelblBankChargeName.setText("Bank Charge");
+					lelblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
+					lelblExactAmount.setText("Amount Without Charge :");
+					lelblAmountNature.setText("Cash Given Using");
+					leBankChargeShow();
+					leRocOutRbtnShow();
+					lecmboRepaidPerson.setVisible(false);
+					letxtExactAmount.setVisible(true);
+					lelblAmountValidationMsg.setText("");
+					lelblAmountValidationMsg2.setText("");
+					letxtFromWhom.setVisible(true);
+				} else {
+					lelblPersonName.setText("To Whom :");
+					lelblAmountWithCharge.setText("Lended Amount :");
+					lelblBankChargeName.setText("");
+					lelblWarningMsg.setText("");
+					lelblExactAmount.setText("");
+					lelblAmountNature.setText("");
+					leBankChargeShow();
+					leRbtnHide();
+					lecmboRepaidPerson.setVisible(false);
+					letxtExactAmount.setVisible(false);
+					lelblAmountValidationMsg.setText("");
+					lelblAmountValidationMsg2.setText("");
+					letxtFromWhom.setVisible(true);
+				}
+				
+			} else {
+				
+				if (lecmboMethod.getValue().equals("bKash")) {
+					lelblPersonName.setText("Take Back From :");
+					lelblAmountWithCharge.setText("Amount With Charge :");
+					lelblBankChargeName.setText("Bank Charge");
+					lelblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
+					lelblExactAmount.setText("Amount Without Charge :");
+					lelblAmountNature.setText("");
+					leBankChargeShow();
+					leRbtnHide();
+					lecmboRepaidPerson.setVisible(true);
+					leLoadRepayPersonName();
+					letxtExactAmount.setVisible(true);
+					lelblAmountValidationMsg.setText("");
+					lelblAmountValidationMsg2.setText("");
+					letxtFromWhom.setVisible(false);
+				} else if (lecmboMethod.getValue().equals("Rocket")) {
+					lelblPersonName.setText("Take Back From :");
+					lelblAmountWithCharge.setText("Amount With Charge :");
+					lelblBankChargeName.setText("Bank Charge");
+					lelblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
+					lelblExactAmount.setText("Amount Without Charge :");
+					lelblAmountNature.setText("Cash Take Back Using");
+					leBankChargeShow();
+					leRocInRbtnShow();
+					lecmboRepaidPerson.setVisible(true);
+					leLoadRepayPersonName();
+					letxtExactAmount.setVisible(true);
+					lelblAmountValidationMsg.setText("");
+					lelblAmountValidationMsg2.setText("");
+					letxtFromWhom.setVisible(false);
+				} else {
+					lelblPersonName.setText("Take Back From :");
+					lelblAmountWithCharge.setText("Take Back Amount :");
+					lelblBankChargeName.setText("");
+					lelblWarningMsg.setText("");
+					lelblExactAmount.setText("");
+					lelblAmountNature.setText("");
+					leBankChargeShow();
+					leRbtnHide();
+					lecmboRepaidPerson.setVisible(true);
+					leLoadRepayPersonName();
+					letxtExactAmount.setVisible(false);
+					lelblAmountValidationMsg.setText("");
+					lelblAmountValidationMsg2.setText("");
+					letxtFromWhom.setVisible(false);
+				}
+			}
+		} catch (Exception e) {}
+	}
+	
+	
+	@FXML
+	private void lendSaveBtn(ActionEvent event) {
+		Map<String, String> boleData = new HashMap<>();
+		
+		try {
+			
+			if (selectedTabName.equals("Borrow")) {
+				
+				if (bocmboType.getValue().equals("Money Take")) {
+							// Borrow, Money Take, bKash
+					if (bocmboMethod.getValue().equals("bKash")) {
+						if (amountIsZero(botxtAmountWithCharge.getText()) || letterCount(botxtFromWhom.getText())==100 || amountIsZero(botxtExactAmount.getText())) {
+							System.out.println(letterCount(botxtFromWhom.getText()));
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+							boleData.put("boTime", timeToSave());
+							boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+							boleData.put("boMonth", monthToSave());
+							boleData.put("boType", bocmboType.getValue());
+							boleData.put("boMethod", bocmboMethod.getValue());
+							boleData.put("boWhom", botxtFromWhom.getText());
+							boleData.put("boTk", botxtAmountWithCharge.getText());
+							boleData.put("boNature", "None");
+							boleData.put("boBnkCharge", boBankChargeShow());
+							boleData.put("boBalanceBefore", UnitConverter.longToString(currentbKashBalance()));
+							boleData.put("boBalanceAfter", boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow()));
+							boleData.put("boExactTk", botxtExactAmount.getText());
+							
+							(new Borrow()).saveBorrowData(boleData);
+							(new Borrow()).updateBorrowSummaryData(boleData);
+							setCurrentbKashBalance(boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow()));
+							setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText()));
+							boInitialize();
+							
+							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+							confirmationMsg.setTitle("Successfull Transaction");
+							confirmationMsg.setHeaderText(null);
+							confirmationMsg.setContentText("Your transaction completed successfully.");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+							confirmationMsg.showAndWait();
+							
+						}	// Borrow, Money Take, Rocket
+					} else if(bocmboMethod.getValue().equals("Rocket")) {
+						if (amountIsZero(botxtAmountWithCharge.getText()) || letterCount(botxtFromWhom.getText())==100 || amountIsZero(botxtExactAmount.getText())) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+							boleData.put("boTime", timeToSave());
+							boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+							boleData.put("boMonth", monthToSave());
+							boleData.put("boType", bocmboType.getValue());
+							boleData.put("boMethod", bocmboMethod.getValue());
+							boleData.put("boWhom", botxtFromWhom.getText());
+							boleData.put("boTk", botxtAmountWithCharge.getText());
+							boleData.put("boNature", boGetSelectedrbtnName());
+							boleData.put("boBnkCharge", boBankChargeShow());
+							boleData.put("boBalanceBefore", UnitConverter.longToString(currentRocketBalance()));
+							boleData.put("boBalanceAfter", boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow()));
+							boleData.put("boExactTk", botxtExactAmount.getText());
+							
+							(new Borrow()).saveBorrowData(boleData);
+							(new Borrow()).updateBorrowSummaryData(boleData);
+							setCurrentRocketBalance(boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow()));
+							setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText()));
+							boInitialize();
+							
+							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+							confirmationMsg.setTitle("Successfull Transaction");
+							confirmationMsg.setHeaderText(null);
+							confirmationMsg.setContentText("Your transaction completed successfully.");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+							confirmationMsg.showAndWait();
+						}
+					} else { // Borrow, Money Take, Hand to Hand
+						if (amountIsZero(botxtAmountWithCharge.getText()) || letterCount(botxtFromWhom.getText())==100) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+							boleData.put("boTime", timeToSave());
+							boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+							boleData.put("boMonth", monthToSave());
+							boleData.put("boType", bocmboType.getValue());
+							boleData.put("boMethod", bocmboMethod.getValue());
+							boleData.put("boWhom", botxtFromWhom.getText());
+							boleData.put("boTk", botxtAmountWithCharge.getText());
+							boleData.put("boNature", "None");
+							boleData.put("boBnkCharge", "None");
+							boleData.put("boBalanceBefore", UnitConverter.longToString(currentWalletBalance()));
+							boleData.put("boBalanceAfter", gmWalletBalanceAfter(botxtAmountWithCharge.getText()));
+							boleData.put("boExactTk", botxtAmountWithCharge.getText());
+							
+							(new Borrow()).saveBorrowData(boleData);
+							(new Borrow()).updateBorrowSummaryData(boleData);
+							setCurrentWalletBalance(gmWalletBalanceAfter(botxtAmountWithCharge.getText()));
+							setTotalBorrowTk(updatedTotalBorrowTk(botxtAmountWithCharge.getText()));
+							boInitialize();
+							
+							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+							confirmationMsg.setTitle("Successfull Transaction");
+							confirmationMsg.setHeaderText(null);
+							confirmationMsg.setContentText("Your transaction completed successfully.");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+							confirmationMsg.showAndWait();
+						}
+					}
+					
+				} else {
+					
+					if (bocmboMethod.getValue().equals("bKash")) {
+						if (amountIsZero(botxtAmountWithCharge.getText()) || amountIsZero(botxtExactAmount.getText())) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+
+						}
+					} else if(bocmboMethod.getValue().equals("Rocket")) {
+						if (amountIsZero(botxtAmountWithCharge.getText()) || amountIsZero(botxtExactAmount.getText())) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+
+						}
+					} else {
+						if (amountIsZero(botxtAmountWithCharge.getText())) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+
+						}
+					}
+				}
+				
+			} else {
+
+				if (bocmboType.getValue().equals("Give Money")) {
+				
+					if (bocmboMethod.getValue().equals("bKash")) {
+						
+					} else if(bocmboMethod.getValue().equals("Rocket")) {
+
+					} else {
+						
+					}
+					
+				} else {
+					
+					if (bocmboMethod.getValue().equals("bKash")) {
+						
+					} else if(bocmboMethod.getValue().equals("Rocket")) {
+
+					} else {
+						
+					}
+					
+				}
+				
+			}
+			
+		} catch (Exception e) {}
+	}
+	
+	
 ////////////////////////////////////////////     Bank Function    ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
 	@FXML

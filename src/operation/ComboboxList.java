@@ -173,6 +173,46 @@ public class ComboboxList extends DatabaseConnection {
 	}
 	
 	
+	public String[] getLeRepayPersonNameList() {
+		if(getLeRepayPersonNameSize()>0) {
+			String list[] = new String[getLeRepayPersonNameSize()];
+			String sql = "SELECT leWhom \n"
+					+ "FROM Lend_Summary";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("leWhom");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Source"};
+			return list;
+		}
+	}
+	public int getLeRepayPersonNameSize() {
+		int size = 0;
+		String sqlid = "SELECT * \n"
+				+ "FROM Lend_Summary";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
 	
 //	public static void main(String[] args) {
 //		ComboboxList access = new ComboboxList();
