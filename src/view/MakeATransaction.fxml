@@ -198,7 +198,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <DatePicker fx:id="lenddateDate" editable="false" layoutX="555.0" layoutY="14.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
+                  <DatePicker fx:id="lenddateDate" editable="false" layoutX="589.0" layoutY="14.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
                   <Label fx:id="lendlblTableHeading" alignment="CENTER" layoutX="85.0" layoutY="61.0" prefHeight="20.0" prefWidth="179.0">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
@@ -369,28 +369,28 @@
                         <TableColumn fx:id="lendTblColumnAmount" prefWidth="79.0" text="Amount" />
                     </columns>
                   </TableView>
-                  <Button fx:id="lendbtnGoToDashboard" layoutX="109.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
-                  <Label fx:id="lendlblTotalBorrowTk" alignment="CENTER" layoutX="210.0" layoutY="470.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #ff80a6;">
+                  <Button fx:id="lendbtnGoToDashboard" layoutX="111.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
+                  <Label fx:id="lendlblTotalBorrowTk" alignment="CENTER" layoutX="200.0" layoutY="470.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #ff80a6;">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblTotalLendTk" alignment="CENTER" layoutX="210.0" layoutY="470.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #e2e19a;">
+                  <Label fx:id="lendlblTotalLendTk" alignment="CENTER" layoutX="200.0" layoutY="470.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #e2e19a;">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="270.0" layoutY="14.0" prefHeight="28.0" prefWidth="125.0" text="Wallet Balance :">
+                  <Label alignment="CENTER_RIGHT" layoutX="274.0" layoutY="14.0" prefHeight="28.0" prefWidth="139.0" text="Wallet Balance :">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblWalletBalance" alignment="CENTER" layoutX="401.0" layoutY="14.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
+                  <Label fx:id="lendlblWalletBalance" alignment="CENTER" layoutX="417.0" layoutY="14.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblTotalLendName" alignment="CENTER_RIGHT" layoutX="35.0" layoutY="470.0" prefHeight="28.0" prefWidth="169.0" text="Wallet Balance :">
+                  <Label fx:id="lendlblTotalLendName" alignment="CENTER_RIGHT" layoutX="25.0" layoutY="470.0" prefHeight="28.0" prefWidth="171.0">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import database.DatabaseConnection;
 import operation.GlobalId;
+import system.UnitConverter;
 
 public class Borrow extends DatabaseConnection {
 	
@@ -61,7 +62,7 @@ public class Borrow extends DatabaseConnection {
 	}
 	
 	
-	public void updateBorrowSummaryData(Map<String, String> borrowData) {
+	public void addBorrowSummaryData(Map<String, String> borrowData) {
 		String sql = "INSERT INTO Borrow_Summary(boDate, boWhom, boExactTk) \n"
 				+ "VALUES(?,?,?)";
 
@@ -77,4 +78,70 @@ public class Borrow extends DatabaseConnection {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void updateBorrowSummaryData(Map<String, String> borrowData) {
+		long dbAmount = UnitConverter.stringToLong(boRepayPersonBorrowedAmount(borrowData.get("boWhom")));
+		long exactTk = UnitConverter.stringToLong(borrowData.get("boExactTk"));
+		String updatedAmount = UnitConverter.longToString(dbAmount - exactTk);
+		
+		String sql = "UPDATE Borrow_Summary SET boExactTk = ?\n"
+				+ "WHERE boWhom = ?";
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setString(1, updatedAmount);
+			pstmt.setString(2, borrowData.get("boWhom"));
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void deleteBorrowSummaryData(Map<String, String> borrowData) {
+			
+		String sql = "DELETE FROM Borrow_Summary \n"
+				+ "WHERE boWhom = ?";
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setString(1, borrowData.get("boWhom"));
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

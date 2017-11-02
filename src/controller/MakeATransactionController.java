@@ -151,6 +151,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Label lendlblTotalBorrowTk;
 	@FXML
 	private Label lendlblTotalLendTk;
+	@FXML
+	private Label lendlblAccountBalanceName;
+	@FXML
+	private Label lendlblBkBalance;
+	@FXML
+	private Label lendlblRocBalance;
 	
 	@FXML
 	private DatePicker lenddateDate;
@@ -939,11 +945,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void boInitialize() {
 		selectedTabName = "Borrow";
+		lenddateDate.setConverter(formatManager);
+		lenddateDate.setValue(date);
 		showBorroTblData();
 		showWalletBalance();
 		showTotalBorrowTk();
-		lenddateDate.setConverter(formatManager);
-		lenddateDate.setValue(date);
 		boLoadType();
 		loadMethod();
 		boBankChargeShow();
@@ -969,11 +975,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void leInitialize() {
 		selectedTabName = "Lend";
+		lenddateDate.setConverter(formatManager);
+		lenddateDate.setValue(date);
 		showLendTblData();
 		showWalletBalance();
 		showTotalLendTk();
-		lenddateDate.setConverter(formatManager);
-		lenddateDate.setValue(date);
 		leLoadType();
 		loadMethod();
 		leBankChargeShow();
@@ -1049,24 +1055,33 @@ public class MakeATransactionController extends MakeATransactionModel {
 	}
 	
 	
-	@FXML
-	private void boRepayPersonCmboAction(ActionEvent event) {
+	private void boRepayPersonCmboFunction() {
 		bolblAmountValidationMsg.setText("");
 		bolblAmountValidationMsg2.setText("");
 		bolblWarningMsg.setText("");
 		String boRepayPersonBorrowedAmount = new Borrow().boRepayPersonBorrowedAmount(bocmboRepaidPerson.getValue());
 		botxtExactAmount.setText(boRepayPersonBorrowedAmount);
 		botxtAmountWithCharge.setText(boRepayPersonBorrowedAmount);
-		
+	}
+	
+	
+	@FXML
+	private void boRepayPersonCmboAction(ActionEvent event) {
+		boRepayPersonCmboFunction();
 	}
 	
 	
 	@FXML
 	private void boTypeAction(ActionEvent event) {
-		borrowAction();
-		botxtAmountWithCharge.clear();
-		botxtExactAmount.clear();
-		botxtFromWhom.clear();
+		try {
+			borrowAction();
+			botxtAmountWithCharge.clear();
+			botxtExactAmount.clear();
+			botxtFromWhom.clear();
+			if (!bocmboType.getValue().equals("Money Take")) {
+				boRepayPersonCmboFunction();
+			}
+		} catch (Exception e) {}
 	}
 	
 	
@@ -1440,24 +1455,32 @@ public class MakeATransactionController extends MakeATransactionModel {
 	}
 	
 	
-	@FXML
-	private void leRepayPersonCmboAction(ActionEvent event) {
+	private void leRepayPersonCmboFunction() {
 		lelblAmountValidationMsg.setText("");
 		lelblAmountValidationMsg2.setText("");
 		lelblWarningMsg.setText("");
 		String leRepayPersonLendedAmount = new Lend().leRepayPersonLendedAmount(lecmboRepaidPerson.getValue());
 		letxtExactAmount.setText(leRepayPersonLendedAmount);
 		letxtAmountWithCharge.setText(leRepayPersonLendedAmount);
-		
+	}
+	
+	@FXML
+	private void leRepayPersonCmboAction(ActionEvent event) {
+		leRepayPersonCmboFunction();
 	}
 	
 	
 	@FXML
 	private void leTypeAction(ActionEvent event) {
-		lendAction();
-		letxtAmountWithCharge.clear();
-		letxtExactAmount.clear();
-		letxtFromWhom.clear();
+		try {
+			lendAction();
+			letxtAmountWithCharge.clear();
+			letxtExactAmount.clear();
+			letxtFromWhom.clear();
+			if (!lecmboType.getValue().equals("Give Money")) {
+				leRepayPersonCmboFunction();
+			}
+		} catch (Exception e) {}
 	}
 	
 	
@@ -1821,13 +1844,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("boNature", "None");
 							boleData.put("boBnkCharge", boBankChargeShow());
 							boleData.put("boBalanceBefore", UnitConverter.longToString(currentbKashBalance()));
-							boleData.put("boBalanceAfter", boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow()));
+							boleData.put("boBalanceAfter", boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Money Take"));
 							boleData.put("boExactTk", botxtExactAmount.getText());
 							
 							(new Borrow()).saveBorrowData(boleData);
-							(new Borrow()).updateBorrowSummaryData(boleData);
-							setCurrentbKashBalance(boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow()));
-							setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText()));
+							(new Borrow()).addBorrowSummaryData(boleData);
+							setCurrentbKashBalance(boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Money Take"));
+							setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(), "Money Take"));
 							boInitialize();
 							
 							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
@@ -1861,13 +1884,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("boNature", boGetSelectedrbtnName());
 							boleData.put("boBnkCharge", boBankChargeShow());
 							boleData.put("boBalanceBefore", UnitConverter.longToString(currentRocketBalance()));
-							boleData.put("boBalanceAfter", boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow()));
+							boleData.put("boBalanceAfter", boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Money Take"));
 							boleData.put("boExactTk", botxtExactAmount.getText());
 							
 							(new Borrow()).saveBorrowData(boleData);
-							(new Borrow()).updateBorrowSummaryData(boleData);
-							setCurrentRocketBalance(boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow()));
-							setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText()));
+							(new Borrow()).addBorrowSummaryData(boleData);
+							setCurrentRocketBalance(boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Money Take"));
+							setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(), "Money Take"));
 							boInitialize();
 							
 							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
@@ -1904,9 +1927,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("boExactTk", botxtAmountWithCharge.getText());
 							
 							(new Borrow()).saveBorrowData(boleData);
-							(new Borrow()).updateBorrowSummaryData(boleData);
+							(new Borrow()).addBorrowSummaryData(boleData);
 							setCurrentWalletBalance(gmWalletBalanceAfter(botxtAmountWithCharge.getText()));
-							setTotalBorrowTk(updatedTotalBorrowTk(botxtAmountWithCharge.getText()));
+							setTotalBorrowTk(updatedTotalBorrowTk(botxtAmountWithCharge.getText(), "Money Take"));
 							boInitialize();
 							
 							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
@@ -1921,7 +1944,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 					}
 					
 				} else {
-					
+							// Borrow, Return Borrowed Money, bKash
 					if (bocmboMethod.getValue().equals("bKash")) {
 						if (amountIsZero(botxtAmountWithCharge.getText()) || amountIsZero(botxtExactAmount.getText())) {
 							Alert alert = new Alert(AlertType.WARNING);
@@ -1933,8 +1956,49 @@ public class MakeATransactionController extends MakeATransactionModel {
 							alert.setY(MakeATransactionStage.getY() + 170);
 							alert.showAndWait();
 						} else {
-
-						}
+							if (boRepayValidation(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
+								boleData.put("boTime", timeToSave());
+								boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+								boleData.put("boMonth", monthToSave());
+								boleData.put("boType", bocmboType.getValue());
+								boleData.put("boMethod", bocmboMethod.getValue());
+								boleData.put("boWhom", bocmboRepaidPerson.getValue());
+								boleData.put("boTk", botxtAmountWithCharge.getText());
+								boleData.put("boNature", boGetSelectedrbtnName());
+								boleData.put("boBnkCharge", boBankChargeShow());
+								boleData.put("boBalanceBefore", UnitConverter.longToString(currentbKashBalance()));
+								boleData.put("boBalanceAfter", boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Return Borrowed Money"));
+								boleData.put("boExactTk", botxtExactAmount.getText());
+								
+								(new Borrow()).saveBorrowData(boleData);
+								if (boisTypedAmountLessThanBorrowed(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
+									(new Borrow()).updateBorrowSummaryData(boleData);
+								} else {
+									(new Borrow()).deleteBorrowSummaryData(boleData);
+								}
+								setCurrentbKashBalance(boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Return Borrowed Money"));
+								setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(),"Return Borrowed Money"));
+								boInitialize();
+								
+								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+								confirmationMsg.setTitle("Successfull Transaction");
+								confirmationMsg.setHeaderText(null);
+								confirmationMsg.setContentText("Your transaction completed successfully.");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+								confirmationMsg.showAndWait();
+							} else {
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Transaction Failed");
+								alert.setHeaderText(null);
+								alert.setContentText("Amount can't bigger than borrowed amount");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								alert.setX(MakeATransactionStage.getX() + 200);
+								alert.setY(MakeATransactionStage.getY() + 170);
+								alert.showAndWait();
+							}
+						}  // Borrow, Return Borrowed Money, Rocket
 					} else if(bocmboMethod.getValue().equals("Rocket")) {
 						if (amountIsZero(botxtAmountWithCharge.getText()) || amountIsZero(botxtExactAmount.getText())) {
 							Alert alert = new Alert(AlertType.WARNING);
@@ -1946,9 +2010,50 @@ public class MakeATransactionController extends MakeATransactionModel {
 							alert.setY(MakeATransactionStage.getY() + 170);
 							alert.showAndWait();
 						} else {
-
+							if (boRepayValidation(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
+								boleData.put("boTime", timeToSave());
+								boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+								boleData.put("boMonth", monthToSave());
+								boleData.put("boType", bocmboType.getValue());
+								boleData.put("boMethod", bocmboMethod.getValue());
+								boleData.put("boWhom", bocmboRepaidPerson.getValue());
+								boleData.put("boTk", botxtAmountWithCharge.getText());
+								boleData.put("boNature", boGetSelectedrbtnName());
+								boleData.put("boBnkCharge", boBankChargeShow());
+								boleData.put("boBalanceBefore", UnitConverter.longToString(currentRocketBalance()));
+								boleData.put("boBalanceAfter", boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Return Borrowed Money"));
+								boleData.put("boExactTk", botxtExactAmount.getText());
+								
+								(new Borrow()).saveBorrowData(boleData);
+								if (boisTypedAmountLessThanBorrowed(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
+									(new Borrow()).updateBorrowSummaryData(boleData);
+								} else {
+									(new Borrow()).deleteBorrowSummaryData(boleData);
+								}
+								setCurrentRocketBalance(boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Return Borrowed Money"));
+								setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(),"Return Borrowed Money"));
+								boInitialize();
+								
+								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+								confirmationMsg.setTitle("Successfull Transaction");
+								confirmationMsg.setHeaderText(null);
+								confirmationMsg.setContentText("Your transaction completed successfully.");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+								confirmationMsg.showAndWait();
+							} else {
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Transaction Failed");
+								alert.setHeaderText(null);
+								alert.setContentText("Amount can't bigger than borrowed amount");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								alert.setX(MakeATransactionStage.getX() + 200);
+								alert.setY(MakeATransactionStage.getY() + 170);
+								alert.showAndWait();
+							}
 						}
-					} else {
+					} else { // Borrow, Return Borrowed Money, Hand to Hand
 						if (amountIsZero(botxtAmountWithCharge.getText())) {
 							Alert alert = new Alert(AlertType.WARNING);
 							alert.setTitle("Transaction Failed");
@@ -1959,18 +2064,96 @@ public class MakeATransactionController extends MakeATransactionModel {
 							alert.setY(MakeATransactionStage.getY() + 170);
 							alert.showAndWait();
 						} else {
-
+							if (boRepayValidation(botxtAmountWithCharge.getText(), bocmboRepaidPerson.getValue())) {
+								boleData.put("boTime", timeToSave());
+								boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+								boleData.put("boMonth", monthToSave());
+								boleData.put("boType", bocmboType.getValue());
+								boleData.put("boMethod", bocmboMethod.getValue());
+								boleData.put("boWhom", bocmboRepaidPerson.getValue());
+								boleData.put("boTk", botxtAmountWithCharge.getText());
+								boleData.put("boNature", "None");
+								boleData.put("boBnkCharge", "None");
+								boleData.put("boBalanceBefore", UnitConverter.longToString(currentWalletBalance()));
+								boleData.put("boBalanceAfter", exWalletBalanceAfter(botxtAmountWithCharge.getText()));
+								boleData.put("boExactTk", botxtAmountWithCharge.getText());
+								
+								(new Borrow()).saveBorrowData(boleData);
+								if (boisTypedAmountLessThanBorrowed(botxtAmountWithCharge.getText(), bocmboRepaidPerson.getValue())) {
+									(new Borrow()).updateBorrowSummaryData(boleData);
+								} else {
+									(new Borrow()).deleteBorrowSummaryData(boleData);
+								}
+								setCurrentWalletBalance(exWalletBalanceAfter(botxtAmountWithCharge.getText()));
+								setTotalBorrowTk(updatedTotalBorrowTk(botxtAmountWithCharge.getText(),"Return Borrowed Money"));
+								boInitialize();
+								
+								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+								confirmationMsg.setTitle("Successfull Transaction");
+								confirmationMsg.setHeaderText(null);
+								confirmationMsg.setContentText("Your transaction completed successfully.");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+								confirmationMsg.showAndWait();
+							} else {
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Transaction Failed");
+								alert.setHeaderText(null);
+								alert.setContentText("Amount can't bigger than borrowed amount");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								alert.setX(MakeATransactionStage.getX() + 200);
+								alert.setY(MakeATransactionStage.getY() + 170);
+								alert.showAndWait();
+							}
 						}
 					}
 				}
 				
 			} else {
 
-				if (bocmboType.getValue().equals("Give Money")) {
-				
-					if (bocmboMethod.getValue().equals("bKash")) {
-						
-					} else if(bocmboMethod.getValue().equals("Rocket")) {
+				if (lecmboType.getValue().equals("Give Money")) {
+							// Lend, Give Money, bKash
+					if (lecmboMethod.getValue().equals("bKash")) {
+						if (amountIsZero(letxtAmountWithCharge.getText()) || letterCount(letxtFromWhom.getText())==100 || amountIsZero(letxtExactAmount.getText())) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+							boleData.put("leTime", timeToSave());
+							boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+							boleData.put("leMonth", monthToSave());
+							boleData.put("leType", lecmboType.getValue());
+							boleData.put("leMethod", lecmboMethod.getValue());
+							boleData.put("leWhom", letxtFromWhom.getText());
+							boleData.put("leTk", letxtAmountWithCharge.getText());
+							boleData.put("leNature", leGetSelectedrbtnName());
+							boleData.put("leBnkCharge", leBankChargeShow());
+							boleData.put("leBalanceBefore", UnitConverter.longToString(currentbKashBalance()));
+							boleData.put("leBalanceAfter", leBkBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Give Money"));
+							boleData.put("leExactTk", letxtExactAmount.getText());
+							
+							(new Lend()).saveLendData(boleData);
+							(new Lend()).addLendSummaryData(boleData);
+							setCurrentbKashBalance(leBkBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Give Money"));
+							setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(), "Give Money"));
+							leInitialize();
+							
+							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+							confirmationMsg.setTitle("Successfull Transaction");
+							confirmationMsg.setHeaderText(null);
+							confirmationMsg.setContentText("Your transaction completed successfully.");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+							confirmationMsg.showAndWait();
+						}
+					} else if(lecmboMethod.getValue().equals("Rocket")) {
 
 					} else {
 						
@@ -1978,9 +2161,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 					
 				} else {
 					
-					if (bocmboMethod.getValue().equals("bKash")) {
+					if (lecmboMethod.getValue().equals("bKash")) {
 						
-					} else if(bocmboMethod.getValue().equals("Rocket")) {
+					} else if(lecmboMethod.getValue().equals("Rocket")) {
 
 					} else {
 						
