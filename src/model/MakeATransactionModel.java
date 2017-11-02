@@ -306,9 +306,9 @@ public class MakeATransactionModel extends DateAndClock {
 		long typed = UnitConverter.stringToLong(typedAmount);
 		long personLendedAmount = UnitConverter.stringToLong(new Lend().leRepayPersonLendedAmount(personName));
 		if(typed<personLendedAmount) {
-			return false;
-		} else {
 			return true;
+		} else {
+			return false;
 		}
 	}
 	

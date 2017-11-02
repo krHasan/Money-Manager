@@ -81,8 +81,8 @@ public class Lend extends DatabaseConnection {
 	
 	
 	public void updateLendSummaryData(Map<String, String> LendData) {
-		long dbAmount = UnitConverter.stringToLong(leRepayPersonLendedAmount(LendData.get("boWhom")));
-		long exactTk = UnitConverter.stringToLong(LendData.get("boExactTk"));
+		long dbAmount = UnitConverter.stringToLong(leRepayPersonLendedAmount(LendData.get("leWhom")));
+		long exactTk = UnitConverter.stringToLong(LendData.get("leExactTk"));
 		String updatedAmount = UnitConverter.longToString(dbAmount - exactTk);
 		
 		String sql = "UPDATE Lend_Summary SET leExactTk = ?\n"

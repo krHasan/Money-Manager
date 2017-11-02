@@ -2152,21 +2152,251 @@ public class MakeATransactionController extends MakeATransactionModel {
 							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
 							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
 							confirmationMsg.showAndWait();
-						}
+						}	// Lend, Give Money, Rocket
 					} else if(lecmboMethod.getValue().equals("Rocket")) {
-
-					} else {
-						
+						if (amountIsZero(letxtAmountWithCharge.getText()) || letterCount(letxtFromWhom.getText())==100 || amountIsZero(letxtExactAmount.getText())) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+							boleData.put("leTime", timeToSave());
+							boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+							boleData.put("leMonth", monthToSave());
+							boleData.put("leType", lecmboType.getValue());
+							boleData.put("leMethod", lecmboMethod.getValue());
+							boleData.put("leWhom", letxtFromWhom.getText());
+							boleData.put("leTk", letxtAmountWithCharge.getText());
+							boleData.put("leNature", leGetSelectedrbtnName());
+							boleData.put("leBnkCharge", leBankChargeShow());
+							boleData.put("leBalanceBefore", UnitConverter.longToString(currentRocketBalance()));
+							boleData.put("leBalanceAfter", leRocBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Give Money"));
+							boleData.put("leExactTk", letxtExactAmount.getText());
+							
+							(new Lend()).saveLendData(boleData);
+							(new Lend()).addLendSummaryData(boleData);
+							setCurrentRocketBalance(leRocBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Give Money"));
+							setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(), "Give Money"));
+							leInitialize();
+							
+							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+							confirmationMsg.setTitle("Successfull Transaction");
+							confirmationMsg.setHeaderText(null);
+							confirmationMsg.setContentText("Your transaction completed successfully.");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+							confirmationMsg.showAndWait();
+						}	
+					} else {  // Lend, Give Money, Hand to Hand
+						if (amountIsZero(letxtAmountWithCharge.getText()) || letterCount(letxtFromWhom.getText())==100) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+							boleData.put("leTime", timeToSave());
+							boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+							boleData.put("leMonth", monthToSave());
+							boleData.put("leType", lecmboType.getValue());
+							boleData.put("leMethod", lecmboMethod.getValue());
+							boleData.put("leWhom", letxtFromWhom.getText());
+							boleData.put("leTk", letxtAmountWithCharge.getText());
+							boleData.put("leNature", "None");
+							boleData.put("leBnkCharge", "None");
+							boleData.put("leBalanceBefore", UnitConverter.longToString(currentWalletBalance()));
+							boleData.put("leBalanceAfter", exWalletBalanceAfter(letxtAmountWithCharge.getText()));
+							boleData.put("leExactTk", letxtAmountWithCharge.getText());
+							
+							(new Lend()).saveLendData(boleData);
+							(new Lend()).addLendSummaryData(boleData);
+							setCurrentWalletBalance(exWalletBalanceAfter(letxtAmountWithCharge.getText()));
+							setTotalLendTk(updatedTotalLendTk(letxtAmountWithCharge.getText(), "Give Money"));
+							leInitialize();
+							
+							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+							confirmationMsg.setTitle("Successfull Transaction");
+							confirmationMsg.setHeaderText(null);
+							confirmationMsg.setContentText("Your transaction completed successfully.");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+							confirmationMsg.showAndWait();
+						}	
 					}
 					
 				} else {
-					
+							 // Lend, Take Back Lended Money, bKash
 					if (lecmboMethod.getValue().equals("bKash")) {
-						
+						if (amountIsZero(letxtAmountWithCharge.getText()) || amountIsZero(letxtExactAmount.getText())) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+							if (leRepayValidation(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
+								boleData.put("leTime", timeToSave());
+								boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+								boleData.put("leMonth", monthToSave());
+								boleData.put("leType", lecmboType.getValue());
+								boleData.put("leMethod", lecmboMethod.getValue());
+								boleData.put("leWhom", lecmboRepaidPerson.getValue());
+								boleData.put("leTk", letxtAmountWithCharge.getText());
+								boleData.put("leNature", leGetSelectedrbtnName());
+								boleData.put("leBnkCharge", leBankChargeShow());
+								boleData.put("leBalanceBefore", UnitConverter.longToString(currentbKashBalance()));
+								boleData.put("leBalanceAfter", leBkBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Take Back Lended Money"));
+								boleData.put("leExactTk", letxtExactAmount.getText());
+								
+								(new Lend()).saveLendData(boleData);
+								if (leisTypedAmountLessThanLended(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
+									(new Lend()).updateLendSummaryData(boleData);
+								} else {
+									(new Lend()).deleteLendSummaryData(boleData);
+								}
+								setCurrentbKashBalance(leBkBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Take Back Lended Money"));
+								setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(),"Take Back Lended Money"));
+								leInitialize();
+								
+								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+								confirmationMsg.setTitle("Successfull Transaction");
+								confirmationMsg.setHeaderText(null);
+								confirmationMsg.setContentText("Your transaction completed successfully.");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+								confirmationMsg.showAndWait();
+							} else {
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Transaction Failed");
+								alert.setHeaderText(null);
+								alert.setContentText("Amount can't bigger than borrowed amount");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								alert.setX(MakeATransactionStage.getX() + 200);
+								alert.setY(MakeATransactionStage.getY() + 170);
+								alert.showAndWait();
+							}
+						} 	 // Lend, Take Back Lended Money, Rocket
 					} else if(lecmboMethod.getValue().equals("Rocket")) {
-
-					} else {
-						
+						if (amountIsZero(letxtAmountWithCharge.getText()) || amountIsZero(letxtExactAmount.getText())) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+							if (leRepayValidation(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
+								boleData.put("leTime", timeToSave());
+								boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+								boleData.put("leMonth", monthToSave());
+								boleData.put("leType", lecmboType.getValue());
+								boleData.put("leMethod", lecmboMethod.getValue());
+								boleData.put("leWhom", lecmboRepaidPerson.getValue());
+								boleData.put("leTk", letxtAmountWithCharge.getText());
+								boleData.put("leNature", leGetSelectedrbtnName());
+								boleData.put("leBnkCharge", leBankChargeShow());
+								boleData.put("leBalanceBefore", UnitConverter.longToString(currentRocketBalance()));
+								boleData.put("leBalanceAfter", leRocBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Take Back Lended Money"));
+								boleData.put("leExactTk", letxtExactAmount.getText());
+								
+								(new Lend()).saveLendData(boleData);
+								if (leisTypedAmountLessThanLended(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
+									(new Lend()).updateLendSummaryData(boleData);
+								} else {
+									(new Lend()).deleteLendSummaryData(boleData);
+								}
+								setCurrentRocketBalance(leRocBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Take Back Lended Money"));
+								setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(),"Take Back Lended Money"));
+								leInitialize();
+								
+								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+								confirmationMsg.setTitle("Successfull Transaction");
+								confirmationMsg.setHeaderText(null);
+								confirmationMsg.setContentText("Your transaction completed successfully.");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+								confirmationMsg.showAndWait();
+							} else {
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Transaction Failed");
+								alert.setHeaderText(null);
+								alert.setContentText("Amount can't bigger than borrowed amount");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								alert.setX(MakeATransactionStage.getX() + 200);
+								alert.setY(MakeATransactionStage.getY() + 170);
+								alert.showAndWait();
+							}
+						}
+					} else { // Lend, Take Back Lended Money, Hand to Hand
+						if (amountIsZero(letxtAmountWithCharge.getText())) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("Transaction Failed");
+							alert.setHeaderText(null);
+							alert.setContentText("Zero or Empty is not allowed");
+							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+							alert.setX(MakeATransactionStage.getX() + 200);
+							alert.setY(MakeATransactionStage.getY() + 170);
+							alert.showAndWait();
+						} else {
+							if (leRepayValidation(letxtAmountWithCharge.getText(), lecmboRepaidPerson.getValue())) {
+								boleData.put("leTime", timeToSave());
+								boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
+								boleData.put("leMonth", monthToSave());
+								boleData.put("leType", lecmboType.getValue());
+								boleData.put("leMethod", lecmboMethod.getValue());
+								boleData.put("leWhom", lecmboRepaidPerson.getValue());
+								boleData.put("leTk", letxtAmountWithCharge.getText());
+								boleData.put("leNature", "None");
+								boleData.put("leBnkCharge", "None");
+								boleData.put("leBalanceBefore", UnitConverter.longToString(currentWalletBalance()));
+								boleData.put("leBalanceAfter", gmWalletBalanceAfter(letxtAmountWithCharge.getText()));
+								boleData.put("leExactTk", letxtAmountWithCharge.getText());
+								
+								(new Lend()).saveLendData(boleData);
+								if (leisTypedAmountLessThanLended(letxtAmountWithCharge.getText(), lecmboRepaidPerson.getValue())) {
+									(new Lend()).updateLendSummaryData(boleData);
+								} else {
+									(new Lend()).deleteLendSummaryData(boleData);
+								}
+								setCurrentWalletBalance(gmWalletBalanceAfter(letxtAmountWithCharge.getText()));
+								setTotalLendTk(updatedTotalLendTk(letxtAmountWithCharge.getText(),"Take Back Lended Money"));
+								leInitialize();
+								
+								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+								confirmationMsg.setTitle("Successfull Transaction");
+								confirmationMsg.setHeaderText(null);
+								confirmationMsg.setContentText("Your transaction completed successfully.");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+								confirmationMsg.showAndWait();
+							} else {
+								Alert alert = new Alert(AlertType.WARNING);
+								alert.setTitle("Transaction Failed");
+								alert.setHeaderText(null);
+								alert.setContentText("Amount can't bigger than lended amount");
+								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
+								alert.setX(MakeATransactionStage.getX() + 200);
+								alert.setY(MakeATransactionStage.getY() + 170);
+								alert.showAndWait();
+							}
+						}
 					}
 					
 				}

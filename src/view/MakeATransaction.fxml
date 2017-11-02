@@ -354,8 +354,14 @@
                                     <RadioButton fx:id="lerbtn2" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#leRbtn2Action" prefHeight="18.0" prefWidth="105.0" />
                                     <RadioButton fx:id="lerbtn3" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#leRbtn3Action" prefHeight="18.0" prefWidth="105.0" />
                                     <RadioButton fx:id="lerbtn4" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#leRbtn4Action" prefHeight="18.0" prefWidth="105.0" />
-                                    <Label fx:id="lelblAmountValidationMsg" layoutX="170.0" layoutY="153.0" />
-                                    <Label fx:id="lelblAmountValidationMsg2" layoutX="170.0" layoutY="341.0" />
+                                    <Label fx:id="lelblAmountValidationMsg" layoutX="170.0" layoutY="153.0" textFill="#d00808">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font></Label>
+                                    <Label fx:id="lelblAmountValidationMsg2" layoutX="170.0" layoutY="341.0" textFill="#c30606">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font></Label>
                                  </children>
                               </AnchorPane>
                         </content>
