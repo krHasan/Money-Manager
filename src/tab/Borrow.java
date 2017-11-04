@@ -48,12 +48,12 @@ public class Borrow extends DatabaseConnection {
 			pstmt.setString(5, borrowData.get("boType"));
 			pstmt.setString(6, borrowData.get("boMethod"));
 			pstmt.setString(7, borrowData.get("boWhom"));
-			pstmt.setString(8, borrowData.get("boTk"));
+			pstmt.setString(8, UnitConverter.addThousandSeparator(borrowData.get("boTk")));
 			pstmt.setString(9, borrowData.get("boNature"));
 			pstmt.setString(10, borrowData.get("boBnkCharge"));
-			pstmt.setString(11, borrowData.get("boBalanceBefore"));
-			pstmt.setString(12, borrowData.get("boBalanceAfter"));
-			pstmt.setString(13, borrowData.get("boExactTk"));
+			pstmt.setString(11, UnitConverter.addThousandSeparator(borrowData.get("boBalanceBefore")));
+			pstmt.setString(12, UnitConverter.addThousandSeparator(borrowData.get("boBalanceAfter")));
+			pstmt.setString(13, UnitConverter.addThousandSeparator(borrowData.get("boExactTk")));
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {

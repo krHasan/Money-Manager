@@ -1,6 +1,7 @@
 package tableAndgraph;
 
 import javafx.beans.property.SimpleStringProperty;
+import system.UnitConverter;
 
 public class BorrowTableDataModel {
 	
@@ -11,7 +12,7 @@ public class BorrowTableDataModel {
     public BorrowTableDataModel(String Date, String Whom, String ExactTk) {
     	this.boDate = new SimpleStringProperty(Date);
         this.boWhom = new SimpleStringProperty(Whom);
-        this.boExactTk = new SimpleStringProperty(ExactTk);
+        this.boExactTk = new SimpleStringProperty(UnitConverter.addThousandSeparator(ExactTk));
     }
 
     

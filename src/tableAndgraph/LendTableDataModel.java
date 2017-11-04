@@ -1,6 +1,7 @@
 package tableAndgraph;
 
 import javafx.beans.property.SimpleStringProperty;
+import system.UnitConverter;
 
 public class LendTableDataModel {
 	
@@ -11,7 +12,7 @@ public class LendTableDataModel {
     public LendTableDataModel(String Date, String Whom, String ExactTk) {
     	this.leDate = new SimpleStringProperty(Date);
         this.leWhom = new SimpleStringProperty(Whom);
-        this.leExactTk = new SimpleStringProperty(ExactTk);
+        this.leExactTk = new SimpleStringProperty(UnitConverter.addThousandSeparator(ExactTk));
     }
 
     

@@ -1,5 +1,7 @@
 package system;
 
+import java.text.DecimalFormat;
+
 import database.DatabaseConnection;
 
 public class UnitConverter extends DatabaseConnection {
@@ -34,10 +36,30 @@ public class UnitConverter extends DatabaseConnection {
 	}
 	
 	
+	public static String addThousandSeparator(String amount) {
+		DecimalFormat format = new DecimalFormat("###,###.##");
+		try {
+			return format.format(stringToDouble(amount));
+		} catch (Exception e) {
+			return amount;
+		}
+	}
+	
+	
+	public static String removeThousandSeparator(String amount) {
+		return amount.replace(",", "");
+	}
+	
+	
 //	public static void main(String[] args) {
-//		UnitConverter access = new UnitConverter();
-//		System.out.println(access.longToDouble(1909));
-//		System.out.println(access.doubleTolong(12.89));
+//		System.out.println(longToDouble(1909));
+//		System.out.println(doubleTolong(12.89));
+//		System.out.println(addThousandSeparator("9999999"));
+//		System.out.println(removeThousandSeparator(addThousandSeparator("9999999")));
+//		System.out.println(addTSwithTKSign("9999999.99"));
+//		System.out.println(addTSwithTKSign(addThousandSeparator("9999999")));
+//		System.out.println(addTSwithDollerSign("9999999.99"));
+//		System.out.println(addTSwithDollerSign(addThousandSeparator("9999999")));
 //	}
 	
 }

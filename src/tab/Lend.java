@@ -48,12 +48,12 @@ public class Lend extends DatabaseConnection {
 			pstmt.setString(5, LendData.get("leType"));
 			pstmt.setString(6, LendData.get("leMethod"));
 			pstmt.setString(7, LendData.get("leWhom"));
-			pstmt.setString(8, LendData.get("leTk"));
+			pstmt.setString(8, UnitConverter.addThousandSeparator(LendData.get("leTk")));
 			pstmt.setString(9, LendData.get("leNature"));
 			pstmt.setString(10, LendData.get("leBnkCharge"));
-			pstmt.setString(11, LendData.get("leBalanceBefore"));
-			pstmt.setString(12, LendData.get("leBalanceAfter"));
-			pstmt.setString(13, LendData.get("leExactTk"));
+			pstmt.setString(11, UnitConverter.addThousandSeparator(LendData.get("leBalanceBefore")));
+			pstmt.setString(12, UnitConverter.addThousandSeparator(LendData.get("leBalanceAfter")));
+			pstmt.setString(13, UnitConverter.addThousandSeparator(LendData.get("leExactTk")));
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {

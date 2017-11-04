@@ -7,6 +7,7 @@ import operation.ComboboxList;
 import operation.GlobalId;
 import system.DateAndClock;
 import system.UnitConverter;
+import tab.Bkash;
 import tab.Borrow;
 import tab.Lend;
 
@@ -53,17 +54,30 @@ public class MakeATransactionModel extends DateAndClock {
 		long amountlong = UnitConverter.stringToLong(amount);
 		long charge = new BankIssue().bKashChargeCalculate(amountlong, nature);
 		long dbBkashBalance = currentbKashBalance();
-		String newBalance = UnitConverter.longToString((amountlong-charge)+dbBkashBalance);
-		return newBalance;
+		
+		if (nature.equals("Cash In")) {
+			String newBalance = UnitConverter.longToString(dbBkashBalance+(amountlong-charge));
+			return newBalance;
+		} else {
+			String newBalance = UnitConverter.longToString(dbBkashBalance-(amountlong+charge));
+			return newBalance;
+		}
 	}
 	
-	
+
 	public String updatedRocketBalance(String amount, String method, String nature) {
 		long amountlong = UnitConverter.stringToLong(amount);
 		long charge = new BankIssue().rocketChargeCalculate(amountlong, method, nature);
 		long dbRocketBalance = currentRocketBalance();
-		String newBalance = UnitConverter.longToString((amountlong-charge)+dbRocketBalance);
-		return newBalance;
+		
+		if (method.equals("Cash In")) {
+			String newBalance = UnitConverter.longToString(dbRocketBalance+(amountlong-charge));
+			return newBalance;
+		} else {
+			String newBalance = UnitConverter.longToString(dbRocketBalance-(amountlong+charge));
+			return newBalance;
+		}
+		
 	}
 	
 	
@@ -157,38 +171,38 @@ public class MakeATransactionModel extends DateAndClock {
 	}
 	
 	
-	public String boBkBalanceAfter(String amountWithCharge, String bnkCharge, String borrowType) {
-		if (borrowType.equals("Money Take")) {
-			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
-			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
-			long amountWithoutCharge = (amountWithChargeL - bnkChargeL);
-			long dbBkBalance = currentbKashBalance();
-			return UnitConverter.longToString(dbBkBalance + amountWithoutCharge);
-		} else {
-			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
-			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
-			long amountWithoutCharge = (amountWithChargeL + bnkChargeL);
-			long dbBkBalance = currentbKashBalance();
-			return UnitConverter.longToString(dbBkBalance - amountWithoutCharge);
-		}
-	}
-	
-	
-	public String boRocBalanceAfter(String amountWithCharge, String bnkCharge, String borrowType) {
-		if (borrowType.equals("Money Take")) {
-			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
-			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
-			long amountWithoutCharge = (amountWithChargeL - bnkChargeL);
-			long dbRocBalance = currentRocketBalance();
-			return UnitConverter.longToString(dbRocBalance + amountWithoutCharge);
-		} else {
-			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
-			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
-			long amountWithoutCharge = (amountWithChargeL + bnkChargeL);
-			long dbRocBalance = currentRocketBalance();
-			return UnitConverter.longToString(dbRocBalance - amountWithoutCharge);
-		}
-	}
+//	public String boBkBalanceAfter(String amountWithCharge, String bnkCharge, String borrowType) {
+//		if (borrowType.equals("Money Take")) {
+//			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
+//			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
+//			long amountWithoutCharge = (amountWithChargeL - bnkChargeL);
+//			long dbBkBalance = currentbKashBalance();
+//			return UnitConverter.longToString(dbBkBalance + amountWithoutCharge);
+//		} else {
+//			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
+//			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
+//			long amountWithoutCharge = (amountWithChargeL + bnkChargeL);
+//			long dbBkBalance = currentbKashBalance();
+//			return UnitConverter.longToString(dbBkBalance - amountWithoutCharge);
+//		}
+//	}
+//	
+//	
+//	public String boRocBalanceAfter(String amountWithCharge, String bnkCharge, String borrowType) {
+//		if (borrowType.equals("Money Take")) {
+//			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
+//			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
+//			long amountWithoutCharge = (amountWithChargeL - bnkChargeL);
+//			long dbRocBalance = currentRocketBalance();
+//			return UnitConverter.longToString(dbRocBalance + amountWithoutCharge);
+//		} else {
+//			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
+//			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
+//			long amountWithoutCharge = (amountWithChargeL + bnkChargeL);
+//			long dbRocBalance = currentRocketBalance();
+//			return UnitConverter.longToString(dbRocBalance - amountWithoutCharge);
+//		}
+//	}
 	
 	
 	public String updatedTotalBorrowTk(String amountToAdd, String borrowType) {
@@ -244,38 +258,38 @@ public class MakeATransactionModel extends DateAndClock {
 	}
 	
 	
-	public String leBkBalanceAfter(String amountWithCharge, String bnkCharge, String LendType) {
-		if (LendType.equals("Give Money")) {
-			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
-			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
-			long amountWithoutCharge = (amountWithChargeL + bnkChargeL);
-			long dbBkBalance = currentbKashBalance();
-			return UnitConverter.longToString(dbBkBalance - amountWithoutCharge);
-		} else {
-			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
-			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
-			long amountWithoutCharge = (amountWithChargeL - bnkChargeL);
-			long dbBkBalance = currentbKashBalance();
-			return UnitConverter.longToString(dbBkBalance + amountWithoutCharge);
-		}
-	}
+//	public String leBkBalanceAfter(String amountWithCharge, String bnkCharge, String LendType) {
+//		if (LendType.equals("Give Money")) {
+//			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
+//			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
+//			long amountWithoutCharge = (amountWithChargeL + bnkChargeL);
+//			long dbBkBalance = currentbKashBalance();
+//			return UnitConverter.longToString(dbBkBalance - amountWithoutCharge);
+//		} else {
+//			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
+//			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
+//			long amountWithoutCharge = (amountWithChargeL - bnkChargeL);
+//			long dbBkBalance = currentbKashBalance();
+//			return UnitConverter.longToString(dbBkBalance + amountWithoutCharge);
+//		}
+//	}
 	
 	
-	public String leRocBalanceAfter(String amountWithCharge, String bnkCharge, String LendType) {
-		if (LendType.equals("Give Money")) {
-			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
-			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
-			long amountWithoutCharge = (amountWithChargeL + bnkChargeL);
-			long dbRocBalance = currentRocketBalance();
-			return UnitConverter.longToString(dbRocBalance - amountWithoutCharge);
-		} else {
-			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
-			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
-			long amountWithoutCharge = (amountWithChargeL - bnkChargeL);
-			long dbRocBalance = currentRocketBalance();
-			return UnitConverter.longToString(dbRocBalance + amountWithoutCharge);
-		}
-	}
+//	public String leRocBalanceAfter(String amountWithCharge, String bnkCharge, String LendType) {
+//		if (LendType.equals("Give Money")) {
+//			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
+//			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
+//			long amountWithoutCharge = (amountWithChargeL + bnkChargeL);
+//			long dbRocBalance = currentRocketBalance();
+//			return UnitConverter.longToString(dbRocBalance - amountWithoutCharge);
+//		} else {
+//			long amountWithChargeL = UnitConverter.stringToLong(amountWithCharge);
+//			long bnkChargeL = UnitConverter.stringToLong(bnkCharge);
+//			long amountWithoutCharge = (amountWithChargeL - bnkChargeL);
+//			long dbRocBalance = currentRocketBalance();
+//			return UnitConverter.longToString(dbRocBalance + amountWithoutCharge);
+//		}
+//	}
 	
 	
 	public String updatedTotalLendTk(String amountToAdd, String LendType) {
@@ -315,6 +329,46 @@ public class MakeATransactionModel extends DateAndClock {
 ////////////////////////////////////////////      Bank Function  ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
 
+	public ObservableList<String> bnkTransactionType() {
+		ObservableList<String> list = FXCollections.observableArrayList("Personal","Outside");
+		return list;
+	}
+	
+	
+	public ObservableList<String> bnkAmountNature() {
+		ObservableList<String> list = FXCollections.observableArrayList("Credit","Debit");
+		return list;
+	}
+
+	
+	public String getbkAccountBalance() {
+		return UnitConverter.longToString(currentbKashBalance());
+	}
+	
+	
+	public String getRocAccountBalance() {
+		return UnitConverter.longToString(currentRocketBalance());
+	}
+	
+	
+	public String getPerAccountBalance() {
+		return UnitConverter.longToString(currentPersonalBalance());
+	}
+	
+	
+	public String updatedPersonalBalance(String amount, String nature) {
+		long amountlong = UnitConverter.stringToLong(amount);
+		long dbPersonalBal = currentPersonalBalance();
+		
+		if (nature.equals("Credit")) {
+			String newBalance = UnitConverter.longToString(dbPersonalBal+amountlong);
+			return newBalance;
+		} else {
+			String newBalance = UnitConverter.longToString(dbPersonalBal-amountlong);
+			return newBalance;
+		}
+		
+	}
 	
 //	public static void main(String[] args) {
 //		MakeATransactionModel access = new MakeATransactionModel();
