@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-
-import javax.swing.LayoutFocusTraversalPolicy;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,7 +29,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.MakeATransactionModel;
-import operation.BankIssue;
 import operation.GoToOperation;
 import system.DateFormatManager;
 import system.UnitConverter;
@@ -397,7 +396,34 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	public void initialize() {
-		
+		tabTimer();
+	}
+	
+	
+	public void tabTimer() {
+		try {
+			new Timer().schedule(
+				new TimerTask() {
+					@Override
+					public void run() {
+						showTab();
+					}
+				}, 100);
+		} catch (Exception e) {}
+	}
+	public void showTab() {
+		try {
+			String tabName = (new TabAccess()).getTabName();
+			if (tabName.equals("tabExpense")) {
+				tabPane.getSelectionModel().select(tabExpense);
+			} else if (tabName.equals("tabLend")){
+				tabPane.getSelectionModel().select(tabLend);
+			} else if (tabName.equals("tabBank")) {
+				tabPane.getSelectionModel().select(tabBank);
+			} else {
+				tabPane.getSelectionModel().select(tabGetMoney);			
+			}
+		} catch (Exception e) {}
 	}
 	
 	
@@ -956,9 +982,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void boInitialize() {
 		selectedTabName = "Borrow";
-		lenddateDate.setConverter(formatManager);
-		lenddateDate.setValue(date);
-		showBorroTblData();
+		try {
+			lenddateDate.setConverter(formatManager);
+			lenddateDate.setValue(date);
+			showBorroTblData();
+		} catch (Exception e) {}
 		showWalletBalance();
 		showTotalBorrowTk();
 		boLoadType();
@@ -1048,8 +1076,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@SuppressWarnings("unchecked")
 	private void showBorroTblData() {
-		lendlblTableHeading.setText("Money Borrow History");
 		try {
+			lendlblTableHeading.setText("Money Borrow History");
 			lendTblColumnName.setCellValueFactory(new PropertyValueFactory<>("boWhom"));
 			lendTblColumnDate.setCellValueFactory(new PropertyValueFactory<>("boDate"));
 			lendTblColumnAmount.setCellValueFactory(new PropertyValueFactory<>("boExactTk"));
@@ -1871,12 +1899,15 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("boTk", botxtAmountWithCharge.getText());
 							boleData.put("boNature", "None");
 							boleData.put("boBnkCharge", boBankChargeShow());
-							boleData.put("boBalanceBefore", longToString(currentbKashBalance()));
-							boleData.put("boBalanceAfter", updatedbKashBalance(botxtAmountWithCharge.getText(), "Cash In"));
+							boleData.put("boBalanceBefore", longToString(totalBorrowTk()));
+							boleData.put("boBalanceAfter", updatedTotalBorrowTk(botxtExactAmount.getText(), "Money Take"));
 							boleData.put("boExactTk", botxtExactAmount.getText());
+							boleData.put("bkBalanceBefore", longToString(currentbKashBalance()));
+							boleData.put("bkBalanceAfter", updatedbKashBalance(botxtAmountWithCharge.getText(), "Cash In"));
 							
 							(new Borrow()).saveBorrowData(boleData);
 							(new Borrow()).addBorrowSummaryData(boleData);
+							(new Bkash()).saveBorrowBkashData(boleData);
 							setCurrentbKashBalance(updatedbKashBalance(botxtAmountWithCharge.getText(), "Cash In"));
 //							setCurrentbKashBalance(boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Money Take"));
 							setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(), "Money Take"));
@@ -1912,12 +1943,15 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("boTk", botxtAmountWithCharge.getText());
 							boleData.put("boNature", boGetSelectedrbtnName());
 							boleData.put("boBnkCharge", boBankChargeShow());
-							boleData.put("boBalanceBefore", longToString(currentRocketBalance()));
-							boleData.put("boBalanceAfter", updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash In", boGetSelectedrbtnName()));
+							boleData.put("boBalanceBefore", longToString(totalBorrowTk()));
+							boleData.put("boBalanceAfter", updatedTotalBorrowTk(botxtExactAmount.getText(), "Money Take"));
 							boleData.put("boExactTk", botxtExactAmount.getText());
+							boleData.put("rocBalanceBefore", longToString(currentRocketBalance()));
+							boleData.put("rocBalanceAfter", updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash In", boGetSelectedrbtnName()));
 							
 							(new Borrow()).saveBorrowData(boleData);
 							(new Borrow()).addBorrowSummaryData(boleData);
+							(new Rocket()).saveBorrowRocketData(boleData);
 							setCurrentRocketBalance(updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash In", boGetSelectedrbtnName()));
 //							setCurrentRocketBalance(boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Money Take"));
 							setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(), "Money Take"));
@@ -1952,12 +1986,15 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("boTk", botxtAmountWithCharge.getText());
 							boleData.put("boNature", "None");
 							boleData.put("boBnkCharge", "None");
-							boleData.put("boBalanceBefore", longToString(currentWalletBalance()));
-							boleData.put("boBalanceAfter", gmWalletBalanceAfter(botxtAmountWithCharge.getText()));
+							boleData.put("boBalanceBefore", longToString(totalBorrowTk()));
+							boleData.put("boBalanceAfter", updatedTotalBorrowTk(botxtAmountWithCharge.getText(), "Money Take"));
 							boleData.put("boExactTk", botxtAmountWithCharge.getText());
+							boleData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
+							boleData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(botxtAmountWithCharge.getText()));
 							
 							(new Borrow()).saveBorrowData(boleData);
 							(new Borrow()).addBorrowSummaryData(boleData);
+							(new GetMoney()).saveBorrowGMData(boleData);
 							setCurrentWalletBalance(gmWalletBalanceAfter(botxtAmountWithCharge.getText()));
 							setTotalBorrowTk(updatedTotalBorrowTk(botxtAmountWithCharge.getText(), "Money Take"));
 							boInitialize();
@@ -1996,9 +2033,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 								boleData.put("boTk", botxtAmountWithCharge.getText());
 								boleData.put("boNature", boGetSelectedrbtnName());
 								boleData.put("boBnkCharge", boBankChargeShow());
-								boleData.put("boBalanceBefore", longToString(currentbKashBalance()));
-								boleData.put("boBalanceAfter", updatedbKashBalance(botxtAmountWithCharge.getText(), boGetSelectedrbtnName()));
+								boleData.put("boBalanceBefore", longToString(totalBorrowTk()));
+								boleData.put("boBalanceAfter", updatedTotalBorrowTk(botxtExactAmount.getText(),"Return Borrowed Money"));
 								boleData.put("boExactTk", botxtExactAmount.getText());
+								boleData.put("bkBalanceBefore", longToString(currentbKashBalance()));
+								boleData.put("bkBalanceAfter", updatedbKashBalance(botxtAmountWithCharge.getText(), boGetSelectedrbtnName()));
 								
 								(new Borrow()).saveBorrowData(boleData);
 								if (boisTypedAmountLessThanBorrowed(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
@@ -2006,6 +2045,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 								} else {
 									(new Borrow()).deleteBorrowSummaryData(boleData);
 								}
+								(new Bkash()).saveBorrowBkashData(boleData);
 								setCurrentbKashBalance(updatedbKashBalance(botxtAmountWithCharge.getText(), boGetSelectedrbtnName()));
 //								setCurrentbKashBalance(boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Return Borrowed Money"));
 								setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(),"Return Borrowed Money"));
@@ -2051,9 +2091,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 								boleData.put("boTk", botxtAmountWithCharge.getText());
 								boleData.put("boNature", boGetSelectedrbtnName());
 								boleData.put("boBnkCharge", boBankChargeShow());
-								boleData.put("boBalanceBefore", longToString(currentRocketBalance()));
-								boleData.put("boBalanceAfter", updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash Out", boGetSelectedrbtnName()));
+								boleData.put("boBalanceBefore", longToString(totalBorrowTk()));
+								boleData.put("boBalanceAfter", updatedTotalBorrowTk(botxtExactAmount.getText(),"Return Borrowed Money"));
 								boleData.put("boExactTk", botxtExactAmount.getText());
+								boleData.put("rocBalanceBefore", longToString(currentRocketBalance()));
+								boleData.put("rocBalanceAfter", updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash Out", boGetSelectedrbtnName()));
 								
 								(new Borrow()).saveBorrowData(boleData);
 								if (boisTypedAmountLessThanBorrowed(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
@@ -2061,6 +2103,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 								} else {
 									(new Borrow()).deleteBorrowSummaryData(boleData);
 								}
+								(new Rocket()).saveBorrowRocketData(boleData);
 								setCurrentRocketBalance(updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash Out", boGetSelectedrbtnName()));
 //								setCurrentRocketBalance(boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Return Borrowed Money"));
 								setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(),"Return Borrowed Money"));
@@ -2106,9 +2149,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 								boleData.put("boTk", botxtAmountWithCharge.getText());
 								boleData.put("boNature", "None");
 								boleData.put("boBnkCharge", "None");
-								boleData.put("boBalanceBefore", longToString(currentWalletBalance()));
-								boleData.put("boBalanceAfter", exWalletBalanceAfter(botxtAmountWithCharge.getText()));
+								boleData.put("boBalanceBefore", longToString(totalBorrowTk()));
+								boleData.put("boBalanceAfter", updatedTotalBorrowTk(botxtAmountWithCharge.getText(),"Return Borrowed Money"));
 								boleData.put("boExactTk", botxtAmountWithCharge.getText());
+								boleData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
+								boleData.put("gmWalletBalanceAfter", exWalletBalanceAfter(botxtAmountWithCharge.getText()));
 								
 								(new Borrow()).saveBorrowData(boleData);
 								if (boisTypedAmountLessThanBorrowed(botxtAmountWithCharge.getText(), bocmboRepaidPerson.getValue())) {
@@ -2116,6 +2161,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 								} else {
 									(new Borrow()).deleteBorrowSummaryData(boleData);
 								}
+								(new GetMoney()).saveBorrowGMData(boleData);
 								setCurrentWalletBalance(exWalletBalanceAfter(botxtAmountWithCharge.getText()));
 								setTotalBorrowTk(updatedTotalBorrowTk(botxtAmountWithCharge.getText(),"Return Borrowed Money"));
 								boInitialize();
@@ -2166,12 +2212,15 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("leTk", letxtAmountWithCharge.getText());
 							boleData.put("leNature", leGetSelectedrbtnName());
 							boleData.put("leBnkCharge", leBankChargeShow());
-							boleData.put("leBalanceBefore", longToString(currentbKashBalance()));
-							boleData.put("leBalanceAfter", updatedbKashBalance(letxtAmountWithCharge.getText(), leGetSelectedrbtnName()));
+							boleData.put("leBalanceBefore", longToString(totalLendTk()));
+							boleData.put("leBalanceAfter", updatedTotalLendTk(letxtExactAmount.getText(), "Give Money"));
 							boleData.put("leExactTk", letxtExactAmount.getText());
+							boleData.put("bkBalanceBefore", longToString(currentbKashBalance()));
+							boleData.put("bkBalanceAfter", updatedbKashBalance(letxtAmountWithCharge.getText(), leGetSelectedrbtnName()));
 							
 							(new Lend()).saveLendData(boleData);
 							(new Lend()).addLendSummaryData(boleData);
+							(new Bkash()).saveLendBkashData(boleData);
 							setCurrentbKashBalance(updatedbKashBalance(letxtAmountWithCharge.getText(), leGetSelectedrbtnName()));
 //							setCurrentbKashBalance(leBkBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Give Money"));
 							setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(), "Give Money"));
@@ -2206,12 +2255,15 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("leTk", letxtAmountWithCharge.getText());
 							boleData.put("leNature", leGetSelectedrbtnName());
 							boleData.put("leBnkCharge", leBankChargeShow());
-							boleData.put("leBalanceBefore", longToString(currentRocketBalance()));
-							boleData.put("leBalanceAfter", updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash Out", leGetSelectedrbtnName()));
+							boleData.put("leBalanceBefore", longToString(totalLendTk()));
+							boleData.put("leBalanceAfter", updatedTotalLendTk(letxtExactAmount.getText(), "Give Money"));
 							boleData.put("leExactTk", letxtExactAmount.getText());
+							boleData.put("rocBalanceBefore", longToString(currentRocketBalance()));
+							boleData.put("rocBalanceAfter", updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash Out", leGetSelectedrbtnName()));
 							
 							(new Lend()).saveLendData(boleData);
 							(new Lend()).addLendSummaryData(boleData);
+							(new Rocket()).saveLendRocketData(boleData);
 							setCurrentRocketBalance(updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash Out", leGetSelectedrbtnName()));
 //							setCurrentRocketBalance(leRocBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Give Money"));
 							setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(), "Give Money"));
@@ -2246,12 +2298,15 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("leTk", letxtAmountWithCharge.getText());
 							boleData.put("leNature", "None");
 							boleData.put("leBnkCharge", "None");
-							boleData.put("leBalanceBefore", longToString(currentWalletBalance()));
-							boleData.put("leBalanceAfter", exWalletBalanceAfter(letxtAmountWithCharge.getText()));
+							boleData.put("leBalanceBefore", longToString(totalLendTk()));
+							boleData.put("leBalanceAfter", updatedTotalLendTk(letxtAmountWithCharge.getText(), "Give Money"));
 							boleData.put("leExactTk", letxtAmountWithCharge.getText());
+							boleData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
+							boleData.put("gmWalletBalanceAfter", exWalletBalanceAfter(letxtAmountWithCharge.getText()));
 							
 							(new Lend()).saveLendData(boleData);
 							(new Lend()).addLendSummaryData(boleData);
+							(new GetMoney()).saveLendGMData(boleData);
 							setCurrentWalletBalance(exWalletBalanceAfter(letxtAmountWithCharge.getText()));
 							setTotalLendTk(updatedTotalLendTk(letxtAmountWithCharge.getText(), "Give Money"));
 							leInitialize();
@@ -2290,9 +2345,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 								boleData.put("leTk", letxtAmountWithCharge.getText());
 								boleData.put("leNature", leGetSelectedrbtnName());
 								boleData.put("leBnkCharge", leBankChargeShow());
-								boleData.put("leBalanceBefore", longToString(currentbKashBalance()));
-								boleData.put("leBalanceAfter", updatedbKashBalance(letxtAmountWithCharge.getText(), "Cash In"));
+								boleData.put("leBalanceBefore", longToString(totalLendTk()));
+								boleData.put("leBalanceAfter", updatedTotalLendTk(letxtExactAmount.getText(),"Take Back Lended Money"));
 								boleData.put("leExactTk", letxtExactAmount.getText());
+								boleData.put("bkBalanceBefore", longToString(currentbKashBalance()));
+								boleData.put("bkBalanceAfter", updatedbKashBalance(letxtAmountWithCharge.getText(), "Cash In"));
 								
 								(new Lend()).saveLendData(boleData);
 								if (leisTypedAmountLessThanLended(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
@@ -2300,6 +2357,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 								} else {
 									(new Lend()).deleteLendSummaryData(boleData);
 								}
+								(new Bkash()).saveLendBkashData(boleData);
 								setCurrentbKashBalance(updatedbKashBalance(letxtAmountWithCharge.getText(), "Cash In"));
 //								setCurrentbKashBalance(leBkBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Take Back Lended Money"));
 								setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(),"Take Back Lended Money"));
@@ -2345,9 +2403,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 								boleData.put("leTk", letxtAmountWithCharge.getText());
 								boleData.put("leNature", leGetSelectedrbtnName());
 								boleData.put("leBnkCharge", leBankChargeShow());
-								boleData.put("leBalanceBefore", longToString(currentRocketBalance()));
-								boleData.put("leBalanceAfter", updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash In", leGetSelectedrbtnName()));
+								boleData.put("leBalanceBefore", longToString(totalLendTk()));
+								boleData.put("leBalanceAfter", updatedTotalLendTk(letxtExactAmount.getText(),"Take Back Lended Money"));
 								boleData.put("leExactTk", letxtExactAmount.getText());
+								boleData.put("rocBalanceBefore", longToString(currentRocketBalance()));
+								boleData.put("rocBalanceAfter", updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash In", leGetSelectedrbtnName()));
 								
 								(new Lend()).saveLendData(boleData);
 								if (leisTypedAmountLessThanLended(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
@@ -2355,6 +2415,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 								} else {
 									(new Lend()).deleteLendSummaryData(boleData);
 								}
+								(new Rocket()).saveLendRocketData(boleData);
 								setCurrentRocketBalance(updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash In", leGetSelectedrbtnName()));
 //								setCurrentRocketBalance(leRocBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Take Back Lended Money"));
 								setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(),"Take Back Lended Money"));
@@ -2400,9 +2461,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 								boleData.put("leTk", letxtAmountWithCharge.getText());
 								boleData.put("leNature", "None");
 								boleData.put("leBnkCharge", "None");
-								boleData.put("leBalanceBefore", longToString(currentWalletBalance()));
-								boleData.put("leBalanceAfter", gmWalletBalanceAfter(letxtAmountWithCharge.getText()));
+								boleData.put("leBalanceBefore", longToString(totalLendTk()));
+								boleData.put("leBalanceAfter", updatedTotalLendTk(letxtAmountWithCharge.getText(),"Take Back Lended Money"));
 								boleData.put("leExactTk", letxtAmountWithCharge.getText());
+								boleData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
+								boleData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(letxtAmountWithCharge.getText()));
 								
 								(new Lend()).saveLendData(boleData);
 								if (leisTypedAmountLessThanLended(letxtAmountWithCharge.getText(), lecmboRepaidPerson.getValue())) {
@@ -2410,6 +2473,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 								} else {
 									(new Lend()).deleteLendSummaryData(boleData);
 								}
+								(new GetMoney()).saveLendGMData(boleData);
 								setCurrentWalletBalance(gmWalletBalanceAfter(letxtAmountWithCharge.getText()));
 								setTotalLendTk(updatedTotalLendTk(letxtAmountWithCharge.getText(),"Take Back Lended Money"));
 								leInitialize();
@@ -2468,8 +2532,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void bkInitialize() {
 		bnkSelectedTabName = "bKash";
-		bnkdateDate.setConverter(formatManager);
-		bnkdateDate.setValue(date);
+		try {
+			bnkdateDate.setConverter(formatManager);
+			bnkdateDate.setValue(date);
+		} catch (Exception e) {}
 		bkLoadType();
 		bkLoadNature();
 		bkAccountBalanceShow();
@@ -3284,6 +3350,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 					setCurrentbKashBalance(updatedbKashBalance(bktxtAmount.getText(), bkGetSelectedRbtn()));
 					if (bkcmboTransactionType.getValue().equals("Personal")) {
 						if (bkcmboAmountNature.getValue().equals("Debit")) {
+							bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
+							bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(bktxtAmount.getText()));
+							(new GetMoney()).saveBnkBkashData(bnkData);
 							setCurrentWalletBalance(gmWalletBalanceAfter(bktxtAmount.getText()));
 						}
 					}
@@ -3332,17 +3401,20 @@ public class MakeATransactionController extends MakeATransactionModel {
 					bnkData.put("rocAmount", roctxtAmount.getText());
 					bnkData.put("rocBnkCharge", rocBankChargeShow());
 					
-					if (bkcmboTransactionType.getValue().equals("Personal")) {
-						if (bkcmboAmountNature.getValue().equals("Credit")) {
+					if (roccmboTransactionType.getValue().equals("Personal")) {
+						if (roccmboAmountNature.getValue().equals("Credit")) {
 							bnkData.put("rocBalanceAfter", updatedRocketBalance(roctxtAmount.getText(), "Cash In", rocGetSelectedRbtn()));
 							setCurrentRocketBalance(updatedRocketBalance(roctxtAmount.getText(), "Cash In", rocGetSelectedRbtn()));
 						} else {
 							bnkData.put("rocBalanceAfter", updatedRocketBalance(roctxtAmount.getText(), "Cash Out", rocGetSelectedRbtn()));
 							setCurrentRocketBalance(updatedRocketBalance(roctxtAmount.getText(), "Cash Out", rocGetSelectedRbtn()));
+							bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
+							bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(roctxtAmount.getText()));
+							(new GetMoney()).saveBnkRocketData(bnkData);
 							setCurrentWalletBalance(gmWalletBalanceAfter(roctxtAmount.getText()));
 						}
 					} else {
-						if (bkcmboAmountNature.getValue().equals("Credit")) {
+						if (roccmboAmountNature.getValue().equals("Credit")) {
 							bnkData.put("rocBalanceAfter", updatedRocketBalance(roctxtAmount.getText(), "Cash In", rocGetSelectedRbtn()));
 							setCurrentRocketBalance(updatedRocketBalance(roctxtAmount.getText(), "Cash In", rocGetSelectedRbtn()));
 						} else {
@@ -3385,9 +3457,15 @@ public class MakeATransactionController extends MakeATransactionModel {
 				
 				if (percmboAmountNature.getValue().equals("Credit")) {
 					bnkData.put("perBalanceAfter", updatedPersonalBalance(pertxtAmount.getText(), "Credit"));
+					bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
+					bnkData.put("gmWalletBalanceAfter", exWalletBalanceAfter(pertxtAmount.getText()));
+					(new GetMoney()).saveBnkPersonalData(bnkData);
 					setCurrentWalletBalance(exWalletBalanceAfter(pertxtAmount.getText()));
 				} else {
 					bnkData.put("perBalanceAfter", updatedPersonalBalance(pertxtAmount.getText(), "Debit"));
+					bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
+					bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(pertxtAmount.getText()));
+					(new GetMoney()).saveBnkPersonalData(bnkData);
 					setCurrentWalletBalance(gmWalletBalanceAfter(pertxtAmount.getText()));
 				}
 				(new Personal()).saveBnkPersonalData(bnkData);

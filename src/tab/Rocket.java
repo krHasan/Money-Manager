@@ -101,4 +101,63 @@ public class Rocket  extends BalanceStatus {
 	}
 	
 	
+	public void saveBorrowRocketData(Map<String, String> boleData) {
+		
+		String sql = "INSERT INTO Rocket (globalID, rocTime, rocDate, rocMonth, rocType, rocNature, rocAmount, \n"
+				+ "rocBnkCharge, rocBalanceBefore, rocBalanceAfter) \n"
+				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+		
+		int globalId = GlobalId.getGlobalid();
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setLong(1,globalId);
+			pstmt.setString(2, boleData.get("boTime"));
+			pstmt.setString(3, boleData.get("boDate"));
+			pstmt.setString(4, boleData.get("boMonth"));
+			pstmt.setString(5, "Data form Borrow");
+			pstmt.setString(6, boleData.get("boNature"));
+			pstmt.setString(7, UnitConverter.addThousandSeparator(boleData.get("boTk")));
+			pstmt.setString(8, boleData.get("boBnkCharge"));
+			pstmt.setString(9, UnitConverter.addThousandSeparator(boleData.get("rocBalanceBefore")));
+			pstmt.setString(10, UnitConverter.addThousandSeparator(boleData.get("rocBalanceAfter")));
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void saveLendRocketData(Map<String, String> boleData) {
+		
+		String sql = "INSERT INTO Rocket (globalID, rocTime, rocDate, rocMonth, rocType, rocNature, rocAmount, \n"
+				+ "rocBnkCharge, rocBalanceBefore, rocBalanceAfter) \n"
+				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+		
+		int globalId = GlobalId.getGlobalid();
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setLong(1,globalId);
+			pstmt.setString(2, boleData.get("leTime"));
+			pstmt.setString(3, boleData.get("leDate"));
+			pstmt.setString(4, boleData.get("leMonth"));
+			pstmt.setString(5, "Data form Lend");
+			pstmt.setString(6, boleData.get("leNature"));
+			pstmt.setString(7, UnitConverter.addThousandSeparator(boleData.get("leTk")));
+			pstmt.setString(8, boleData.get("leBnkCharge"));
+			pstmt.setString(9, UnitConverter.addThousandSeparator(boleData.get("rocBalanceBefore")));
+			pstmt.setString(10, UnitConverter.addThousandSeparator(boleData.get("rocBalanceAfter")));
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

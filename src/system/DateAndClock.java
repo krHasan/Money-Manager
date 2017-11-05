@@ -1,6 +1,7 @@
 package system;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
@@ -46,13 +47,15 @@ public class DateAndClock extends UserBasic {
 		}
     	
 //		check date is before or after or equal
-    	if (DbDate.compareTo(todayDate) > 0) {
-            return false;
-        } else if (DbDate.compareTo(todayDate) < 0) {
-        	return true;
-        } else if (DbDate.compareTo(todayDate) == 0) {
-        	return true;
-        }
+    	try {
+			if (DbDate.compareTo(todayDate) > 0) {
+			    return false;
+			} else if (DbDate.compareTo(todayDate) < 0) {
+				return true;
+			} else if (DbDate.compareTo(todayDate) == 0) {
+				return true;
+			}
+		} catch (Exception e) {}
     	
     	return true;
 	}
@@ -72,6 +75,23 @@ public class DateAndClock extends UserBasic {
     	String thisMonth = monthFormat.format(today.getTime());
 		return thisMonth;
 	}
+	
+	
+	public void updateLastAccessDate() {
+		String sql = "UPDATE Current_Status SET lastAccessDate = ? ";
+		
+//    	get today's date as string
+		DateFormat dateFormat = new SimpleDateFormat((new DateFormatManager()).getDateFormat());
+		String todayDate = dateFormat.format(Calendar.getInstance().getTime());
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, todayDate);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {}
+	}
+	
 	
 //	public static void main(String[] args) {
 //		System.out.println(dateChecker());

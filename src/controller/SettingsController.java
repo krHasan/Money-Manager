@@ -3,6 +3,7 @@ package controller;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -13,9 +14,13 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
+import model.SettingsModel;
+import operation.GoToOperation;
 import tab.TabAccess;
 
-public class SettingsController {
+public class SettingsController extends SettingsModel {
 ///////////////////////////////////////// Settings //////////////////////////////
 	@FXML
 	private TabPane tabPane;
@@ -167,11 +172,11 @@ public class SettingsController {
 	@FXML
 	private Label systemlblRePassword;
 	
-	
+////////////////////// General Function /////////////////////////
 	@FXML
 	public void initialize() {
 		tabTimer();
-	
+		lblUserFullName.setText(getUserFullName());
 	}
 	
 	
@@ -182,8 +187,9 @@ public class SettingsController {
 				public void run() {
 					showTab();
 				}
-			}, 500);
+			}, 100);
 	}
+	
 	public void showTab() {
 		String tabName = (new TabAccess()).getTabName();
 		if (tabName.equals("tabSource")) {
@@ -196,6 +202,152 @@ public class SettingsController {
 			tabPane.getSelectionModel().select(tabBank);			
 		}
 	}
+	
+	
+/////////////////// Menu Function ///////////////////////////
+	
+	@FXML
+	private void mnuCreateSource(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSource");
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	@FXML
+	private void mnuCreateSector(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSector");
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	@FXML
+	private void mnuExit(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		SettingsStage.close();
+	}
+	
+	@FXML
+	private void mnuDashboard(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToDashboard(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	@FXML
+	private void mnuGetMoney(ActionEvent event) {
+		(new TabAccess()).setTabName("tabGetMoney");
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	@FXML
+	private void mnuExpense(ActionEvent event) {
+		(new TabAccess()).setTabName("tabExpense");
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	@FXML
+	private void mnuLend(ActionEvent event) {
+		(new TabAccess()).setTabName("tabLend");
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	@FXML
+	private void mnuBank(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	@FXML
+	private void mnuTransactionHistory(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToTransactionHistory(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	@FXML
+	private void mnuCashCalculate(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToCashCalculate(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	
+///////////////////// Button Function ///////////////////////////
+	@FXML
+	private void btnDashboard(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToDashboard(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	@FXML
+	private void btnMakeATransaction(ActionEvent event) {
+		(new TabAccess()).setTabName("tabGetMoney");
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	@FXML
+	private void btnTransactionHistory(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToTransactionHistory(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	@FXML
+	private void btnSignOut(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSignIn(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.hide();
+	}
+	
+	
+//////////////////////////////////////////// Bank Function  ////////////////////////////////////////////
+//----------------------------------------------------------------------------------------------------//
+	final ToggleGroup bkrbtnGroup = new ToggleGroup();
+	final ToggleGroup rocrbtnGroup = new ToggleGroup();
+	
+	@FXML
+	private void tabBnkInitialize() {
+		bkRbtn();
+	}
+	
+	private void bkRbtn() {
+		if (isbKashActive()) {
+			bnkrbtnbkYes.setToggleGroup(bkrbtnGroup);
+			bnkrbtnbkYes.setSelected(true);
+			bnkrbtnbkYes.setUserData("bkYes");
+
+			bnkrbtnbkNo.setToggleGroup(bkrbtnGroup);
+			bnkrbtnbkNo.setUserData("bkNo");
+		} else {
+			bnkrbtnbkYes.setToggleGroup(bkrbtnGroup);
+			bnkrbtnbkYes.setUserData("bkYes");
+
+			bnkrbtnbkNo.setToggleGroup(bkrbtnGroup);
+			bnkrbtnbkNo.setSelected(true);
+			bnkrbtnbkNo.setUserData("bkNo");
+		}
+		
+	}
+	
+	private void bkisActive() {
+		
+	}
+	
+	
+	
 	
 }
 

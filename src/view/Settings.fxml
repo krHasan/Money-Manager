@@ -21,45 +21,36 @@
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem fx:id="mnuCreateSource" mnemonicParsing="false" text="Create Source" />
-                  <MenuItem fx:id="mnuCreateSector" mnemonicParsing="false" text="Create Sector" />
+                  <MenuItem fx:id="mnuCreateSource" mnemonicParsing="false" onAction="#mnuCreateSource" text="Create Source" />
+                  <MenuItem fx:id="mnuCreateSector" mnemonicParsing="false" onAction="#mnuCreateSector" text="Create Sector" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuExit" mnemonicParsing="false" text="Exit" />
+                  <MenuItem fx:id="mnuExit" mnemonicParsing="false" onAction="#mnuExit" text="Exit" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Operation">
                <items>
-                  <MenuItem fx:id="mnuDashboard" mnemonicParsing="false" text="Dashboard" />
+                  <MenuItem fx:id="mnuDashboard" mnemonicParsing="false" onAction="#mnuDashboard" text="Dashboard" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuGetMoney" mnemonicParsing="false" text="Get Money" />
-                  <MenuItem fx:id="mnuExpense" mnemonicParsing="false" text="Expense" />
-                  <MenuItem fx:id="mnuLend" mnemonicParsing="false" text="Lend" />
-                  <MenuItem fx:id="mnuBank" mnemonicParsing="false" text="Bank" />
+                  <MenuItem fx:id="mnuGetMoney" mnemonicParsing="false" onAction="#mnuGetMoney" text="Get Money" />
+                  <MenuItem fx:id="mnuExpense" mnemonicParsing="false" onAction="#mnuExpense" text="Expense" />
+                  <MenuItem fx:id="mnuLend" mnemonicParsing="false" onAction="#mnuLend" text="Lend" />
+                  <MenuItem fx:id="mnuBank" mnemonicParsing="false" onAction="#mnuBank" text="Bank" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" text="Transaction Hirtory" />
+                  <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" onAction="#mnuTransactionHistory" text="Transaction Hirtory" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuCashCalculate" mnemonicParsing="false" text="Cash Calculate" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Tools">
-               <items>
-                  <MenuItem fx:id="mnuBankSettings" mnemonicParsing="false" text="Bank Settings" />
-                  <MenuItem fx:id="mnuSourceSettings" mnemonicParsing="false" text="Source Settings" />
-                  <MenuItem fx:id="mnuSectorSettings" mnemonicParsing="false" text="Sector Settings" />
-                  <MenuItem fx:id="mnuSystemSettings" mnemonicParsing="false" text="System Settings" />
+                  <MenuItem fx:id="mnuCashCalculate" mnemonicParsing="false" onAction="#mnuCashCalculate" text="Cash Calculate" />
                </items>
             </Menu>
          </menus>
       </MenuBar>
-      <Button fx:id="btnSignOut" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
+      <Button fx:id="btnSignOut" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" text="Khandoker Rakib Hasan" />
-      <Label fx:id="lblLongClock" alignment="CENTER" layoutX="580.0" layoutY="40.0" prefHeight="30.0" prefWidth="200.0" text="Sat, 04-Nov-2017  17:31:23" />
-      <Button fx:id="btnDashboard" layoutX="43.0" layoutY="42.0" mnemonicParsing="false" prefHeight="28.0" text="Dashboard" />
-      <Button fx:id="btnMakeATransaction" layoutX="173.0" layoutY="42.0" mnemonicParsing="false" prefHeight="28.0" text="Make a Transaction" />
-      <Button fx:id="btnTransactionHistory" layoutX="360.0" layoutY="42.0" mnemonicParsing="false" prefHeight="28.0" text="Transaction History" />
+      <Button fx:id="btnDashboard" layoutX="120.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnDashboard" prefHeight="28.0" text="Dashboard" />
+      <Button fx:id="btnMakeATransaction" layoutX="321.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnMakeATransaction" prefHeight="28.0" text="Make a Transaction" />
+      <Button fx:id="btnTransactionHistory" layoutX="554.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnTransactionHistory" prefHeight="28.0" text="Transaction History" />
       <TabPane fx:id="tabPane" layoutY="81.0" prefHeight="470.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="tabBank" text="     Bank     ">
+          <Tab fx:id="tabBank" onSelectionChanged="#tabBnkInitialize" text="     Bank     ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

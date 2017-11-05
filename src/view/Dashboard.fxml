@@ -60,7 +60,7 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnMakeATransaction" layoutX="573.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Make a Transaction" />
+      <Button fx:id="btnMakeATransaction" layoutX="573.0" layoutY="150.0" mnemonicParsing="false" onAction="#goToMakeAtransaction" prefHeight="30.0" prefWidth="150.0" text="Make a Transaction" />
       <Button fx:id="btnCashCalculate" layoutX="573.0" layoutY="190.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Cash Calculate" />
       <Button fx:id="btnAdjustBalance" layoutX="573.0" layoutY="230.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Adjust Balance" />
       <Button fx:id="btnTransactionHistory" layoutX="573.0" layoutY="300.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Transaction History" />

@@ -1,13 +1,17 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
+import model.DashboardModel;
+import tab.TabAccess;
 
-public class DashboardController {
+public class DashboardController extends DashboardModel {
 	@FXML
 	private MenuItem mnuCreateSource;
 	@FXML
@@ -87,4 +91,13 @@ public class DashboardController {
 	@FXML
 	private BarChart chartExpense;
 		
+////////////////////////////////// Function Start //////////////////////////////
+	@FXML
+	private void goToMakeAtransaction(ActionEvent event) {
+		(new TabAccess()).setTabName("tabGetMoney");
+		Stage DashboardStage = (Stage) btnMakeATransaction.getScene().getWindow();
+		goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
+		DashboardStage.hide();
+	}
+	
 }

@@ -99,6 +99,66 @@ public class Bkash extends BalanceStatus {
 	}
 	
 	
+	public void saveBorrowBkashData(Map<String, String> boleData) {
+		String sql = "INSERT INTO bKash (globalID, bkTime, bkDate, bkMonth, bkType, bkNature, bkAmount, \n"
+				+ "bkBnkCharge, bkBalanceBefore, bkBalanceAfter) \n"
+				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+		
+		int globalId = GlobalId.getGlobalid();
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setLong(1,globalId);
+			pstmt.setString(2, boleData.get("boTime"));
+			pstmt.setString(3, boleData.get("boDate"));
+			pstmt.setString(4, boleData.get("boMonth"));
+			pstmt.setString(5, "Data From Borrow");
+			pstmt.setString(6, boleData.get("boNature"));
+			pstmt.setString(7, UnitConverter.addThousandSeparator(boleData.get("boTk")));
+			pstmt.setString(8, boleData.get("boBnkCharge"));
+			pstmt.setString(9, UnitConverter.addThousandSeparator(boleData.get("bkBalanceBefore")));
+			pstmt.setString(10, UnitConverter.addThousandSeparator(boleData.get("bkBalanceAfter")));
+			
+			pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+
+	public void saveLendBkashData(Map<String, String> boleData) {
+		String sql = "INSERT INTO bKash (globalID, bkTime, bkDate, bkMonth, bkType, bkNature, bkAmount, \n"
+				+ "bkBnkCharge, bkBalanceBefore, bkBalanceAfter) \n"
+				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+		
+		int globalId = GlobalId.getGlobalid();
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setLong(1,globalId);
+			pstmt.setString(2, boleData.get("leTime"));
+			pstmt.setString(3, boleData.get("leDate"));
+			pstmt.setString(4, boleData.get("leMonth"));
+			pstmt.setString(5, "Data From Lend");
+			pstmt.setString(6, boleData.get("leNature"));
+			pstmt.setString(7, UnitConverter.addThousandSeparator(boleData.get("leTk")));
+			pstmt.setString(8, boleData.get("leBnkCharge"));
+			pstmt.setString(9, UnitConverter.addThousandSeparator(boleData.get("bkBalanceBefore")));
+			pstmt.setString(10, UnitConverter.addThousandSeparator(boleData.get("bkBalanceAfter")));
+			
+			pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 //	public static void main(String[] args) {
 //		Bkash access = new Bkash();
 //		System.out.println(access.isbKashActivated());

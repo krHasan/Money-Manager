@@ -55,24 +55,27 @@ public class SignInController extends SignInModel {
 	@FXML
 	public void initialize() {
 		lblUserFullName.setText(getOwnerName());
-		if(!checkUserPresence()) {
-			txtUsername.setDisable(true);
-			passPassword.setDisable(true);
-			btnSignIn.setDisable(true);
-			lblForgetPassword.setDisable(true);
-		} else if(!openingDateUpdate()) {
-			lblOutdateMsg.setText("Your computer date is outdated, please update it and restart the program");
-			txtUsername.setDisable(true);
-			passPassword.setDisable(true);
-			btnSignIn.setDisable(true);
-			lblForgetPassword.setDisable(true);
-			lblNewUser.setDisable(true);
-		}
+		try {
+			if(!checkUserPresence()) {
+				txtUsername.setDisable(true);
+				passPassword.setDisable(true);
+				btnSignIn.setDisable(true);
+				lblForgetPassword.setDisable(true);
+			} else if(!openingDateUpdate()) {
+				lblOutdateMsg.setText("Your computer date is outdated, please update it and restart the program");
+				txtUsername.setDisable(true);
+				passPassword.setDisable(true);
+				btnSignIn.setDisable(true);
+				lblForgetPassword.setDisable(true);
+				lblNewUser.setDisable(true);
+			}
+		} catch (Exception e) {}
 	}
 
 	@FXML
 	private void logIn(ActionEvent event) {
 		if (authentication(txtUsername.getText(), passPassword.getText())) {
+			updateLastAccessDate();
 			Stage SignInStage = (Stage) btnSignIn.getScene().getWindow();
 			goToDashboard(SignInStage.getX(), SignInStage.getY());
 			SignInStage.hide();
