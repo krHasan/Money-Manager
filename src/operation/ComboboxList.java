@@ -50,6 +50,47 @@ public class ComboboxList extends DatabaseConnection {
 	}
 	
 	
+	public String[] getArchivedSourceList() {
+		if(getArchivedSourceArraySize()>0) {
+			String list[] = new String[getArchivedSourceArraySize()];
+			String sql = "SELECT sourceArchiveList \n"
+					+ "FROM Archived_Source_List";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("sourceArchiveList");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Source"};
+			return list;
+		}
+	}
+	public int getArchivedSourceArraySize() {
+		int size = 0;
+		String sqlid = "SELECT * \n"
+				+ "FROM Archived_Source_List";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
+	
 	public String[] getMethodList() {
 		if(getMethodArraySize()>0) {
 			String list[] = new String[getMethodArraySize()];
@@ -212,6 +253,7 @@ public class ComboboxList extends DatabaseConnection {
 		}
 		return size;
 	}
+	
 	
 	
 //	public static void main(String[] args) {

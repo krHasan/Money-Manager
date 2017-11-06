@@ -54,74 +54,74 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="250.0" layoutY="9.0" prefHeight="20.0" prefWidth="200.0" text="bKash Settings">
+                        <Label alignment="CENTER" layoutX="240.0" layoutY="9.0" prefHeight="20.0" prefWidth="200.0" text="bKash Settings">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="545.0" layoutY="9.0" prefHeight="20.0" prefWidth="200.0" text="Rocket Settings">
+                        <Label alignment="CENTER" layoutX="535.0" layoutY="9.0" prefHeight="20.0" prefWidth="200.0" text="Rocket Settings">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="29.0" layoutY="148.0" prefHeight="20.0" prefWidth="160.0" text="Cash Credit Charges - ">
+                        <Label alignment="CENTER" layoutX="19.0" layoutY="148.0" prefHeight="20.0" prefWidth="160.0" text="Cash Credit Charges - ">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="29.0" layoutY="280.0" prefHeight="20.0" prefWidth="160.0" text="Cash Debit Charges - ">
+                        <Label alignment="CENTER" layoutX="19.0" layoutY="280.0" prefHeight="20.0" prefWidth="160.0" text="Cash Debit Charges - ">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Label layoutX="492.0" layoutY="117.0" prefHeight="86.0" prefWidth="290.0" style="-fx-background-color: #D6E4FD;" />
-                        <RadioButton fx:id="bnkrbtnbkYes" layoutX="250.0" layoutY="39.0" mnemonicParsing="false" prefWidth="200.0" text="I have a bKash Account">
+                        <Label layoutX="482.0" layoutY="117.0" prefHeight="86.0" prefWidth="300.0" style="-fx-background-color: #D6E4FD;" />
+                        <RadioButton fx:id="bnkrbtnbkYes" layoutX="240.0" layoutY="39.0" mnemonicParsing="false" onAction="#bnkrbtnbkYes" prefWidth="200.0" text="I have a bKash Account">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="bnkrbtnbkNo" layoutX="250.0" layoutY="62.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="220.0" text="I don't have a bKash Account">
+                        <RadioButton fx:id="bnkrbtnbkNo" layoutX="240.0" layoutY="62.0" mnemonicParsing="false" onAction="#bnkrbtnbkNo" prefHeight="18.0" prefWidth="220.0" text="I don't have a bKash Account">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="bnkrbtnrocYes" layoutX="545.0" layoutY="39.0" mnemonicParsing="false" prefWidth="200.0" text="I have a Rocket Account">
+                        <RadioButton fx:id="bnkrbtnrocYes" layoutX="535.0" layoutY="39.0" mnemonicParsing="false" onAction="#bnkrbtnrocYes" prefWidth="200.0" text="I have a Rocket Account">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="bnkrbtnrocNo" layoutX="545.0" layoutY="62.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="220.0" text="I don't have a Rocket Account">
+                        <RadioButton fx:id="bnkrbtnrocNo" layoutX="535.0" layoutY="62.0" mnemonicParsing="false" onAction="#bnkrbtnrocNo" prefHeight="18.0" prefWidth="220.0" text="I don't have a Rocket Account">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="bnkrbtnrocATMFree" layoutX="533.0" layoutY="94.0" mnemonicParsing="false" prefWidth="110.0" text="ATM Free">
+                        <RadioButton fx:id="bnkrbtnrocATMFree" layoutX="523.0" layoutY="94.0" mnemonicParsing="false" onAction="#bnkrbtnrocATMFree" prefWidth="110.0" text="ATM Free">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="bnkrbtnrocCashinFree" layoutX="653.0" layoutY="94.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="110.0" text="Cash In Free">
+                        <RadioButton fx:id="bnkrbtnrocCashinFree" layoutX="643.0" layoutY="94.0" mnemonicParsing="false" onAction="#bnkrbtnrocCashinFree" prefHeight="18.0" prefWidth="110.0" text="Cash In Free">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </RadioButton>
-                        <Label layoutX="492.0" layoutY="210.0" prefHeight="164.0" prefWidth="290.0" style="-fx-background-color: #D6E4FD;" />
-                        <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="337.0" prefHeight="30.0" prefWidth="150.0" text="Cash Out at Branches : ">
+                        <Label layoutX="482.0" layoutY="210.0" prefHeight="164.0" prefWidth="300.0" style="-fx-background-color: #D6E4FD;" />
+                        <Label alignment="CENTER_RIGHT" layoutX="486.0" layoutY="337.0" prefHeight="30.0" prefWidth="139.0" text="Cash Out at Branches : ">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="297.0" prefHeight="30.0" prefWidth="150.0" text="Cash Out at Agent : ">
+                        <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="297.0" prefHeight="30.0" prefWidth="130.0" text="Cash Out at Agent : ">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="257.0" prefHeight="30.0" prefWidth="150.0" text="Send Money : ">
+                        <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="257.0" prefHeight="30.0" prefWidth="130.0" text="Send Money : ">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="217.0" prefHeight="30.0" prefWidth="150.0" text="Cash out from ATM : ">
+                        <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="217.0" prefHeight="30.0" prefWidth="130.0" text="Cash out from ATM : ">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
@@ -146,12 +146,12 @@
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="165.0" prefHeight="30.0" prefWidth="150.0" text="Cash in at Branches : ">
+                        <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="165.0" prefHeight="30.0" prefWidth="130.0" text="Cash in at Branches : ">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="125.0" prefHeight="30.0" prefWidth="150.0" text="Cash in at Agent : ">
+                        <Label alignment="CENTER_RIGHT" layoutX="495.0" layoutY="125.0" prefHeight="30.0" prefWidth="130.0" text="Cash in at Agent : ">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
@@ -166,64 +166,64 @@
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label layoutX="191.0" layoutY="117.0" prefHeight="86.0" prefWidth="290.0" style="-fx-background-color: #E3FFFA; -fx-border-radius: 10px;" />
-                        <Label layoutX="191.0" layoutY="210.0" prefHeight="164.0" prefWidth="290.0" style="-fx-background-color: #E3FFFA;" />
-                        <Label alignment="CENTER_RIGHT" layoutX="194.0" layoutY="318.0" prefHeight="30.0" prefWidth="150.0" text="Cash Out from ATM : ">
+                        <Label layoutX="181.0" layoutY="117.0" prefHeight="86.0" prefWidth="290.0" style="-fx-background-color: #E3FFFA; -fx-border-radius: 10px;" />
+                        <Label layoutX="181.0" layoutY="210.0" prefHeight="164.0" prefWidth="290.0" style="-fx-background-color: #E3FFFA;" />
+                        <Label alignment="CENTER_RIGHT" layoutX="184.0" layoutY="318.0" prefHeight="30.0" prefWidth="130.0" text="Cash Out from ATM : ">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="194.0" layoutY="278.0" prefHeight="30.0" prefWidth="150.0" text="Send Money : ">
+                        <Label alignment="CENTER_RIGHT" layoutX="184.0" layoutY="278.0" prefHeight="30.0" prefWidth="130.0" text="Send Money : ">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="194.0" layoutY="238.0" prefHeight="30.0" prefWidth="150.0" text="Cash out at Agent : ">
+                        <Label alignment="CENTER_RIGHT" layoutX="184.0" layoutY="238.0" prefHeight="30.0" prefWidth="130.0" text="Cash out at Agent : ">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label layoutX="384.0" layoutY="238.0" prefHeight="30.0" prefWidth="90.0" text="  per 1,000 Tk.">
+                        <Label layoutX="374.0" layoutY="238.0" prefHeight="30.0" prefWidth="90.0" text="  per 1,000 Tk.">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label layoutX="384.0" layoutY="278.0" prefHeight="30.0" prefWidth="90.0" text="  Tk.">
+                        <Label layoutX="374.0" layoutY="278.0" prefHeight="30.0" prefWidth="90.0" text="  Tk.">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label layoutX="384.0" layoutY="318.0" prefHeight="30.0" prefWidth="90.0" text="  per 1,000 Tk.">
+                        <Label layoutX="374.0" layoutY="318.0" prefHeight="30.0" prefWidth="90.0" text="  per 1,000 Tk.">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="194.0" layoutY="145.0" prefHeight="30.0" prefWidth="150.0" text="Cash in at Agent : ">
+                        <Label alignment="CENTER_RIGHT" layoutX="184.0" layoutY="145.0" prefHeight="30.0" prefWidth="130.0" text="Cash in at Agent : ">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <Label layoutX="384.0" layoutY="145.0" prefHeight="30.0" prefWidth="90.0" text="  per 1,000 Tk.">
+                        <Label layoutX="374.0" layoutY="145.0" prefHeight="30.0" prefWidth="90.0" text="  per 1,000 Tk.">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="bnktxtbkCashinAgent" alignment="CENTER" layoutX="344.0" layoutY="145.0" prefHeight="30.0" prefWidth="40.0" promptText="0" />
-                        <TextField fx:id="bnktxtbkCashOutAgent" alignment="CENTER" layoutX="344.0" layoutY="238.0" prefHeight="30.0" prefWidth="40.0" promptText="0" />
-                        <TextField fx:id="bnktxtbkSendMoney" alignment="CENTER" layoutX="344.0" layoutY="278.0" prefHeight="30.0" prefWidth="40.0" promptText="0" />
-                        <TextField fx:id="bnktxtbkCashOutATM" alignment="CENTER" layoutX="344.0" layoutY="318.0" prefHeight="30.0" prefWidth="40.0" promptText="0" />
-                        <TextField fx:id="bnktxtrocCashinAgent" alignment="CENTER" layoutX="645.0" layoutY="125.0" prefHeight="30.0" prefWidth="40.0" promptText="0" />
-                        <TextField fx:id="bnktxtrocCashinBranch" alignment="CENTER" layoutX="645.0" layoutY="165.0" prefHeight="30.0" prefWidth="40.0" promptText="0" />
-                        <TextField fx:id="bnktxtrocCashOutATM" alignment="CENTER" layoutX="645.0" layoutY="217.0" prefHeight="30.0" prefWidth="40.0" promptText="0" />
-                        <TextField fx:id="bnktxtrocSendMoney" alignment="CENTER" layoutX="645.0" layoutY="257.0" prefHeight="30.0" prefWidth="40.0" promptText="0" />
-                        <TextField fx:id="bnktxtrocCashOutAgent" alignment="CENTER" layoutX="645.0" layoutY="297.0" prefHeight="30.0" prefWidth="40.0" promptText="0" />
-                        <TextField fx:id="bnktxtrocCashOutBranch" alignment="CENTER" layoutX="645.0" layoutY="337.0" prefHeight="30.0" prefWidth="40.0" promptText="0" />
-                        <Button fx:id="bnkbtnSave" layoutX="360.0" layoutY="395.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" text="Save" />
+                        <TextField fx:id="bnktxtbkCashinAgent" alignment="CENTER" layoutX="314.0" layoutY="145.0" prefHeight="30.0" prefWidth="60.0" promptText="0" text="0" />
+                        <TextField fx:id="bnktxtbkCashOutAgent" alignment="CENTER" layoutX="314.0" layoutY="238.0" prefHeight="30.0" prefWidth="60.0" promptText="0" text="0" />
+                        <TextField fx:id="bnktxtbkSendMoney" alignment="CENTER" layoutX="314.0" layoutY="278.0" prefHeight="30.0" prefWidth="60.0" promptText="0" text="0" />
+                        <TextField fx:id="bnktxtbkCashOutATM" alignment="CENTER" layoutX="314.0" layoutY="318.0" prefHeight="30.0" prefWidth="60.0" promptText="0" text="0" />
+                        <TextField fx:id="bnktxtrocCashinAgent" alignment="CENTER" layoutX="625.0" layoutY="125.0" prefHeight="30.0" prefWidth="60.0" promptText="0" text="0" />
+                        <TextField fx:id="bnktxtrocCashinBranch" alignment="CENTER" layoutX="625.0" layoutY="165.0" prefHeight="30.0" prefWidth="60.0" promptText="0" text="0" />
+                        <TextField fx:id="bnktxtrocCashOutATM" alignment="CENTER" layoutX="625.0" layoutY="217.0" prefHeight="30.0" prefWidth="60.0" promptText="0" text="0" />
+                        <TextField fx:id="bnktxtrocSendMoney" alignment="CENTER" layoutX="625.0" layoutY="257.0" prefHeight="30.0" prefWidth="60.0" promptText="0" text="0" />
+                        <TextField fx:id="bnktxtrocCashOutAgent" alignment="CENTER" layoutX="625.0" layoutY="297.0" prefHeight="30.0" prefWidth="60.0" promptText="0" text="0" />
+                        <TextField fx:id="bnktxtrocCashOutBranch" alignment="CENTER" layoutX="625.0" layoutY="337.0" prefHeight="30.0" prefWidth="60.0" promptText="0" text="0" />
+                        <Button fx:id="bnkbtnSave" layoutX="360.0" layoutY="395.0" mnemonicParsing="false" onAction="#bnkbtnSave" prefHeight="28.0" prefWidth="80.0" text="Save" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="tabSource" text="     Source     ">
+          <Tab fx:id="tabSource" onSelectionChanged="#tabSourceInitialize" text="     Source     ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -244,15 +244,20 @@
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="sourcetxtSourceName" alignment="CENTER" layoutX="180.0" layoutY="139.0" prefHeight="28.0" prefWidth="170.0" promptText="Type source name" />
+                        <TextField fx:id="sourcetxtSourceName" alignment="CENTER" layoutX="180.0" layoutY="139.0" onKeyReleased="#sourceNameValidation" prefHeight="28.0" prefWidth="170.0" promptText="Type source name" />
                         <Label alignment="CENTER_RIGHT" layoutX="79.0" layoutY="139.0" prefHeight="28.0" prefWidth="100.0" text="Source Name : ">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
                         </Label>
-                        <Button fx:id="sourcebtnCreate" layoutX="177.0" layoutY="183.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="100.0" text="Create" />
-                        <Button fx:id="sourcebtnArchive" layoutX="602.0" layoutY="90.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="100.0" text="Archive" />
-                        <Button fx:id="sourcebtnUnarchive" layoutX="602.0" layoutY="235.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="100.0" text="Unarchive" />
+                        <Button fx:id="sourcebtnCreate" layoutX="177.0" layoutY="194.0" mnemonicParsing="false" onAction="#createSource" prefHeight="28.0" prefWidth="100.0" text="Create" />
+                        <Button fx:id="sourcebtnArchive" layoutX="602.0" layoutY="90.0" mnemonicParsing="false" onAction="#archiveSource" prefHeight="28.0" prefWidth="100.0" text="Archive" />
+                        <Button fx:id="sourcebtnUnarchive" layoutX="602.0" layoutY="235.0" mnemonicParsing="false" onAction="#unarchiveSource" prefHeight="28.0" prefWidth="100.0" text="Unarchive" />
+                        <Label fx:id="sourcelblWarningMsg" layoutX="180.0" layoutY="169.0" textFill="#a80808">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
             </content>

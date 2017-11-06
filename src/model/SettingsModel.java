@@ -3,8 +3,14 @@ package model;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Map;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import operation.BankIssue;
+import operation.ComboboxList;
 import system.DateAndClock;
+import tab.SettingBank;
 
 public class SettingsModel extends DateAndClock {
 	
@@ -15,6 +21,7 @@ public class SettingsModel extends DateAndClock {
 			return "No User";
 		}
 	}
+	
 	
 	public static boolean isbKashActive() {
 		String sql = "SELECT bKashActive FROM System_Settings WHERE ID = 1";
@@ -32,6 +39,7 @@ public class SettingsModel extends DateAndClock {
 		}
 	}
 	
+	
 	public static boolean isRocketActive() {
 		String sql = "SELECT RocketActive FROM System_Settings WHERE ID = 1";
 		try (Connection conn = connector();
@@ -48,4 +56,46 @@ public class SettingsModel extends DateAndClock {
 		}
 	}
 	
+	
+	public static boolean rocIsATMFree() {
+		return BankIssue.isATMFree();
+	}
+	
+	
+	public Map<String, String> bkashChargeData() {
+		return new SettingBank().getBkashChargeData();
+	}
+	
+	
+	public Map<String, String> rocketChargeData() {
+		return new SettingBank().getRocketChargeData();
+	}
+	
+	
+//////////////////////  Source  ////////////////////////
+	public ObservableList<String> getActiveSourceList() {
+		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getSourceList());
+		return list;
+	}
+	
+	
+	public ObservableList<String> getArchivedSourceList() {
+		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getArchivedSourceList());
+		return list;
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

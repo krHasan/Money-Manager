@@ -1,10 +1,14 @@
 package controller;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -18,6 +22,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.SettingsModel;
 import operation.GoToOperation;
+import tab.SettingBank;
+import tab.Source;
 import tab.TabAccess;
 
 public class SettingsController extends SettingsModel {
@@ -127,9 +133,12 @@ public class SettingsController extends SettingsModel {
 	private TextField sourcetxtSourceName;
 	
 	@FXML
-	private ComboBox sourcecmboArchive;
+	private ComboBox<String> sourcecmboArchive;
 	@FXML
-	private ComboBox sourcecmboUnArchive;
+	private ComboBox<String> sourcecmboUnArchive;
+	
+	@FXML
+	private Label sourcelblWarningMsg;
 	
 //////////////////// Sector ////////////////////////
 	@FXML
@@ -146,9 +155,9 @@ public class SettingsController extends SettingsModel {
 	private TextField sectortxtSourceName;
 	
 	@FXML
-	private ComboBox sectorcmboArchive;
+	private ComboBox<String> sectorcmboArchive;
 	@FXML
-	private ComboBox sectorcmboUnArchive;
+	private ComboBox<String> sectorcmboUnArchive;
 	
 //////////////////// System ////////////////////////	
 	@FXML
@@ -181,13 +190,15 @@ public class SettingsController extends SettingsModel {
 	
 	
 	public void tabTimer() {
-		new Timer().schedule(
-			new TimerTask() {
-				@Override
-				public void run() {
-					showTab();
-				}
-			}, 100);
+		try {
+			new Timer().schedule(
+				new TimerTask() {
+					@Override
+					public void run() {
+						showTab();
+					}
+				}, 500);
+		} catch (Exception e) {}
 	}
 	
 	public void showTab() {
@@ -317,14 +328,28 @@ public class SettingsController extends SettingsModel {
 //----------------------------------------------------------------------------------------------------//
 	final ToggleGroup bkrbtnGroup = new ToggleGroup();
 	final ToggleGroup rocrbtnGroup = new ToggleGroup();
+	final ToggleGroup rocrbtnATMGroup = new ToggleGroup();
 	
 	@FXML
 	private void tabBnkInitialize() {
 		bkRbtn();
+		rocRbtn();
+	}
+	
+//////////// bKash ///////////////
+	@FXML
+	private void bnkrbtnbkYes(ActionEvent event) {
+		bkisActive();
+	}
+	
+	@FXML
+	private void bnkrbtnbkNo(ActionEvent event) {
+		bkisInactive();
 	}
 	
 	private void bkRbtn() {
 		if (isbKashActive()) {
+			bkisActive();
 			bnkrbtnbkYes.setToggleGroup(bkrbtnGroup);
 			bnkrbtnbkYes.setSelected(true);
 			bnkrbtnbkYes.setUserData("bkYes");
@@ -332,6 +357,7 @@ public class SettingsController extends SettingsModel {
 			bnkrbtnbkNo.setToggleGroup(bkrbtnGroup);
 			bnkrbtnbkNo.setUserData("bkNo");
 		} else {
+			bkisInactive();
 			bnkrbtnbkYes.setToggleGroup(bkrbtnGroup);
 			bnkrbtnbkYes.setUserData("bkYes");
 
@@ -343,11 +369,350 @@ public class SettingsController extends SettingsModel {
 	}
 	
 	private void bkisActive() {
+		Map<String, String> bkData = bkashChargeData();
+		
+		bnktxtbkCashinAgent.setDisable(false);
+		bnktxtbkCashinAgent.setText(bkData.get("bkCashInCharge"));
+		
+		bnktxtbkCashOutAgent.setDisable(false);
+		bnktxtbkCashOutAgent.setText(bkData.get("bkCashOutAgentCharge"));
+		
+		bnktxtbkSendMoney.setDisable(false);
+		bnktxtbkSendMoney.setText(bkData.get("bkSendMoneyCharge"));
+		
+		bnktxtbkCashOutATM.setDisable(false);
+		bnktxtbkCashOutATM.setText(bkData.get("bkATMCharge"));
 		
 	}
 	
+	private void bkisInactive() {
+		bnktxtbkCashinAgent.setDisable(true);
+		bnktxtbkCashinAgent.setText("0");
+		
+		bnktxtbkCashOutAgent.setDisable(true);
+		bnktxtbkCashOutAgent.setText("0");
+		
+		bnktxtbkSendMoney.setDisable(true);
+		bnktxtbkSendMoney.setText("0");
+		
+		bnktxtbkCashOutATM.setDisable(true);
+		bnktxtbkCashOutATM.setText("0");
+		
+	}
+	
+//////////// Rocket ///////////////
+	@FXML
+	private void bnkrbtnrocYes(ActionEvent event) {
+		bnkrbtnrocATMFree.setDisable(false);
+		bnkrbtnrocCashinFree.setDisable(false);
+		if (rocIsATMFree()) {
+			rocATMisActive();
+		} else {
+			rocCashInisActive();
+		}
+	}
+	
+	@FXML
+	private void bnkrbtnrocNo(ActionEvent event) {
+		rocisInactive();
+	}
+	
+	@FXML
+	private void bnkrbtnrocATMFree(ActionEvent event) {
+		rocATMisActive();
+	}
+	
+	@FXML
+	private void bnkrbtnrocCashinFree(ActionEvent event) {
+		rocCashInisActive();
+	}
+	
+	private void rocRbtn() {
+		if (isRocketActive()) {
+			bnkrbtnrocYes.setToggleGroup(rocrbtnGroup);
+			bnkrbtnrocYes.setSelected(true);
+			bnkrbtnrocYes.setUserData("rocYes");
+
+			bnkrbtnrocNo.setToggleGroup(rocrbtnGroup);
+			bnkrbtnrocNo.setUserData("rocNo");
+			
+			if (rocIsATMFree()) {			
+				rocATMisActive();
+			} else {
+				rocCashInisActive();
+			}
+			
+		} else {
+			bnkrbtnrocYes.setToggleGroup(rocrbtnGroup);
+			bnkrbtnrocYes.setUserData("rocYes");
+
+			bnkrbtnrocNo.setToggleGroup(rocrbtnGroup);
+			bnkrbtnrocNo.setSelected(true);
+			bnkrbtnrocNo.setUserData("rocNo");
+			
+			rocisInactive();
+		}
+		
+	}
+	
+	private void rocATMisActive() {
+		Map<String, String> rockData = rocketChargeData();
+		
+		bnkrbtnrocATMFree.setToggleGroup(rocrbtnATMGroup);
+		bnkrbtnrocATMFree.setSelected(true);
+		bnkrbtnrocATMFree.setUserData("rocATMYes");
+
+		bnkrbtnrocCashinFree.setToggleGroup(rocrbtnATMGroup);
+		bnkrbtnrocCashinFree.setUserData("rocATMNo");
+		
+		bnktxtrocCashinAgent.setDisable(false);
+		bnktxtrocCashinAgent.setText(rockData.get("rocATMCashInAgentCharge"));
+		
+		bnktxtrocCashinBranch.setDisable(false);
+		bnktxtrocCashinBranch.setText(rockData.get("rocATMCashInBranchCharge"));
+		
+		bnktxtrocCashOutATM.setDisable(false);
+		bnktxtrocCashOutATM.setText(rockData.get("rocATMCashOutATMCharge"));
+		
+		bnktxtrocSendMoney.setDisable(false);
+		bnktxtrocSendMoney.setText(rockData.get("rocATMSendMoneyCharge"));
+		
+		bnktxtrocCashOutAgent.setDisable(false);
+		bnktxtrocCashOutAgent.setText(rockData.get("rocATMCashOutAgentCharge"));
+		
+		bnktxtrocCashOutBranch.setDisable(false);
+		bnktxtrocCashOutBranch.setText(rockData.get("rocATMCashOutBranchCharge"));
+		
+		bnklblrocCashOutatBranch.setText("  Tk.");
+		
+	}
+	
+	private void rocCashInisActive() {
+		Map<String, String> rockData = rocketChargeData();
+		
+		bnkrbtnrocATMFree.setToggleGroup(rocrbtnATMGroup);
+		bnkrbtnrocATMFree.setUserData("rocATMYes");
+
+		bnkrbtnrocCashinFree.setToggleGroup(rocrbtnATMGroup);
+		bnkrbtnrocCashinFree.setSelected(true);
+		bnkrbtnrocCashinFree.setUserData("rocATMNo");
+		
+		bnktxtrocCashinAgent.setDisable(false);
+		bnktxtrocCashinAgent.setText(rockData.get("rocCashCashInAgentCharge"));
+		
+		bnktxtrocCashinBranch.setDisable(false);
+		bnktxtrocCashinBranch.setText(rockData.get("rocCashCashInBranchCharge"));
+		
+		bnktxtrocCashOutATM.setDisable(false);
+		bnktxtrocCashOutATM.setText(rockData.get("rocCashCashOutATMCharge"));
+		
+		bnktxtrocSendMoney.setDisable(false);
+		bnktxtrocSendMoney.setText(rockData.get("rocCashSendMoneyCharge"));
+		
+		bnktxtrocCashOutAgent.setDisable(false);
+		bnktxtrocCashOutAgent.setText(rockData.get("rocCashCashOutAgentCharge"));
+		
+		bnktxtrocCashOutBranch.setDisable(false);
+		bnktxtrocCashOutBranch.setText(rockData.get("rocCashCashOutBranchCharge"));
+		
+		bnklblrocCashOutatBranch.setText("  per 1,000 Tk.");
+		
+	}
+		
+	private void rocisInactive() {
+		bnktxtrocCashinAgent.setDisable(true);
+		bnktxtrocCashinAgent.setText("0.00");
+		
+		bnktxtrocCashinBranch.setDisable(true);
+		bnktxtrocCashinBranch.setText("0.00");
+		
+		bnktxtrocCashOutATM.setDisable(true);
+		bnktxtrocCashOutATM.setText("0.00");
+		
+		bnktxtrocSendMoney.setDisable(true);
+		bnktxtrocSendMoney.setText("0.00");
+		
+		bnktxtrocCashOutAgent.setDisable(true);
+		bnktxtrocCashOutAgent.setText("0.00");
+		
+		bnktxtrocCashOutBranch.setDisable(true);
+		bnktxtrocCashOutBranch.setText("0.00");
+		
+		bnkrbtnrocATMFree.setDisable(true);
+		bnkrbtnrocCashinFree.setDisable(true);
+		
+		bnklblrocCashOutatBranch.setText("  Tk.");
+		
+	}
+	
+	@FXML
+	private void bnkbtnSave() {
+		Map<String, String> bnkSettingData = new HashMap<>();
+		
+		String bkStatus = (String) bkrbtnGroup.getSelectedToggle().getUserData();
+		String rocStatus = (String) rocrbtnGroup.getSelectedToggle().getUserData();
+		String rocATMStatus;
+		try {
+			rocATMStatus = (String) rocrbtnATMGroup.getSelectedToggle().getUserData();
+		} catch (Exception e1) {
+			rocATMStatus = "None";
+		}
+
+		try {
+			if (bkStatus.equals("bkYes")) {
+				TextField zero[] = {bnktxtbkCashinAgent, bnktxtbkCashOutAgent, bnktxtbkSendMoney, bnktxtbkCashOutATM};
+				for (TextField textField : zero) {
+					if (textField.getText().isEmpty()) {
+						textField.setText("0");
+					}
+				}
+				bnkSettingData.put("bkCashInCharge", bnktxtbkCashinAgent.getText());
+				bnkSettingData.put("bkCashOutAgentCharge", bnktxtbkCashOutAgent.getText());
+				bnkSettingData.put("bkSendMoneyCharge", bnktxtbkSendMoney.getText());
+				bnkSettingData.put("bkATMCharge", bnktxtbkCashOutATM.getText());
+				new SettingBank().savebkYes(bnkSettingData);
+			} else {
+				new SettingBank().savebkNo();
+			}
+			
+		
+			if (rocStatus.equals("rocYes")) {
+				TextField zero[] = {bnktxtrocCashinAgent, bnktxtrocCashinBranch, bnktxtrocCashOutATM, bnktxtrocSendMoney, bnktxtrocCashOutAgent, bnktxtrocCashOutBranch};
+				for (TextField textField : zero) {
+					if (textField.getText().isEmpty()) {
+						textField.setText("0");
+					}
+				}
+				if (rocATMStatus.equals("rocATMYes")) {
+					bnkSettingData.put("rocATMCashInAgentCharge", bnktxtrocCashinAgent.getText());
+					bnkSettingData.put("rocATMCashInBranchCharge", bnktxtrocCashinBranch.getText());
+					bnkSettingData.put("rocATMCashOutATMCharge", bnktxtrocCashOutATM.getText());
+					bnkSettingData.put("rocATMSendMoneyCharge", bnktxtrocSendMoney.getText());
+					bnkSettingData.put("rocATMCashOutAgentCharge", bnktxtrocCashOutAgent.getText());
+					bnkSettingData.put("rocATMCashOutBranchCharge", bnktxtrocCashOutBranch.getText());
+					new SettingBank().saverocATMYes(bnkSettingData);
+				} else if (!rocStatus.equals("None")){
+					bnkSettingData.put("rocCashCashInAgentCharge", bnktxtrocCashinAgent.getText());
+					bnkSettingData.put("rocCashCashInBranchCharge", bnktxtrocCashinBranch.getText());
+					bnkSettingData.put("rocCashCashOutATMCharge", bnktxtrocCashOutATM.getText());
+					bnkSettingData.put("rocCashSendMoneyCharge", bnktxtrocSendMoney.getText());
+					bnkSettingData.put("rocCashCashOutAgentCharge", bnktxtrocCashOutAgent.getText());
+					bnkSettingData.put("rocCashCashOutBranchCharge", bnktxtrocCashOutBranch.getText());
+					new SettingBank().saverocCashInYes(bnkSettingData);
+				}
+				
+			} else {
+				new SettingBank().saverocNo();
+			}
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Message");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText("Information updated successfully");
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			confirmationMsg.setX(SettingsStage.getX() + 200);
+			confirmationMsg.setY(SettingsStage.getY() + 170);
+			confirmationMsg.showAndWait();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	
+//////////////////////////////////////////// Source Function  ////////////////////////////////////////////
+//----------------------------------------------------------------------------------------------------////
+	Source source = new Source();
+	
+	@FXML
+	private void tabSourceInitialize() {
+		sourcetxtSourceName.clear();
+		loadActiveSource();
+		loadArchievedSource();
+	}
 	
 	
+	@FXML
+	private void createSource(ActionEvent event) {
+		if ((sourcetxtSourceName.getText()).length() == 0) {
+			sourcelblWarningMsg.setText("Write a Source Name");
+		} else {
+			sourcelblWarningMsg.setText("");
+			source.createSource(sourcetxtSourceName.getText());
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Message");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText("Source "+sourcetxtSourceName.getText()+ " created successfully");
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			confirmationMsg.setX(SettingsStage.getX() + 200);
+			confirmationMsg.setY(SettingsStage.getY() + 170);
+			confirmationMsg.showAndWait();
+			
+			tabSourceInitialize();
+		}
+	}
+	
+	
+	@FXML
+	private void sourceNameValidation() {
+		sourcelblWarningMsg.setText("");
+	}
+	
+	
+	@FXML
+	private void archiveSource(ActionEvent event) {
+		try {
+			source.archiveSource(sourcecmboArchive.getValue());
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Message");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText(sourcecmboArchive.getValue()+ " is Archived Successfully");
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			confirmationMsg.setX(SettingsStage.getX() + 200);
+			confirmationMsg.setY(SettingsStage.getY() + 170);
+			confirmationMsg.showAndWait();
+			
+			tabSourceInitialize();
+		} catch (Exception e) {}
+	}
+	
+	
+	@FXML
+	private void unarchiveSource(ActionEvent event) {
+		try {
+			source.unarchiveSource(sourcecmboUnArchive.getValue());
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Message");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText(sourcecmboUnArchive.getValue()+ " is Unarchived Successfully");
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			confirmationMsg.setX(SettingsStage.getX() + 200);
+			confirmationMsg.setY(SettingsStage.getY() + 170);
+			confirmationMsg.showAndWait();
+			
+			tabSourceInitialize();
+		} catch (Exception e) {}
+	}
+	
+	
+	private void loadActiveSource() {
+		try {
+			sourcecmboArchive.setItems(getActiveSourceList());
+			sourcecmboArchive.getSelectionModel().selectFirst();
+		} catch (Exception e) {}
+	}
+	
+	
+	private void loadArchievedSource() {
+		try {
+			sourcecmboUnArchive.setItems(getArchivedSourceList());
+			sourcecmboUnArchive.getSelectionModel().selectFirst();
+		} catch (Exception e) {}
+	}
 	
 }
 

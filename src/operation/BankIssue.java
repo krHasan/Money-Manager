@@ -272,7 +272,7 @@ public class BankIssue extends DatabaseConnection {
 	}
 	
 	
-	private static boolean isATMFree() {
+	public static boolean isATMFree() {
 		String atmFree = null;
 		boolean atmFreeb = false;
 		
