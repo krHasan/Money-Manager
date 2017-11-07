@@ -1,15 +1,18 @@
 package controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -18,10 +21,14 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+import model.MakeATransactionModel;
 import model.SettingsModel;
 import operation.GoToOperation;
+import system.DateFormatManager;
+import tab.Sector;
 import tab.SettingBank;
 import tab.Source;
 import tab.TabAccess;
@@ -117,6 +124,8 @@ public class SettingsController extends SettingsModel {
 	
 	@FXML
 	private Label bnklblrocCashOutatBranch;
+	@FXML
+	private Label bnkInvalidChargeMsg;
 	
 //////////////////// Source ////////////////////////
 	@FXML
@@ -159,6 +168,9 @@ public class SettingsController extends SettingsModel {
 	@FXML
 	private ComboBox<String> sectorcmboUnArchive;
 	
+	@FXML
+	private Label sectorlblWarningMsg;
+	
 //////////////////// System ////////////////////////	
 	@FXML
 	private Tab tabSystem;
@@ -167,6 +179,8 @@ public class SettingsController extends SettingsModel {
 	private Button systembtnChangeName;
 	@FXML
 	private Button systembtnChangePassword;
+	@FXML
+	private Button systembtnSave;
 	
 	@FXML
 	private TextField systemtxtUsername;
@@ -180,26 +194,38 @@ public class SettingsController extends SettingsModel {
 	
 	@FXML
 	private Label systemlblRePassword;
+	@FXML
+	private Label systemlblWarningMsg;
+	
+	@FXML
+	private CheckBox checkBoxWeekNum;
+	
+	@FXML
+	private RadioButton TIME_h;
+	@FXML
+	private RadioButton TIME_hh;
+	@FXML
+	private RadioButton TIME_H;
+	@FXML
+	private RadioButton TIME_HH;
+	@FXML
+	private RadioButton DATEddMMMM;
+	@FXML
+	private RadioButton DATEddMMM;
+	@FXML
+	private RadioButton DATEddMM;
+	@FXML
+	private RadioButton DATEEEddMMM;
+	@FXML
+	private RadioButton DATEMMM;
 	
 ////////////////////// General Function /////////////////////////
 	@FXML
 	public void initialize() {
-		tabTimer();
+		showTab();
 		lblUserFullName.setText(getUserFullName());
 	}
-	
-	
-	public void tabTimer() {
-		try {
-			new Timer().schedule(
-				new TimerTask() {
-					@Override
-					public void run() {
-						showTab();
-					}
-				}, 500);
-		} catch (Exception e) {}
-	}
+
 	
 	public void showTab() {
 		String tabName = (new TabAccess()).getTabName();
@@ -222,7 +248,8 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabSource");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	@FXML
@@ -230,12 +257,14 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabSector");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	@FXML
 	private void mnuExit(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+//		SettingsStage.close();
 		SettingsStage.close();
 	}
 	
@@ -243,7 +272,8 @@ public class SettingsController extends SettingsModel {
 	private void mnuDashboard(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToDashboard(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	@FXML
@@ -251,7 +281,8 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabGetMoney");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	@FXML
@@ -259,7 +290,8 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabExpense");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	@FXML
@@ -267,7 +299,8 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabLend");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	@FXML
@@ -275,21 +308,24 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabBank");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	@FXML
 	private void mnuTransactionHistory(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToTransactionHistory(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	@FXML
 	private void mnuCashCalculate(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToCashCalculate(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	
@@ -298,7 +334,8 @@ public class SettingsController extends SettingsModel {
 	private void btnDashboard(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToDashboard(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	@FXML
@@ -306,21 +343,24 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabGetMoney");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	@FXML
 	private void btnTransactionHistory(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToTransactionHistory(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	@FXML
 	private void btnSignOut(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToSignIn(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.hide();
+//		SettingsStage.hide();
+		SettingsStage.close();
 	}
 	
 	
@@ -329,6 +369,7 @@ public class SettingsController extends SettingsModel {
 	final ToggleGroup bkrbtnGroup = new ToggleGroup();
 	final ToggleGroup rocrbtnGroup = new ToggleGroup();
 	final ToggleGroup rocrbtnATMGroup = new ToggleGroup();
+	final String InvalidInput = "Invalid Input. Type within 0.00 to 999.99";
 	
 	@FXML
 	private void tabBnkInitialize() {
@@ -336,6 +377,108 @@ public class SettingsController extends SettingsModel {
 		rocRbtn();
 	}
 	
+	@FXML
+	private void bnktxtbkCashinAgent() {
+		if (!validCharge(bnktxtbkCashinAgent.getText())) {
+			bnkInvalidChargeMsg.setText(InvalidInput);
+			bnktxtbkCashinAgent.clear();
+		} else {
+			bnkInvalidChargeMsg.setText(" ");
+		}
+	}
+	
+	@FXML
+	private void bnktxtbkCashOutAgent() {
+		if (!validCharge(bnktxtbkCashOutAgent.getText())) {
+			bnkInvalidChargeMsg.setText(InvalidInput);
+			bnktxtbkCashOutAgent.clear();
+		} else {
+			bnkInvalidChargeMsg.setText(" ");
+		}
+	}
+	
+	@FXML
+	private void bnktxtbkSendMoney() {
+		if (!validCharge(bnktxtbkSendMoney.getText())) {
+			bnkInvalidChargeMsg.setText(InvalidInput);
+			bnktxtbkSendMoney.clear();
+		} else {
+			bnkInvalidChargeMsg.setText(" ");
+		}
+	}
+
+	@FXML
+	private void bnktxtbkCashOutATM() {
+		if (!validCharge(bnktxtbkCashOutATM.getText())) {
+			bnkInvalidChargeMsg.setText(InvalidInput);
+			bnktxtbkCashOutATM.clear();
+		} else {
+			bnkInvalidChargeMsg.setText(" ");
+		}
+	}
+
+	@FXML
+	private void bnktxtrocCashinAgent() {
+		if (!validCharge(bnktxtrocCashinAgent.getText())) {
+			bnkInvalidChargeMsg.setText(InvalidInput);
+			bnktxtrocCashinAgent.clear();
+		} else {
+			bnkInvalidChargeMsg.setText(" ");
+		}
+	}
+
+	@FXML
+	private void bnktxtrocCashinBranch() {
+		if (!validCharge(bnktxtrocCashinBranch.getText())) {
+			bnkInvalidChargeMsg.setText(InvalidInput);
+			bnktxtrocCashinBranch.clear();
+		} else {
+			bnkInvalidChargeMsg.setText(" ");
+		}
+	}
+
+	@FXML
+	private void bnktxtrocCashOutATM() {
+		if (!validCharge(bnktxtrocCashOutATM.getText())) {
+			bnkInvalidChargeMsg.setText(InvalidInput);
+			bnktxtrocCashOutATM.clear();
+		} else {
+			bnkInvalidChargeMsg.setText(" ");
+		}
+	}
+
+	@FXML
+	private void bnktxtrocSendMoney() {
+		if (!validCharge(bnktxtrocSendMoney.getText())) {
+			bnkInvalidChargeMsg.setText(InvalidInput);
+			bnktxtrocSendMoney.clear();
+		} else {
+			bnkInvalidChargeMsg.setText(" ");
+		}
+	}
+
+	@FXML
+	private void bnktxtrocCashOutAgent() {
+		if (!validCharge(bnktxtrocCashOutAgent.getText())) {
+			bnkInvalidChargeMsg.setText(InvalidInput);
+			bnktxtrocCashOutAgent.clear();
+		} else {
+			bnkInvalidChargeMsg.setText(" ");
+		}
+	}
+
+	@FXML
+	private void bnktxtrocCashOutBranch() {
+		if (!validCharge(bnktxtrocCashOutBranch.getText())) {
+			bnkInvalidChargeMsg.setText(InvalidInput);
+			bnktxtrocCashOutBranch.clear();
+		} else {
+			bnkInvalidChargeMsg.setText(" ");
+		}
+	}
+	
+
+
 //////////// bKash ///////////////
 	@FXML
 	private void bnkrbtnbkYes(ActionEvent event) {
@@ -636,7 +779,7 @@ public class SettingsController extends SettingsModel {
 	@FXML
 	private void createSource(ActionEvent event) {
 		if ((sourcetxtSourceName.getText()).length() == 0) {
-			sourcelblWarningMsg.setText("Write a Source Name");
+			sourcelblWarningMsg.setText("Write a Source Name Please");
 		} else {
 			sourcelblWarningMsg.setText("");
 			source.createSource(sourcetxtSourceName.getText());
@@ -714,6 +857,362 @@ public class SettingsController extends SettingsModel {
 		} catch (Exception e) {}
 	}
 	
+//////////////////////////////////////////// Sector Function  ////////////////////////////////////////////
+//----------------------------------------------------------------------------------------------------////
+	Sector sector = new Sector();
+	
+	@FXML
+	private void tabSectorInitialize() {
+		sectortxtSourceName.clear();
+		loadActiveSector();
+		loadArchievedSector();
+	}
+
+
+	@FXML
+	private void createSector(ActionEvent event) {
+		if ((sectortxtSourceName.getText()).length() == 0) {
+			sectorlblWarningMsg.setText("Write a Sector Name Please");
+		} else {
+			sectorlblWarningMsg.setText("");
+			sector.createSector(sectortxtSourceName.getText());
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Message");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText("Sector "+sectortxtSourceName.getText()+ " created successfully");
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			confirmationMsg.setX(SettingsStage.getX() + 200);
+			confirmationMsg.setY(SettingsStage.getY() + 170);
+			confirmationMsg.showAndWait();
+			
+			tabSectorInitialize();
+		}
+	}
+	
+	
+	@FXML
+	private void sectorNameValidation() {
+		sectorlblWarningMsg.setText("");
+	}
+	
+	
+	@FXML
+	private void archiveSector(ActionEvent event) {
+		try {
+			sector.archiveSector(sectorcmboArchive.getValue());
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Message");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText(sectorcmboArchive.getValue()+ " is Archived Successfully");
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			confirmationMsg.setX(SettingsStage.getX() + 200);
+			confirmationMsg.setY(SettingsStage.getY() + 170);
+			confirmationMsg.showAndWait();
+			
+			tabSectorInitialize();
+		} catch (Exception e) {}
+	}
+	
+	
+	@FXML
+	private void unarchiveSector(ActionEvent event) {
+		try {
+			sector.unarchiveSector(sectorcmboUnArchive.getValue());
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Message");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText(sectorcmboUnArchive.getValue()+ " is Unarchived Successfully");
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			confirmationMsg.setX(SettingsStage.getX() + 200);
+			confirmationMsg.setY(SettingsStage.getY() + 170);
+			confirmationMsg.showAndWait();
+			
+			tabSectorInitialize();
+		} catch (Exception e) {}
+	}
+	
+	
+	private void loadActiveSector() {
+		try {
+			sectorcmboArchive.setItems(getActiveSectorList());
+			sectorcmboArchive.getSelectionModel().selectFirst();
+		} catch (Exception e) {}
+	}
+	
+	
+	private void loadArchievedSector() {
+		try {
+			sectorcmboUnArchive.setItems(getArchivedSectorList());
+			sectorcmboUnArchive.getSelectionModel().selectFirst();
+		} catch (Exception e) {}
+	}
+
+//////////////////////////////////////////// System Function  ////////////////////////////////////////////
+//----------------------------------------------------------------------------------------------------////
+	final ToggleGroup timerbtnGroup = new ToggleGroup();
+	final ToggleGroup daterbtnGroup = new ToggleGroup();
+	Calendar now = Calendar.getInstance();
+	boolean nameChangeClicked = false;
+	boolean passwordChangeClicked = false;
+	
+	@FXML
+	private void tabSystemInitialize() {
+		timeRbtn();
+		dateRbtn();
+		showWeekNum();
+		loadUsername();
+		loadUserFullName();
+		loadPassword();
+		systemlblRePassword.setVisible(false);
+		systemtxtRePassword.setVisible(false);
+		systemlblWarningMsg.setText("");
+	}
+	
+	
+	private void timeRbtn() {
+		DateFormat formateTIME_h = new SimpleDateFormat("h:mm:ss a");
+		TIME_h.setText(formateTIME_h.format(now.getTime()));
+		TIME_h.setToggleGroup(timerbtnGroup);
+		TIME_h.setUserData("h:mm:ss a");
+		
+		DateFormat formateTIME_hh = new SimpleDateFormat("hh:mm:ss a");
+		TIME_hh.setText(formateTIME_hh.format(now.getTime()));
+		TIME_hh.setToggleGroup(timerbtnGroup);
+		TIME_hh.setUserData("hh:mm:ss a");
+		
+		DateFormat formateTIME_H = new SimpleDateFormat("H:mm:ss");
+		TIME_H.setText(formateTIME_H.format(now.getTime()));
+		TIME_H.setToggleGroup(timerbtnGroup);
+		TIME_H.setUserData("H:mm:ss");
+		
+		DateFormat formateTIME_HH = new SimpleDateFormat("HH:mm:ss");
+		TIME_HH.setText(formateTIME_HH.format(now.getTime()));
+		TIME_HH.setToggleGroup(timerbtnGroup);
+		TIME_HH.setUserData("HH:mm:ss");
+		
+		switch (new DateFormatManager().getTimeFormate()) {
+			case "h:mm:ss a": TIME_h.setSelected(true);
+				break;
+			case "hh:mm:ss a": TIME_hh.setSelected(true);
+				break;
+			case "H:mm:ss": TIME_H.setSelected(true);
+				break;
+			default: TIME_HH.setSelected(true);
+				break;
+		}
+	}
+	
+	
+	private void dateRbtn() {
+		DateFormat formateDATEddMMMM = new SimpleDateFormat("dd MMMM, yyyy");
+		DATEddMMMM.setText(formateDATEddMMMM.format(now.getTime()));
+		DATEddMMMM.setToggleGroup(daterbtnGroup);
+		DATEddMMMM.setUserData("dd MMMM, yyyy");
+		
+		DateFormat formateDATEddMMM = new SimpleDateFormat("dd MMM, yyyy");
+		DATEddMMM.setText(formateDATEddMMM.format(now.getTime()));
+		DATEddMMM.setToggleGroup(daterbtnGroup);
+		DATEddMMM.setUserData("dd MMM, yyyy");
+		
+		DateFormat formateDATEddMM = new SimpleDateFormat("dd-MM-yyyy");
+		DATEddMM.setText(formateDATEddMM.format(now.getTime()));
+		DATEddMM.setToggleGroup(daterbtnGroup);
+		DATEddMM.setUserData("dd-MM-yyyy");
+		
+		DateFormat formateDATEEEddMMM = new SimpleDateFormat("EE dd MMMM, yyyy");
+		DATEEEddMMM.setText(formateDATEEEddMMM.format(now.getTime()));
+		DATEEEddMMM.setToggleGroup(daterbtnGroup);
+		DATEEEddMMM.setUserData("EE dd MMMM, yyyy");
+		
+		DateFormat formateDATEMMM = new SimpleDateFormat("MMMM dd, yyyy");
+		DATEMMM.setText(formateDATEMMM.format(now.getTime()));
+		DATEMMM.setToggleGroup(daterbtnGroup);
+		DATEMMM.setUserData("MMMM dd, yyyy");
+
+		switch (new DateFormatManager().getDateFormat()) {
+		case "dd MMMM, yyyy": DATEddMMMM.setSelected(true);
+			break;
+		case "dd MMM, yyyy": DATEddMMM.setSelected(true);
+			break;
+		case "dd-MM-yyyy": DATEddMM.setSelected(true);
+			break;
+		case "EE dd MMMM, yyyy": DATEEEddMMM.setSelected(true);
+			break;
+		default: DATEMMM.setSelected(true);
+			break;
+		}
+	}
+	
+	
+	private void showWeekNum() {
+		if (getWeekStatus()) {
+			checkBoxWeekNum.setSelected(true);
+		} else {
+			checkBoxWeekNum.setSelected(false);
+		}
+	}
+	
+	
+	@FXML
+	private void systembtnSave(ActionEvent event) {
+		DateFormatManager format = new DateFormatManager();
+
+		try {
+			String timeFormat = (String) timerbtnGroup.getSelectedToggle().getUserData();
+			String dateFormat = (String) daterbtnGroup.getSelectedToggle().getUserData();
+
+			format.setTimeFormate(timeFormat);
+			format.setDateFormate(dateFormat);
+			
+			if (checkBoxWeekNum.isSelected()) {
+				setWeekStatus(true);
+			} else {
+				setWeekStatus(false);
+			}
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Message");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText("Information updated successfully");
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			confirmationMsg.setX(SettingsStage.getX() + 200);
+			confirmationMsg.setY(SettingsStage.getY() + 170);
+			confirmationMsg.showAndWait();
+			
+			tabSystemInitialize();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	private void loadUsername() {
+		systemtxtUsername.setText(getUsername());
+		systemtxtUsername.setDisable(true);
+	}
+	
+	private void loadUserFullName() {
+		systemtxtName.setText(getUserFullName());
+		systemtxtName.setDisable(true);
+		systembtnChangeName.setText("Change Name");
+	}
+	
+	private void loadPassword() {
+		systemtxtPassword.setText(getPassword());
+		systemtxtPassword.setDisable(true);
+		systembtnChangePassword.setText("Change Password");
+	}
+	
+	
+	@FXML
+	private void changeName(ActionEvent event) {
+		try {
+			if (!nameChangeClicked) {
+				TextInputDialog dialog = new TextInputDialog();
+				dialog.setTitle("Name Change");
+				dialog.setHeaderText("Enter password for authentication");
+				dialog.setContentText("Your Password :");
+				Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+				dialog.setX(SettingsStage.getX() + 200);
+				dialog.setY(SettingsStage.getY() + 170);
+				Optional<String> result = dialog.showAndWait();
+				if (result.isPresent()) {
+					if (getPassword().equals(result.get())) {
+						systemtxtName.setDisable(false);
+						systembtnChangeName.setText("Save Name");
+						nameChangeClicked = true;
+					} else {
+						Alert alert = new Alert(AlertType.WARNING);
+						alert.setTitle("Message");
+						alert.setHeaderText(null);
+						alert.setContentText("Wrong Password");
+						alert.setX(SettingsStage.getX() + 200);
+						alert.setY(SettingsStage.getY() + 170);
+						alert.showAndWait();
+					}
+				} 
+				
+			} else {
+				setUserFullName(systemtxtName.getText());
+				nameChangeClicked = false;
+				
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Message");
+				confirmationMsg.setHeaderText(null);
+				confirmationMsg.setContentText("Information updated successfully");
+				Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+				confirmationMsg.setX(SettingsStage.getX() + 200);
+				confirmationMsg.setY(SettingsStage.getY() + 170);
+				confirmationMsg.showAndWait();
+				
+				lblUserFullName.setText(getUserFullName());
+				tabSystemInitialize();
+			}
+		} catch (Exception e) {}
+
+	}
+	
+	
+	@FXML
+	private void changePassword(ActionEvent event) {
+		try {
+			if (!passwordChangeClicked) {
+				TextInputDialog dialog = new TextInputDialog();
+				dialog.setTitle("Password Change");
+				dialog.setHeaderText("Enter password for authentication");
+				dialog.setContentText("Your Password :");
+				Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+				dialog.setX(SettingsStage.getX() + 200);
+				dialog.setY(SettingsStage.getY() + 170);
+				Optional<String> result = dialog.showAndWait();
+				if (result.isPresent()) {
+					if (getPassword().equals(result.get())) {
+						systemtxtPassword.setDisable(false);
+						systemtxtPassword.clear();
+						systemlblRePassword.setVisible(true);
+						systemtxtRePassword.setVisible(true);
+						systembtnChangePassword.setText("Save Password");
+						passwordChangeClicked = true;
+					} else {
+						Alert alert = new Alert(AlertType.WARNING);
+						alert.setTitle("Message");
+						alert.setHeaderText(null);
+						alert.setContentText("Wrong Password");
+						alert.setX(SettingsStage.getX() + 200);
+						alert.setY(SettingsStage.getY() + 170);
+						alert.showAndWait();
+					}
+				} 
+				
+			} else {
+				if (!systemtxtPassword.getText().equals(systemtxtRePassword.getText())) {
+					systemlblWarningMsg.setText("Password didn't match");
+				} else {
+					setPassword(systemtxtPassword.getText());
+					passwordChangeClicked = false;
+					
+					Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+					confirmationMsg.setTitle("Message");
+					confirmationMsg.setHeaderText(null);
+					confirmationMsg.setContentText("Information updated successfully");
+					Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+					confirmationMsg.setX(SettingsStage.getX() + 200);
+					confirmationMsg.setY(SettingsStage.getY() + 170);
+					confirmationMsg.showAndWait();
+					
+					tabSystemInitialize();
+				}
+			}
+		} catch (Exception e) {}
+	}
+	
+	@FXML
+	private void emptyPassField() {
+		systemlblWarningMsg.setText("");
+	}
 }
 
 

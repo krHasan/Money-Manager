@@ -14,6 +14,16 @@ import tab.SettingBank;
 
 public class SettingsModel extends DateAndClock {
 	
+	public boolean validCharge(String charge) {
+		if (charge.matches("[0-9]{1,3}(\\.[0-9]{1,2}){0,7}")) {
+			return true;
+		} else if (charge.matches("[0-9]{1,3}\\.")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public static String getUserFullName() {
 		if (checkUserPresence()) {
 			return userFullName();
@@ -84,6 +94,17 @@ public class SettingsModel extends DateAndClock {
 		return list;
 	}
 	
+////////////////////// Sector  ////////////////////////
+	public ObservableList<String> getActiveSectorList() {
+		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getSectorList());
+		return list;
+	}
+
+
+	public ObservableList<String> getArchivedSectorList() {
+		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getArchivedSectorList());
+		return list;
+	}
 	
 }
 

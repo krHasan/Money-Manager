@@ -93,9 +93,49 @@ public class DateAndClock extends UserBasic {
 	}
 	
 	
+	public static boolean getWeekStatus() {
+		String sql = "SELECT weekNumber FROM System_Settings WHERE ID = 1";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sql)) {
+			if (result.getString("weekNumber").equals("true")) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	public void setWeekStatus(boolean weekNumber) {
+		String sql = "UPDATE System_Settings SET weekNumber = ? ";
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			if (weekNumber) {
+				pstmt.setString(1, "true");
+			} else {
+				pstmt.setString(1, "false");
+			}
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 //	public static void main(String[] args) {
 //		System.out.println(dateChecker());
 //		System.out.println(shortClock());
 //		System.out.println(getMonth());
 //	}
 }
+
+
+
+
+
+

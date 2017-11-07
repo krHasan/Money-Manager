@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -396,21 +394,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	public void initialize() {
-		tabTimer();
+		showTab();
 	}
+
 	
-	
-	public void tabTimer() {
-		try {
-			new Timer().schedule(
-				new TimerTask() {
-					@Override
-					public void run() {
-						showTab();
-					}
-				}, 100);
-		} catch (Exception e) {}
-	}
 	public void showTab() {
 		try {
 			String tabName = (new TabAccess()).getTabName();
@@ -441,7 +428,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private void returnToDashboard(ActionEvent event) {
 		Stage MakeATransactionStage = (Stage) gmbtnGoToDashboard.getScene().getWindow();
 		(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.hide();
+		MakeATransactionStage.close();
 	}
 	
 	
@@ -482,6 +469,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private void gmInitialize() {
 		gmdateDate.setConverter(formatManager);
 		gmdateDate.setValue(date);
+		if (getWeekStatus()) {
+			gmdateDate.setShowWeekNumbers(true);
+		}
 		gmlblLetterRemainmsg.setText("");
 		gmlblBalanceUpdateMsg.setText(" ");
 		gmtxtAmount.clear();
@@ -532,19 +522,19 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	public void gmSettingBtn(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
 		Stage MakeATransactionStage = (Stage) gmbtnSettings.getScene().getWindow();
 		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		(new TabAccess()).setTabName("tabBank");
-		MakeATransactionStage.hide();
+		MakeATransactionStage.close();
 	}
 	
 	
 	@FXML
 	private void gmGoToSourceBtn(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSource");
 		Stage MakeATransactionStage = (Stage) gmbtnCreateSource.getScene().getWindow();
 		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		(new TabAccess()).setTabName("tabSource");
-		MakeATransactionStage.hide();
+		MakeATransactionStage.close();
 	}
 	
 	
@@ -777,6 +767,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private void exInitialize() {
 		exdateDate.setConverter(formatManager);
 		exdateDate.setValue(date);
+		if (getWeekStatus()) {
+			exdateDate.setShowWeekNumbers(true);
+		}
 		extxtAmount.clear();
 		extxtDescription.clear();
 		exlblWarningMsg.setText("");
@@ -788,10 +781,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void exGoToSectorBtn(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSector");
 		Stage MakeATransactionStage = (Stage) exbtnCreateSector.getScene().getWindow();
 		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		(new TabAccess()).setTabName("tabSector");
-		MakeATransactionStage.hide();
+		MakeATransactionStage.close();
 	}
 	
 	
@@ -985,6 +978,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 		try {
 			lenddateDate.setConverter(formatManager);
 			lenddateDate.setValue(date);
+			if (getWeekStatus()) {
+				lenddateDate.setShowWeekNumbers(true);
+			}
 			showBorroTblData();
 		} catch (Exception e) {}
 		showWalletBalance();
@@ -2535,6 +2531,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 		try {
 			bnkdateDate.setConverter(formatManager);
 			bnkdateDate.setValue(date);
+			if (getWeekStatus()) {
+				bnkdateDate.setShowWeekNumbers(true);
+			}
 		} catch (Exception e) {}
 		bkLoadType();
 		bkLoadNature();
@@ -2555,6 +2554,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 		bnkSelectedTabName = "Rocket";
 		bnkdateDate.setConverter(formatManager);
 		bnkdateDate.setValue(date);
+		if (getWeekStatus()) {
+			bnkdateDate.setShowWeekNumbers(true);
+		}
 		rocLoadType();
 		rocLoadNature();
 		rocAccountBalanceShow();
@@ -2582,10 +2584,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void bnkSettingBtn(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
 		Stage MakeATransactionStage = (Stage) bnkbtnSettings.getScene().getWindow();
 		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		(new TabAccess()).setTabName("tabBank");
-		MakeATransactionStage.hide();
+		MakeATransactionStage.close();
 	}
 	
 	
@@ -3494,26 +3496,4 @@ public class MakeATransactionController extends MakeATransactionModel {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

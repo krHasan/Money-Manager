@@ -173,6 +173,47 @@ public class ComboboxList extends DatabaseConnection {
 	}
 	
 	
+	public String[] getArchivedSectorList() {
+		if(getArchivedSectorArraySize()>0) {
+			String list[] = new String[getArchivedSectorArraySize()];
+			String sql = "SELECT sectorArchiveList \n"
+					+ "FROM Archived_Sector_List";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("sectorArchiveList");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Sector"};
+			return list;
+		}
+	}
+	public int getArchivedSectorArraySize() {
+		int size = 0;
+		String sqlid = "SELECT * \n"
+				+ "FROM Archived_Sector_List";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
+	
 	public String[] getBoRepayPersonNameList() {
 		if(getBoRepayPersonNameSize()>0) {
 			String list[] = new String[getBoRepayPersonNameSize()];

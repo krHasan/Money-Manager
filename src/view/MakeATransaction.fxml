@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -25,27 +26,45 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </TextField>
-                  <ComboBox fx:id="gmcmboSource" layoutX="418.0" layoutY="142.0" prefHeight="32.0" prefWidth="200.0" />
-                  <ComboBox fx:id="gmcmboMethod" layoutX="418.0" layoutY="216.0" onAction="#gmMethodAction" prefHeight="32.0" prefWidth="200.0" />
+                  <ComboBox fx:id="gmcmboSource" layoutX="418.0" layoutY="142.0" prefHeight="32.0" prefWidth="200.0">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></ComboBox>
+                  <ComboBox fx:id="gmcmboMethod" layoutX="418.0" layoutY="216.0" onAction="#gmMethodAction" prefHeight="32.0" prefWidth="200.0">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></ComboBox>
                   <Button fx:id="gmbtnSave" defaultButton="true" layoutX="622.0" layoutY="456.0" mnemonicParsing="false" onAction="#gmSavebtn" prefHeight="28.0" prefWidth="111.0" text="Save">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="gmbtnCancel" cancelButton="true" layoutX="469.0" layoutY="456.0" mnemonicParsing="false" onAction="#gmCancelBtn" prefHeight="28.0" prefWidth="111.0" text="Cancel">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="gmbtnCreateSource" focusTraversable="false" layoutX="635.0" layoutY="142.0" mnemonicParsing="false" onAction="#gmGoToSourceBtn" prefHeight="32.0" prefWidth="120.0" text="Create Source">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="gmbtnSettings" focusTraversable="false" layoutX="635.0" layoutY="216.0" mnemonicParsing="false" onAction="#gmSettingBtn" prefHeight="32.0" prefWidth="120.0" text="Settings">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
                   <Label focusTraversable="false" layoutX="420.0" layoutY="118.0" prefHeight="20.0" prefWidth="150.0" text="Source of Money">
                      <font>
@@ -92,15 +111,30 @@
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="gmrbtnAgent" focusTraversable="false" layoutX="454.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#gmRbtnAgentClick" />
-                  <RadioButton fx:id="gmrbtnSendMoney" focusTraversable="false" layoutX="454.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#gmRbtnSendMoneyClick" />
-                  <RadioButton fx:id="gmrbtnBranch" focusTraversable="false" layoutX="454.0" layoutY="362.0" mnemonicParsing="false" onMouseClicked="#gmRbtnBranceClick" />
+                  <RadioButton fx:id="gmrbtnAgent" focusTraversable="false" layoutX="454.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#gmRbtnAgentClick">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></RadioButton>
+                  <RadioButton fx:id="gmrbtnSendMoney" focusTraversable="false" layoutX="454.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#gmRbtnSendMoneyClick">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></RadioButton>
+                  <RadioButton fx:id="gmrbtnBranch" focusTraversable="false" layoutX="454.0" layoutY="362.0" mnemonicParsing="false" onMouseClicked="#gmRbtnBranceClick">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></RadioButton>
                   <TextArea fx:id="gmtxtDescription" focusTraversable="false" layoutX="80.0" layoutY="196.0" onKeyReleased="#gmDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font></TextArea>
-                  <DatePicker fx:id="gmdateDate" editable="false" focusTraversable="false" layoutX="555.0" layoutY="28.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
-                  <Button fx:id="gmbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
+                  <DatePicker fx:id="gmdateDate" editable="false" focusTraversable="false" layoutX="555.0" layoutY="28.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></DatePicker>
+                  <Button fx:id="gmbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></Button>
                   <Label fx:id="gmlblLetterRemainmsg" focusTraversable="false" layoutX="80.0" layoutY="314.0">
                   	<font>
                         <Font name="Arial" size="13.0" />
@@ -118,23 +152,38 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </TextField>
-                  <ComboBox fx:id="excmboSector" layoutX="425.0" layoutY="151.0" prefHeight="32.0" prefWidth="200.0" />
+                  <ComboBox fx:id="excmboSector" layoutX="425.0" layoutY="151.0" prefHeight="32.0" prefWidth="200.0">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></ComboBox>
                   <Button fx:id="exbtnSave" defaultButton="true" layoutX="622.0" layoutY="456.0" mnemonicParsing="false" onAction="#exSaveBtn" prefHeight="28.0" prefWidth="111.0" text="Save">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="exbtnCancel" cancelButton="true" layoutX="469.0" layoutY="456.0" mnemonicParsing="false" onAction="#exCancelBtn" prefHeight="28.0" prefWidth="111.0" text="Cancel">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="exbtnCreateSector" focusTraversable="false" layoutX="642.0" layoutY="151.0" mnemonicParsing="false" onAction="#exGoToSectorBtn" prefHeight="32.0" prefWidth="120.0" text="Create Sector">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
-                  <DatePicker fx:id="exdateDate" editable="false" focusTraversable="false" layoutX="555.0" layoutY="28.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
+                  <DatePicker fx:id="exdateDate" editable="false" focusTraversable="false" layoutX="555.0" layoutY="28.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></DatePicker>
                   <Label layoutX="427.0" layoutY="127.0" prefHeight="20.0" prefWidth="150.0" text="Expenditure Sector">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
@@ -174,8 +223,14 @@
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
-                  <Button fx:id="exbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
+                  <Button fx:id="exbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></Button>
                   <Label fx:id="exlblLetterRemainmsg" layoutX="80.0" layoutY="323.0">
                   	<font>
                         <Font name="Arial" size="13.0" />
@@ -194,9 +249,18 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="428.0">
                                  <children>
-                                    <ComboBox fx:id="bocmboType" layoutX="208.0" layoutY="15.0" onAction="#boTypeAction" prefHeight="27.0" prefWidth="216.0" />
-                                    <ComboBox fx:id="bocmboMethod" layoutX="208.0" layoutY="52.0" onAction="#boMethodAction" prefHeight="27.0" prefWidth="216.0" />
-                                    <ComboBox fx:id="bocmboRepaidPerson" layoutX="208.0" layoutY="89.0" onAction="#boRepayPersonCmboAction" prefHeight="27.0" prefWidth="135.0" />
+                                    <ComboBox fx:id="bocmboType" layoutX="208.0" layoutY="15.0" onAction="#boTypeAction" prefHeight="27.0" prefWidth="216.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></ComboBox>
+                                    <ComboBox fx:id="bocmboMethod" layoutX="208.0" layoutY="52.0" onAction="#boMethodAction" prefHeight="27.0" prefWidth="216.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></ComboBox>
+                                    <ComboBox fx:id="bocmboRepaidPerson" layoutX="208.0" layoutY="89.0" onAction="#boRepayPersonCmboAction" prefHeight="27.0" prefWidth="135.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></ComboBox>
                                     <TextField fx:id="botxtFromWhom" alignment="CENTER" layoutX="208.0" layoutY="89.0" prefHeight="27.0" prefWidth="135.0" />
                                     <TextField fx:id="botxtAmountWithCharge" alignment="CENTER" layoutX="208.0" layoutY="126.0" onKeyReleased="#boAmountValidation" prefHeight="27.0" prefWidth="135.0">
                                        <font>
@@ -248,15 +312,27 @@
                                           <Font name="Arial" size="12.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="borbtn1" focusTraversable="false" layoutX="218.0" layoutY="195.0" mnemonicParsing="false" onAction="#boRbtn1Action" />
+                                    <RadioButton fx:id="borbtn1" focusTraversable="false" layoutX="218.0" layoutY="195.0" mnemonicParsing="false" onAction="#boRbtn1Action">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
                                     <Label fx:id="bolblBankCharge" alignment="CENTER" layoutX="350.0" layoutY="119.0" prefHeight="27.0" prefWidth="97.0">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="borbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#boRbtn2Action" prefHeight="18.0" prefWidth="105.0" />
-                                    <RadioButton fx:id="borbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#boRbtn3Action" prefHeight="18.0" prefWidth="105.0" />
-                                    <RadioButton fx:id="borbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#boRbtn4Action" prefHeight="18.0" prefWidth="105.0" />
+                                    <RadioButton fx:id="borbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#boRbtn2Action" prefHeight="18.0" prefWidth="105.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
+                                    <RadioButton fx:id="borbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#boRbtn3Action" prefHeight="18.0" prefWidth="105.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
+                                    <RadioButton fx:id="borbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#boRbtn4Action" prefHeight="18.0" prefWidth="105.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
                                     <Label fx:id="bolblAmountValidationMsg" layoutX="170.0" layoutY="153.0" textFill="#c30606">
                                        <font>
                                           <Font name="Arial" size="12.0" />
@@ -275,9 +351,18 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="445.0">
                                  <children>
-                                    <ComboBox fx:id="lecmboType" layoutX="208.0" layoutY="15.0" onAction="#leTypeAction" prefHeight="27.0" prefWidth="216.0" />
-                                    <ComboBox fx:id="lecmboMethod" layoutX="208.0" layoutY="52.0" onAction="#leMethodAction" prefHeight="27.0" prefWidth="216.0" />
-                                    <ComboBox fx:id="lecmboRepaidPerson" layoutX="208.0" layoutY="89.0" onAction="#leRepayPersonCmboAction" prefHeight="27.0" prefWidth="135.0" />
+                                    <ComboBox fx:id="lecmboType" layoutX="208.0" layoutY="15.0" onAction="#leTypeAction" prefHeight="27.0" prefWidth="216.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></ComboBox>
+                                    <ComboBox fx:id="lecmboMethod" layoutX="208.0" layoutY="52.0" onAction="#leMethodAction" prefHeight="27.0" prefWidth="216.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></ComboBox>
+                                    <ComboBox fx:id="lecmboRepaidPerson" layoutX="208.0" layoutY="89.0" onAction="#leRepayPersonCmboAction" prefHeight="27.0" prefWidth="135.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></ComboBox>
                                     <TextField fx:id="letxtFromWhom" alignment="CENTER" layoutX="208.0" layoutY="89.0" prefHeight="27.0" prefWidth="135.0" />
                                     <TextField fx:id="letxtAmountWithCharge" alignment="CENTER" layoutX="208.0" layoutY="126.0" onKeyReleased="#leAmountValidation" prefHeight="27.0" prefWidth="135.0">
                                        <font>
@@ -329,15 +414,27 @@
                                           <Font name="Arial" size="12.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="lerbtn1" focusTraversable="false" layoutX="218.0" layoutY="195.0" mnemonicParsing="false" onAction="#leRbtn1Action" />
+                                    <RadioButton fx:id="lerbtn1" focusTraversable="false" layoutX="218.0" layoutY="195.0" mnemonicParsing="false" onAction="#leRbtn1Action">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
                                     <Label fx:id="lelblBankCharge" alignment="CENTER" layoutX="350.0" layoutY="119.0" prefHeight="27.0" prefWidth="97.0">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="lerbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#leRbtn2Action" prefHeight="18.0" prefWidth="105.0" />
-                                    <RadioButton fx:id="lerbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#leRbtn3Action" prefHeight="18.0" prefWidth="105.0" />
-                                    <RadioButton fx:id="lerbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#leRbtn4Action" prefHeight="18.0" prefWidth="105.0" />
+                                    <RadioButton fx:id="lerbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#leRbtn2Action" prefHeight="18.0" prefWidth="105.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
+                                    <RadioButton fx:id="lerbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#leRbtn3Action" prefHeight="18.0" prefWidth="105.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
+                                    <RadioButton fx:id="lerbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#leRbtn4Action" prefHeight="18.0" prefWidth="105.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
                                     <Label fx:id="lelblAmountValidationMsg" layoutX="170.0" layoutY="153.0" textFill="#d00808">
                                        <font>
                                           <Font name="Arial" size="12.0" />
@@ -356,13 +453,22 @@
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="lendbtnCancel" cancelButton="true" layoutX="465.0" layoutY="463.0" mnemonicParsing="false" onAction="#LendCancelBtn" prefHeight="28.0" prefWidth="111.0" text="Cancel">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
-                  <DatePicker fx:id="lenddateDate" editable="false" focusTraversable="false" layoutX="585.0" layoutY="14.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
+                  <DatePicker fx:id="lenddateDate" editable="false" focusTraversable="false" layoutX="575.0" layoutY="14.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></DatePicker>
                   <Label fx:id="lendlblTableHeading" alignment="CENTER" layoutX="85.0" layoutY="61.0" prefHeight="20.0" prefWidth="179.0">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
@@ -375,7 +481,10 @@
                         <TableColumn fx:id="lendTblColumnAmount" prefWidth="79.0" text="Amount" />
                     </columns>
                   </TableView>
-                  <Button fx:id="lendbtnGoToDashboard" focusTraversable="false" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
+                  <Button fx:id="lendbtnGoToDashboard" focusTraversable="false" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></Button>
                   <Label fx:id="lendlblTotalBorrowTk" alignment="CENTER" layoutX="200.0" layoutY="470.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #ff80a6;">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
@@ -434,8 +543,14 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ComboBox fx:id="bkcmboTransactionType" layoutX="523.0" layoutY="45.0" onAction="#bkTypeAction" prefHeight="32.0" prefWidth="200.0" />
-                                    <ComboBox fx:id="bkcmboAmountNature" layoutX="523.0" layoutY="97.0" onAction="#bkNatureAction" prefHeight="32.0" prefWidth="200.0" />
+                                    <ComboBox fx:id="bkcmboTransactionType" layoutX="523.0" layoutY="45.0" onAction="#bkTypeAction" prefHeight="32.0" prefWidth="200.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></ComboBox>
+                                    <ComboBox fx:id="bkcmboAmountNature" layoutX="523.0" layoutY="97.0" onAction="#bkNatureAction" prefHeight="32.0" prefWidth="200.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></ComboBox>
                                     <TextField fx:id="bktxtAmount" alignment="CENTER" layoutX="523.0" layoutY="149.0" onKeyReleased="#bkAmountValidation" prefHeight="32.0" prefWidth="120.0" promptText="00">
                                        <font>
                                           <Font name="Arial" size="14.0" />
@@ -470,6 +585,9 @@
                                        <font>
                                           <Font size="14.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor>
                                     </Button>
                                     <Label fx:id="bklblBankChargeName" alignment="CENTER" layoutX="667.0" layoutY="140.0" prefHeight="27.0" prefWidth="97.0" text="Bank Charge">
                                        <font>
@@ -481,16 +599,31 @@
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="bkrbtn1" focusTraversable="false" layoutX="533.0" layoutY="225.0" mnemonicParsing="false" onAction="#bkCmboAction1" text="Cash Out" />
+                                    <RadioButton fx:id="bkrbtn1" focusTraversable="false" layoutX="533.0" layoutY="225.0" mnemonicParsing="false" onAction="#bkCmboAction1" text="Cash Out">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
                                     <Label fx:id="bklblBankCharge" alignment="CENTER" layoutX="667.0" layoutY="165.0" prefHeight="27.0" prefWidth="97.0" text="9.25">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="bkrbtn2" focusTraversable="false" layoutX="533.0" layoutY="250.0" mnemonicParsing="false" onAction="#bkCmboAction2" prefHeight="18.0" prefWidth="105.0" text="Buy Airtime" />
-                                    <RadioButton fx:id="bkrbtn3" focusTraversable="false" layoutX="533.0" layoutY="275.0" mnemonicParsing="false" onAction="#bkCmboAction3" prefHeight="18.0" prefWidth="105.0" text="Send Money" />
-                                    <RadioButton fx:id="bkrbtn4" focusTraversable="false" layoutX="533.0" layoutY="300.0" mnemonicParsing="false" onAction="#bkCmboAction4" prefHeight="18.0" prefWidth="105.0" text="Payment" />
-                                    <RadioButton fx:id="bkrbtn5" focusTraversable="false" layoutX="533.0" layoutY="325.0" mnemonicParsing="false" onAction="#bkCmboAction5" prefHeight="18.0" prefWidth="105.0" text="ATM" />
+                                    <RadioButton fx:id="bkrbtn2" focusTraversable="false" layoutX="533.0" layoutY="250.0" mnemonicParsing="false" onAction="#bkCmboAction2" prefHeight="18.0" prefWidth="105.0" text="Buy Airtime">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
+                                    <RadioButton fx:id="bkrbtn3" focusTraversable="false" layoutX="533.0" layoutY="275.0" mnemonicParsing="false" onAction="#bkCmboAction3" prefHeight="18.0" prefWidth="105.0" text="Send Money">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
+                                    <RadioButton fx:id="bkrbtn4" focusTraversable="false" layoutX="533.0" layoutY="300.0" mnemonicParsing="false" onAction="#bkCmboAction4" prefHeight="18.0" prefWidth="105.0" text="Payment">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
+                                    <RadioButton fx:id="bkrbtn5" focusTraversable="false" layoutX="533.0" layoutY="325.0" mnemonicParsing="false" onAction="#bkCmboAction5" prefHeight="18.0" prefWidth="105.0" text="ATM">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
                                     <Label fx:id="bklblUpdateBalance" alignment="CENTER" layoutX="74.0" layoutY="132.0" prefHeight="16.0" prefWidth="202.0" text="Update Balance will be : 3045.56">
                                        <font>
                                           <Font name="Arial" size="12.0" />
@@ -509,8 +642,14 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ComboBox fx:id="roccmboTransactionType" layoutX="523.0" layoutY="45.0" onAction="#rocTypeAction" prefHeight="32.0" prefWidth="200.0" />
-                                    <ComboBox fx:id="roccmboAmountNature" layoutX="523.0" layoutY="97.0" onAction="#rocNatureAction" prefHeight="32.0" prefWidth="200.0" />
+                                    <ComboBox fx:id="roccmboTransactionType" layoutX="523.0" layoutY="45.0" onAction="#rocTypeAction" prefHeight="32.0" prefWidth="200.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></ComboBox>
+                                    <ComboBox fx:id="roccmboAmountNature" layoutX="523.0" layoutY="97.0" onAction="#rocNatureAction" prefHeight="32.0" prefWidth="200.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></ComboBox>
                                     <TextField fx:id="roctxtAmount" alignment="CENTER" layoutX="523.0" layoutY="149.0" onKeyReleased="#rocAmountValidation" prefHeight="32.0" prefWidth="120.0" promptText="00">
                                        <font>
                                           <Font name="Arial" size="14.0" />
@@ -545,6 +684,9 @@
                                        <font>
                                           <Font size="14.0" />
                                        </font>
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor>
                                     </Button>
                                     <Label fx:id="roclblBankChargeName" alignment="CENTER" layoutX="667.0" layoutY="140.0" prefHeight="27.0" prefWidth="97.0" text="Bank Charge">
                                        <font>
@@ -556,16 +698,31 @@
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="rocrbtn1" focusTraversable="false" layoutX="533.0" layoutY="225.0" mnemonicParsing="false" onAction="#rocCmboAction1" text="ATM" />
+                                    <RadioButton fx:id="rocrbtn1" focusTraversable="false" layoutX="533.0" layoutY="225.0" mnemonicParsing="false" onAction="#rocCmboAction1" text="ATM">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
                                     <Label fx:id="roclblBankCharge" alignment="CENTER" layoutX="667.0" layoutY="165.0" prefHeight="27.0" prefWidth="97.0" text="9.25">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="rocrbtn2" focusTraversable="false" layoutX="533.0" layoutY="250.0" mnemonicParsing="false" onAction="#rocCmboAction2" prefHeight="18.0" prefWidth="105.0" text="TopUp" />
-                                    <RadioButton fx:id="rocrbtn3" focusTraversable="false" layoutX="533.0" layoutY="275.0" mnemonicParsing="false" onAction="#rocCmboAction3" prefHeight="18.0" prefWidth="105.0" text="Agent" />
-                                    <RadioButton fx:id="rocrbtn4" focusTraversable="false" layoutX="533.0" layoutY="300.0" mnemonicParsing="false" onAction="#rocCmboAction4" prefHeight="18.0" prefWidth="105.0" text="Send Money" />
-                                    <RadioButton fx:id="rocrbtn5" focusTraversable="false" layoutX="533.0" layoutY="325.0" mnemonicParsing="false" onAction="#rocCmboAction5" prefHeight="18.0" prefWidth="105.0" text="Branch" />
+                                    <RadioButton fx:id="rocrbtn2" focusTraversable="false" layoutX="533.0" layoutY="250.0" mnemonicParsing="false" onAction="#rocCmboAction2" prefHeight="18.0" prefWidth="105.0" text="TopUp">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
+                                    <RadioButton fx:id="rocrbtn3" focusTraversable="false" layoutX="533.0" layoutY="275.0" mnemonicParsing="false" onAction="#rocCmboAction3" prefHeight="18.0" prefWidth="105.0" text="Agent">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
+                                    <RadioButton fx:id="rocrbtn4" focusTraversable="false" layoutX="533.0" layoutY="300.0" mnemonicParsing="false" onAction="#rocCmboAction4" prefHeight="18.0" prefWidth="105.0" text="Send Money">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
+                                    <RadioButton fx:id="rocrbtn5" focusTraversable="false" layoutX="533.0" layoutY="325.0" mnemonicParsing="false" onAction="#rocCmboAction5" prefHeight="18.0" prefWidth="105.0" text="Branch">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></RadioButton>
                                     <Label fx:id="roclblUpdateBalance" alignment="CENTER" layoutX="74.0" layoutY="132.0" prefHeight="16.0" prefWidth="202.0" text="Update Balance will be : 3045.56">
                                        <font>
                                           <Font name="Arial" size="12.0" />
@@ -584,7 +741,10 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ComboBox fx:id="percmboAmountNature" layoutX="523.0" layoutY="97.0" prefHeight="32.0" prefWidth="200.0" />
+                                    <ComboBox fx:id="percmboAmountNature" layoutX="523.0" layoutY="97.0" prefHeight="32.0" prefWidth="200.0">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></ComboBox>
                                     <TextField fx:id="pertxtAmount" alignment="CENTER" layoutX="523.0" layoutY="149.0" onKeyReleased="#perAmountValidation" prefHeight="32.0" prefWidth="200.0" promptText="00">
                                        <font>
                                           <Font name="Arial" size="14.0" />
@@ -625,18 +785,33 @@
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="bnkbtnCancel" cancelButton="true" layoutX="465.0" layoutY="468.0" mnemonicParsing="false" onAction="#bnkCancelBtn" prefHeight="28.0" prefWidth="111.0" text="Cancel">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
-                  <DatePicker fx:id="bnkdateDate" editable="false" focusTraversable="false" layoutX="585.0" layoutY="14.0" prefHeight="28.0" prefWidth="200.0" promptText="Select A Date" />
-                  <Button fx:id="bnkbtnGoToDashboard" focusTraversable="false" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" />
+                  <DatePicker fx:id="bnkdateDate" editable="false" focusTraversable="false" layoutX="575.0" layoutY="14.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></DatePicker>
+                  <Button fx:id="bnkbtnGoToDashboard" focusTraversable="false" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard">
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></Button>
                   <Button fx:id="bnkbtnSettings" focusTraversable="false" layoutX="196.0" layoutY="14.0" mnemonicParsing="false" onAction="#bnkSettingBtn" prefHeight="28.0" prefWidth="98.0" text="Settings">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </Button>
                   <Label alignment="CENTER_RIGHT" layoutX="336.0" layoutY="14.0" prefHeight="28.0" prefWidth="110.0" text="Wallet Balance :">
                      <font>

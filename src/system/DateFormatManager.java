@@ -1,6 +1,7 @@
 package system;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
@@ -10,26 +11,15 @@ import database.DatabaseConnection;
 import javafx.util.StringConverter;
 
 public class DateFormatManager extends StringConverter<LocalDate> {
-	public static final String TIME_h = "h:mm:ss a";
-	public static final String TIME_hh = "hh:mm:ss a";
-	public static final String TIME_H = "H:mm:ss";
-	public static final String TIME_HH = "HH:mm:ss";
-	
-	public static final String DATEddMMMM = "dd MMMM yyyy";
-	public static final String DATEddMMM = "dd MMM, yyyy";
-	public static final String DATEddMM = "dd-MM-yyyy";
-	public static final String DATEEEddMMM = "EE dd MMMM, yyyy";
-	public static final String DATEMMM = "MMMM dd, yyyy";
 	
 	
 //	return the user define date format from database
-	@SuppressWarnings("static-access")
 	public final String getDateFormat() {
 		String sql = "SELECT dateFormat \n"
 				+ "FROM System_Settings \n"
 				+ "WHERE ID=1";
 		String format = null;
-		try (Connection conn = new DatabaseConnection().connector();
+		try (Connection conn = DatabaseConnection.connector();
 				Statement stmt = conn.createStatement();
 				ResultSet result = stmt.executeQuery(sql) ) {
 			format = result.getString("dateFormat");
@@ -38,15 +28,28 @@ public class DateFormatManager extends StringConverter<LocalDate> {
 		}
 		return format;
 	}
+	
+	
+	public void setDateFormate(String format) {
+		String sql = "UPDATE System_Settings SET dateFormat = ? ";
+		
+		try (Connection conn = DatabaseConnection.connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+				
+			pstmt.setString(1, format);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	
-	@SuppressWarnings("static-access")
 	public final String getTimeFormate() {
 		String sql = "SELECT timeFormat \n"
 				+ "FROM System_Settings \n"
 				+ "WHERE ID=1";
 		String format = null;
-		try (Connection conn = new DatabaseConnection().connector();
+		try (Connection conn = DatabaseConnection.connector();
 				Statement stmt = conn.createStatement();
 				ResultSet result = stmt.executeQuery(sql) ) {
 			format = result.getString("timeFormat");
@@ -56,6 +59,21 @@ public class DateFormatManager extends StringConverter<LocalDate> {
 		return format;
 
 	}
+	
+	
+	public void setTimeFormate(String format) {
+		String sql = "UPDATE System_Settings SET timeFormat = ? ";
+		
+		try (Connection conn = DatabaseConnection.connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+				
+			pstmt.setString(1, format);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	@Override
 	public String toString(LocalDate date) {
