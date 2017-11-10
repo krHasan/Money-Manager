@@ -76,9 +76,10 @@ public class SignInController extends SignInModel {
 	private void logIn(ActionEvent event) {
 		if (authentication(txtUsername.getText(), passPassword.getText())) {
 			updateLastAccessDate();
+			addMonth();
 			Stage SignInStage = (Stage) btnSignIn.getScene().getWindow();
 			goToDashboard(SignInStage.getX(), SignInStage.getY());
-			SignInStage.hide();
+			SignInStage.close();
 		} else {
 			lblWrongAuthentication.setText("Username or Password is Wrong");
 			passPassword.clear();
@@ -96,12 +97,12 @@ public class SignInController extends SignInModel {
 			if (result.get() == ButtonType.OK){
 				Stage SignInStage = (Stage) lblNewUser.getScene().getWindow();
 				(new GoToRegistration()).goToReRegistration(SignInStage.getX(), SignInStage.getY());
-				SignInStage.hide();
+				SignInStage.close();
 			}
 		} else {
 			Stage SignInStage = (Stage) lblNewUser.getScene().getWindow();
 			(new GoToRegistration()).goToRegistration(SignInStage.getX(), SignInStage.getY());
-			SignInStage.hide();
+			SignInStage.close();
 		}
 	}
 	
@@ -119,7 +120,8 @@ public class SignInController extends SignInModel {
 		if (new SignInModel().securityQuestionAnswerIsOk(txtSQAnswer.getText())) {
 			Stage SignInStage = (Stage) btnOk.getScene().getWindow();
 			(new GoToRegistration()).goToReRegistration(SignInStage.getX(), SignInStage.getY());
-			SignInStage.hide();
+			SignInStage.close();
+			
 		} else {
 			lblForgetPassMsg.setText("Answer didn't match");
 			txtSQAnswer.clear();

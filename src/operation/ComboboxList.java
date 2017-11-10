@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import database.DatabaseConnection;
+import tab.Bkash;
+import tab.Rocket;
 
 public class ComboboxList extends DatabaseConnection {
 	
@@ -295,6 +297,126 @@ public class ComboboxList extends DatabaseConnection {
 		return size;
 	}
 	
+	
+	public String[] getAllMonth() {
+		if(getAllMonthSize()>0) {
+			String list[] = new String[getAllMonthSize()];
+			String sql = "SELECT allTransactionMonth \n"
+					+ "FROM All_Months";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("allTransactionMonth");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Month"};
+			return list;
+		}
+	}
+	public int getAllMonthSize() {
+		int size = 0;
+		String sqlid = "SELECT * \n"
+				+ "FROM All_Months";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
+	
+//	public String[] getAllYear() {
+//		if(getAllYearSize()>0) {
+//			String list[] = new String[getAllYearSize()];
+//			String sql = "SELECT DISTINCT allYear \n"
+//					+ "FROM All_Months";
+//			try (Connection conn = connector();
+//					Statement stmt = conn.createStatement();
+//					ResultSet result = stmt.executeQuery(sql)) {
+//					int index = 0;
+//					while (result.next()) {
+//						list[index] = result.getString("allYear");
+//						++index;			
+//					}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			return list;
+//			
+//		} else {
+//			String list[] = {"No Year"};
+//			return list;
+//		}
+//	}
+//	public int getAllYearSize() {
+//		int size = 0;
+//		String sqlid = "SELECT DISTINCT allYear \n"
+//				+ "FROM All_Months";
+//		
+//		try (Connection conn = connector();
+//				Statement stmt = conn.createStatement();
+//				ResultSet result = stmt.executeQuery(sqlid)) {
+//				while (result.next()) {
+//					size = size + 1;
+//				}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return size;
+//	}
+	
+	
+	public String[] getFilterList() {
+		String sourceList[] = getSourceList();
+		String sectorList[] = getSectorList();
+		String allList[] = new String[7+getSourceArraySize()+getSectorArraySize()];
+		allList[0] = "Get Money";
+		allList[1] = "Expense";
+		allList[2] = "Borrow";
+		allList[3] = "Lend";
+		int index = 4;
+		if (new Bkash().isbKashActivated() && new Rocket().isRocketActivated()) {
+			allList[index] = "bKash";
+			++index;
+			allList[index] = "Rocket";
+			++index;
+			allList[index] = "Personal";
+			++index;
+		} else if(new Bkash().isbKashActivated()) {
+			allList[index] = "bKash";
+			++index;
+			allList[index] = "Personal";
+			++index;
+		} else if(new Rocket().isRocketActivated()) {
+			allList[index] = "Rocket";
+			++index;
+			allList[index] = "Personal";
+			++index;
+		}
+		for (String string : sourceList) {
+			allList[index] = string;
+			++index;
+		}
+		for (String string : sectorList) {
+			allList[index] = string;
+			++index;
+		}
+		return allList;
+	}
 	
 	
 //	public static void main(String[] args) {

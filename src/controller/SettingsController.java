@@ -1066,6 +1066,7 @@ public class SettingsController extends SettingsModel {
 
 			format.setTimeFormate(timeFormat);
 			format.setDateFormate(dateFormat);
+			updateLastAccessDate();
 			
 			if (checkBoxWeekNum.isSelected()) {
 				setWeekStatus(true);

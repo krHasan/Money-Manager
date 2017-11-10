@@ -70,10 +70,18 @@ public class DateAndClock extends UserBasic {
 	
 	
 	public static String getMonth() {
-		DateFormat monthFormat = new SimpleDateFormat("MMM-yyyy");
+		DateFormat monthFormat = new SimpleDateFormat("MMM-yy");
 		Calendar today = Calendar.getInstance();
     	String thisMonth = monthFormat.format(today.getTime());
 		return thisMonth;
+	}
+	
+	
+	public static String getYear() {
+		DateFormat yearFormat = new SimpleDateFormat("yyyy");
+		Calendar today = Calendar.getInstance();
+    	String thisYear = yearFormat.format(today.getTime());
+		return thisYear;
 	}
 	
 	
@@ -127,10 +135,38 @@ public class DateAndClock extends UserBasic {
 		}
 	}
 	
+	
+	public void addMonth() {
+		String dbLastMonth = "No Month";
+		
+		String getLastMonth = "SELECT * FROM All_Months ORDER BY ID DESC LIMIT 1";
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(getLastMonth)) {
+			if (result.next()) {
+				dbLastMonth = result.getString("allTransactionMonth");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (!dbLastMonth.equals(getMonth())) {
+			dbLastMonth = getMonth();
+			String addMonthYear = "INSERT INTO All_Months(allYear, allTransactionMonth) VALUES(?,?)";
+			try (Connection conn = connector();
+					PreparedStatement pstmt = conn.prepareStatement(addMonthYear)) {
+				pstmt.setString(1, getYear());
+				pstmt.setString(2, dbLastMonth);
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}	
+	}
+
+	
 //	public static void main(String[] args) {
-//		System.out.println(dateChecker());
-//		System.out.println(shortClock());
-//		System.out.println(getMonth());
+//		DateAndClock access = new DateAndClock();
+//		access.addMonth();
 //	}
 }
 

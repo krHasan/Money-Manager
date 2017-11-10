@@ -7,7 +7,6 @@ import operation.ComboboxList;
 import operation.GlobalId;
 import system.DateAndClock;
 import system.UnitConverter;
-import tab.Bkash;
 import tab.Borrow;
 import tab.Lend;
 
