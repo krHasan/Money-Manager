@@ -208,25 +208,15 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	}
 	
 	
-	public String selectedMonthName() {
-		return cmboHistoryMonth.getValue();
-	}
-	
-	
 	private void showAllFilter() {
 		cmboFilterList.setItems(loadAllFilter());
 		cmboFilterList.getSelectionModel().selectFirst();
 	}
 	
 	
-	public String selectedFilterName() {
-		return cmboFilterList.getValue();
-	}
-	
-	
 	private void showHisoty() {
-		HistorySearch historyData = new HistorySearch();
-		
+		HistorySearch historyData = new HistorySearch(cmboHistoryMonth.getValue(), cmboFilterList.getValue());
+
 		webEngine.getLoadWorker().stateProperty().addListener(
         	    new ChangeListener<Worker.State>() {
         	        @Override

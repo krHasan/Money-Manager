@@ -383,12 +383,13 @@ public class ComboboxList extends DatabaseConnection {
 	public String[] getFilterList() {
 		String sourceList[] = getSourceList();
 		String sectorList[] = getSectorList();
-		String allList[] = new String[7+getSourceArraySize()+getSectorArraySize()];
-		allList[0] = "Get Money";
-		allList[1] = "Expense";
-		allList[2] = "Borrow";
-		allList[3] = "Lend";
-		int index = 4;
+		String allList[] = new String[8+getSourceArraySize()+getSectorArraySize()];
+		allList[0] = "All";
+		allList[1] = "Get Money";
+		allList[2] = "Expense";
+		allList[3] = "Borrow";
+		allList[4] = "Lend";
+		int index = 5;
 		if (new Bkash().isbKashActivated() && new Rocket().isRocketActivated()) {
 			allList[index] = "bKash";
 			++index;
@@ -416,6 +417,30 @@ public class ComboboxList extends DatabaseConnection {
 			++index;
 		}
 		return allList;
+	}
+	
+	
+	public boolean isFilterInSource(String filterName) {
+		String sourceList[] = getSourceList();
+		boolean status = false;
+		for (String string : sourceList) {
+			if (string.equals(filterName)) {
+				status = true;
+			}
+		}
+		return status;
+	}
+	
+	
+	public boolean isFilterInSector(String filterName) {
+		String sectorList[] = getSectorList();
+		boolean status = false;
+		for (String string : sectorList) {
+			if (string.equals(filterName)) {
+				status = true;
+			}
+		}
+		return status;
 	}
 	
 	
