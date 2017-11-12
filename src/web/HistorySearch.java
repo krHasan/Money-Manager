@@ -25,6 +25,11 @@ public class HistorySearch extends DatabaseConnection {
 	}
 	
 	
+    public String print() {
+        return "I'm from inside of java.";
+    }
+	
+	
 	@SuppressWarnings("unchecked")
 	public Collection<JSONObject> getAllHistory() {
 		int minIDnumber = new MaxMinGlobalID().getMinIDNumber(monthName);

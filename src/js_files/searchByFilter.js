@@ -1,6 +1,9 @@
 window.ready = function() {
-  document.body.style.backgroundColor="#00f3f3";
-  var historyDataObject = historyData.showHisoty();
+  // document.body.style.backgroundColor="#00f3f3";
+  // var text = HistorySearch.print();
+  // $('#aText').text(text);
+
+  var historyDataObject = HistorySearch.getAllHistory();
   var historyData = JSON.parse(historyDataObject);
 
   var typedFilterName = historyData[0].typedFilterName;
@@ -13,6 +16,7 @@ window.ready = function() {
       case "All":
         switch (filter) {
           case "Get Money":
+            printGetMoney(i, history);
           break;
 
           case "Expense":
@@ -34,9 +38,11 @@ window.ready = function() {
             break;
 
           default:
+        }
         break;
 
       case "Get Money":
+        printGetMoney(i, history);
         break;
 
       case "Expense":

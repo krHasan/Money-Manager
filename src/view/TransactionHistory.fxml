@@ -48,11 +48,11 @@
       <Button fx:id="btnSignOut" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" />
       <Button fx:id="btnGo" layoutX="715.0" layoutY="35.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="70.0" text="Go" />
-      <ComboBox fx:id="cmboFilterList" layoutX="301.0" layoutY="35.0" prefHeight="28.0" prefWidth="170.0" />
+      <ComboBox fx:id="cmboFilterList" layoutX="301.0" layoutY="35.0" onAction="#cmboFilterList" prefHeight="28.0" prefWidth="170.0" />
       <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="35.0" prefHeight="28.0" prefWidth="90.0" text="History For : " />
       <Label alignment="CENTER_RIGHT" layoutX="231.0" layoutY="35.0" prefHeight="28.0" prefWidth="70.0" text="Filter By : " />
       <DatePicker fx:id="datePicker" editable="false" focusTraversable="false" layoutX="494.0" layoutY="35.0" prefHeight="28.0" prefWidth="210.0" promptText="Search by Date" />
       <WebView fx:id="webview" layoutX="115.0" layoutY="103.0" prefHeight="470.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <ComboBox fx:id="cmboHistoryMonth" layoutX="99.0" layoutY="35.0" prefHeight="28.0" prefWidth="110.0" />
+      <ComboBox fx:id="cmboHistoryMonth" layoutX="99.0" layoutY="35.0" onAction="#cmboHistoryMonth" prefHeight="28.0" prefWidth="110.0" />
    </children>
 </AnchorPane>

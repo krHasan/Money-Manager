@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 
 import javafx.beans.value.ChangeListener;
@@ -76,6 +78,8 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	
 	String dateString = formatManager.toString(LocalDate.now());
 	LocalDate date = formatManager.fromString(dateString);
+	
+	HistorySearch debug;
 	
 	@FXML
 	public void initialize() {
@@ -201,6 +205,17 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	}
 
 ////////////////////////// Function //////////////////////////////
+	@FXML
+	private void cmboHistoryMonth(ActionEvent event) {
+		showHisoty();
+	}
+	
+	
+	@FXML
+	private void cmboFilterList(ActionEvent event) {
+		showHisoty();
+	}
+	
 	
 	private void showAllMonths() {
 		cmboHistoryMonth.setItems(loadAllMonths());
@@ -215,15 +230,15 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	
 	
 	private void showHisoty() {
-		HistorySearch historyData = new HistorySearch(cmboHistoryMonth.getValue(), cmboFilterList.getValue());
-
+		debug = new HistorySearch(cmboHistoryMonth.getValue(), cmboFilterList.getValue());
+		
 		webEngine.getLoadWorker().stateProperty().addListener(
         	    new ChangeListener<Worker.State>() {
         	        @Override
         	        public void changed(ObservableValue<? extends Worker.State> observable, Worker.State oldValue, Worker.State newValue) {
         	            if (newValue == Worker.State.SUCCEEDED) {
         	                JSObject windowObject = (JSObject) webEngine.executeScript("window");
-        	                windowObject.setMember("historyData", historyData); // insert object
+        	                windowObject.setMember("HistorySearch", debug); // insert object
         	                windowObject.call("ready"); // execute callback
         	            }
         	        }
