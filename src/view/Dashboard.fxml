@@ -19,53 +19,51 @@
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem fx:id="mnuCreateSource" mnemonicParsing="false" text="Create Source" />
-                  <MenuItem fx:id="mnuCreateSector" mnemonicParsing="false" text="Create Sector" />
+                  <MenuItem fx:id="mnuCreateSource" mnemonicParsing="false" onAction="#mnuCreateSource" text="Create Source" />
+                  <MenuItem fx:id="mnuCreateSector" mnemonicParsing="false" onAction="#mnuCreateSector" text="Create Sector" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuExit" mnemonicParsing="false" text="Exit" />
+                  <MenuItem fx:id="mnuExit" mnemonicParsing="false" onAction="#mnuExit" text="Exit" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Operation">
                <items>
-                  <MenuItem fx:id="mnuGetMoney" mnemonicParsing="false" text="Get Money" />
-                  <MenuItem fx:id="mnuExpense" mnemonicParsing="false" text="Expense" />
-                  <MenuItem fx:id="mnuLend" mnemonicParsing="false" text="Lend" />
-                  <MenuItem fx:id="mnuBank" mnemonicParsing="false" text="Bank" />
+                  <MenuItem fx:id="mnuGetMoney" mnemonicParsing="false" onAction="#mnuGetMoney" text="Get Money" />
+                  <MenuItem fx:id="mnuExpense" mnemonicParsing="false" onAction="#mnuExpense" text="Expense" />
+                  <MenuItem fx:id="mnuLend" mnemonicParsing="false" onAction="#mnuLend" text="Lend" />
+                  <MenuItem fx:id="mnuBank" mnemonicParsing="false" onAction="#mnuBank" text="Bank" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" text="Transaction Hirtory" />
+                  <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" onAction="#mnuTransactionHistory" text="Transaction Hirtory" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuCashCalculate" mnemonicParsing="false" text="Cash Calculate" />
+                  <MenuItem fx:id="mnuCashCalculate" mnemonicParsing="false" onAction="#mnuCashCalculate" text="Cash Calculate" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Tools">
                <items>
-                  <MenuItem fx:id="mnuBankSettings" mnemonicParsing="false" text="Bank Settings" />
-                  <MenuItem fx:id="mnuSourceSettings" mnemonicParsing="false" text="Source Settings" />
-                  <MenuItem fx:id="mnuSectorSettings" mnemonicParsing="false" text="Sector Settings" />
-                  <MenuItem fx:id="mnuSystemSettings" mnemonicParsing="false" text="System Settings" />
+                  <MenuItem fx:id="mnuBankSettings" mnemonicParsing="false" onAction="#mnuBankSettings" text="Bank Settings" />
+                  <MenuItem fx:id="mnuSourceSettings" mnemonicParsing="false" onAction="#mnuSourceSettings" text="Source Settings" />
+                  <MenuItem fx:id="mnuSectorSettings" mnemonicParsing="false" onAction="#mnuSectorSettings" text="Sector Settings" />
+                  <MenuItem fx:id="mnuSystemSettings" mnemonicParsing="false" onAction="#mnuSystemSettings" text="System Settings" />
                </items>
             </Menu>
          </menus>
       </MenuBar>
-      <Button fx:id="btnSignOut" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
+      <Button fx:id="btnSignOut" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" text="Khandoker Rakib Hasan" />
-      <Label fx:id="lblLongClock" alignment="CENTER" layoutX="547.0" layoutY="41.0" prefHeight="30.0" prefWidth="200.0" text="Sat, 04-Nov-2017  17:31:23" />
-      <Label alignment="CENTER_RIGHT" layoutX="514.0" layoutY="86.0" prefHeight="40.0" prefWidth="150.0" text="Wallet Balance : ">
+      <Label alignment="CENTER_RIGHT" layoutX="514.0" layoutY="218.0" prefHeight="40.0" prefWidth="150.0" text="Wallet Balance : ">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblWalletBalance" alignment="CENTER" layoutX="664.0" layoutY="86.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;" text="12345">
+      <Label fx:id="lblWalletBalance" alignment="CENTER" layoutX="664.0" layoutY="218.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;" text="12345">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnMakeATransaction" layoutX="573.0" layoutY="150.0" mnemonicParsing="false" onAction="#goToMakeAtransaction" prefHeight="30.0" prefWidth="150.0" text="Make a Transaction" />
-      <Button fx:id="btnCashCalculate" layoutX="573.0" layoutY="190.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Cash Calculate" />
-      <Button fx:id="btnAdjustBalance" layoutX="573.0" layoutY="230.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Adjust Balance" />
-      <Button fx:id="btnTransactionHistory" layoutX="573.0" layoutY="300.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Transaction History" />
-      <Button fx:id="btnSettings" layoutX="573.0" layoutY="340.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Settings" />
-      <BarChart fx:id="chartGetMoney" layoutX="5.0" layoutY="35.0" prefHeight="75.0" prefWidth="500.0">
+      <Button fx:id="btnMakeATransaction" layoutX="491.0" layoutY="278.0" mnemonicParsing="false" onAction="#goToMakeAtransaction" prefHeight="30.0" prefWidth="146.0" text="Make a Transaction" />
+      <Button fx:id="btnCashCalculate" layoutX="646.0" layoutY="278.0" mnemonicParsing="false" onAction="#btnCashCalculate" prefHeight="30.0" prefWidth="146.0" text="Cash Calculate" />
+      <Button fx:id="btnTransactionHistory" layoutX="646.0" layoutY="316.0" mnemonicParsing="false" onAction="#btnTransactionHistory" prefHeight="30.0" prefWidth="146.0" text="Transaction History" />
+      <Button fx:id="btnSettings" layoutX="491.0" layoutY="316.0" mnemonicParsing="false" onAction="#btnSettings" prefHeight="30.0" prefWidth="146.0" text="Settings" />
+      <BarChart fx:id="chartGetMoney" layoutY="35.0" prefHeight="75.0" prefWidth="490.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -73,7 +71,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </BarChart>
-      <BarChart fx:id="chartExpense" layoutX="5.0" layoutY="216.0" prefHeight="75.0" prefWidth="500.0">
+      <BarChart fx:id="chartExpense" layoutY="216.0" prefHeight="75.0" prefWidth="490.0">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>

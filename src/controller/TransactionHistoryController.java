@@ -73,7 +73,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	private WebEngine webEngine;
 	
 	
-//////////////////////General Function /////////////////////////
+////////////////////// General Function /////////////////////////
 	DateFormatManager formatManager = new DateFormatManager();
 	
 	String dateString = formatManager.toString(LocalDate.now());
@@ -89,6 +89,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 		datePicker.setConverter(formatManager);
 		datePicker.setValue(date);
 		webEngine = webview.getEngine();
+//		initializeHisoty();
 		showHisoty();
 	}
 
@@ -207,12 +208,14 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 ////////////////////////// Function //////////////////////////////
 	@FXML
 	private void cmboHistoryMonth(ActionEvent event) {
+//		initializeHisoty();
 		showHisoty();
 	}
 	
 	
 	@FXML
 	private void cmboFilterList(ActionEvent event) {
+//		initializeHisoty();
 		showHisoty();
 	}
 	
@@ -231,7 +234,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	
 	private void showHisoty() {
 		debug = new HistorySearch(cmboHistoryMonth.getValue(), cmboFilterList.getValue());
-		
+		debug.initialize = false;
 		webEngine.getLoadWorker().stateProperty().addListener(
         	    new ChangeListener<Worker.State>() {
         	        @Override
@@ -247,6 +250,26 @@ public class TransactionHistoryController extends TransactionHistoryModel {
         String url = getClass().getResource("../html/index.html").toExternalForm();
         webEngine.load(url);
 	}
+	
+	
+//	private void initializeHisoty() {
+//		debug = new HistorySearch(cmboHistoryMonth.getValue(), cmboFilterList.getValue());
+//		debug.initialize = true;
+//		webEngine.getLoadWorker().stateProperty().addListener(
+//        	    new ChangeListener<Worker.State>() {
+//        	        @Override
+//        	        public void changed(ObservableValue<? extends Worker.State> observable, Worker.State oldValue, Worker.State newValue) {
+//        	            if (newValue == Worker.State.SUCCEEDED) {
+//        	                JSObject windowObject = (JSObject) webEngine.executeScript("window");
+//        	                windowObject.setMember("HistorySearch", debug); // insert object
+//        	                windowObject.call("ready"); // execute callback
+//        	            }
+//        	        }
+//        	    }
+//        	);
+//        String url = getClass().getResource("../html/index.html").toExternalForm();
+//        webEngine.load(url);
+//	}
 }
 
 

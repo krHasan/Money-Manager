@@ -17,17 +17,12 @@ public class HistorySearch extends DatabaseConnection {
 
 	String monthName;
 	String typedFilterName;
-	
+	public boolean initialize = false;
 	
 	public HistorySearch(String monthName, String typedFilterName) {
 		this.monthName = monthName;
 		this.typedFilterName = typedFilterName;
 	}
-	
-	
-    public String print() {
-        return "I'm from inside of java.";
-    }
 	
 	
 	@SuppressWarnings("unchecked")
