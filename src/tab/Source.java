@@ -2,8 +2,11 @@ package tab;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import model.DashboardModel;
+import operation.ComboboxList;
+import system.UnitConverter;
 
 public class Source extends DashboardModel {
 	
@@ -62,7 +65,43 @@ public class Source extends DashboardModel {
 		}
 	}
 	
+	
+	public long getAmountBySourceFromGM(String monthName, String sourceName) {
+		String sql = "SELECT gmAmount FROM Get_Money WHERE gmMonth = ? AND gmSource = ? ";
+		long amount = 0;
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, monthName);
+			pstmt.setString(2, sourceName);
+			ResultSet result = pstmt.executeQuery();
+			while(result.next()) {
+				amount += stringToLong(removeThousandSeparator(result.getString("gmAmount")));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return amount;
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import database.DatabaseConnection;
-import tab.Bkash;
-import tab.Rocket;
 
 public class ComboboxList extends DatabaseConnection {
 	
@@ -20,6 +18,30 @@ public class ComboboxList extends DatabaseConnection {
 					Statement stmt = conn.createStatement();
 					ResultSet result = stmt.executeQuery(sql)) {
 					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("sourceList");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Source"};
+			return list;
+		}
+	}
+	public String[] getSourceListForDashboard() {
+		if(getSourceArraySize()>0) {
+			String list[] = new String[getSourceArraySize()+1];
+			String sql = "SELECT sourceList \n"
+					+ "FROM Source_List";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					list[0] = "All";
+					int index = 1;
 					while (result.next()) {
 						list[index] = result.getString("sourceList");
 						++index;			
@@ -143,6 +165,30 @@ public class ComboboxList extends DatabaseConnection {
 					Statement stmt = conn.createStatement();
 					ResultSet result = stmt.executeQuery(sql)) {
 					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("sectorList");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Sector"};
+			return list;
+		}
+	}
+	public String[] getSectorListForDashboard() {
+		if(getSectorArraySize()>0) {
+			String list[] = new String[getSectorArraySize()+1];
+			String sql = "SELECT sectorList \n"
+					+ "FROM Sector_List";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					list[0] = "All";
+					int index = 1;
 					while (result.next()) {
 						list[index] = result.getString("sectorList");
 						++index;			
@@ -390,19 +436,19 @@ public class ComboboxList extends DatabaseConnection {
 		allList[3] = "Borrow";
 		allList[4] = "Lend";
 		int index = 5;
-		if (new Bkash().isbKashActivated() && new Rocket().isRocketActivated()) {
+		if (BankIssue.isbKashActivated() && BankIssue.isRocketActivated()) {
 			allList[index] = "bKash";
 			++index;
 			allList[index] = "Rocket";
 			++index;
 			allList[index] = "Personal";
 			++index;
-		} else if(new Bkash().isbKashActivated()) {
+		} else if(BankIssue.isbKashActivated()) {
 			allList[index] = "bKash";
 			++index;
 			allList[index] = "Personal";
 			++index;
-		} else if(new Rocket().isRocketActivated()) {
+		} else if(BankIssue.isRocketActivated()) {
 			allList[index] = "Rocket";
 			++index;
 			allList[index] = "Personal";
@@ -444,6 +490,86 @@ public class ComboboxList extends DatabaseConnection {
 	}
 	
 	
+	public String[] getAllGetMoneyMonth() {
+		if(getAllGetMoneyMonthSize()>0) {
+			String list[] = new String[getAllGetMoneyMonthSize()];
+			String sql = "SELECT DISTINCT gmMonth \n"
+					+ "FROM Get_Money";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("gmMonth");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Month"};
+			return list;
+		}
+	}
+	public int getAllGetMoneyMonthSize() {
+		int size = 0;
+		String sqlid = "SELECT DISTINCT gmMonth \n"
+				+ "FROM Get_Money";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
+	
+	public String[] getAllExpenseMonth() {
+		if(getAllGetMoneyMonthSize()>0) {
+			String list[] = new String[getAllGetMoneyMonthSize()];
+			String sql = "SELECT DISTINCT exMonth \n"
+					+ "FROM Expense";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("exMonth");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Month"};
+			return list;
+		}
+	}
+	public int getAllExpenseMonthSize() {
+		int size = 0;
+		String sqlid = "SELECT DISTINCT exMonth \n"
+				+ "FROM Expense";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
 //	public static void main(String[] args) {
 //		ComboboxList access = new ComboboxList();
 //		

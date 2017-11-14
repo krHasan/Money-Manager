@@ -27,6 +27,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.MakeATransactionModel;
+import operation.BankIssue;
 import operation.GoToOperation;
 import system.DateFormatManager;
 import system.UnitConverter;
@@ -155,6 +156,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Label lendlblBkBalance;
 	@FXML
 	private Label lendlblRocBalance;
+	@FXML
+	private Label lendlblbkAccountBalanceName;
+	@FXML
+	private Label lendlblrocAccountBalanceName;
 	
 	@FXML
 	private DatePicker lenddateDate;
@@ -1054,14 +1059,28 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	private void lendBkBalanceShow() {
 		try {
-			lendlblBkBalance.setText(addThousandSeparator(getbkAccountBalance()));
+			if (BankIssue.isbKashActivated()) {
+				lendlblbkAccountBalanceName.setVisible(true);
+				lendlblBkBalance.setVisible(true);
+				lendlblBkBalance.setText(addThousandSeparator(getbkAccountBalance()));
+			} else {
+				lendlblbkAccountBalanceName.setVisible(false);
+				lendlblBkBalance.setVisible(false);
+			}
 		} catch (Exception e) {}
 	}
 	
 	
 	private void lendRocBalanceShow() {
 		try {
-			lendlblRocBalance.setText(addThousandSeparator(getRocAccountBalance()));
+			if (BankIssue.isRocketActivated()) {
+				lendlblrocAccountBalanceName.setVisible(true);
+				lendlblRocBalance.setVisible(true);
+				lendlblRocBalance.setText(addThousandSeparator(getRocAccountBalance()));
+			} else {
+				lendlblrocAccountBalanceName.setVisible(false);
+				lendlblRocBalance.setVisible(false);
+			}
 		} catch (Exception e) {}
 	}
 	
@@ -2509,15 +2528,19 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void tabBank() {
-		if (!new Bkash().isbKashActivated()) {
+		if (!BankIssue.isbKashActivated()) {
 			tabbKash.setDisable(true);
+		} else {
+			tabbKash.setDisable(false);
 		}
-		if (!new Rocket().isRocketActivated()) {
+		if (!BankIssue.isRocketActivated()) {
 			tabRocket.setDisable(true);
+		} else {
+			tabRocket.setDisable(false);
 		}
-		if (new Bkash().isbKashActivated()) {
+		if (BankIssue.isbKashActivated()) {
 			bkInitialize();
-		} else if (new Rocket().isRocketActivated()) {
+		} else if (BankIssue.isRocketActivated()) {
 			rocInitialize();
 		} else {
 			perInitialize();

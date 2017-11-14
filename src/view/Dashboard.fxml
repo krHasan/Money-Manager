@@ -49,14 +49,14 @@
       </MenuBar>
       <Button fx:id="btnSignOut" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" text="Khandoker Rakib Hasan" />
-      <Label alignment="CENTER_RIGHT" layoutX="514.0" layoutY="218.0" prefHeight="40.0" prefWidth="150.0" text="Wallet Balance : ">
+      <Label alignment="CENTER_RIGHT" layoutX="505.0" layoutY="229.0" prefHeight="30.0" prefWidth="150.0" text="Wallet Balance : ">
          <font>
-            <Font name="Arial Bold" size="18.0" />
+            <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblWalletBalance" alignment="CENTER" layoutX="664.0" layoutY="218.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;" text="12345">
+      <Label fx:id="lblWalletBalance" alignment="CENTER" layoutX="655.0" layoutY="229.0" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;" text="12345">
          <font>
-            <Font name="Arial Bold" size="18.0" />
+            <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
       <Button fx:id="btnMakeATransaction" layoutX="491.0" layoutY="278.0" mnemonicParsing="false" onAction="#goToMakeAtransaction" prefHeight="30.0" prefWidth="146.0" text="Make a Transaction" />
@@ -79,15 +79,15 @@
             <NumberAxis side="LEFT" />
          </yAxis>
       </BarChart>
-      <ComboBox fx:id="cmboGetMoneyMonthList" layoutX="48.0" layoutY="182.0" prefHeight="28.0" prefWidth="150.0" />
-      <ComboBox fx:id="cmboSourceList" layoutX="219.0" layoutY="182.0" prefHeight="28.0" prefWidth="150.0" />
+      <ComboBox fx:id="cmboGetMoneyMonthList" layoutX="48.0" layoutY="182.0" onAction="#cmboGetMoneyMonthList" prefHeight="28.0" prefWidth="150.0" />
+      <ComboBox fx:id="cmboSourceList" layoutX="219.0" layoutY="182.0" onAction="#cmboSourceList" prefHeight="28.0" prefWidth="150.0" />
       <Label fx:id="lblTotalGetMoney" alignment="CENTER" layoutX="391.0" layoutY="182.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #DEBBFF;" text="12345678">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmboExpenseMonthList" layoutX="48.0" layoutY="366.0" prefHeight="28.0" prefWidth="150.0" />
-      <ComboBox fx:id="cmboSectorList" layoutX="219.0" layoutY="366.0" prefHeight="28.0" prefWidth="150.0" />
+      <ComboBox fx:id="cmboExpenseMonthList" layoutX="48.0" layoutY="366.0" onAction="#cmboExpenseMonthList" prefHeight="28.0" prefWidth="150.0" />
+      <ComboBox fx:id="cmboSectorList" layoutX="219.0" layoutY="366.0" onAction="#cmboSectorList" prefHeight="28.0" prefWidth="150.0" />
       <Label fx:id="lblTotalExpense" alignment="CENTER" layoutX="391.0" layoutY="366.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #C4E0FF;" text="12345678">
          <font>
             <Font name="Arial Bold" size="14.0" />
@@ -104,12 +104,12 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblRocketBalance" alignment="CENTER" layoutX="159.0" layoutY="483.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #aadb7b;" text="12345678">
+      <Label fx:id="lblPersonalBalance" alignment="CENTER" layoutX="159.0" layoutY="483.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #aadb7b;" text="12345678">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblPersonalBalance" alignment="CENTER" layoutX="269.0" layoutY="483.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #4CD2FF;" text="12345678">
+      <Label fx:id="lblRocketBalance" alignment="CENTER" layoutX="269.0" layoutY="483.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #4CD2FF;" text="12345678">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>

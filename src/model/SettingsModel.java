@@ -33,43 +33,43 @@ public class SettingsModel extends DateAndClock {
 	}
 	
 	
-	public static boolean isbKashActive() {
-		String sql = "SELECT bKashActive FROM System_Settings WHERE ID = 1";
-		try (Connection conn = connector();
-				Statement stmt = conn.createStatement();
-				ResultSet result = stmt.executeQuery(sql)) {
-			if ((result.getString("bKashActive")).equals("true")) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	
-	
-	public static boolean isRocketActive() {
-		String sql = "SELECT RocketActive FROM System_Settings WHERE ID = 1";
-		try (Connection conn = connector();
-				Statement stmt = conn.createStatement();
-				ResultSet result = stmt.executeQuery(sql)) {
-			if ((result.getString("RocketActive")).equals("true")) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	
-	
-	public static boolean rocIsATMFree() {
-		return BankIssue.isATMFree();
-	}
+//	public static boolean isbKashActive() {
+//		String sql = "SELECT bKashActive FROM System_Settings WHERE ID = 1";
+//		try (Connection conn = connector();
+//				Statement stmt = conn.createStatement();
+//				ResultSet result = stmt.executeQuery(sql)) {
+//			if ((result.getString("bKashActive")).equals("true")) {
+//				return true;
+//			} else {
+//				return false;
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return false;
+//		}
+//	}
+//	
+//	
+//	public static boolean isRocketActive() {
+//		String sql = "SELECT RocketActive FROM System_Settings WHERE ID = 1";
+//		try (Connection conn = connector();
+//				Statement stmt = conn.createStatement();
+//				ResultSet result = stmt.executeQuery(sql)) {
+//			if ((result.getString("RocketActive")).equals("true")) {
+//				return true;
+//			} else {
+//				return false;
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return false;
+//		}
+//	}
+//	
+//	
+//	public static boolean rocIsATMFree() {
+//		return BankIssue.isATMFree();
+//	}
 	
 	
 	public Map<String, String> bkashChargeData() {

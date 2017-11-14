@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import model.DashboardModel;
+import operation.BankIssue;
 import operation.GoToOperation;
 import tab.TabAccess;
 
@@ -96,6 +97,32 @@ public class DashboardController extends DashboardModel {
 	@FXML
 	public void initialize() {
 		lblUserFullName.setText(userFullName());
+		lblWalletBalance.setText(addThousandSeparator(getWalletBalance()));
+		lblTotalBorrow.setText(addThousandSeparator(getTotalBorrowTk()));
+		lblTotalLend.setText(addThousandSeparator(getTotalLendTk()));
+		if (BankIssue.isbKashActivated()) {
+			lblbKashName.setVisible(true);
+			lblbKashBalance.setVisible(true);
+			lblbKashBalance.setText(addThousandSeparator(getbkAccountBalance()));
+		} else {
+			lblbKashName.setVisible(false);
+			lblbKashBalance.setVisible(false);
+		}
+		if (BankIssue.isRocketActivated()) {
+			lblRocketName.setVisible(true);
+			lblRocketBalance.setVisible(true);
+			lblRocketBalance.setText(addThousandSeparator(getRocAccountBalance()));
+		} else {
+			lblRocketName.setVisible(false);
+			lblRocketBalance.setVisible(false);
+		}
+		lblPersonalBalance.setText(getPerAccountBalance());
+		showAllGetMoneyMonths();
+		showSource();
+		showAllExpenseMonths();
+		showSector();
+		showSourceAmount();
+		showSectorAmount();
 	}
 	
 	
@@ -238,6 +265,66 @@ public class DashboardController extends DashboardModel {
 		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
 		DashboardStage.close();
 	}
+	
+	
+///////////////////////  Others Function ///////////////////////////
+	private void showAllGetMoneyMonths() {
+		cmboGetMoneyMonthList.setItems(loadAllGetMoneyMonths());
+		cmboGetMoneyMonthList.getSelectionModel().selectFirst();
+	}
+	
+	
+	private void showSource() {
+		cmboSourceList.setItems(loadSource());
+		cmboSourceList.getSelectionModel().selectFirst();
+	}
+	
+	
+	private void showSourceAmount() {
+		lblTotalGetMoney.setText(getAmountBySource(cmboGetMoneyMonthList.getValue(), cmboSourceList.getValue()));
+	}
+	
+	
+	private void showAllExpenseMonths() {
+		cmboExpenseMonthList.setItems(loadAllExpenseMonths());
+		cmboExpenseMonthList.getSelectionModel().selectFirst();
+	}
+	
+	
+	private void showSector() {
+		cmboSectorList.setItems(loadSector());
+		cmboSectorList.getSelectionModel().selectFirst();
+	}
+
+	
+	private void showSectorAmount() {
+		lblTotalExpense.setText(getAmountBySector(cmboExpenseMonthList.getValue(), cmboSectorList.getValue()));
+	}
+	
+	
+	@FXML
+	private void cmboGetMoneyMonthList(ActionEvent event) {
+		showSourceAmount();
+	}
+	
+	
+	@FXML
+	private void cmboSourceList(ActionEvent event) {
+		showSourceAmount();
+	}
+	
+	
+	@FXML
+	private void cmboExpenseMonthList(ActionEvent event) {
+		showSectorAmount();
+	}
+	
+	
+	@FXML
+	private void cmboSectorList(ActionEvent event) {
+		showSectorAmount();
+	}
+	
 	
 	
 }

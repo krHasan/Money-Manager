@@ -510,7 +510,7 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblAccountBalanceName" alignment="CENTER" layoutX="168.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="bKash">
+                  <Label fx:id="lendlblbkAccountBalanceName" alignment="CENTER" layoutX="168.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="bKash">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -525,7 +525,7 @@
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblAccountBalanceName1" alignment="CENTER" layoutX="268.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="Rocket">
+                  <Label fx:id="lendlblrocAccountBalanceName" alignment="CENTER" layoutX="268.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="Rocket">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>

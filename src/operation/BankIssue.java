@@ -272,6 +272,46 @@ public class BankIssue extends DatabaseConnection {
 	}
 	
 	
+	public static boolean isbKashActivated() {
+		String sql = "SELECT activeMethods \n"
+				+ "FROM Methods_List \n"
+				+ "WHERE activeMethods = \"bKash\"";
+
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sql)) {
+			
+			if (result.next()) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	
+	public static boolean isRocketActivated() {
+		String sql = "SELECT activeMethods \n"
+				+ "FROM Methods_List \n"
+				+ "WHERE activeMethods = \"Rocket\"";
+
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sql)) {
+			
+			if (result.next()) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	
 	public static boolean isATMFree() {
 		String atmFree = null;
 		boolean atmFreeb = false;

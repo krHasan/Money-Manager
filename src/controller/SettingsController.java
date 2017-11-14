@@ -26,6 +26,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.MakeATransactionModel;
 import model.SettingsModel;
+import operation.BankIssue;
 import operation.GoToOperation;
 import system.DateFormatManager;
 import tab.Sector;
@@ -491,7 +492,7 @@ public class SettingsController extends SettingsModel {
 	}
 	
 	private void bkRbtn() {
-		if (isbKashActive()) {
+		if (BankIssue.isbKashActivated()) {
 			bkisActive();
 			bnkrbtnbkYes.setToggleGroup(bkrbtnGroup);
 			bnkrbtnbkYes.setSelected(true);
@@ -548,7 +549,7 @@ public class SettingsController extends SettingsModel {
 	private void bnkrbtnrocYes(ActionEvent event) {
 		bnkrbtnrocATMFree.setDisable(false);
 		bnkrbtnrocCashinFree.setDisable(false);
-		if (rocIsATMFree()) {
+		if (BankIssue.isATMFree()) {
 			rocATMisActive();
 		} else {
 			rocCashInisActive();
@@ -571,7 +572,7 @@ public class SettingsController extends SettingsModel {
 	}
 	
 	private void rocRbtn() {
-		if (isRocketActive()) {
+		if (BankIssue.isRocketActivated()) {
 			bnkrbtnrocYes.setToggleGroup(rocrbtnGroup);
 			bnkrbtnrocYes.setSelected(true);
 			bnkrbtnrocYes.setUserData("rocYes");
@@ -579,7 +580,7 @@ public class SettingsController extends SettingsModel {
 			bnkrbtnrocNo.setToggleGroup(rocrbtnGroup);
 			bnkrbtnrocNo.setUserData("rocNo");
 			
-			if (rocIsATMFree()) {			
+			if (BankIssue.isATMFree()) {			
 				rocATMisActive();
 			} else {
 				rocCashInisActive();

@@ -44,25 +44,25 @@ public class Bkash extends BalanceStatus {
 	}
 	
 	
-	public boolean isbKashActivated() {
-		String sql = "SELECT activeMethods \n"
-				+ "FROM Methods_List \n"
-				+ "WHERE activeMethods = \"bKash\"";
-
-		try (Connection conn = connector();
-				Statement stmt = conn.createStatement();
-				ResultSet result = stmt.executeQuery(sql)) {
-			
-			if (result.next()) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			return false;
-		}
-	}
-	
+//	public boolean isbKashActivated() {
+//		String sql = "SELECT activeMethods \n"
+//				+ "FROM Methods_List \n"
+//				+ "WHERE activeMethods = \"bKash\"";
+//
+//		try (Connection conn = connector();
+//				Statement stmt = conn.createStatement();
+//				ResultSet result = stmt.executeQuery(sql)) {
+//			
+//			if (result.next()) {
+//				return true;
+//			} else {
+//				return false;
+//			}
+//		} catch (Exception e) {
+//			return false;
+//		}
+//	}
+//	
 	
 	public void saveBnkBkashData(Map<String, String> bnkData) {
 		String sql = "INSERT INTO bKash (globalID, bkTime, bkDate, bkMonth, bkType, bkNature, bkAmount, \n"

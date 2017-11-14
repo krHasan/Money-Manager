@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import database.DatabaseConnection;
+import operation.BankIssue;
 import system.UnitConverter;
 
 public class SettingBank extends DatabaseConnection {
@@ -81,46 +82,48 @@ public class SettingBank extends DatabaseConnection {
 			e.printStackTrace();
 		}
 		
-		String sql1 = "UPDATE System_Settings \n"
-				+ "SET bKashActive = ? \n"
-				+ "WHERE ID = 1";
+		String sql1 = "INSERT INTO Methods_List (activeMethods) \n"
+				+ "VALUES(?)";
 		
-		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(sql1)) {
-				pstmt.setString(1, "true");
-				pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (!BankIssue.isbKashActivated()) {
+			try (Connection conn = connector();
+					PreparedStatement pstmt = conn.prepareStatement(sql1)) {
+					pstmt.setString(1, "bKash");
+					pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
 	
 	
 	public void savebkNo() {
-		String sql = "UPDATE System_Settings \n"
-				+ "SET bKashActive = ? \n"
-				+ "WHERE ID = 1";
+		String sql = "DELETE FROM Methods_List WHERE activeMethods = ?";
 		
-		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(sql)) {
-				pstmt.setString(1, "false");
-				pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (BankIssue.isbKashActivated()) {
+			try (Connection conn = connector();
+					PreparedStatement pstmt = conn.prepareStatement(sql)) {
+					pstmt.setString(1, "bKash");
+					pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	
 	private void saverocYes() {
-		String sql = "UPDATE System_Settings \n"
-				+ "SET RocketActive = ? \n"
-				+ "WHERE ID = 1";
-		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(sql)) {
-				pstmt.setString(1, "true");
-				pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
+		String sql = "INSERT INTO Methods_List (activeMethods) \n"
+				+ "VALUES(?)";
+		if (!BankIssue.isRocketActivated()) {
+			try (Connection conn = connector();
+					PreparedStatement pstmt = conn.prepareStatement(sql)) {
+					pstmt.setString(1, "Rocket");
+					pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -175,18 +178,20 @@ public class SettingBank extends DatabaseConnection {
 	
 	
 	public void saverocNo() {
-		String sql = "UPDATE System_Settings \n"
-				+ "SET RocketActive = ? \n"
-				+ "WHERE ID = 1";
+		String sql = "DELETE FROM Methods_List WHERE activeMethods = ?";
 		
-		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(sql)) {
-				pstmt.setString(1, "false");
-				pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (BankIssue.isRocketActivated()) {
+			try (Connection conn = connector();
+					PreparedStatement pstmt = conn.prepareStatement(sql)) {
+					pstmt.setString(1, "Rocket");
+					pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
+	
+	
 //	public static void main(String[] args) {
 //		SettingBank access = new SettingBank();
 //		Map<String, String> bnkSettingData = new HashMap<>();

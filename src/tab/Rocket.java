@@ -45,24 +45,24 @@ public class Rocket  extends BalanceStatus {
 	}
 	
 	
-	public boolean isRocketActivated() {
-		String sql = "SELECT activeMethods \n"
-				+ "FROM Methods_List \n"
-				+ "WHERE activeMethods = \"Rocket\"";
-
-		try (Connection conn = connector();
-				Statement stmt = conn.createStatement();
-				ResultSet result = stmt.executeQuery(sql)) {
-			
-			if (result.next()) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			return false;
-		}
-	}
+//	public boolean isRocketActivated() {
+//		String sql = "SELECT activeMethods \n"
+//				+ "FROM Methods_List \n"
+//				+ "WHERE activeMethods = \"Rocket\"";
+//
+//		try (Connection conn = connector();
+//				Statement stmt = conn.createStatement();
+//				ResultSet result = stmt.executeQuery(sql)) {
+//			
+//			if (result.next()) {
+//				return true;
+//			} else {
+//				return false;
+//			}
+//		} catch (Exception e) {
+//			return false;
+//		}
+//	}
 	
 	
 	public void saveBnkRocketData(Map<String, String> bnkData) {

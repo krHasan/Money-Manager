@@ -55,11 +55,7 @@
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="lblOutdateMsg" alignment="TOP_CENTER" contentDisplay="CENTER" focusTraversable="false" layoutY="99.0" prefHeight="10.0" prefWidth="800.0" textAlignment="CENTER" textFill="RED" textOverrun="CLIP" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <font>
-            <Font size="12.0" />
-         </font>
-      </Label>
+      <Label fx:id="lblOutdateMsg" alignment="TOP_CENTER" contentDisplay="CENTER" focusTraversable="false" layoutY="99.0" prefHeight="10.0" prefWidth="800.0" textAlignment="CENTER" textFill="#c30505" textOverrun="CLIP" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Label fx:id="lblWrongAuthentication" contentDisplay="CENTER" focusTraversable="false" layoutX="464.0" layoutY="125.0" prefHeight="19.0" prefWidth="230.0" textAlignment="CENTER" textFill="RED" textOverrun="CLIP">
          <font>
             <Font size="12.0" />
