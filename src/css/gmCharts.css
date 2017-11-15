@@ -1,0 +1,25 @@
+.axis-label {
+  -fx-text-fill: #00b159;
+}
+
+.chart-title {
+  -fx-text-fill: #00b159;
+  -fx-font-size: 1.6em;
+}
+
+.chart-plot-background {
+    -fx-background-color: #e5f7ee;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: #00b159;
+}
+
+.chart-bar {
+	-fx-background-color: #00b159;
+}
+
+/*.chart {
+	-fx-border-width: 1.5px;
+	-fx-border-color: blue;
+}*/

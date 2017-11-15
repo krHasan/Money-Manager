@@ -348,7 +348,8 @@ public class ComboboxList extends DatabaseConnection {
 		if(getAllMonthSize()>0) {
 			String list[] = new String[getAllMonthSize()];
 			String sql = "SELECT allTransactionMonth \n"
-					+ "FROM All_Months";
+					+ "FROM All_Months \n"
+					+ "ORDER BY allTransactionMonth";
 			try (Connection conn = connector();
 					Statement stmt = conn.createStatement();
 					ResultSet result = stmt.executeQuery(sql)) {
@@ -494,7 +495,8 @@ public class ComboboxList extends DatabaseConnection {
 		if(getAllGetMoneyMonthSize()>0) {
 			String list[] = new String[getAllGetMoneyMonthSize()];
 			String sql = "SELECT DISTINCT gmMonth \n"
-					+ "FROM Get_Money";
+					+ "FROM Get_Money \n"
+					+ "ORDER BY gmMonth ASC";
 			try (Connection conn = connector();
 					Statement stmt = conn.createStatement();
 					ResultSet result = stmt.executeQuery(sql)) {
@@ -535,7 +537,8 @@ public class ComboboxList extends DatabaseConnection {
 		if(getAllGetMoneyMonthSize()>0) {
 			String list[] = new String[getAllGetMoneyMonthSize()];
 			String sql = "SELECT DISTINCT exMonth \n"
-					+ "FROM Expense";
+					+ "FROM Expense \n"
+					+ "ORDER BY exMonth ASC";
 			try (Connection conn = connector();
 					Statement stmt = conn.createStatement();
 					ResultSet result = stmt.executeQuery(sql)) {

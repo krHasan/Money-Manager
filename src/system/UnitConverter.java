@@ -51,7 +51,65 @@ public class UnitConverter extends DatabaseConnection {
 	}
 	
 	
+	public static String getAbbreviateName(String name) {
+		String abbreviateName = null;
+		
+		if (countWords(name) == 1) {
+			abbreviateName = name.substring(0, Math.min(name.length(), 3));
+		} else {
+			if (getUppercaseLetters(name).equals("none")) {
+				abbreviateName = name.substring(0, Math.min(name.length(), 3));
+			} else {
+				abbreviateName = getUppercaseLetters(name);
+			} 
+		}
+		return abbreviateName;
+	}
+	
+	private static String getUppercaseLetters(String name) {
+		char uppercaseLetters[] = new char[3];
+		int index = 0;
+		for (int ch = 0; ch < name.length() && index <= 2; ch++) {
+		    // Check for uppercase letters.
+		    if (Character.isUpperCase(name.charAt(ch))) {
+		    	uppercaseLetters[index] = name.charAt(ch);
+		    	index++;
+		    }
+		}
+		if (index == 0) {
+			return "none";
+		} else {
+			return String.valueOf(uppercaseLetters);
+		}
+	}
+		
+	public static int countWords(String s){
+	    int wordCount = 0;
+
+	    boolean word = false;
+	    int endOfLine = s.length() - 1;
+
+	    for (int i = 0; i < s.length(); i++) {
+	        // if the char is a letter, word = true.
+	        if (Character.isLetter(s.charAt(i)) && i != endOfLine) {
+	            word = true;
+	            // if char isn't a letter and there have been letters before,
+	            // counter goes up.
+	        } else if (!Character.isLetter(s.charAt(i)) && word) {
+	            wordCount++;
+	            word = false;
+	            // last word of String; if it doesn't end with a non letter, it
+	            // wouldn't count without this.
+	        } else if (Character.isLetter(s.charAt(i)) && i == endOfLine) {
+	            wordCount++;
+	        }
+	    }
+	    return wordCount;
+	}
+	
+	
 //	public static void main(String[] args) {
+//		UnitConverter access = new UnitConverter();
 //		System.out.println(longToDouble(1909));
 //		System.out.println(doubleTolong(12.89));
 //		System.out.println(addThousandSeparator("9999999"));
@@ -60,6 +118,8 @@ public class UnitConverter extends DatabaseConnection {
 //		System.out.println(addTSwithTKSign(addThousandSeparator("9999999")));
 //		System.out.println(addTSwithDollerSign("9999999.99"));
 //		System.out.println(addTSwithDollerSign(addThousandSeparator("9999999")));
+//		System.out.println(countWords("something"));
+//		System.out.println(access.getUppercaseLetters("khandoker rakib hasan bappi"));
 //	}
 	
 }

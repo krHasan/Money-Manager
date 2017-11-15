@@ -24,9 +24,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-import model.MakeATransactionModel;
 import model.SettingsModel;
 import operation.BankIssue;
+import operation.ComboboxList;
 import operation.GoToOperation;
 import system.DateFormatManager;
 import tab.Sector;
@@ -772,6 +772,7 @@ public class SettingsController extends SettingsModel {
 	@FXML
 	private void tabSourceInitialize() {
 		sourcetxtSourceName.clear();
+		sourcelblWarningMsg.setText("");
 		loadActiveSource();
 		loadArchievedSource();
 	}
@@ -779,7 +780,7 @@ public class SettingsController extends SettingsModel {
 	
 	@FXML
 	private void createSource(ActionEvent event) {
-		if ((sourcetxtSourceName.getText()).length() == 0) {
+		if ((sourcetxtSourceName.getText()).length() == 0 || countWords(sourcetxtSourceName.getText()) == 0) {
 			sourcelblWarningMsg.setText("Write a Source Name Please");
 		} else {
 			sourcelblWarningMsg.setText("");
@@ -845,16 +846,30 @@ public class SettingsController extends SettingsModel {
 	
 	private void loadActiveSource() {
 		try {
-			sourcecmboArchive.setItems(getActiveSourceList());
-			sourcecmboArchive.getSelectionModel().selectFirst();
+			if (new ComboboxList().getSourceArraySize() == 0) {
+				sourcecmboArchive.setDisable(true);
+				sourcebtnArchive.setDisable(true);
+			} else {
+				sourcecmboArchive.setDisable(false);
+				sourcebtnArchive.setDisable(false);
+				sourcecmboArchive.setItems(getActiveSourceList());
+				sourcecmboArchive.getSelectionModel().selectFirst();
+			}
 		} catch (Exception e) {}
 	}
 	
 	
 	private void loadArchievedSource() {
 		try {
-			sourcecmboUnArchive.setItems(getArchivedSourceList());
-			sourcecmboUnArchive.getSelectionModel().selectFirst();
+			if (new ComboboxList().getArchivedSourceArraySize() == 0) {
+				sourcecmboUnArchive.setDisable(true);
+				sourcebtnUnarchive.setDisable(true);
+			} else {
+				sourcecmboUnArchive.setDisable(false);
+				sourcebtnUnarchive.setDisable(false);
+				sourcecmboUnArchive.setItems(getArchivedSourceList());
+				sourcecmboUnArchive.getSelectionModel().selectFirst();
+			}
 		} catch (Exception e) {}
 	}
 	
@@ -865,6 +880,7 @@ public class SettingsController extends SettingsModel {
 	@FXML
 	private void tabSectorInitialize() {
 		sectortxtSourceName.clear();
+		sectorlblWarningMsg.setText("");
 		loadActiveSector();
 		loadArchievedSector();
 	}
@@ -872,7 +888,7 @@ public class SettingsController extends SettingsModel {
 
 	@FXML
 	private void createSector(ActionEvent event) {
-		if ((sectortxtSourceName.getText()).length() == 0) {
+		if ((sectortxtSourceName.getText()).length() == 0 || countWords(sectortxtSourceName.getText()) == 0) {
 			sectorlblWarningMsg.setText("Write a Sector Name Please");
 		} else {
 			sectorlblWarningMsg.setText("");
@@ -938,16 +954,30 @@ public class SettingsController extends SettingsModel {
 	
 	private void loadActiveSector() {
 		try {
-			sectorcmboArchive.setItems(getActiveSectorList());
-			sectorcmboArchive.getSelectionModel().selectFirst();
+			if (new ComboboxList().getSectorArraySize() == 0) {
+				sectorcmboArchive.setDisable(true);
+				sectorbtnArchive.setDisable(true);
+			} else {
+				sectorcmboArchive.setDisable(false);
+				sectorbtnArchive.setDisable(false);
+				sectorcmboArchive.setItems(getActiveSectorList());
+				sectorcmboArchive.getSelectionModel().selectFirst();
+			}
 		} catch (Exception e) {}
 	}
 	
 	
 	private void loadArchievedSector() {
 		try {
-			sectorcmboUnArchive.setItems(getArchivedSectorList());
-			sectorcmboUnArchive.getSelectionModel().selectFirst();
+			if (new ComboboxList().getArchivedSectorArraySize() == 0) {
+				sectorcmboUnArchive.setDisable(true);
+				sectorbtnUnarchive.setDisable(true);
+			} else {
+				sectorcmboUnArchive.setDisable(false);
+				sectorbtnUnarchive.setDisable(false);
+				sectorcmboUnArchive.setItems(getArchivedSectorList());
+				sectorcmboUnArchive.getSelectionModel().selectFirst();
+			}
 		} catch (Exception e) {}
 	}
 

@@ -3,6 +3,9 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -12,6 +15,8 @@ import model.DashboardModel;
 import operation.BankIssue;
 import operation.GoToOperation;
 import tab.TabAccess;
+import tableAndgraph.ExpenseChart;
+import tableAndgraph.GetMoneyChart;
 
 public class DashboardController extends DashboardModel {
 	@FXML
@@ -53,6 +58,8 @@ public class DashboardController extends DashboardModel {
 	private Button btnTransactionHistory;
 	@FXML
 	private Button btnSettings;
+	@FXML
+	private Button btnRefreshCharts;
 	
 	@FXML
 	private Label lblLongClock;
@@ -89,9 +96,17 @@ public class DashboardController extends DashboardModel {
 	private ComboBox<String> cmboSectorList;
 	
 	@FXML
-	private BarChart<?, ?> chartGetMoney;
+	private BarChart<String, Number> chartGetMoney;
 	@FXML
-	private BarChart<?, ?> chartExpense;
+	private CategoryAxis gmXaxis;
+	@FXML
+	private NumberAxis gmYaxis;
+	@FXML
+	private BarChart<String, Number> chartExpense;
+	@FXML
+	private CategoryAxis exXaxis;
+	@FXML
+	private NumberAxis exYaxis;
 		
 ////////////////////////////////// General Function //////////////////////////////
 	@FXML
@@ -123,8 +138,17 @@ public class DashboardController extends DashboardModel {
 		showSector();
 		showSourceAmount();
 		showSectorAmount();
+		getMoneyChart();
+		expenseChart();
 	}
 	
+	
+	@FXML
+	private void btnRefreshCharts(ActionEvent ev) {
+		Stage DashboardStage = (Stage) btnRefreshCharts.getScene().getWindow();
+		(new GoToOperation()).goToDashboard(DashboardStage.getX(), DashboardStage.getY());
+		DashboardStage.close();
+	}
 	
 /////////////////// Menu Function ///////////////////////////
 	@FXML
@@ -298,33 +322,62 @@ public class DashboardController extends DashboardModel {
 
 	
 	private void showSectorAmount() {
-		lblTotalExpense.setText(getAmountBySector(cmboExpenseMonthList.getValue(), cmboSectorList.getValue()));
+		try {
+			lblTotalExpense.setText(getAmountBySector(cmboExpenseMonthList.getValue(), cmboSectorList.getValue()));
+		} catch (Exception e) {}
 	}
 	
 	
 	@FXML
 	private void cmboGetMoneyMonthList(ActionEvent event) {
-		showSourceAmount();
+		try {
+			showSourceAmount();
+			getMoneyChart();
+		} catch (Exception e) {}
 	}
 	
 	
 	@FXML
 	private void cmboSourceList(ActionEvent event) {
-		showSourceAmount();
+		try {
+			showSourceAmount();
+		} catch (Exception e) {}
 	}
 	
 	
 	@FXML
 	private void cmboExpenseMonthList(ActionEvent event) {
-		showSectorAmount();
+		try {
+			showSectorAmount();
+			expenseChart();
+		} catch (Exception e) {}
 	}
 	
 	
 	@FXML
 	private void cmboSectorList(ActionEvent event) {
-		showSectorAmount();
+		try {
+			showSectorAmount();
+		} catch (Exception e) {}
 	}
 	
+	
+	private void getMoneyChart() {
+		gmXaxis.setLabel("Sources Name");
+		gmYaxis.setLabel("Amount");
+		chartGetMoney.setTitle("Get Money");
+		Series<String, Number> gmChartData = GetMoneyChart.getSourceData(cmboGetMoneyMonthList.getValue());
+		chartGetMoney.getData().add(gmChartData);
+	}
+	
+	
+	private void expenseChart() {
+		exXaxis.setLabel("Sectors Name");
+		exYaxis.setLabel("Amount");
+		chartExpense.setTitle("Expense");
+		Series<String, Number> exChartData = ExpenseChart.getExpenseData(cmboExpenseMonthList.getValue());
+		chartExpense.getData().add(exChartData);
+	}
 	
 	
 }
