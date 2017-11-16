@@ -12,7 +12,7 @@ public class DashboardStage extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
 			Scene scene = new Scene(root,800,550);
-//			scene.getStylesheets().add(getClass().getResource("SignIn.css").toExternalForm());
+//			scene.getStylesheets().add(getClass().getResource("/css/clock.css").toExternalForm());
 			DashboardStage.setScene(scene);
 			DashboardStage.setResizable(false);
 			DashboardStage.setTitle("Dashboard");
@@ -22,6 +22,7 @@ public class DashboardStage extends Application {
 		}
 	}
 	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

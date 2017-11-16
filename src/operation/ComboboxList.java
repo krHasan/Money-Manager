@@ -534,8 +534,8 @@ public class ComboboxList extends DatabaseConnection {
 	
 	
 	public String[] getAllExpenseMonth() {
-		if(getAllGetMoneyMonthSize()>0) {
-			String list[] = new String[getAllGetMoneyMonthSize()];
+		if(getAllExpenseMonthSize()>0) {
+			String list[] = new String[getAllExpenseMonthSize()];
 			String sql = "SELECT DISTINCT exMonth \n"
 					+ "FROM Expense \n"
 					+ "ORDER BY exMonth ASC";

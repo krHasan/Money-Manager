@@ -4,7 +4,7 @@
 
 .chart-title {
   -fx-text-fill: #d11141;
-  -fx-font-size: 1.6em;
+  -fx-font-size: 1.2em;
 }
 
 .chart-plot-background {
@@ -15,8 +15,12 @@
     -fx-stroke: #d11141;
 }
 
-.chart-bar {
+/*.chart-bar {
 	-fx-background-color: #d11141;
+}*/
+
+.chart-bar.default-color0 {
+  -fx-bar-fill: #d11141;
 }
 
 /*.data0.chart-bar {

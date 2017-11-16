@@ -4,7 +4,7 @@
 
 .chart-title {
   -fx-text-fill: #00b159;
-  -fx-font-size: 1.6em;
+  -fx-font-size: 1.2em;
 }
 
 .chart-plot-background {
@@ -15,9 +15,21 @@
     -fx-stroke: #00b159;
 }
 
-.chart-bar {
+/*.chart-bar {
 	-fx-background-color: #00b159;
+}*/
+
+.chart-bar.default-color0 {
+  -fx-bar-fill: #00b159;
 }
+
+/*.data0.chart-bar {
+   -fx-background-color: red;
+}
+
+.data1.chart-bar {
+   -fx-background-color: blue;
+}*/
 
 /*.chart {
 	-fx-border-width: 1.5px;

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -11,6 +13,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
@@ -46,24 +50,46 @@
                </items>
             </Menu>
          </menus>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
       </MenuBar>
-      <Button fx:id="btnSignOut" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
-      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" text="Khandoker Rakib Hasan" />
-      <Label alignment="CENTER_RIGHT" layoutX="505.0" layoutY="229.0" prefHeight="30.0" prefWidth="150.0" text="Wallet Balance : ">
+      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
+      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="505.0" layoutY="286.0" prefHeight="30.0" prefWidth="150.0" text="Wallet Balance : ">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblWalletBalance" alignment="CENTER" layoutX="655.0" layoutY="229.0" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;" text="12345">
+      <Label fx:id="lblWalletBalance" alignment="CENTER" layoutX="655.0" layoutY="286.0" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btnMakeATransaction" layoutX="493.0" layoutY="278.0" mnemonicParsing="false" onAction="#goToMakeAtransaction" prefHeight="30.0" prefWidth="146.0" text="Make a Transaction" />
-      <Button fx:id="btnCashCalculate" layoutX="646.0" layoutY="278.0" mnemonicParsing="false" onAction="#btnCashCalculate" prefHeight="30.0" prefWidth="146.0" text="Cash Calculate" />
-      <Button fx:id="btnTransactionHistory" layoutX="646.0" layoutY="316.0" mnemonicParsing="false" onAction="#btnTransactionHistory" prefHeight="30.0" prefWidth="146.0" text="Transaction History" />
-      <Button fx:id="btnSettings" layoutX="493.0" layoutY="316.0" mnemonicParsing="false" onAction="#btnSettings" prefHeight="30.0" prefWidth="146.0" text="Settings" />
-      <BarChart fx:id="chartGetMoney" layoutX="2.0" layoutY="31.0" prefHeight="170.0" prefWidth="490.0" stylesheets="@../css/gmCharts.css" verticalGridLinesVisible="false">
+      <Button fx:id="btnMakeATransaction" layoutX="493.0" layoutY="325.0" mnemonicParsing="false" onAction="#goToMakeAtransaction" prefHeight="30.0" prefWidth="146.0" text="Make a Transaction">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
+      <Button fx:id="btnCashCalculate" layoutX="646.0" layoutY="325.0" mnemonicParsing="false" onAction="#btnCashCalculate" prefHeight="30.0" prefWidth="146.0" text="Cash Calculate">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
+      <Button fx:id="btnSettings" layoutX="493.0" layoutY="363.0" mnemonicParsing="false" onAction="#btnSettings" prefHeight="30.0" prefWidth="146.0" text="Settings">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
+      <Button fx:id="btnTransactionHistory" layoutX="646.0" layoutY="363.0" mnemonicParsing="false" onAction="#btnTransactionHistory" prefHeight="30.0" prefWidth="146.0" text="Transaction History">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
+      <Button fx:id="btnRefreshCharts" layoutX="569.0" layoutY="402.0" mnemonicParsing="false" onAction="#btnRefreshCharts" prefHeight="30.0" prefWidth="146.0" text="Refresh Charts">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
+      <BarChart fx:id="chartGetMoney" layoutX="-5.0" layoutY="31.0" prefHeight="170.0" prefWidth="490.0" stylesheets="@../css/gmCharts.css" verticalGridLinesVisible="false">
         <xAxis>
           <CategoryAxis fx:id="gmXaxis" side="BOTTOM" />
         </xAxis>
@@ -71,7 +97,7 @@
           <NumberAxis fx:id="gmYaxis" side="LEFT" />
         </yAxis>
       </BarChart>
-      <BarChart fx:id="chartExpense" alternativeColumnFillVisible="true" categoryGap="5.0" layoutX="2.0" layoutY="235.0" prefHeight="170.0" prefWidth="490.0" stylesheets="@../css/exCharts.css" verticalGridLinesVisible="false">
+      <BarChart fx:id="chartExpense" alternativeColumnFillVisible="true" categoryGap="5.0" layoutX="-5.0" layoutY="235.0" prefHeight="170.0" prefWidth="490.0" stylesheets="@../css/exCharts.css" verticalGridLinesVisible="false">
          <xAxis>
             <CategoryAxis fx:id="exXaxis" side="BOTTOM" />
          </xAxis>
@@ -79,82 +105,139 @@
             <NumberAxis fx:id="exYaxis" side="LEFT" />
          </yAxis>
       </BarChart>
-      <ComboBox fx:id="cmboGetMoneyMonthList" layoutX="37.0" layoutY="195.0" onAction="#cmboGetMoneyMonthList" prefHeight="26.0" prefWidth="150.0" />
-      <ComboBox fx:id="cmboSourceList" layoutX="208.0" layoutY="195.0" onAction="#cmboSourceList" prefHeight="26.0" prefWidth="150.0" />
-      <Label fx:id="lblTotalGetMoney" alignment="CENTER" layoutX="380.0" layoutY="195.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #DEBBFF;" text="12345678">
+      <ComboBox fx:id="cmboGetMoneyMonthList" layoutX="37.0" layoutY="195.0" onAction="#cmboGetMoneyMonthList" prefHeight="26.0" prefWidth="150.0">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></ComboBox>
+      <ComboBox fx:id="cmboSourceList" layoutX="208.0" layoutY="195.0" onAction="#cmboSourceList" prefHeight="26.0" prefWidth="150.0">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></ComboBox>
+      <Label fx:id="lblTotalGetMoney" alignment="CENTER" layoutX="380.0" layoutY="195.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #DEBBFF;">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmboExpenseMonthList" layoutX="37.0" layoutY="399.0" onAction="#cmboExpenseMonthList" prefHeight="26.0" prefWidth="150.0" />
-      <ComboBox fx:id="cmboSectorList" layoutX="208.0" layoutY="399.0" onAction="#cmboSectorList" prefHeight="26.0" prefWidth="150.0" />
-      <Label fx:id="lblTotalExpense" alignment="CENTER" layoutX="380.0" layoutY="399.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #C4E0FF;" text="12345678">
+      <ComboBox fx:id="cmboExpenseMonthList" layoutX="37.0" layoutY="399.0" onAction="#cmboExpenseMonthList" prefHeight="26.0" prefWidth="150.0">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></ComboBox>
+      <ComboBox fx:id="cmboSectorList" layoutX="208.0" layoutY="399.0" onAction="#cmboSectorList" prefHeight="26.0" prefWidth="150.0">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></ComboBox>
+      <Label fx:id="lblTotalExpense" alignment="CENTER" layoutX="380.0" layoutY="399.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #C4E0FF;">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutY="438.0" prefHeight="112.0" prefWidth="400.0" style="-fx-background-color: #DCF0C9;" />
-      <Label alignment="BOTTOM_CENTER" layoutX="158.0" layoutY="436.0" prefHeight="30.0" prefWidth="80.0" text="Bank">
+      <Label alignment="BOTTOM_CENTER" layoutX="209.0" layoutY="444.0" prefHeight="26.0" prefWidth="80.0" text="Bank">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblbKashBalance" alignment="CENTER" layoutX="46.0" layoutY="494.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #FF89C9;" text="12345678">
+      <Label fx:id="lblbKashBalance" alignment="CENTER" layoutX="97.0" layoutY="498.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #FF89C9;">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblPersonalBalance" alignment="CENTER" layoutX="158.0" layoutY="494.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #aadb7b;" text="12345678">
+      <Label fx:id="lblPersonalBalance" alignment="CENTER" layoutX="209.0" layoutY="498.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #aadb7b;">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblRocketBalance" alignment="CENTER" layoutX="270.0" layoutY="494.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #4CD2FF;" text="12345678">
+      <Label fx:id="lblRocketBalance" alignment="CENTER" layoutX="321.0" layoutY="498.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #4CD2FF;">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblbKashName" alignment="CENTER" layoutX="46.0" layoutY="472.0" prefHeight="20.0" prefWidth="80.0" text="bKash">
+      <Label fx:id="lblbKashName" alignment="CENTER" layoutX="97.0" layoutY="476.0" prefHeight="20.0" prefWidth="80.0" text="bKash">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblRocketName" alignment="CENTER" layoutX="270.0" layoutY="472.0" prefHeight="20.0" prefWidth="80.0" text="Rocket">
+      <Label fx:id="lblRocketName" alignment="CENTER" layoutX="321.0" layoutY="476.0" prefHeight="20.0" prefWidth="80.0" text="Rocket">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="158.0" layoutY="472.0" prefHeight="20.0" prefWidth="80.0" text="Personal">
+      <Label alignment="CENTER" layoutX="209.0" layoutY="476.0" prefHeight="20.0" prefWidth="80.0" text="Personal">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="400.0" layoutY="438.0" prefHeight="112.0" prefWidth="400.0" style="-fx-background-color: #D6F4FF;" />
-      <Label alignment="BOTTOM_CENTER" layoutX="560.0" layoutY="436.0" prefHeight="30.0" prefWidth="80.0" text="Lend">
+      <Label alignment="BOTTOM_CENTER" layoutX="552.0" layoutY="441.0" prefHeight="30.0" prefWidth="80.0" text="Lend">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblTotalBorrow" alignment="CENTER" layoutX="495.0" layoutY="494.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #ff80a6;" text="12345678">
+      <Label fx:id="lblTotalBorrow" alignment="CENTER" layoutX="487.0" layoutY="498.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #ff80a6;">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblTotalLend" alignment="CENTER" layoutX="625.0" layoutY="494.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #e2e19a;" text="12345678">
+      <Label fx:id="lblTotalLend" alignment="CENTER" layoutX="617.0" layoutY="498.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #e2e19a;">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="495.0" layoutY="472.0" prefHeight="20.0" prefWidth="80.0" text="Borrow">
+      <Label alignment="CENTER" layoutX="487.0" layoutY="476.0" prefHeight="20.0" prefWidth="80.0" text="Borrow">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="625.0" layoutY="472.0" prefHeight="20.0" prefWidth="80.0" text="Lend">
+      <Label alignment="CENTER" layoutX="617.0" layoutY="476.0" prefHeight="20.0" prefWidth="80.0" text="Lend">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="btnRefreshCharts" layoutX="569.0" layoutY="370.0" mnemonicParsing="false" onAction="#btnRefreshCharts" prefHeight="30.0" prefWidth="146.0" text="Refresh Charts" />
+      <Group fx:id="analogueClock" layoutX="536.0" layoutY="121.0">
+         <children>
+            <Circle fill="#697a7a" layoutX="101.0" layoutY="18.0" radius="108.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="face" centerX="100.0" centerY="100.0" fill="WHITE" layoutX="1.0" layoutY="-82.0" radius="100.0" stroke="#212b21" strokeType="INSIDE" strokeWidth="2.0" />
+            <Label fx:id="brand" alignment="CENTER" layoutX="70.0" layoutY="48.0" prefHeight="20.0" prefWidth="60.0" text="krHasan">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <Line fx:id="hourHand" endY="-50.0" layoutX="100.0" layoutY="20.0" strokeWidth="3.0" />
+            <Line fx:id="minuteHand" endY="-75.0" layoutX="100.0" layoutY="20.0" strokeWidth="2.0" />
+            <Line fx:id="secondHand" endY="-88.0" layoutX="100.0" layoutY="20.0" />
+            <Circle fx:id="spindlespindle" centerX="100.0" centerY="100.0" fill="#020407" layoutY="-80.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="90.0" layoutY="-75.0" text="12">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="94.0" layoutY="95.0" text="6">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="184.0" layoutY="11.0" text="3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="11.0" text="9">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="50.0" text="8" />
+            <Label layoutX="51.0" layoutY="82.0" text="7" />
+            <Label layoutX="139.0" layoutY="83.0" text="5" />
+            <Label layoutX="171.0" layoutY="53.0" text="4" />
+            <Label layoutX="174.0" layoutY="-31.0" text="2" />
+            <Label layoutX="142.0" layoutY="-64.0" text="1" />
+            <Label layoutX="50.0" layoutY="-62.0" text="11" />
+            <Label layoutX="20.0" layoutY="-32.0" text="10" />
+         </children>
+      </Group>
+      <Label fx:id="digitalClock" alignment="CENTER" layoutX="576.0" layoutY="251.0" prefHeight="26.0" prefWidth="120.0" text="Digital Clock" textFill="#086830">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
