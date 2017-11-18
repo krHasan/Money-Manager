@@ -8,12 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="controller.RegistrationIssueController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationIssueController">
    <children>
-      <Label alignment="CENTER" layoutX="288.0" layoutY="71.0" prefHeight="16.0" prefWidth="273.0" text="Registration Issue" textFill="#d413aa">
+      <Label alignment="CENTER" layoutX="288.0" layoutY="61.0" prefHeight="16.0" prefWidth="273.0" text="Registration Issue" textFill="#d413aa">
          <font>
-            <Font name="Comic Sans MS Bold" size="22.0" />
+            <Font name="Comic Sans MS Bold" size="28.0" />
          </font>
       </Label>
       <Label alignment="CENTER_RIGHT" layoutX="205.0" layoutY="158.0" prefHeight="30.0" prefWidth="150.0" text="Username : " />

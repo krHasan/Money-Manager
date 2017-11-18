@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.SignInModel;
 import operation.GoToRegistration;
+import tab.TabAccess;
 
 public class SignInController extends SignInModel {
 	@FXML
@@ -89,12 +90,16 @@ public class SignInController extends SignInModel {
 	@FXML
 	private void newUser(MouseEvent event) {
 		if (checkUserPresence()) {
+			imgSignIn.setVisible(true);
+			txtSQAnswer.clear();
+			
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation");
 			alert.setHeaderText("Only one user can use this at a time");
 			alert.setContentText("User exists, Delete this one?");
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
+				(new TabAccess()).setreRegistrationLodingStatus("deleteUser");
 				Stage SignInStage = (Stage) lblNewUser.getScene().getWindow();
 				(new GoToRegistration()).goToReRegistration(SignInStage.getX(), SignInStage.getY());
 				SignInStage.close();
@@ -118,6 +123,7 @@ public class SignInController extends SignInModel {
 	@FXML
 	private void passwordChangeOk(ActionEvent event) {
 		if (new SignInModel().securityQuestionAnswerIsOk(txtSQAnswer.getText())) {
+			(new TabAccess()).setreRegistrationLodingStatus("forgotPassword");
 			Stage SignInStage = (Stage) btnOk.getScene().getWindow();
 			(new GoToRegistration()).goToReRegistration(SignInStage.getX(), SignInStage.getY());
 			SignInStage.close();
@@ -136,6 +142,18 @@ public class SignInController extends SignInModel {
 	@FXML
 	private void forgotPasswordtxtFieldFocus(MouseEvent event) {
 		lblForgetPassMsg.setText("Answer the security question");
+	}
+	
+	@FXML
+	private void txtUsername() {
+		imgSignIn.setVisible(true);
+		txtSQAnswer.clear();
+	}
+	
+	@FXML
+	private void passPassword() {
+		imgSignIn.setVisible(true);
+		txtSQAnswer.clear();
 	}
 	
 }

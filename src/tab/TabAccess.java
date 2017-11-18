@@ -44,6 +44,40 @@ public class TabAccess extends DatabaseConnection{
 	}
 	
 	
+	public void setreRegistrationLodingStatus(String reRegistrationLodingStatus) {
+		String sql = "UPDATE Current_Access SET reRegistrationLodingStatus = ? ";
+		
+		try (Connection conn = connector();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+             pstmt.setString(1, reRegistrationLodingStatus);
+             pstmt.executeUpdate();
+        } catch (SQLException e) {
+        	e.printStackTrace();
+        }
+	}
+	
+	
+	public String getreRegistrationLodingStatus() {
+		String reRegistrationLodingStatus = null;
+		String sql = "SELECT reRegistrationLodingStatus \n"
+				+ "FROM Current_Access \n"
+				+ "WHERE ID = 1";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sql)) {
+			if (result.next()) {
+				reRegistrationLodingStatus = result.getString("reRegistrationLodingStatus");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return reRegistrationLodingStatus;
+	}
+	
+	
 //	public static void main(String[] args) {
 //		TabAccess access = new TabAccess();
 //		access.setTabName("tabSector");

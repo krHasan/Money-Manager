@@ -1,12 +1,17 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import model.CashCalculateModel;
+import operation.GoToOperation;
+import tab.TabAccess;
 
-public class CashCalculateController {
+public class CashCalculateController extends CashCalculateModel {
 	@FXML
 	private MenuItem mnuCreateSource;
 	@FXML
@@ -67,6 +72,10 @@ public class CashCalculateController {
 	private Label lblWalletBalance;
 	@FXML
 	private Label lblUserFullName;
+	@FXML
+	private Label lblNote;
+	@FXML
+	private Label lblWarningMsg;
 	
 	@FXML
 	private TextField txt1000;
@@ -88,12 +97,298 @@ public class CashCalculateController {
 	private TextField txt1;
 	
 	
+//////////////////// General Function //////////////////////////////
+	@FXML
+	public void initialize() {
+		lblUserFullName.setText(userFullName());
+		lblWalletBalance.setText(addThousandSeparator(getWalletBalance()));
+		CashCalculate();
+	}
+	
+/////////////////// Menu Function ///////////////////////////
+	@FXML
+	private void mnuCreateSource(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSource");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+
+	@FXML
+	private void mnuCreateSector(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSector");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+
+	@FXML
+	private void mnuExit(ActionEvent event) {
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		CashCalculateStage.close();
+	}
+	
+	@FXML
+	private void mnuDashboard(ActionEvent event) {
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToDashboard(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+
+	@FXML
+	private void mnuGetMoney(ActionEvent event) {
+		(new TabAccess()).setTabName("tabGetMoney");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+
+	@FXML
+	private void mnuExpense(ActionEvent event) {
+		(new TabAccess()).setTabName("tabExpense");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+
+	@FXML
+	private void mnuLend(ActionEvent event) {
+		(new TabAccess()).setTabName("tabLend");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+
+	@FXML
+	private void mnuBank(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+
+	@FXML
+	private void mnuTransactionHistory(ActionEvent event) {
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToTransactionHistory(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+
+	@FXML
+	private void mnuBankSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+	
+	@FXML
+	private void mnuSourceSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSource");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+
+	@FXML
+	private void mnuSectorSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSector");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+	
+	@FXML
+	private void mnuSystemSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSystem");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+
+	
+///////////////////// Button Function ///////////////////////////
+	@FXML
+	private void btnSignOut(ActionEvent event) {
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSignIn(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+	
+	@FXML
+	private void btnMakeATransaction(ActionEvent event) {
+		(new TabAccess()).setTabName("tabExpense");
+		Stage CashCalculateStage = (Stage) btnMakeATransaction.getScene().getWindow();
+		goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.hide();
+	}
+	
+	@FXML
+	private void btnDashboard(ActionEvent event) {
+		Stage CashCalculateStage = (Stage) btnDashboard.getScene().getWindow();
+		(new GoToOperation()).goToDashboard(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
 	
 	
+///////////////////// Cash Calculate Function ///////////////////////////
+	final String InvalidInput = "Invalid Input. Type within 0 to 9999";
+	
+	@FXML
+	private void txt1000() {
+		if (validAmount(txt1000.getText())) {
+			CashCalculate();
+			lblNote.setText("Number of Notes");
+			lblWarningMsg.setText("");
+		} else {
+			lblWarningMsg.setText(InvalidInput);
+			txt1000.setText("");
+			lblNote.setText("");
+		}
+	}
+	
+	@FXML
+	private void txt500() {
+		if (validAmount(txt500.getText())) {
+			CashCalculate();
+			lblNote.setText("Number of Notes");
+			lblWarningMsg.setText("");
+		} else {
+			lblWarningMsg.setText(InvalidInput);
+			txt500.setText("");
+			lblNote.setText("");
+		}
+	}
+	
+	@FXML
+	private void txt100() {
+		if (validAmount(txt100.getText())) {
+			CashCalculate();
+			lblNote.setText("Number of Notes");
+			lblWarningMsg.setText("");
+		} else {
+			lblWarningMsg.setText(InvalidInput);
+			txt100.setText("");
+			lblNote.setText("");
+		}
+	}
+	
+	@FXML
+	private void txt50() {
+		if (validAmount(txt50.getText())) {
+			CashCalculate();
+			lblNote.setText("Number of Notes");
+			lblWarningMsg.setText("");
+		} else {
+			lblWarningMsg.setText(InvalidInput);
+			txt50.setText("");
+			lblNote.setText("");
+		}
+	}
+	
+	@FXML
+	private void txt20() {
+		if (validAmount(txt20.getText())) {
+			CashCalculate();
+			lblNote.setText("Number of Notes");
+			lblWarningMsg.setText("");
+		} else {
+			lblWarningMsg.setText(InvalidInput);
+			txt20.setText("");
+			lblNote.setText("");
+		}
+	}
+	
+	@FXML
+	private void txt10() {
+		if (validAmount(txt10.getText())) {
+			CashCalculate();
+			lblNote.setText("Number of Notes");
+			lblWarningMsg.setText("");
+		} else {
+			lblWarningMsg.setText(InvalidInput);
+			txt10.setText("");
+			lblNote.setText("");
+		}
+	}
+	
+	@FXML
+	private void txt5() {
+		if (validAmount(txt5.getText())) {
+			CashCalculate();
+			lblNote.setText("Number of Notes");
+			lblWarningMsg.setText("");
+		} else {
+			lblWarningMsg.setText(InvalidInput);
+			txt5.setText("");
+			lblNote.setText("");
+		}
+	}
+	
+	@FXML
+	private void txt2() {
+		if (validAmount(txt2.getText())) {
+			CashCalculate();
+			lblNote.setText("Number of Notes");
+			lblWarningMsg.setText("");
+		} else {
+			lblWarningMsg.setText(InvalidInput);
+			txt2.setText("");
+			lblNote.setText("");
+		}
+	}
+	
+	@FXML
+	private void txt1() {
+		if (validAmount(txt1.getText())) {
+			CashCalculate();
+			lblNote.setText("Number of Notes");
+			lblWarningMsg.setText("");
+		} else {
+			lblWarningMsg.setText(InvalidInput);
+			txt1.setText("");
+			lblNote.setText("");
+		}
+	}
 	
 	
-	
-	
+	public void CashCalculate() {
+		TextField zero[] = {txt1000, txt500, txt100, txt50, txt20, txt10, txt5, txt2, txt1};
+		for (TextField textField : zero) {
+			if (textField.getText().isEmpty()) {
+				textField.setText("0");
+			}
+		}
+		int total1000 = stringToInt(txt1000.getText())*1000;
+		lbl1000.setText(" = " + addThousandSeparator(intToString(total1000)));
+		
+		int total500 = stringToInt(txt500.getText())*500;
+		lbl500.setText(" = " + addThousandSeparator(intToString(total500)));
+		
+		int total100 = stringToInt(txt100.getText())*100;
+		lbl100.setText(" = " + addThousandSeparator(intToString(total100)));
+		
+		int total50 = stringToInt(txt50.getText())*50;
+		lbl50.setText(" = " + addThousandSeparator(intToString(total50)));
+		
+		int total20 = stringToInt(txt20.getText())*20;
+		lbl20.setText(" = " + addThousandSeparator(intToString(total20)));
+		
+		int total10 = stringToInt(txt10.getText())*10;
+		lbl10.setText(" = " + addThousandSeparator(intToString(total10)));
+		
+		int total5 = stringToInt(txt5.getText())*5;
+		lbl5.setText(" = " + addThousandSeparator(intToString(total5)));
+		
+		int total2 = stringToInt(txt2.getText())*2;
+		lbl2.setText(" = " + addThousandSeparator(intToString(total2)));
+		
+		int total1 = stringToInt(txt1.getText())*1;
+		lbl1.setText(" = " + addThousandSeparator(intToString(total1)));
+		
+		String totalCash = intToString(total1000+total500+total100+total50+total20+total10+total5+total2+total1);
+		lblTotal.setText(addThousandSeparator(totalCash));
+	}
 	
 	
 	

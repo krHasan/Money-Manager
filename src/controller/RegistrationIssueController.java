@@ -6,6 +6,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import tab.TabAccess;
 
 public class RegistrationIssueController {
 	@FXML
@@ -18,7 +19,7 @@ public class RegistrationIssueController {
 	private TextField txtAnswer;
 	
 	@FXML
-	private ComboBox cmboSecurityQuestion;
+	private ComboBox<String> cmboSecurityQuestion;
 	
 	@FXML
 	private Button btnDelete;
@@ -33,4 +34,17 @@ public class RegistrationIssueController {
 	private Label lblMsgDelete;
 	@FXML
 	private Label lblMsgInformation;
+	
+/////////////////////////// General function ////////////////////////////	
+
+	@FXML
+	public void initialize() {
+		if (new TabAccess().getreRegistrationLodingStatus().equals("deleteUser")) {
+			
+		} else {
+			
+		}
+	}
+	
+
 }

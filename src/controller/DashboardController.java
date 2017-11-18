@@ -468,30 +468,30 @@ public class DashboardController extends DashboardModel {
 				);
 
 		// the digital clock updates once a second.
-		final Timeline digitalTime = new Timeline(
-				new KeyFrame(Duration.seconds(0),
-						new EventHandler<ActionEvent>() {
-					@Override public void handle(ActionEvent actionEvent) {
-						Calendar calendar   = GregorianCalendar.getInstance();
-						String hourString   = pad(2, '0', calendar.get(Calendar.HOUR)   == 0 ? "12" : calendar.get(Calendar.HOUR) + "");
-						String minuteString = pad(2, '0', calendar.get(Calendar.MINUTE) + "");
-						String secondString = pad(2, '0', calendar.get(Calendar.SECOND) + "");
-						String ampmString   = calendar.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM";
-						digitalClock.setText(hourString + ":" + minuteString + ":" + secondString + " " + ampmString);
-					}
-				}
-						),
-				new KeyFrame(Duration.seconds(1))
-				);
+//		final Timeline digitalTime = new Timeline(
+//				new KeyFrame(Duration.seconds(0),
+//						new EventHandler<ActionEvent>() {
+//					@Override public void handle(ActionEvent actionEvent) {
+//						Calendar calendar   = GregorianCalendar.getInstance();
+//						String hourString   = pad(2, '0', calendar.get(Calendar.HOUR)   == 0 ? "12" : calendar.get(Calendar.HOUR) + "");
+//						String minuteString = pad(2, '0', calendar.get(Calendar.MINUTE) + "");
+//						String secondString = pad(2, '0', calendar.get(Calendar.SECOND) + "");
+//						String ampmString   = calendar.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM";
+//						digitalClock.setText(hourString + ":" + minuteString + ":" + secondString + " " + ampmString);
+//					}
+//				}
+//						),
+//				new KeyFrame(Duration.seconds(1))
+//				);
 
 		// time never ends.
 		hourTime.setCycleCount(Animation.INDEFINITE);
 		minuteTime.setCycleCount(Animation.INDEFINITE);
 		secondTime.setCycleCount(Animation.INDEFINITE);
-		digitalTime.setCycleCount(Animation.INDEFINITE);
+//		digitalTime.setCycleCount(Animation.INDEFINITE);
 
 		// start the analogueClock.
-		digitalTime.play();
+//		digitalTime.play();
 		secondTime.play();
 		minuteTime.play();
 		hourTime.play();
@@ -512,14 +512,14 @@ public class DashboardController extends DashboardModel {
 	}
 	
 	
-	private String pad(int fieldWidth, char padChar, String s) {
-	    StringBuilder sb = new StringBuilder();
-	    for (int i = s.length(); i < fieldWidth; i++) {
-	      sb.append(padChar);
-	    }
-	    	sb.append(s);
-	    return sb.toString();
-	}
+//	private String pad(int fieldWidth, char padChar, String s) {
+//	    StringBuilder sb = new StringBuilder();
+//	    for (int i = s.length(); i < fieldWidth; i++) {
+//	      sb.append(padChar);
+//	    }
+//	    	sb.append(s);
+//	    return sb.toString();
+//	}
 	
 	
 }

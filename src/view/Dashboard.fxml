@@ -59,12 +59,12 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></Button>
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="505.0" layoutY="286.0" prefHeight="30.0" prefWidth="150.0" text="Wallet Balance : ">
+      <Label alignment="CENTER_RIGHT" layoutX="527.0" layoutY="275.0" prefHeight="30.0" prefWidth="130.0" text="Wallet Balance : ">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblWalletBalance" alignment="CENTER" layoutX="655.0" layoutY="286.0" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
+      <Label fx:id="lblWalletBalance" alignment="CENTER" layoutX="657.0" layoutY="275.0" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
@@ -191,7 +191,7 @@
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <Group fx:id="analogueClock" layoutX="536.0" layoutY="121.0">
+      <Group fx:id="analogueClock" layoutX="536.0" layoutY="130.0">
          <children>
             <Circle fill="#697a7a" layoutX="101.0" layoutY="18.0" radius="108.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="face" centerX="100.0" centerY="100.0" fill="WHITE" layoutX="1.0" layoutY="-82.0" radius="100.0" stroke="#212b21" strokeType="INSIDE" strokeWidth="2.0" />
@@ -234,7 +234,7 @@
             <Label layoutX="20.0" layoutY="-32.0" text="10" />
          </children>
       </Group>
-      <Label fx:id="digitalClock" alignment="CENTER" layoutX="576.0" layoutY="251.0" prefHeight="26.0" prefWidth="120.0" text="Digital Clock" textFill="#086830">
+      <Label fx:id="digitalClock" alignment="CENTER" layoutX="576.0" layoutY="251.0" prefHeight="26.0" prefWidth="120.0" textFill="#086830">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

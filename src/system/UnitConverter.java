@@ -31,6 +31,16 @@ public class UnitConverter extends DatabaseConnection {
 	}
 
 	
+	public static int stringToInt(String balance) {
+		return Integer.parseInt(balance);
+	}
+	
+	
+	public static String intToString(int balance) {
+		return Integer.toString(balance);
+	}
+	
+	
 	public static String longToString(long balance) {
 		return Double.toString(balance/100.00);
 	}
