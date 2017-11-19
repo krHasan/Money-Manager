@@ -13,7 +13,7 @@ function printSector(i, history){
   });
 
   // frame inside div: container-2
-  $(".div-sectorPost"+i+"-container").append('<div class="div-sectorPost'+i+'-container-2"></div>')
+  $(".div-sectorPost"+i+"-container").html('<div class="div-sectorPost'+i+'-container-2"></div>')
   $(".div-sectorPost"+i+"-container-2").css({
      "height": "85px",
      "width": "100%",

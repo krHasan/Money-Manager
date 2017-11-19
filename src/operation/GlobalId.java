@@ -13,8 +13,7 @@ public class GlobalId extends DatabaseConnection {
 		int globalId = 0;
 		
 		String sql = "SELECT globalId \n"
-				+ "FROM System_Settings \n"
-				+ "WHERE ID = 1";
+				+ "FROM System_Settings";
 		
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
@@ -31,8 +30,7 @@ public class GlobalId extends DatabaseConnection {
 	
 	private static void increseGlobalId(int oldId) {
 		String sql = "UPDATE System_Settings \n"
-				+ "SET globalId = ? \n"
-				+ "WHERE ID = 1";
+				+ "SET globalId = ?";
 		
 		try (Connection conn = connector();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {

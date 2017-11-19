@@ -43,8 +43,7 @@ public class BankIssue extends DatabaseConnection {
 	private static long bKashbnkCharge(String nature) {
 		long charge = 0;
 		String sql = "SELECT * \n"
-				+ "FROM bKash_Settings \n"
-				+ "WHERE ID = 1";
+				+ "FROM bKash_Settings";
 		
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
@@ -143,8 +142,7 @@ public class BankIssue extends DatabaseConnection {
 		long charge = 0;
 		
 		String sqlAll = "SELECT * \n"
-				+ "FROM Rocket_Settings \n"
-				+ "WHERE ID = 1";
+				+ "FROM Rocket_Settings";
 		
 		if (method.equals("Cash In")) {
 			if (isATMFree()) {
@@ -317,8 +315,7 @@ public class BankIssue extends DatabaseConnection {
 		boolean atmFreeb = false;
 		
 		String sqlATM = "SELECT atmFree \n"
-				+ "FROM Rocket_Settings \n"
-				+ "WHERE ID = 1";
+				+ "FROM Rocket_Settings";
 		
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
@@ -341,6 +338,7 @@ public class BankIssue extends DatabaseConnection {
 //		BankIssue access = new BankIssue();
 //		System.out.println(access.bKashChargeCalculate(100000, "ATM"));
 //		System.out.println(access.rocketChargeCalculate(1500000, "Cash Out", "Agent"));
+//		System.out.println(access.isATMFree());
 //	}
 	
 }

@@ -13,7 +13,7 @@ function printSource(i, history){
   });
 
   // frame inside div: container-2
-  $(".div-sourcePost"+i+"-container").append('<div class="div-sourcePost'+i+'-container-2"></div>')
+  $(".div-sourcePost"+i+"-container").html('<div class="div-sourcePost'+i+'-container-2"></div>')
   $(".div-sourcePost"+i+"-container-2").css({
      "height": "85px",
      "width": "100%",

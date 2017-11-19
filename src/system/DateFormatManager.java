@@ -16,8 +16,7 @@ public class DateFormatManager extends StringConverter<LocalDate> {
 //	return the user define date format from database
 	public final String getDateFormat() {
 		String sql = "SELECT dateFormat \n"
-				+ "FROM System_Settings \n"
-				+ "WHERE ID=1";
+				+ "FROM System_Settings";
 		String format = null;
 		try (Connection conn = DatabaseConnection.connector();
 				Statement stmt = conn.createStatement();
@@ -46,8 +45,7 @@ public class DateFormatManager extends StringConverter<LocalDate> {
 	
 	public final String getTimeFormate() {
 		String sql = "SELECT timeFormat \n"
-				+ "FROM System_Settings \n"
-				+ "WHERE ID=1";
+				+ "FROM System_Settings";
 		String format = null;
 		try (Connection conn = DatabaseConnection.connector();
 				Statement stmt = conn.createStatement();

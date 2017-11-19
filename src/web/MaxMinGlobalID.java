@@ -8,6 +8,7 @@ import database.DatabaseConnection;
 
 public class MaxMinGlobalID extends DatabaseConnection {
 	
+	@SuppressWarnings("unused")
 	public int getMinIDNumber(String monthName) {
 		
 		int gmFirstGlobalID = 0, exFirstGlobalID = 0, boFirstGlobalID = 0, leFirstGlobalID = 0, bkFirstGlobalID = 0, rocFirstGlobalID = 0, perFirstGlobalID = 0;
@@ -102,6 +103,7 @@ public class MaxMinGlobalID extends DatabaseConnection {
 	}
 	
 	
+	@SuppressWarnings("unused")
 	public int getMaxIDNumber(String monthName) {
 
 		int gmLastGlobalID = 0, exLastGlobalID = 0, boLastGlobalID = 0, leLastGlobalID = 0, bkLastGlobalID = 0, rocLastGlobalID = 0, perLastGlobalID = 0;

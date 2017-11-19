@@ -199,12 +199,12 @@
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="364.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :">
+                  <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="351.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="exlblWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="364.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
+                  <Label fx:id="exlblWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="351.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
@@ -219,7 +219,7 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </TextArea>
-                  <Button fx:id="exbtnAdjustBalance" focusTraversable="false" layoutX="119.0" layoutY="421.0" mnemonicParsing="false" onAction="#exAdjustBalance" prefHeight="32.0" prefWidth="135.0" text="Adjust Balance">
+                  <Button fx:id="exbtnAdjustBalance" focusTraversable="false" layoutX="119.0" layoutY="400.0" mnemonicParsing="false" onAction="#exAdjustBalance" prefHeight="32.0" prefWidth="135.0" text="Adjust Balance">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -236,6 +236,14 @@
                         <Font name="Arial" size="13.0" />
                     </font>
                   </Label>
+                  <Button fx:id="exbtnGoToCashCalculate" focusTraversable="false" layoutX="119.0" layoutY="446.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="32.0" prefWidth="135.0" text="Cash Calculate">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
+                  </Button>
                </children></AnchorPane>
       </content>
     </Tab>

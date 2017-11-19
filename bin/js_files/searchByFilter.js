@@ -9,6 +9,9 @@ window.ready = function() {
 
   var typedFilterName = historyData[0].typedFilterName;
 
+  $("#wrapper").html("<div class=\"div-main\"></div>")
+  // $("#aText").html(historyData.length)
+
   // if (!isInitialized) {
     for (var i = 1; i < historyData.length; i++) {
       var history = historyData[i];

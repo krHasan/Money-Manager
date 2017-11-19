@@ -13,7 +13,7 @@ function printExpense(i, history){
   });
 
   // frame inside div: container-2
-  $(".div-expost"+i+"-container").append('<div class="div-expost'+i+'-container-2"></div>')
+  $(".div-expost"+i+"-container").html('<div class="div-expost'+i+'-container-2"></div>')
   $(".div-expost"+i+"-container-2").css({
      "height": "85px",
      "width": "100%",

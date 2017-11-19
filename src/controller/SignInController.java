@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -33,8 +34,9 @@ public class SignInController extends SignInModel {
 	private Label lblNewUser;
 	@FXML
 	private Label lblForgetPassMsg;
+
 	@FXML
-	private Label lblSecurityQuetion;
+	private ComboBox<String> cmboSecurityQuetion;
 	
 	@FXML
 	private TextField txtUsername;
@@ -111,26 +113,33 @@ public class SignInController extends SignInModel {
 		}
 	}
 	
+	private void showSecurityQuestion() {
+		cmboSecurityQuetion.setItems(getSecurityQuestion());
+		cmboSecurityQuetion.getSelectionModel().selectFirst();
+	}
+	
 	@FXML
 	private void forgotPassword(MouseEvent event) {
 		imgSignIn.setVisible(false);
-		lblForgetPassMsg.setText("Answer the security question");
-		lblSecurityQuetion.setText(showSecurityQuestion());
+		lblForgetPassMsg.setText("Answer your security question");
+		showSecurityQuestion();
 		txtUsername.clear();
 		passPassword.clear();
 	}
 	
 	@FXML
 	private void passwordChangeOk(ActionEvent event) {
-		if (new SignInModel().securityQuestionAnswerIsOk(txtSQAnswer.getText())) {
+		if (!new SignInModel().securityQuestionAnswerIsOk(txtSQAnswer.getText())) {
+			lblForgetPassMsg.setText("Answer didn't match");
+			txtSQAnswer.clear();
+		} else if(!cmboSecurityQuetion.getValue().equals(getSavedSecurityQuestion())){
+			lblForgetPassMsg.setText("Question didn't match");
+			txtSQAnswer.clear();
+		} else {
 			(new TabAccess()).setreRegistrationLodingStatus("forgotPassword");
 			Stage SignInStage = (Stage) btnOk.getScene().getWindow();
 			(new GoToRegistration()).goToReRegistration(SignInStage.getX(), SignInStage.getY());
 			SignInStage.close();
-			
-		} else {
-			lblForgetPassMsg.setText("Answer didn't match");
-			txtSQAnswer.clear();
 		}
 	}
 	

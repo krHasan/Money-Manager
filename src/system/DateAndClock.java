@@ -27,8 +27,7 @@ public class DateAndClock extends UserBasic {
 		
 //		get last opening date from database as string
 		String sql = "SELECT lastAccessDate \n"
-					+ "FROM  Current_Status \n"
-					+ "WHERE ID=1";
+					+ "FROM  Current_Status";
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
 				ResultSet result = stmt.executeQuery(sql)){
@@ -102,7 +101,7 @@ public class DateAndClock extends UserBasic {
 	
 	
 	public static boolean getWeekStatus() {
-		String sql = "SELECT weekNumber FROM System_Settings WHERE ID = 1";
+		String sql = "SELECT weekNumber FROM System_Settings";
 		
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
@@ -150,12 +149,11 @@ public class DateAndClock extends UserBasic {
 			e.printStackTrace();
 		}
 		if (!dbLastMonth.equals(getMonth())) {
-			dbLastMonth = getMonth();
 			String addMonthYear = "INSERT INTO All_Months(allYear, allTransactionMonth) VALUES(?,?)";
 			try (Connection conn = connector();
 					PreparedStatement pstmt = conn.prepareStatement(addMonthYear)) {
 				pstmt.setString(1, getYear());
-				pstmt.setString(2, dbLastMonth);
+				pstmt.setString(2, getMonth());
 				pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();

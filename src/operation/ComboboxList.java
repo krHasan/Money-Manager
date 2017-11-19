@@ -573,6 +573,15 @@ public class ComboboxList extends DatabaseConnection {
 		}
 		return size;
 	}
+	
+	
+	public String[] getSecurityQuestionList() {
+		String list[] = {"What was Your First Phone Number?", "What is Your Favourite Teacher's Name?", 
+				"What is Your Special One's Name?", "What was your childhood nickname?", 
+				"What is your favorite team?", "What is your favorite movie?", "In what town was your first job?"};
+		return list;
+	}
+	
 //	public static void main(String[] args) {
 //		ComboboxList access = new ComboboxList();
 //		

@@ -13,7 +13,7 @@ function printBorrow(i, history){
   });
 
   // frame inside div: container-1
-  $(".div-bopost"+i+"-container").append('<div class="div-bopost'+i+'-container-1"></div>')
+  $(".div-bopost"+i+"-container").html('<div class="div-bopost'+i+'-container-1"></div>')
   $(".div-bopost"+i+"-container-1").css({
      "height": "100%",
      "width": "22%",

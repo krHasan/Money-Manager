@@ -1,6 +1,8 @@
 package system;
 
 import java.text.DecimalFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import database.DatabaseConnection;
 
@@ -101,7 +103,7 @@ public class UnitConverter extends DatabaseConnection {
 
 	    for (int i = 0; i < s.length(); i++) {
 	        // if the char is a letter, word = true.
-	        if (Character.isLetter(s.charAt(i)) && i != endOfLine) {
+	        if (Character.isLetterOrDigit(s.charAt(i)) && i != endOfLine) {
 	            word = true;
 	            // if char isn't a letter and there have been letters before,
 	            // counter goes up.
@@ -118,6 +120,14 @@ public class UnitConverter extends DatabaseConnection {
 	}
 	
 	
+	public static boolean containswhitespace(String s) {
+		Pattern pattern = Pattern.compile("\\s");
+		Matcher matcher = pattern.matcher(s);
+		boolean found = matcher.find();
+		return found;
+	}
+	
+	
 //	public static void main(String[] args) {
 //		UnitConverter access = new UnitConverter();
 //		System.out.println(longToDouble(1909));
@@ -128,8 +138,9 @@ public class UnitConverter extends DatabaseConnection {
 //		System.out.println(addTSwithTKSign(addThousandSeparator("9999999")));
 //		System.out.println(addTSwithDollerSign("9999999.99"));
 //		System.out.println(addTSwithDollerSign(addThousandSeparator("9999999")));
-//		System.out.println(countWords("something"));
+//		System.out.println(countWords("11someth ing"));
 //		System.out.println(access.getUppercaseLetters("khandoker rakib hasan bappi"));
+//		System.out.println(containswhitespace("ami nai"));
 //	}
 	
 }

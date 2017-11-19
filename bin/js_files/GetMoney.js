@@ -6,14 +6,16 @@ function printGetMoney(i, history){
      "width": "100%",
      "display": "flex",
      "flex-direction": "column",
-     "border-radius": "10px",
-     "margin-bottom": "25px",
-     "border-style": "groove",
-     "background-color": "rgba(0,255,0,0.1)" //Green
+     "padding": "10px 5px",
+     "border-bottom": "1px solid red",
+    //  "border-radius": "10px",
+    //  "margin-bottom": "25px",
+    //  "border-style": "groove",
+     "background-color": (i%2 == 0) ? "#f2f2f2" : "#e6e6e6" //Green
   });
 
   // frame inside div: container-2
-  $(".div-gmpost"+i+"-container").append('<div class="div-gmpost'+i+'-container-2"></div>')
+  $(".div-gmpost"+i+"-container").html('<div class="div-gmpost'+i+'-container-2"></div>')
   $(".div-gmpost"+i+"-container-2").css({
      "height": "85px",
      "width": "100%",

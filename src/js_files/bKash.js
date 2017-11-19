@@ -13,7 +13,7 @@ function printbKash(i, history){
   });
 
   // frame inside div: container-1
-  $(".div-bkpost"+i+"-container").append('<div class="div-bkpost'+i+'-container-1"></div>')
+  $(".div-bkpost"+i+"-container").html('<div class="div-bkpost'+i+'-container-1"></div>')
   $(".div-bkpost"+i+"-container-1").css({
      "height": "100%",
      "width": "20%",

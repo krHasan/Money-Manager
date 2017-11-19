@@ -249,7 +249,6 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabSource");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
@@ -258,14 +257,12 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabSector");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
 	@FXML
 	private void mnuExit(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
-//		SettingsStage.close();
 		SettingsStage.close();
 	}
 	
@@ -273,7 +270,6 @@ public class SettingsController extends SettingsModel {
 	private void mnuDashboard(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToDashboard(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
@@ -282,7 +278,6 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabGetMoney");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
@@ -291,7 +286,6 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabExpense");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
@@ -300,7 +294,6 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabLend");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
@@ -309,7 +302,6 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabBank");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
@@ -317,7 +309,6 @@ public class SettingsController extends SettingsModel {
 	private void mnuTransactionHistory(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToTransactionHistory(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
@@ -325,7 +316,6 @@ public class SettingsController extends SettingsModel {
 	private void mnuCashCalculate(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToCashCalculate(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
@@ -335,7 +325,6 @@ public class SettingsController extends SettingsModel {
 	private void btnDashboard(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToDashboard(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
@@ -344,7 +333,6 @@ public class SettingsController extends SettingsModel {
 		(new TabAccess()).setTabName("tabGetMoney");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
@@ -352,7 +340,6 @@ public class SettingsController extends SettingsModel {
 	private void btnTransactionHistory(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 		(new GoToOperation()).goToTransactionHistory(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	
@@ -360,7 +347,6 @@ public class SettingsController extends SettingsModel {
 	private void btnSignOut(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToSignIn(SettingsStage.getX(), SettingsStage.getY());
-//		SettingsStage.hide();
 		SettingsStage.close();
 	}
 	

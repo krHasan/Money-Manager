@@ -13,7 +13,7 @@ function printLend(i, history){
   });
 
   // frame inside div: container-1
-  $(".div-lepost"+i+"-container").append('<div class="div-lepost'+i+'-container-1"></div>')
+  $(".div-lepost"+i+"-container").html('<div class="div-lepost'+i+'-container-1"></div>')
   $(".div-lepost"+i+"-container-1").css({
      "height": "100%",
      "width": "22%",

@@ -13,7 +13,7 @@ function printRocket(i, history){
   });
 
   // frame inside div: container-1
-  $(".div-rocpost"+i+"-container").append('<div class="div-rocpost'+i+'-container-1"></div>')
+  $(".div-rocpost"+i+"-container").html('<div class="div-rocpost'+i+'-container-1"></div>')
   $(".div-rocpost"+i+"-container-1").css({
      "height": "100%",
      "width": "20%",

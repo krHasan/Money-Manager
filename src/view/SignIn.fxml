@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -12,6 +13,10 @@
 
 <AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInController">
    <children>
+      <ComboBox fx:id="cmboSecurityQuetion" focusTraversable="false" layoutX="59.0" layoutY="209.0" prefHeight="30.0" prefWidth="315.0">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></ComboBox>
       <Label fx:id="lblUserFullName" alignment="BOTTOM_CENTER" contentDisplay="CENTER" focusTraversable="false" layoutY="16.0" prefHeight="30.0" prefWidth="800.0" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="20.0" />
@@ -37,11 +42,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="lblSecurityQuetion" alignment="CENTER" focusTraversable="false" layoutX="80.0" layoutY="214.0" prefHeight="30.0" prefWidth="270.0">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </Label>
       <Button fx:id="btnCancel" focusTraversable="false" layoutX="125.0" layoutY="302.0" mnemonicParsing="false" onAction="#passwordChangeCancel" prefHeight="25.0" prefWidth="70.0" text="Cancel">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -74,12 +74,12 @@
          </cursor>
       </Label>
       <TextField fx:id="txtSQAnswer" focusTraversable="false" layoutX="80.0" layoutY="256.0" onMouseClicked="#forgotPasswordtxtFieldFocus" prefHeight="30.0" prefWidth="270.0" promptText="Answer Here" />
-      <Label fx:id="lblForgetPassMsg" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="80.0" layoutY="193.0" prefHeight="20.0" prefWidth="270.0" textAlignment="CENTER" textFill="#c30505" textOverrun="CLIP">
+      <Label fx:id="lblForgetPassMsg" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="80.0" layoutY="183.0" prefHeight="20.0" prefWidth="270.0" textAlignment="CENTER" textFill="#c30505" textOverrun="CLIP">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <ImageView fx:id="imgSignIn" fitHeight="331.0" fitWidth="355.0" layoutX="63.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgSignIn" fitHeight="331.0" fitWidth="355.0" layoutX="57.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imges/signin3.jpg" />
          </image>

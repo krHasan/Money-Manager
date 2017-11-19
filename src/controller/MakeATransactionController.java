@@ -112,6 +112,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Button exbtnSave;
 	@FXML
 	private Button exbtnGoToDashboard;
+	@FXML
+	private Button exbtnGoToCashCalculate;
 	
 	@FXML
 	private TextField extxtAmount;
@@ -789,6 +791,14 @@ public class MakeATransactionController extends MakeATransactionModel {
 		(new TabAccess()).setTabName("tabSector");
 		Stage MakeATransactionStage = (Stage) exbtnCreateSector.getScene().getWindow();
 		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
+	
+	@FXML
+	private void exbtnGoToCashCalculate(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) exbtnGoToCashCalculate.getScene().getWindow();
+		(new GoToOperation()).goToCashCalculate(MakeATransactionStage.getX(), MakeATransactionStage.getY());
 		MakeATransactionStage.close();
 	}
 	
