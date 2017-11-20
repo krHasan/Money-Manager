@@ -399,7 +399,7 @@ public class HistorySearch extends DatabaseConnection {
 			
 		} else if (new ComboboxList().isFilterInSource(typedFilterName)) {
 	
-			String sourceFilterSQL = "SELECT * FROM Get_Money WHERE gmSource = ?";
+			String sourceFilterSQL = "SELECT * FROM Get_Money WHERE gmSource = ? ORDER BY globalID DESC";
 			try (Connection conn = connector();
 					PreparedStatement pstmt = conn.prepareStatement(sourceFilterSQL)) {
 				pstmt.setString(1, typedFilterName);
@@ -425,7 +425,7 @@ public class HistorySearch extends DatabaseConnection {
 	
 		} else if (new ComboboxList().isFilterInSector(typedFilterName)) {
 		
-			String sectorresult = "SELECT * FROM Expense WHERE exSector = ?";
+			String sectorresult = "SELECT * FROM Expense WHERE exSector = ? ORDER BY globalID DESC";
 			try (Connection conn = connector();
 					PreparedStatement pstmt = conn.prepareStatement(sectorresult)) {
 				pstmt.setString(1, typedFilterName);

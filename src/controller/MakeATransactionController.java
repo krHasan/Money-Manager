@@ -2585,11 +2585,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void rocInitialize() {
 		bnkSelectedTabName = "Rocket";
-		bnkdateDate.setConverter(formatManager);
-		bnkdateDate.setValue(date);
-		if (getWeekStatus()) {
-			bnkdateDate.setShowWeekNumbers(true);
-		}
+		try {
+			bnkdateDate.setConverter(formatManager);
+			bnkdateDate.setValue(date);
+			if (getWeekStatus()) {
+				bnkdateDate.setShowWeekNumbers(true);
+			}
+		} catch (Exception e) {}
 		rocLoadType();
 		rocLoadNature();
 		rocAccountBalanceShow();
@@ -2607,11 +2609,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void perInitialize() {
 		bnkSelectedTabName = "Personal";
-		bnkdateDate.setConverter(formatManager);
-		bnkdateDate.setValue(date);
+		try {
+			bnkdateDate.setConverter(formatManager);
+			bnkdateDate.setValue(date);
+			if (getWeekStatus()) {
+				bnkdateDate.setShowWeekNumbers(true);
+			}
+		} catch (Exception e) {}
 		perLoadNature();
 		perAccountBalanceShow();
 		showWalletBalance();
+		pertxtAmount.clear();
 	}
 	
 	
@@ -3496,12 +3504,14 @@ public class MakeATransactionController extends MakeATransactionModel {
 					bnkData.put("gmWalletBalanceAfter", exWalletBalanceAfter(pertxtAmount.getText()));
 					(new GetMoney()).saveBnkPersonalData(bnkData);
 					setCurrentWalletBalance(exWalletBalanceAfter(pertxtAmount.getText()));
+					setCurrentPersonalBalance(updatedPersonalBalance(pertxtAmount.getText(), "Credit"));
 				} else {
 					bnkData.put("perBalanceAfter", updatedPersonalBalance(pertxtAmount.getText(), "Debit"));
 					bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
 					bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(pertxtAmount.getText()));
 					(new GetMoney()).saveBnkPersonalData(bnkData);
 					setCurrentWalletBalance(gmWalletBalanceAfter(pertxtAmount.getText()));
+					setCurrentPersonalBalance(updatedPersonalBalance(pertxtAmount.getText(), "Debit"));
 				}
 				(new Personal()).saveBnkPersonalData(bnkData);
 				
