@@ -1,24 +1,22 @@
-window.ready = function() {
+function searchHistoryByDate(){
   // refresh();
   // document.body.style.backgroundColor="#00f3f3";
   // var text = HistorySearch.print();
   // $('#aText').text(text);
   // var isInitialized = HistorySearch.initialize;
-  var historyDataObject = HistorySearch.getAllHistory();
+  var historyDataObject = HistorySearchByDate.getHistoryByDate();
   var historyData = JSON.parse(historyDataObject);
 
-  var typedFilterName = historyData[0].typedFilterName;
+  // var typedFilterName = historyData[0].typedFilterName;
 
   $("#wrapper").html("<div class=\"div-main\"></div>")
   // $("#aText").html(historyData.length)
 
   // if (!isInitialized) {
-    for (var i = 1; i < historyData.length; i++) {
+    for (var i = 0; i < historyData.length; i++) {
       var history = historyData[i];
       var filter = history.filter;
 
-      switch (typedFilterName) {
-        case "All":
           switch (filter) {
             case "Get Money":
                 printGetMoney(i, history);
@@ -50,50 +48,9 @@ window.ready = function() {
               break;
 
             default:
-                noResultFound();
+  
           }
-          break;
 
-        case "Get Money":
-            printGetMoney(i, history);
-          // $('#bText').text("bText "+typedFilterName);
-          break;
-
-        case "Expense":
-            printExpense(i, history);
-          break;
-
-        case "Borrow":
-            printBorrow(i, history);
-          break;
-
-        case "Lend":
-            printLend(i, history);
-          break;
-
-        case "bKash":
-            printbKash(i, history);
-          break;
-
-        case "Rocket":
-            printRocket(i, history);
-          break;
-
-        case "Personal":
-            printPersonal(i, history);
-          break;
-
-        case "Source":
-            printSource(i, history);
-          break;
-
-        case "Sector":
-            printSector(i, history);
-          break;
-
-        default:
-            noResultFound();
-      }
     }
 
     if (historyData.length == 0) {

@@ -458,13 +458,17 @@ public class ComboboxList extends DatabaseConnection {
 			allList[index] = "Personal";
 			++index;
 		}
-		for (String string : sourceList) {
-			allList[index] = string;
-			++index;
+		if (getSourceArraySize() != 0) {
+			for (String string : sourceList) {
+				allList[index] = string;
+				++index;
+			} 
 		}
-		for (String string : sectorList) {
-			allList[index] = string;
-			++index;
+		if (getSectorArraySize() != 0) {
+			for (String string : sectorList) {
+				allList[index] = string;
+				++index;
+			} 
 		}
 		return allList;
 	}
@@ -600,9 +604,11 @@ public class ComboboxList extends DatabaseConnection {
 		return list;
 	}
 	
-//	public static void main(String[] args) {
-//		ComboboxList access = new ComboboxList();
-//		
+	public static void main(String[] args) {
+		ComboboxList access = new ComboboxList();
+		System.out.println(access.permanantFilterSize());
+		System.out.println(access.getSourceArraySize());
+		System.out.println(access.getSectorArraySize());
 //		String list[] = access.getSourceList();
 //		for (String string : list) {
 //			System.out.println("Source :"+string);
@@ -612,7 +618,7 @@ public class ComboboxList extends DatabaseConnection {
 //		for (String string : list2) {
 //			System.out.println("Method: "+string);
 //		}
-//	}
+	}
 }
 
 

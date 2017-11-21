@@ -21,6 +21,7 @@ import operation.GoToOperation;
 import system.DateFormatManager;
 import tab.TabAccess;
 import web.HistorySearch;
+import web.HistorySearchByDate;
 
 public class TransactionHistoryController extends TransactionHistoryModel {
 	@FXML
@@ -78,6 +79,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	LocalDate date = formatManager.fromString(dateString);
 	
 	HistorySearch debug;
+	HistorySearchByDate historyByDate;
 	
 	@FXML
 	public void initialize() {
@@ -87,7 +89,6 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 		datePicker.setConverter(formatManager);
 		datePicker.setValue(date);
 		webEngine = webview.getEngine();
-//		initializeHisoty();
 		showHisoty();
 	}
 
@@ -232,7 +233,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	
 	private void showHisoty() {
 		debug = new HistorySearch(cmboHistoryMonth.getValue(), cmboFilterList.getValue());
-		debug.initialize = false;
+
 		webEngine.getLoadWorker().stateProperty().addListener(
         	    new ChangeListener<Worker.State>() {
         	        @Override
@@ -250,24 +251,27 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	}
 	
 	
-//	private void initializeHisoty() {
-//		debug = new HistorySearch(cmboHistoryMonth.getValue(), cmboFilterList.getValue());
-//		debug.initialize = true;
-//		webEngine.getLoadWorker().stateProperty().addListener(
-//        	    new ChangeListener<Worker.State>() {
-//        	        @Override
-//        	        public void changed(ObservableValue<? extends Worker.State> observable, Worker.State oldValue, Worker.State newValue) {
-//        	            if (newValue == Worker.State.SUCCEEDED) {
-//        	                JSObject windowObject = (JSObject) webEngine.executeScript("window");
-//        	                windowObject.setMember("HistorySearch", debug); // insert object
-//        	                windowObject.call("ready"); // execute callback
-//        	            }
-//        	        }
-//        	    }
-//        	);
-//        String url = getClass().getResource("../html/index.html").toExternalForm();
-//        webEngine.load(url);
-//	}
+	@FXML
+	private void btnGo(ActionEvent event) {
+		historyByDate = new HistorySearchByDate(datePicker.getValue());
+		
+		webEngine.getLoadWorker().stateProperty().addListener(
+        	    new ChangeListener<Worker.State>() {
+        	        @Override
+        	        public void changed(ObservableValue<? extends Worker.State> observable, Worker.State oldValue, Worker.State newValue) {
+        	            if (newValue == Worker.State.SUCCEEDED) {
+        	                JSObject windowObject = (JSObject) webEngine.executeScript("window");
+        	                windowObject.setMember("HistorySearchByDate", historyByDate); // insert object
+        	                windowObject.call("searchHistoryByDate"); // execute callback
+        	            }
+        	        }
+        	    }
+        	);
+        String url = getClass().getResource("../html/index.html").toExternalForm();
+        webEngine.load(url);
+	}
+
+	
 }
 
 

@@ -54,7 +54,7 @@
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></ComboBox>
-      <Button fx:id="btnGo" layoutX="715.0" layoutY="35.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="70.0" text="Go">
+      <Button fx:id="btnGo" layoutX="715.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnGo" prefHeight="28.0" prefWidth="70.0" text="Go">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></Button>

@@ -50,6 +50,7 @@ window.ready = function() {
               break;
 
             default:
+                noResultFound();
           }
           break;
 
@@ -91,7 +92,12 @@ window.ready = function() {
           break;
 
         default:
+            noResultFound();
       }
+    }
+
+    if (historyData.length == 0) {
+      noResultFound();
     }
   // } else {
   //   initializeWindow();
