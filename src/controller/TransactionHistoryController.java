@@ -1,5 +1,6 @@
 package controller;
 
+import java.net.URL;
 import java.time.LocalDate;
 
 import javafx.beans.value.ChangeListener;
@@ -69,6 +70,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	
 	@FXML
 	private WebView webview;
+	@FXML
 	private WebEngine webEngine;
 	
 	
@@ -246,8 +248,8 @@ public class TransactionHistoryController extends TransactionHistoryModel {
         	        }
         	    }
         	);
-        String url = getClass().getResource("../html/index.html").toExternalForm();
-        webEngine.load(url);
+        URL url = getClass().getResource("/html/index.html");
+        webEngine.load(url.toString());
 	}
 	
 	
@@ -267,8 +269,11 @@ public class TransactionHistoryController extends TransactionHistoryModel {
         	        }
         	    }
         	);
-        String url = getClass().getResource("../html/index.html").toExternalForm();
-        webEngine.load(url);
+		URL url = getClass().getResource("/html/index.html");
+        webEngine.load(url.toString());
+		
+//        String url = getClass().getResource("../html/index.html").toExternalForm();
+//        webEngine.load(url);
 	}
 
 	
