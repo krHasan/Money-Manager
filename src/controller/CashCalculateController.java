@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import model.CashCalculateModel;
 import operation.GoToOperation;
@@ -103,6 +104,21 @@ public class CashCalculateController extends CashCalculateModel {
 		lblUserFullName.setText(userFullName());
 		lblWalletBalance.setText(addThousandSeparator(getWalletBalance()));
 		CashCalculate();
+		
+		btnDashboard.setTooltip(new Tooltip("Will Take you to Dashboard"));
+		btnMakeATransaction.setTooltip(new Tooltip("Will Take you to Expense"));
+		btnSignOut.setTooltip(new Tooltip("Sign Out from Application"));
+		Tooltip.install(lblWalletBalance, new Tooltip("Your wallet balance now"));
+		Tooltip.install(lblUserFullName, new Tooltip("User Full Name"));
+		Tooltip.install(txt1000, new Tooltip("Number of 1000 Tk. Notes in your hand"));
+		Tooltip.install(txt500, new Tooltip("Number of 500 Tk. Notes in your hand"));
+		Tooltip.install(txt100, new Tooltip("Number of 100 Tk. Notes in your hand"));
+		Tooltip.install(txt50, new Tooltip("Number of 50 Tk. Notes in your hand"));
+		Tooltip.install(txt20, new Tooltip("Number of 20 Tk. Notes in your hand"));
+		Tooltip.install(txt10, new Tooltip("Number of 10 Tk. Notes in your hand"));
+		Tooltip.install(txt5, new Tooltip("Number of 5 Tk. Notes in your hand"));
+		Tooltip.install(txt2, new Tooltip("Number of 2 Tk. Notes in your hand"));
+		Tooltip.install(txt1, new Tooltip("Number of 1 Tk. Notes in your hand"));
 	}
 	
 /////////////////// Menu Function ///////////////////////////

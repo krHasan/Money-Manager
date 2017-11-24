@@ -96,7 +96,7 @@ window.ready = function() {
       }
     }
 
-    if (historyData.length == 0) {
+    if (historyData.length == 1) {
       noResultFound();
     }
   // } else {

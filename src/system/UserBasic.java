@@ -73,7 +73,8 @@ public class UserBasic extends BalanceStatus {
 	}
 	
 	
-	public void setUsername(String username) {
+	public boolean setUsername(String username) {
+		boolean feedback = true;
 		String setUsername = "INSERT INTO Credentials (ID, username) VALUES(?,?)";
 		String updateUsername = "UPDATE Credentials SET username = ? WHERE ID = 1";
 		
@@ -83,6 +84,7 @@ public class UserBasic extends BalanceStatus {
 				pstmt.setString(1, username);
 				pstmt.executeUpdate();
 			} catch (Exception e) {
+				feedback = false;
 				e.printStackTrace();
 			}
 		} else {
@@ -92,9 +94,12 @@ public class UserBasic extends BalanceStatus {
 				pstmt.setString(2, username);
 				pstmt.executeUpdate();
 			} catch (Exception e) {
+				feedback = false;
 				e.printStackTrace();
 			}
 		}
+		
+		return feedback;
 	}
 	
 	
@@ -249,8 +254,40 @@ public class UserBasic extends BalanceStatus {
 	}
 	
 	
+	public static boolean userIsNew() {
+		String sql = "SELECT lastAccessDate FROM Current_Status WHERE lastAccessDate = \"09 August, 2017\" ";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sql)) {
+
+			if (result.next()) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
+	
+	
 //	public static void main(String[] args) {
 //		System.out.println(checkUserPresence());
 //		System.out.println(userFullName());
+//		System.out.println(userIsNew());
 //	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

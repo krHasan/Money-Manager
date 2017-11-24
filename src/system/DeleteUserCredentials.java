@@ -48,6 +48,20 @@ public class DeleteUserCredentials extends DatabaseConnection {
 	String initializeMethods_List = "INSERT INTO Methods_List (activeMethods) \n" + 
 									"VALUES(?)";
 	
+	String initializeSource_List1 = "INSERT INTO Source_List (sourceList) \n" + 
+									"VALUES(?)";
+	String initializeSource_List2 = "INSERT INTO Source_List (sourceList) \n" + 
+									"VALUES(?)";
+	
+	String initializeSector_List1 = "INSERT INTO Sector_List (sectorList) \n" + 
+								 	"VALUES(?)";
+	String initializeSector_List2 = "INSERT INTO Sector_List (sectorList) \n" + 
+		 							"VALUES(?)";
+	String initializeSector_List3 = "INSERT INTO Sector_List (sectorList) \n" + 
+									"VALUES(?)";
+	String initializeSector_List4 = "INSERT INTO Sector_List (sectorList) \n" + 
+									"VALUES(?)";
+	
 	
 	public void initializeApplication() {
 		try (Connection conn = connector();
@@ -244,9 +258,66 @@ public class DeleteUserCredentials extends DatabaseConnection {
 			e.printStackTrace();
 		}
 		
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(initializeSource_List1)) {		
+			pstmt.setString(1, "Salary");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(initializeSource_List2)) {		
+			pstmt.setString(1, "Business");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(initializeSector_List1)) {		
+			pstmt.setString(1, "Transport");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(initializeSector_List2)) {		
+			pstmt.setString(1, "Snacks");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(initializeSector_List3)) {		
+			pstmt.setString(1, "Mobile Load");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(initializeSector_List4)) {		
+			pstmt.setString(1, "Accessories");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
-	
+//	public static void main(String[] args) {
+//		DeleteUserCredentials access = new DeleteUserCredentials();
+//		access.initializeApplication();
+//	}
 	
 }
 

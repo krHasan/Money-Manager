@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -23,6 +24,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -38,6 +40,7 @@ import tab.GetMoney;
 import tab.Lend;
 import tab.Personal;
 import tab.Rocket;
+import tab.Source;
 import tab.TabAccess;
 import tableAndgraph.TableData;
 
@@ -46,6 +49,45 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private TabPane tabPane;
 	
+	@FXML
+	private MenuItem mnuDashboard;
+	@FXML
+	private MenuItem mnuGetMoney;
+	@FXML
+	private MenuItem mnuExpense;
+	@FXML
+	private MenuItem mnuLend;
+	@FXML
+	private MenuItem mnuBank;
+	@FXML
+	private MenuItem mnuSettings;
+	@FXML
+	private MenuItem mnuTransactionHistory;
+	@FXML
+	private MenuItem mnuCashCalculate;
+	@FXML
+	private MenuItem mnuExit;
+	@FXML
+	private MenuItem mnuCreateSource;
+	@FXML
+	private MenuItem mnuCreateSector;
+	@FXML
+	private MenuItem mnuBankSettings;
+	@FXML
+	private MenuItem mnuSourceSettings;
+	@FXML
+	private MenuItem mnuSectorSettings;
+	@FXML
+	private MenuItem mnuSystemSettings;
+	@FXML
+	private MenuItem mnuHowTo;
+	@FXML
+	private MenuItem mnuAbout;
+	
+	@FXML
+	private Button btnSignOut;
+	@FXML
+	private Label lblUserFullName;
 	///////////////////////////////////  Get Money  ////////////////////////////////
 	@FXML
 	private Tab tabGetMoney;
@@ -58,7 +100,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private Button gmbtnSettings;
 	@FXML
-	private Button gmbtnCancel;
+	private Button gmbtnSaveAdd;
 	@FXML
 	private Button gmbtnSave;
 	@FXML
@@ -402,6 +444,20 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	public void initialize() {
 		showTab();
+		lblUserFullName.setText(userFullName());
+		
+		btnSignOut.setTooltip(new Tooltip("Sign Out from application"));
+		gmbtnGoToDashboard.setTooltip(new Tooltip("Take you to Dashboard"));
+		gmbtnCreateSource.setTooltip(new Tooltip("Create your income source where you get money"));
+		gmbtnSettings.setTooltip(new Tooltip("Take you to Bank Settings"));
+		gmbtnSaveAdd.setTooltip(new Tooltip("Save your data and let you add another"));
+		gmbtnSave.setTooltip(new Tooltip("Save your data and take you to dashboard"));
+		Tooltip.install(gmdateDate, new Tooltip("Choose date when your transaction happend"));
+		Tooltip.install(gmtxtAmount, new Tooltip("How much Tk. you have get"));
+		Tooltip.install(gmtxtDescription, new Tooltip("Add a description of your transaction."));
+		Tooltip.install(gmcmboSource, new Tooltip("Name of Income Sources, where from you get Tk."));
+		Tooltip.install(gmcmboMethod, new Tooltip("In which way you get the money"));
+		Tooltip.install(gmlblWalletBalance, new Tooltip("Your wallet balance now"));
 	}
 
 	
@@ -460,6 +516,139 @@ public class MakeATransactionController extends MakeATransactionModel {
 		} catch (Exception e) {}
 	}
 
+//////////////////////////////////////////// Menue Function ////////////////////////////////////////////
+//---------------------------------------------------------------------------------------------------------//
+	@FXML
+	private void mnuDashboard(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
+	@FXML
+	private void mnuGetMoney(ActionEvent event) {
+		(new TabAccess()).setTabName("tabGetMoney");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+
+	@FXML
+	private void mnuExpense(ActionEvent event) {
+		(new TabAccess()).setTabName("tabExpense");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+
+	@FXML
+	private void mnuLend(ActionEvent event) {
+		(new TabAccess()).setTabName("tabLend");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+
+	@FXML
+	private void mnuBank(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
+	@FXML
+	private void mnuSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
+	@FXML
+	private void mnuTransactionHistory(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToTransactionHistory(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
+	@FXML
+	private void mnuCashCalculate(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToCashCalculate(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
+	@FXML
+	private void mnuExit(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		MakeATransactionStage.close();
+	}
+	
+	@FXML
+	private void mnuCreateSource(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSource");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+
+	@FXML
+	private void mnuCreateSector(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSector");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+
+	@FXML
+	private void mnuBankSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
+	@FXML
+	private void mnuSourceSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSource");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+
+	@FXML
+	private void mnuSectorSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSector");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
+	@FXML
+	private void mnuSystemSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSystem");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
+	@FXML
+	private void mnuHowTo(ActionEvent event) {
+		
+	}
+	
+	@FXML
+	private void mnuAbout(ActionEvent event) {
+		
+	}
+	
+	@FXML
+	private void btnSignOut(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSignIn(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
 	
 ////////////////////////////////////////////  Get Money Function ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
@@ -538,16 +727,133 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void gmGoToSourceBtn(ActionEvent event) {
-		(new TabAccess()).setTabName("tabSource");
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Create Income Source");
+		dialog.setHeaderText("Create Income Source, Where from you get Tk.");
+		dialog.setContentText("Please type a source name :");
 		Stage MakeATransactionStage = (Stage) gmbtnCreateSource.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		dialog.setX(MakeATransactionStage.getX() + 200);
+		dialog.setY(MakeATransactionStage.getY() + 170);
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+			String typedName = result.get();
+			if (typedName.length() == 0) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Operation Falied");
+				alert.setHeaderText(null);
+				alert.setContentText("Write a Source Name Please");
+				alert.setX(MakeATransactionStage.getX() + 200);
+				alert.setY(MakeATransactionStage.getY() + 170);
+				alert.showAndWait();
+			} else if (countWords(typedName) == 0) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Operation Falied");
+				alert.setHeaderText(null);
+				alert.setContentText("Write a Source Name Please");
+				alert.setX(MakeATransactionStage.getX() + 200);
+				alert.setY(MakeATransactionStage.getY() + 170);
+				alert.showAndWait();
+			} else {
+				new Source().createSource(typedName);
+				
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Message");
+				confirmationMsg.setHeaderText(null);
+				confirmationMsg.setContentText("Source created successfully");
+				Stage SettingsStage = (Stage) MakeATransactionStage.getScene().getWindow();
+				confirmationMsg.setX(SettingsStage.getX() + 200);
+				confirmationMsg.setY(SettingsStage.getY() + 170);
+				confirmationMsg.showAndWait();
+				
+				gmInitialize();
+			}
+		}
+//		(new TabAccess()).setTabName("tabSource");
+//		Stage MakeATransactionStage = (Stage) gmbtnCreateSource.getScene().getWindow();
+//		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+//		MakeATransactionStage.close();
 	}
 	
 	
 	@FXML
-	private void gmCancelBtn(ActionEvent event) {
-		gmInitialize();
+	private void gmbtnSaveAdd(ActionEvent event) {
+		if (amountIsZero(gmtxtAmount.getText())) {
+			gmlblWarningMsg.setText("Empty or Zero is not approved.");
+		} else {
+			try {
+				Map<String, String> stringData = new HashMap<>();
+				
+				stringData.put("gmTime", timeToSave());
+				stringData.put("gmDate", (new DateFormatManager()).toString(gmdateDate.getValue()));
+				stringData.put("gmMonth", monthToSave());
+				stringData.put("gmAmount", gmtxtAmount.getText());
+				
+				if ((gmcmboMethod.getValue()).equals("bKash")) {
+					stringData.put("gmBankCharge", bkashBnkCharge(gmtxtAmount.getText(), "Cash In"));
+				} else if((gmcmboMethod.getValue()).equals("Rocket")){
+					stringData.put("gmBankCharge", rocketBnkCharge(gmtxtAmount.getText(), "Cash In", gmGetSelectedrbtnName()));
+				} else {
+					stringData.put("gmBankCharge", "0.00");
+				}
+				
+				if ((gmcmboMethod.getValue()).equals("bKash")) {
+					stringData.put("gmAmountNature", "Cash In from Agent");
+				} else if ((gmcmboMethod.getValue()).equals("Rocket")) {
+					stringData.put("gmAmountNature", gmGetSelectedrbtnName());
+				} else {
+					stringData.put("gmAmountNature", "None");
+				}
+				
+				if ((gmcmboMethod.getValue()).equals("bKash")) {
+					stringData.put("bkBalanceAfter", updatedbKashBalance(gmtxtAmount.getText(), "Cash In"));
+					(new Bkash()).saveGmBkashData(stringData);
+				} else if ((gmcmboMethod.getValue()).equals("Rocket")) {
+					stringData.put("rocBalanceAfter", updatedRocketBalance(gmtxtAmount.getText(), "Cash In", gmGetSelectedrbtnName()));
+					(new Rocket()).saveGmRocketData(stringData);
+				}
+				
+				stringData.put("gmSource", gmcmboSource.getValue());
+				
+				if (gmIsDescripionEmpty()) {
+					stringData.put("gmDescription", "None");
+				} else {
+					stringData.put("gmDescription", gmtxtDescription.getText());
+				}
+
+				stringData.put("gmMethod", gmcmboMethod.getValue());
+				stringData.put("gmWalletBalanceBefore", getWalletBalance());
+				
+				if ((gmcmboMethod.getValue()).equals("Hand to Hand")) {
+					stringData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(gmtxtAmount.getText()));
+					setCurrentWalletBalance(gmWalletBalanceAfter(gmtxtAmount.getText()));
+				} else {
+					stringData.put("gmWalletBalanceAfter", getWalletBalance());
+				}
+				
+				(new GetMoney()).saveGetMoneyData(stringData);
+				
+				gmInitialize();
+				
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Successfull Transaction");
+				confirmationMsg.setHeaderText(null);
+				confirmationMsg.setContentText("Your transaction completed successfully.");
+				Stage MakeATransactionStage = (Stage) gmbtnSave.getScene().getWindow();
+				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+				confirmationMsg.showAndWait();
+				
+			} catch (Exception e) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Transaction Failed");
+				alert.setHeaderText(null);
+				alert.setContentText("There something is wrong.");
+				Stage MakeATransactionStage = (Stage) gmbtnSave.getScene().getWindow();
+				alert.setX(MakeATransactionStage.getX() + 200);
+				alert.setY(MakeATransactionStage.getY() + 170);
+				alert.showAndWait();
+			}
+		}
 		cancelbtnPressed = true;
 	}
 	
@@ -633,9 +939,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void gmSavebtn(ActionEvent event) {
 		if (amountIsZero(gmtxtAmount.getText())) {
-			
 			gmlblWarningMsg.setText("Empty or Zero is not approved.");
-		
 		} else {
 			try {
 				Map<String, String> stringData = new HashMap<>();
@@ -689,7 +993,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				
 				(new GetMoney()).saveGetMoneyData(stringData);
 				
-				gmInitialize();
+//				gmInitialize();
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Successfull Transaction");
@@ -699,6 +1003,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
 				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
 				confirmationMsg.showAndWait();
+				
+				(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+				MakeATransactionStage.close();
 				
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.WARNING);

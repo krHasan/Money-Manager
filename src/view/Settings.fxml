@@ -386,7 +386,7 @@
                         <PasswordField fx:id="systemtxtPassword" layoutX="152.0" layoutY="202.0" onKeyReleased="#emptyPassField" prefHeight="28.0" prefWidth="200.0" promptText="Password" />
                         <PasswordField fx:id="systemtxtRePassword" layoutX="152.0" layoutY="242.0" onKeyReleased="#emptyPassField" prefHeight="28.0" prefWidth="200.0" promptText="Re-Type Password" />
                         <Button fx:id="systembtnChangePassword" layoutX="183.0" layoutY="280.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="28.0" prefWidth="135.0" text="Change Password" />
-                        <CheckBox fx:id="checkBoxWeekNum" layoutX="468.0" layoutY="51.0" mnemonicParsing="false" text="Show week number in calendar">
+                        <CheckBox fx:id="checkBoxWeekNum" layoutX="468.0" layoutY="72.0" mnemonicParsing="false" text="Show week number in calendar">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></CheckBox>
@@ -410,44 +410,44 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="615.0" layoutY="88.0" text="Choose Time Format">
+                        <Label layoutX="615.0" layoutY="109.0" text="Choose Time Format">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="DATEddMMMM" layoutX="411.0" layoutY="118.0" mnemonicParsing="false">
+                        <RadioButton fx:id="DATEddMMMM" layoutX="411.0" layoutY="139.0" mnemonicParsing="false">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></RadioButton>
-                        <RadioButton fx:id="DATEddMMM" layoutX="411.0" layoutY="148.0" mnemonicParsing="false">
+                        <RadioButton fx:id="DATEddMMM" layoutX="411.0" layoutY="169.0" mnemonicParsing="false">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></RadioButton>
-                        <RadioButton fx:id="DATEddMM" layoutX="411.0" layoutY="178.0" mnemonicParsing="false">
+                        <RadioButton fx:id="DATEddMM" layoutX="411.0" layoutY="199.0" mnemonicParsing="false">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></RadioButton>
-                        <RadioButton fx:id="DATEEEddMMM" layoutX="411.0" layoutY="208.0" mnemonicParsing="false">
+                        <RadioButton fx:id="DATEEEddMMM" layoutX="411.0" layoutY="229.0" mnemonicParsing="false">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></RadioButton>
-                        <RadioButton fx:id="DATEMMM" layoutX="411.0" layoutY="238.0" mnemonicParsing="false">
+                        <RadioButton fx:id="DATEMMM" layoutX="411.0" layoutY="259.0" mnemonicParsing="false">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></RadioButton>
-                        <RadioButton fx:id="TIME_h" layoutX="625.0" layoutY="118.0" mnemonicParsing="false">
+                        <RadioButton fx:id="TIME_h" layoutX="625.0" layoutY="139.0" mnemonicParsing="false">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></RadioButton>
-                        <RadioButton fx:id="TIME_hh" layoutX="625.0" layoutY="148.0" mnemonicParsing="false">
+                        <RadioButton fx:id="TIME_hh" layoutX="625.0" layoutY="169.0" mnemonicParsing="false">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></RadioButton>
-                        <RadioButton fx:id="TIME_H" layoutX="625.0" layoutY="178.0" mnemonicParsing="false">
+                        <RadioButton fx:id="TIME_H" layoutX="625.0" layoutY="199.0" mnemonicParsing="false">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></RadioButton>
-                        <RadioButton fx:id="TIME_HH" layoutX="625.0" layoutY="208.0" mnemonicParsing="false">
+                        <RadioButton fx:id="TIME_HH" layoutX="625.0" layoutY="229.0" mnemonicParsing="false">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></RadioButton>
@@ -456,7 +456,7 @@
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></Button>
                         <TextField fx:id="systemtxtUsername" focusTraversable="false" layoutX="152.0" layoutY="54.0" prefHeight="28.0" prefWidth="200.0" promptText="Username" />
-                        <Label layoutX="401.0" layoutY="88.0" text="Choose Date Format">
+                        <Label layoutX="401.0" layoutY="109.0" text="Choose Date Format">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -466,6 +466,7 @@
                               <Font name="Arial" size="12.0" />
                            </font>
                         </Label>
+                        <Button fx:id="systembtnWalletBalance" layoutX="495.0" layoutY="23.0" mnemonicParsing="false" onAction="#systembtnWalletBalance" prefHeight="28.0" prefWidth="180.0" text="Starting Wallet Balance" />
                      </children>
                   </AnchorPane>
               </content>

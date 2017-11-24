@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -73,16 +74,36 @@ public class SignInController extends SignInModel {
 				lblNewUser.setDisable(true);
 			}
 		} catch (Exception e) {}
+		
+		btnSignIn.setTooltip(
+			    new Tooltip("Button of doom")
+			);
 	}
-
+	
 	@FXML
 	private void logIn(ActionEvent event) {
 		if (authentication(txtUsername.getText(), passPassword.getText())) {
-			updateLastAccessDate();
-			addMonth();
 			Stage SignInStage = (Stage) btnSignIn.getScene().getWindow();
-			goToDashboard(SignInStage.getX(), SignInStage.getY());
-			SignInStage.close();
+			addMonth();
+			
+			if (userIsNew()) {			
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Welcome");
+				confirmationMsg.setHeaderText("Welcome to Your Money Manager");
+				confirmationMsg.setContentText("Before Starting Please Setup Your Account First.");
+				confirmationMsg.setX(SignInStage.getX() + 200);
+				confirmationMsg.setY(SignInStage.getY() + 170);
+				confirmationMsg.showAndWait();
+				
+				(new TabAccess()).setTabName("tabSystem");
+				goToSettings(SignInStage.getX(), SignInStage.getY());
+				SignInStage.close();
+			} else {
+				updateLastAccessDate();
+				goToDashboard(SignInStage.getX(), SignInStage.getY());
+				SignInStage.close();
+			}
+			
 		} else {
 			lblWrongAuthentication.setText("Username or Password is Wrong");
 			passPassword.clear();

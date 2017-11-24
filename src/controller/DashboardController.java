@@ -20,8 +20,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.transform.Rotate;
@@ -35,6 +37,9 @@ import tableAndgraph.ExpenseChart;
 import tableAndgraph.GetMoneyChart;
 
 public class DashboardController extends DashboardModel {
+	@FXML
+	private AnchorPane container;
+	
 	@FXML
 	private MenuItem mnuCreateSource;
 	@FXML
@@ -175,6 +180,29 @@ public class DashboardController extends DashboardModel {
 		getMoneyChart();
 		expenseChart();
 		clock();
+		
+		btnSignOut.setTooltip(new Tooltip("Sign Out from Application"));
+		btnMakeATransaction.setTooltip(new Tooltip("Take you to your transaction window"));
+		btnCashCalculate.setTooltip(new Tooltip("Calculate how much money at your hand now"));
+		btnSettings.setTooltip(new Tooltip("Take you to Bank, Source, Sector and System Settings"));
+		btnTransactionHistory.setTooltip(new Tooltip("Show your all transaction history"));
+		btnRefreshCharts.setTooltip(new Tooltip("Refresh Get Money and Expense Charts"));
+		Tooltip.install(face, new Tooltip("Analog Clock"));
+		Tooltip.install(lblWalletBalance, new Tooltip("Your wallet balance now"));
+		Tooltip.install(lblUserFullName, new Tooltip("User Full Name"));
+		Tooltip.install(lblTotalBorrow, new Tooltip("Your Total Borrowed Tk"));
+		Tooltip.install(lblTotalLend, new Tooltip("Your Total Lended Tk."));
+		Tooltip.install(lblPersonalBalance, new Tooltip("Total Tk. at your personal bank"));
+		Tooltip.install(lblbKashBalance, new Tooltip("Total Tk. at your bKash account"));
+		Tooltip.install(lblRocketBalance, new Tooltip("Total Tk. at your Rocket account"));
+		Tooltip.install(chartGetMoney, new Tooltip("Summary of how much Tk. you get in this month"));
+		Tooltip.install(cmboGetMoneyMonthList, new Tooltip("All transacted month name"));
+		Tooltip.install(cmboSourceList, new Tooltip("Name of Income Sources, where from you get Tk."));
+		Tooltip.install(lblTotalGetMoney, new Tooltip("Total Tk. from this Income Source"));
+		Tooltip.install(chartExpense, new Tooltip("Summary of how much Tk. you expensed in this month"));
+		Tooltip.install(cmboExpenseMonthList, new Tooltip("All transacted month name"));
+		Tooltip.install(cmboSectorList, new Tooltip("Name of Expenditure Sector, where you expense your Tk."));
+		Tooltip.install(lblTotalExpense, new Tooltip("Total Tk. from this Expenditure Sector"));
 	}
 	
 	
@@ -184,6 +212,7 @@ public class DashboardController extends DashboardModel {
 		(new GoToOperation()).goToDashboard(DashboardStage.getX(), DashboardStage.getY());
 		DashboardStage.close();
 	}
+	
 	
 /////////////////// Menu Function ///////////////////////////
 	@FXML

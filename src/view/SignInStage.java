@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 
 public class SignInStage extends Application {
@@ -16,6 +17,8 @@ public class SignInStage extends Application {
 			scene.getStylesheets().add(getClass().getResource("/css/SignIn.css").toExternalForm());
 			SignInStage.setScene(scene);
 			SignInStage.setResizable(false);
+//			SignInStage.getIcons().add(new Image(SignInStage.class.getResourceAsStream("/imges/purse_2_.ico")));
+			SignInStage.getIcons().add(new Image(getClass().getResourceAsStream("/imges/purse.png")));
 			SignInStage.setTitle("Money Manager");
 			SignInStage.show();
 		} catch(Exception e) {
@@ -23,6 +26,7 @@ public class SignInStage extends Application {
 		}
 	}
 	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

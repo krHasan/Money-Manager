@@ -124,7 +124,7 @@ public class NewUserRegistrationController extends NewUserRegistrationModel {
 		} else if(txtAnswer.getText().isEmpty()) {
 			lblMsg1.setText("Set a Security Question Answer");
 		} else {
-			setUsername(txtUsername.getText());
+			boolean feedback = setUsername(txtUsername.getText());
 			setUserFullName(txtName.getText());
 			setPassword(passPassword.getText());
 			setSecurityQuestion(cmboSecurityQuestion.getValue());
@@ -134,13 +134,23 @@ public class NewUserRegistrationController extends NewUserRegistrationModel {
 			(new GoToOperation()).goToSignIn(NewUserRegistrationStage.getX(), NewUserRegistrationStage.getY());
 			NewUserRegistrationStage.close();
 			
-			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
-			confirmationMsg.setTitle("Operation Successful");
-			confirmationMsg.setHeaderText(null);
-			confirmationMsg.setContentText("Account Created Successfully");
-			confirmationMsg.setX(NewUserRegistrationStage.getX() + 200);
-			confirmationMsg.setY(NewUserRegistrationStage.getY() + 170);
-			confirmationMsg.showAndWait();
+			if (feedback) {
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Created User Successfully");
+				confirmationMsg.setHeaderText(null);
+				confirmationMsg.setContentText("Account Created Successfully");
+				confirmationMsg.setX(NewUserRegistrationStage.getX() + 200);
+				confirmationMsg.setY(NewUserRegistrationStage.getY() + 170);
+				confirmationMsg.showAndWait();
+			} else {
+				Alert confirmationMsg = new Alert(AlertType.ERROR);
+				confirmationMsg.setTitle("Sign Up Failed");
+				confirmationMsg.setHeaderText("Sign Up Failed");
+				confirmationMsg.setContentText("There have some problem.");
+				confirmationMsg.setX(NewUserRegistrationStage.getX() + 200);
+				confirmationMsg.setY(NewUserRegistrationStage.getY() + 170);
+				confirmationMsg.showAndWait();
+			}
 		}
 	}
 	

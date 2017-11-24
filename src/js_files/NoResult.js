@@ -22,5 +22,5 @@ function noResultFound() {
     //  "background-color": "#bae1ee"
   });
 
-  $(".div-noResult-container-1").append("Sorry, No Result Found!")
+  $(".div-noResult-container-1").append("Oops, No Result Found!")
 }

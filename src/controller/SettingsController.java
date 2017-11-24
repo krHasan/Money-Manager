@@ -182,6 +182,8 @@ public class SettingsController extends SettingsModel {
 	private Button systembtnChangePassword;
 	@FXML
 	private Button systembtnSave;
+	@FXML
+	private Button systembtnWalletBalance;
 	
 	@FXML
 	private TextField systemtxtUsername;
@@ -225,6 +227,8 @@ public class SettingsController extends SettingsModel {
 	public void initialize() {
 		showTab();
 		lblUserFullName.setText(getUserFullName());
+		if(!userIsNew()) {systembtnWalletBalance.setManaged(false);}
+		updateLastAccessDate();
 	}
 
 	
@@ -986,6 +990,23 @@ public class SettingsController extends SettingsModel {
 		systemlblRePassword.setVisible(false);
 		systemtxtRePassword.setVisible(false);
 		systemlblWarningMsg.setText("");
+	}
+	
+	
+	@FXML
+	private void systembtnWalletBalance(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+		confirmationMsg.setTitle("Starting Wallet Balance");
+		confirmationMsg.setHeaderText(null);
+		confirmationMsg.setContentText("Press \"Adjust Balance\" Button");
+		confirmationMsg.setX(SettingsStage.getX() + 200);
+		confirmationMsg.setY(SettingsStage.getY() + 170);
+		
+		(new TabAccess()).setTabName("tabExpense");
+		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
+		confirmationMsg.showAndWait();
+		SettingsStage.close();
 	}
 	
 	
