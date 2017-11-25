@@ -117,4 +117,40 @@ public class GoToOperation extends UnitConverter {
 		}
 	}
 	
+	
+	public void goToAbout(double positionX, double positionY) {
+		try {
+			Stage AboutStage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("/view/About.fxml"));
+			Scene scene = new Scene(root,800,550);
+			AboutStage.setScene(scene);
+			AboutStage.setResizable(false);
+			AboutStage.getIcons().add(new Image(getClass().getResourceAsStream("/imges/purse.png")));
+			AboutStage.setTitle("About");
+			AboutStage.setX(positionX);
+			AboutStage.setY(positionY);
+			AboutStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void goToHelp(double positionX, double positionY) {
+		try {
+			Stage HelpStage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("/view/Help.fxml"));
+			Scene scene = new Scene(root,800,550);
+			HelpStage.setScene(scene);
+			HelpStage.setResizable(false);
+			HelpStage.getIcons().add(new Image(getClass().getResourceAsStream("/imges/purse.png")));
+			HelpStage.setTitle("Help");
+			HelpStage.setX(positionX);
+			HelpStage.setY(positionY);
+			HelpStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

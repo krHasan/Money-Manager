@@ -19,34 +19,51 @@
 
 <AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingsController">
    <children>
-      <MenuBar focusTraversable="false" prefHeight="30.0" prefWidth="800.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem fx:id="mnuCreateSource" mnemonicParsing="false" onAction="#mnuCreateSource" text="Create Source" />
-                  <MenuItem fx:id="mnuCreateSector" mnemonicParsing="false" onAction="#mnuCreateSector" text="Create Sector" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuExit" mnemonicParsing="false" onAction="#mnuExit" text="Exit" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Operation">
-               <items>
-                  <MenuItem fx:id="mnuDashboard" mnemonicParsing="false" onAction="#mnuDashboard" text="Dashboard" />
+      <MenuBar layoutX="25.0" prefHeight="30.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Operation">
+            <items>
+              <MenuItem fx:id="mnuDashboard" mnemonicParsing="false" onAction="#mnuDashboard" text="Dashboard" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="mnuGetMoney" mnemonicParsing="false" onAction="#mnuGetMoney" text="Get Money" />
                   <MenuItem fx:id="mnuExpense" mnemonicParsing="false" onAction="#mnuExpense" text="Expense" />
                   <MenuItem fx:id="mnuLend" mnemonicParsing="false" onAction="#mnuLend" text="Lend" />
                   <MenuItem fx:id="mnuBank" mnemonicParsing="false" onAction="#mnuBank" text="Bank" />
                   <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mnuSettings" mnemonicParsing="false" onAction="#mnuSettings" text="Settings" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" onAction="#mnuTransactionHistory" text="Transaction Hirtory" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="mnuCashCalculate" mnemonicParsing="false" onAction="#mnuCashCalculate" text="Cash Calculate" />
-               </items>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mnuExit" mnemonicParsing="false" onAction="#mnuExit" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="mnuCreateSource" mnemonicParsing="false" onAction="#mnuCreateSource" text="Create Source" />
+                  <MenuItem fx:id="mnuCreateSector" mnemonicParsing="false" onAction="#mnuCreateSector" text="Create Sector" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Settings">
+            <items>
+                  <MenuItem fx:id="mnuBankSettings" mnemonicParsing="false" onAction="#mnuBankSettings" text="Bank Settings" />
+                  <MenuItem fx:id="mnuSourceSettings" mnemonicParsing="false" onAction="#mnuSourceSettings" text="Source Settings" />
+                  <MenuItem fx:id="mnuSectorSettings" mnemonicParsing="false" onAction="#mnuSectorSettings" text="Sector Settingse" />
+              <MenuItem fx:id="mnuSystemSettings" mnemonicParsing="false" onAction="#mnuSystemSettings" text="System Settings" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem fx:id="mnuHowTo" mnemonicParsing="false" onAction="#mnuHowTo" text="How to Use" />
+              </items>
             </Menu>
-         </menus>
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor>
+            <Menu mnemonicParsing="false" text="About">
+              <items>
+                <MenuItem fx:id="mnuAbout" mnemonicParsing="false" onAction="#mnuAbout" text="About Developer" />
+              </items>
+            </Menu>
+        </menus>
       </MenuBar>
       <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out">
          <cursor>
@@ -283,7 +300,7 @@
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></ComboBox>
-                        <Label alignment="CENTER" layoutX="163.0" layoutY="106.0" prefHeight="28.0" prefWidth="130.0" text="Create Source">
+                        <Label alignment="CENTER" layoutX="93.0" layoutY="106.0" prefHeight="28.0" prefWidth="256.0" text="Create Money Income Source">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -384,7 +401,7 @@
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></Button>
                         <PasswordField fx:id="systemtxtPassword" layoutX="152.0" layoutY="202.0" onKeyReleased="#emptyPassField" prefHeight="28.0" prefWidth="200.0" promptText="Password" />
-                        <PasswordField fx:id="systemtxtRePassword" layoutX="152.0" layoutY="242.0" onKeyReleased="#emptyPassField" prefHeight="28.0" prefWidth="200.0" promptText="Re-Type Password" />
+                        <PasswordField fx:id="systemtxtRePassword" layoutX="152.0" layoutY="242.0" onKeyReleased="#systemtxtRePassword" prefHeight="28.0" prefWidth="200.0" promptText="Re-Type Password" />
                         <Button fx:id="systembtnChangePassword" layoutX="183.0" layoutY="280.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="28.0" prefWidth="135.0" text="Change Password" />
                         <CheckBox fx:id="checkBoxWeekNum" layoutX="468.0" layoutY="72.0" mnemonicParsing="false" text="Show week number in calendar">
                            <cursor>
@@ -451,7 +468,7 @@
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></RadioButton>
-                        <Button fx:id="systembtnSave" layoutX="350.0" layoutY="390.0" mnemonicParsing="false" onAction="#systembtnSave" prefHeight="28.0" prefWidth="100.0" text="Save">
+                        <Button fx:id="systembtnSave" layoutX="543.0" layoutY="304.0" mnemonicParsing="false" onAction="#systembtnSave" prefHeight="28.0" prefWidth="100.0" text="Save">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></Button>

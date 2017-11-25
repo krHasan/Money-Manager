@@ -13,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tooltip;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -25,12 +26,9 @@ import web.HistorySearch;
 import web.HistorySearchByDate;
 
 public class TransactionHistoryController extends TransactionHistoryModel {
+	
 	@FXML
-	private MenuItem mnuCreateSource;
-	@FXML
-	private MenuItem mnuCreateSector;
-	@FXML
-	private MenuItem mnuExit;
+	private MenuItem mnuDashboard;
 	@FXML
 	private MenuItem mnuGetMoney;
 	@FXML
@@ -40,9 +38,17 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	@FXML
 	private MenuItem mnuBank;
 	@FXML
-	private MenuItem mnuDashboard;
+	private MenuItem mnuSettings;
+	@FXML
+	private MenuItem mnuTransactionHistory;
 	@FXML
 	private MenuItem mnuCashCalculate;
+	@FXML
+	private MenuItem mnuExit;
+	@FXML
+	private MenuItem mnuCreateSource;
+	@FXML
+	private MenuItem mnuCreateSector;
 	@FXML
 	private MenuItem mnuBankSettings;
 	@FXML
@@ -51,6 +57,10 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	private MenuItem mnuSectorSettings;
 	@FXML
 	private MenuItem mnuSystemSettings;
+	@FXML
+	private MenuItem mnuHowTo;
+	@FXML
+	private MenuItem mnuAbout;
 	
 	@FXML
 	private Button btnSignOut;
@@ -92,43 +102,29 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 		datePicker.setValue(date);
 		webEngine = webview.getEngine();
 		showHisoty();
+		
+		btnSignOut.setTooltip(new Tooltip("Sign Out from application"));
+		btnGo.setTooltip(new Tooltip("Seach history by the selected date"));
+		Tooltip.install(lblUserFullName, new Tooltip("User's Full Name"));
+		Tooltip.install(cmboHistoryMonth, new Tooltip("Your all transactional month name"));
+		Tooltip.install(cmboFilterList, new Tooltip("Select a filter to get specilazid search"));
+		Tooltip.install(datePicker, new Tooltip("Select a date to get history on that day"));
+		Tooltip.install(webview, new Tooltip("Your History"));
 	}
 
 
 /////////////////// Menu Function ///////////////////////////
 	@FXML
-	private void mnuCreateSource(ActionEvent event) {
-		(new TabAccess()).setTabName("tabSource");
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
-		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
-	}
-
-	@FXML
-	private void mnuCreateSector(ActionEvent event) {
-		(new TabAccess()).setTabName("tabSector");
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
-		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
-	}
-
-	@FXML
-	private void mnuExit(ActionEvent event) {
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
-		TransactionHistoryStage.close();
-	}
-
-	@FXML
 	private void mnuDashboard(ActionEvent event) {
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToDashboard(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
 		TransactionHistoryStage.close();
 	}
-
+	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney");
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
 		TransactionHistoryStage.close();
 	}
@@ -136,7 +132,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	@FXML
 	private void mnuExpense(ActionEvent event) {
 		(new TabAccess()).setTabName("tabExpense");
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
 		TransactionHistoryStage.close();
 	}
@@ -144,7 +140,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	@FXML
 	private void mnuLend(ActionEvent event) {
 		(new TabAccess()).setTabName("tabLend");
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
 		TransactionHistoryStage.close();
 	}
@@ -152,22 +148,59 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	@FXML
 	private void mnuBank(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
+		TransactionHistoryStage.close();
+	}
+	
+	@FXML
+	private void mnuSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
+		TransactionHistoryStage.close();
+	}
+	
+	@FXML
+	private void mnuTransactionHistory(ActionEvent event) {
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToTransactionHistory(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
+		TransactionHistoryStage.close();
+	}
+	
+	@FXML
+	private void mnuCashCalculate(ActionEvent event) {
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToCashCalculate(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
+		TransactionHistoryStage.close();
+	}
+	
+	@FXML
+	private void mnuExit(ActionEvent event) {
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
+		TransactionHistoryStage.close();
+	}
+	
+	@FXML
+	private void mnuCreateSource(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSource");
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
 		TransactionHistoryStage.close();
 	}
 
 	@FXML
-	private void mnuCashCalculate(ActionEvent event) {
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
-		(new GoToOperation()).goToCashCalculate(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
+	private void mnuCreateSector(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSector");
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
 		TransactionHistoryStage.close();
 	}
 
 	@FXML
 	private void mnuBankSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
 		TransactionHistoryStage.close();
 	}
@@ -175,7 +208,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	@FXML
 	private void mnuSourceSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
 		TransactionHistoryStage.close();
 	}
@@ -183,7 +216,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	@FXML
 	private void mnuSectorSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
 		TransactionHistoryStage.close();
 	}
@@ -191,8 +224,22 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	@FXML
 	private void mnuSystemSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSystem");
-		Stage TransactionHistoryStage = (Stage) btnGo.getScene().getWindow();
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
+		TransactionHistoryStage.close();
+	}
+	
+	@FXML
+	private void mnuHowTo(ActionEvent event) {
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToHelp(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
+		TransactionHistoryStage.close();
+	}
+	
+	@FXML
+	private void mnuAbout(ActionEvent event) {
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToAbout(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
 		TransactionHistoryStage.close();
 	}
 	
@@ -216,7 +263,6 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	
 	@FXML
 	private void cmboFilterList(ActionEvent event) {
-//		initializeHisoty();
 		showHisoty();
 	}
 	

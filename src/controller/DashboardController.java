@@ -41,11 +41,7 @@ public class DashboardController extends DashboardModel {
 	private AnchorPane container;
 	
 	@FXML
-	private MenuItem mnuCreateSource;
-	@FXML
-	private MenuItem mnuCreateSector;
-	@FXML
-	private MenuItem mnuExit;
+	private MenuItem mnuDashboard;
 	@FXML
 	private MenuItem mnuGetMoney;
 	@FXML
@@ -55,9 +51,17 @@ public class DashboardController extends DashboardModel {
 	@FXML
 	private MenuItem mnuBank;
 	@FXML
+	private MenuItem mnuSettings;
+	@FXML
 	private MenuItem mnuTransactionHistory;
 	@FXML
 	private MenuItem mnuCashCalculate;
+	@FXML
+	private MenuItem mnuExit;
+	@FXML
+	private MenuItem mnuCreateSource;
+	@FXML
+	private MenuItem mnuCreateSector;
 	@FXML
 	private MenuItem mnuBankSettings;
 	@FXML
@@ -66,6 +70,10 @@ public class DashboardController extends DashboardModel {
 	private MenuItem mnuSectorSettings;
 	@FXML
 	private MenuItem mnuSystemSettings;
+	@FXML
+	private MenuItem mnuHowTo;
+	@FXML
+	private MenuItem mnuAbout;
 	
 	@FXML
 	private Button btnSignOut;
@@ -189,7 +197,7 @@ public class DashboardController extends DashboardModel {
 		btnRefreshCharts.setTooltip(new Tooltip("Refresh Get Money and Expense Charts"));
 		Tooltip.install(face, new Tooltip("Analog Clock"));
 		Tooltip.install(lblWalletBalance, new Tooltip("Your wallet balance now"));
-		Tooltip.install(lblUserFullName, new Tooltip("User Full Name"));
+		Tooltip.install(lblUserFullName, new Tooltip("User's Full Name"));
 		Tooltip.install(lblTotalBorrow, new Tooltip("Your Total Borrowed Tk"));
 		Tooltip.install(lblTotalLend, new Tooltip("Your Total Lended Tk."));
 		Tooltip.install(lblPersonalBalance, new Tooltip("Total Tk. at your personal bank"));
@@ -216,27 +224,12 @@ public class DashboardController extends DashboardModel {
 	
 /////////////////// Menu Function ///////////////////////////
 	@FXML
-	private void mnuCreateSource(ActionEvent event) {
-		(new TabAccess()).setTabName("tabSource");
+	private void mnuDashboard(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
+		(new GoToOperation()).goToDashboard(DashboardStage.getX(), DashboardStage.getY());
 		DashboardStage.close();
 	}
-
-	@FXML
-	private void mnuCreateSector(ActionEvent event) {
-		(new TabAccess()).setTabName("tabSector");
-		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
-	}
-
-	@FXML
-	private void mnuExit(ActionEvent event) {
-		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		DashboardStage.close();
-	}
-
+	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney");
@@ -268,7 +261,15 @@ public class DashboardController extends DashboardModel {
 		(new GoToOperation()).goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
 		DashboardStage.close();
 	}
-
+	
+	@FXML
+	private void mnuSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
+		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
+		DashboardStage.close();
+	}
+	
 	@FXML
 	private void mnuTransactionHistory(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
@@ -280,6 +281,28 @@ public class DashboardController extends DashboardModel {
 	private void mnuCashCalculate(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToCashCalculate(DashboardStage.getX(), DashboardStage.getY());
+		DashboardStage.close();
+	}
+	
+	@FXML
+	private void mnuExit(ActionEvent event) {
+		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
+		DashboardStage.close();
+	}
+	
+	@FXML
+	private void mnuCreateSource(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSource");
+		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
+		DashboardStage.close();
+	}
+
+	@FXML
+	private void mnuCreateSector(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSector");
+		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
 		DashboardStage.close();
 	}
 
@@ -312,6 +335,20 @@ public class DashboardController extends DashboardModel {
 		(new TabAccess()).setTabName("tabSystem");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
+		DashboardStage.close();
+	}
+	
+	@FXML
+	private void mnuHowTo(ActionEvent event) {
+		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToHelp(DashboardStage.getX(), DashboardStage.getY());
+		DashboardStage.close();
+	}
+	
+	@FXML
+	private void mnuAbout(ActionEvent event) {
+		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToAbout(DashboardStage.getX(), DashboardStage.getY());
 		DashboardStage.close();
 	}
 

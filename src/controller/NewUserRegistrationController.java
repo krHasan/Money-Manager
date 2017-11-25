@@ -8,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.NewUserRegistrationModel;
@@ -41,6 +42,19 @@ public class NewUserRegistrationController extends NewUserRegistrationModel {
 	@FXML
 	public void initialize() {
 		loadSQuestion();
+		
+		btnCancel.setTooltip(new Tooltip("Cancel the registration process and take you to Sign In Window"));
+		btnRegistration.setTooltip(new Tooltip("If all data typed correctly, \n"
+				+ "then you will register as a new user"));
+		Tooltip.install(txtName, new Tooltip("Write your full name"));
+		Tooltip.install(txtUsername, new Tooltip("Give a username, this will use at the time of login\n"
+				+ "This should not contain space"));
+		Tooltip.install(passPassword, new Tooltip("Give a password, this should not contain space"));
+		Tooltip.install(passReTypePassword, new Tooltip("Retype the password"));
+		Tooltip.install(cmboSecurityQuestion, new Tooltip("Choose a security question"));
+		Tooltip.install(txtAnswer, new Tooltip("Answer your question. Remember this answer.\n"
+				+ "If you forget your password, this will \n"
+				+ "help you to recover your account."));
 	}
 	
 //////////////////////// Function ///////////////////////

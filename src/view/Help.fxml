@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.web.WebView?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TransactionHistoryController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpController">
    <children>
-      <MenuBar layoutX="25.0" prefHeight="30.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar prefHeight="30.0" prefWidth="800.0">
         <menus>
           <Menu mnemonicParsing="false" text="Operation">
             <items>
@@ -27,7 +25,7 @@
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="mnuSettings" mnemonicParsing="false" onAction="#mnuSettings" text="Settings" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" onAction="#mnuTransactionHistory" text="Transaction Hirtory" />
+                  <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" onAction="#mnuTransactionHistory" text="Transaction History" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="mnuCashCalculate" mnemonicParsing="false" onAction="#mnuCashCalculate" text="Cash Calculate" />
                   <SeparatorMenuItem mnemonicParsing="false" />
@@ -42,10 +40,10 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Settings">
             <items>
-                  <MenuItem fx:id="mnuBankSettings" mnemonicParsing="false" onAction="#mnuBankSettings" text="Bank Settings" />
+              <MenuItem fx:id="mnuBankSettings" mnemonicParsing="false" onAction="#mnuBankSettings" text="Bank Settings" />
                   <MenuItem fx:id="mnuSourceSettings" mnemonicParsing="false" onAction="#mnuSourceSettings" text="Source Settings" />
-                  <MenuItem fx:id="mnuSectorSettings" mnemonicParsing="false" onAction="#mnuSectorSettings" text="Sector Settingse" />
-              <MenuItem fx:id="mnuSystemSettings" mnemonicParsing="false" onAction="#mnuSystemSettings" text="System Settings" />
+                  <MenuItem fx:id="mnuSectorSettings" mnemonicParsing="false" onAction="#mnuSectorSettings" text="Sector Settings" />
+                  <MenuItem fx:id="mnuSystemSettings" mnemonicParsing="false" onAction="#mnuSystemSettings" text="System Settings" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Help">
@@ -60,32 +58,12 @@
             </Menu>
         </menus>
       </MenuBar>
-      <ComboBox fx:id="cmboHistoryMonth" layoutX="99.0" layoutY="35.0" onAction="#cmboHistoryMonth" prefHeight="28.0" prefWidth="110.0">
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></ComboBox>
-      <ComboBox fx:id="cmboFilterList" layoutX="301.0" layoutY="35.0" onAction="#cmboFilterList" prefHeight="28.0" prefWidth="170.0">
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></ComboBox>
-      <Button fx:id="btnGo" layoutX="715.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnGo" prefHeight="28.0" prefWidth="70.0" text="Go">
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></Button>
-      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out">
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></Button>
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="35.0" prefHeight="28.0" prefWidth="90.0" text="History For : " />
-      <Label alignment="CENTER_RIGHT" layoutX="231.0" layoutY="35.0" prefHeight="28.0" prefWidth="70.0" text="Filter By : " />
-      <DatePicker fx:id="datePicker" editable="false" focusTraversable="false" layoutX="494.0" layoutY="35.0" prefHeight="28.0" prefWidth="210.0" promptText="Search by Date">
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></DatePicker>
-      <WebView fx:id="webview" focusTraversable="false" layoutX="115.0" layoutY="103.0" prefHeight="470.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor></WebView>
+      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
+      <TextArea fx:id="txtInfoContainer" editable="false" layoutX="14.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="35.0">
+         <font>
+            <Font name="Ubuntu" size="14.0" />
+         </font>
+      </TextArea>
    </children>
 </AnchorPane>

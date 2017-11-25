@@ -281,7 +281,7 @@ public class ComboboxList extends DatabaseConnection {
 			return list;
 			
 		} else {
-			String list[] = {"No Source"};
+			String list[] = {"No One"};
 			return list;
 		}
 	}
@@ -322,7 +322,7 @@ public class ComboboxList extends DatabaseConnection {
 			return list;
 			
 		} else {
-			String list[] = {"No Source"};
+			String list[] = {"No One"};
 			return list;
 		}
 	}

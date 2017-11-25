@@ -23,6 +23,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import model.SettingsModel;
 import operation.BankIssue;
@@ -40,12 +41,6 @@ public class SettingsController extends SettingsModel {
 	private TabPane tabPane;
 	
 	@FXML
-	private MenuItem mnuCreateSource;
-	@FXML
-	private MenuItem mnuCreateSector;
-	@FXML
-	private MenuItem mnuExit;
-	@FXML
 	private MenuItem mnuDashboard;
 	@FXML
 	private MenuItem mnuGetMoney;
@@ -56,9 +51,17 @@ public class SettingsController extends SettingsModel {
 	@FXML
 	private MenuItem mnuBank;
 	@FXML
+	private MenuItem mnuSettings;
+	@FXML
 	private MenuItem mnuTransactionHistory;
 	@FXML
 	private MenuItem mnuCashCalculate;
+	@FXML
+	private MenuItem mnuExit;
+	@FXML
+	private MenuItem mnuCreateSource;
+	@FXML
+	private MenuItem mnuCreateSector;
 	@FXML
 	private MenuItem mnuBankSettings;
 	@FXML
@@ -67,6 +70,10 @@ public class SettingsController extends SettingsModel {
 	private MenuItem mnuSectorSettings;
 	@FXML
 	private MenuItem mnuSystemSettings;
+	@FXML
+	private MenuItem mnuHowTo;
+	@FXML
+	private MenuItem mnuAbout;
 	
 	@FXML
 	private Button btnSignOut;
@@ -229,6 +236,61 @@ public class SettingsController extends SettingsModel {
 		lblUserFullName.setText(getUserFullName());
 		if(!userIsNew()) {systembtnWalletBalance.setManaged(false);}
 		updateLastAccessDate();
+		
+		btnSignOut.setTooltip(new Tooltip("Sign Out from application"));
+		Tooltip.install(lblUserFullName, new Tooltip("User's Full Name"));
+		btnDashboard.setTooltip(new Tooltip("Take you to Dashboard"));
+		btnMakeATransaction.setTooltip(new Tooltip("Take you to Transaction window"));
+		btnTransactionHistory.setTooltip(new Tooltip("Take you to History window"));
+		
+		bnkbtnSave.setTooltip(new Tooltip("Save your changes"));
+		Tooltip.install(bnkrbtnbkYes, new Tooltip("Choose if you have a bKash account"));
+		Tooltip.install(bnkrbtnbkNo, new Tooltip("Choose if you don't have a bKash account"));
+		Tooltip.install(bnktxtbkCashinAgent, new Tooltip("Charge for per 1000 tk Cash in from agent"));
+		Tooltip.install(bnktxtbkCashOutAgent, new Tooltip("Charge for per 1000 tk Cash out from agent"));
+		Tooltip.install(bnktxtbkSendMoney, new Tooltip("Charge for send money"));
+		Tooltip.install(bnktxtbkCashOutATM, new Tooltip("Charge for per 1000 tk Cash out from ATM"));
+		Tooltip.install(bnkrbtnrocYes, new Tooltip("Choose if you have a Rocket account"));
+		Tooltip.install(bnkrbtnrocNo, new Tooltip("Choose if you don't have a Rocket account"));
+		Tooltip.install(bnkrbtnrocATMFree, new Tooltip("Choose if your Rocket account is ATM free"));
+		Tooltip.install(bnkrbtnrocCashinFree, new Tooltip("Choose if your Rocket account is Cash In free"));
+		Tooltip.install(bnktxtrocCashinAgent, new Tooltip("Charge for per 1000 tk Cash in from Agent"));
+		Tooltip.install(bnktxtrocCashinBranch, new Tooltip("Charge for per 1000 tk Cash in from DBBL Bank Branch"));
+		Tooltip.install(bnktxtrocCashOutATM, new Tooltip("Charge for per 1000 tk Cash out from ATM"));
+		Tooltip.install(bnktxtrocSendMoney, new Tooltip("Charge for send money"));
+		Tooltip.install(bnktxtrocCashOutAgent, new Tooltip("Charge for per 1000 tk Cash out from Agent"));
+		Tooltip.install(bnktxtrocCashOutBranch, new Tooltip("Charge for Cash out tk from DBBL Bank Branch"));
+		
+		sourcebtnCreate.setTooltip(new Tooltip("Typed name will be one of your Money Income Source"));
+		sourcebtnArchive.setTooltip(new Tooltip("Selected source will be remove from \n"
+				+ "your active source list and this will\n"
+				+ "be no longer available in transaction"));
+		sourcebtnUnarchive.setTooltip(new Tooltip("Selected source will be add to your active\n"
+				+ "source list and will be available in transaction"));
+		Tooltip.install(sourcetxtSourceName, new Tooltip("Type a source name from where you get Tk."));
+		Tooltip.install(sourcecmboArchive, new Tooltip("List of your active sources"));
+		Tooltip.install(sourcecmboUnArchive, new Tooltip("List of your archived sources"));
+		
+		sectorbtnCreate.setTooltip(new Tooltip("Typed name will be one of your money expense sector"));
+		sectorbtnArchive.setTooltip(new Tooltip("Selected sector will be remove from \n"
+				+ "your active sector list and this will\n"
+				+ "be no longer available in transaction"));
+		sectorbtnUnarchive.setTooltip(new Tooltip("Selected sector will be add to your active\n"
+				+ "sector list and will be available in transaction"));
+		Tooltip.install(sectortxtSourceName, new Tooltip("Type a sector name from where you expense Tk."));
+		Tooltip.install(sectorcmboArchive, new Tooltip("List of your active sectors"));
+		Tooltip.install(sectorcmboUnArchive, new Tooltip("List of your archived sectors"));
+		
+		systembtnChangeName.setTooltip(new Tooltip("Change your name"));
+		systembtnChangePassword.setTooltip(new Tooltip("Change your password"));
+		systembtnWalletBalance.setTooltip(new Tooltip("Let you set your initial wallet balance\n"
+				+ "this will be available new user only"));
+		systembtnSave.setTooltip(new Tooltip("Save changes of your date and time format"));
+		Tooltip.install(systemtxtUsername, new Tooltip("Your Username"));
+		Tooltip.install(systemtxtName, new Tooltip("Your full name"));
+		Tooltip.install(systemtxtPassword, new Tooltip("Give a password, this should not contain space"));
+		Tooltip.install(systemtxtRePassword, new Tooltip("Retype the password"));
+		Tooltip.install(checkBoxWeekNum, new Tooltip("Show week number in calender"));
 	}
 
 	
@@ -249,30 +311,8 @@ public class SettingsController extends SettingsModel {
 /////////////////// Menu Function ///////////////////////////
 	
 	@FXML
-	private void mnuCreateSource(ActionEvent event) {
-		(new TabAccess()).setTabName("tabSource");
-		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
-		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
-	}
-	
-	@FXML
-	private void mnuCreateSector(ActionEvent event) {
-		(new TabAccess()).setTabName("tabSector");
-		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
-		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
-	}
-	
-	@FXML
-	private void mnuExit(ActionEvent event) {
-		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
-		SettingsStage.close();
-	}
-	
-	@FXML
 	private void mnuDashboard(ActionEvent event) {
-		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToDashboard(SettingsStage.getX(), SettingsStage.getY());
 		SettingsStage.close();
 	}
@@ -280,46 +320,122 @@ public class SettingsController extends SettingsModel {
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney");
-		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
 		SettingsStage.close();
 	}
-	
+
 	@FXML
 	private void mnuExpense(ActionEvent event) {
 		(new TabAccess()).setTabName("tabExpense");
-		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
 		SettingsStage.close();
 	}
-	
+
 	@FXML
 	private void mnuLend(ActionEvent event) {
 		(new TabAccess()).setTabName("tabLend");
-		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.close();
+	}
+
+	@FXML
+	private void mnuBank(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
 		SettingsStage.close();
 	}
 	
 	@FXML
-	private void mnuBank(ActionEvent event) {
+	private void mnuSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
-		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
 		SettingsStage.close();
 	}
 	
 	@FXML
 	private void mnuTransactionHistory(ActionEvent event) {
-		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToTransactionHistory(SettingsStage.getX(), SettingsStage.getY());
 		SettingsStage.close();
 	}
 	
 	@FXML
 	private void mnuCashCalculate(ActionEvent event) {
-		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToCashCalculate(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.close();
+	}
+	
+	@FXML
+	private void mnuExit(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		SettingsStage.close();
+	}
+	
+	@FXML
+	private void mnuCreateSource(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSource");
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.close();
+	}
+
+	@FXML
+	private void mnuCreateSector(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSector");
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.close();
+	}
+
+	@FXML
+	private void mnuBankSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.close();
+	}
+	
+	@FXML
+	private void mnuSourceSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSource");
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.close();
+	}
+
+	@FXML
+	private void mnuSectorSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSector");
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.close();
+	}
+	
+	@FXML
+	private void mnuSystemSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSystem");
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.close();
+	}
+	
+	@FXML
+	private void mnuHowTo(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToHelp(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.close();
+	}
+	
+	@FXML
+	private void mnuAbout(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToAbout(SettingsStage.getX(), SettingsStage.getY());
 		SettingsStage.close();
 	}
 	
@@ -1250,7 +1366,24 @@ public class SettingsController extends SettingsModel {
 	
 	@FXML
 	private void emptyPassField() {
-		systemlblWarningMsg.setText("");
+		if (containswhitespace(systemtxtPassword.getText())) {
+			systemlblWarningMsg.setText("Space isn't allowed for password");
+			systemtxtPassword.clear();
+		} else {
+			systemlblWarningMsg.setText("");
+		}
+	}
+	
+	
+	@FXML
+	private void systemtxtRePassword() {
+		if (systemtxtPassword.getText().length() <= systemtxtRePassword.getText().length()) {
+			if (!systemtxtRePassword.getText().equals(systemtxtPassword.getText())) {
+				systemlblWarningMsg.setText("Password didn't match");
+			}
+		} else {
+			systemlblWarningMsg.setText("");
+		}
 	}
 }
 

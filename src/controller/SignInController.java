@@ -75,9 +75,17 @@ public class SignInController extends SignInModel {
 			}
 		} catch (Exception e) {}
 		
-		btnSignIn.setTooltip(
-			    new Tooltip("Button of doom")
-			);
+		btnSignIn.setTooltip(new Tooltip("If Username and Password will \n"
+				+ "correct you will be signed in"));
+		btnCancel.setTooltip(new Tooltip("Cancel the action"));
+		btnOk.setTooltip(new Tooltip("If your answer is matches, you will take to reset password window"));
+		Tooltip.install(txtUsername, new Tooltip("Type your Username"));
+		Tooltip.install(passPassword, new Tooltip("Enter password"));
+		Tooltip.install(lblForgetPassword, new Tooltip("Press if you forget password"));
+		Tooltip.install(lblNewUser, new Tooltip("Press if you are a new user or\n"
+				+ "want to remove existing user and create new one"));
+		Tooltip.install(cmboSecurityQuetion, new Tooltip("Choose your security question"));
+		Tooltip.install(txtSQAnswer, new Tooltip("Answer what was your security question answer"));
 	}
 	
 	@FXML

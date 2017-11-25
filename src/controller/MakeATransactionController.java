@@ -40,6 +40,7 @@ import tab.GetMoney;
 import tab.Lend;
 import tab.Personal;
 import tab.Rocket;
+import tab.Sector;
 import tab.Source;
 import tab.TabAccess;
 import tableAndgraph.TableData;
@@ -149,7 +150,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private Button exbtnAdjustBalance;
 	@FXML
-	private Button exbtnCancel;
+	private Button exbtnSaveAndAdd;
 	@FXML
 	private Button exbtnSave;
 	@FXML
@@ -447,10 +448,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 		lblUserFullName.setText(userFullName());
 		
 		btnSignOut.setTooltip(new Tooltip("Sign Out from application"));
+		Tooltip.install(lblUserFullName, new Tooltip("User's Full Name"));
+		
 		gmbtnGoToDashboard.setTooltip(new Tooltip("Take you to Dashboard"));
-		gmbtnCreateSource.setTooltip(new Tooltip("Create your income source where you get money"));
+		gmbtnCreateSource.setTooltip(new Tooltip("Create your income source where you get Tk."));
 		gmbtnSettings.setTooltip(new Tooltip("Take you to Bank Settings"));
-		gmbtnSaveAdd.setTooltip(new Tooltip("Save your data and let you add another"));
+		gmbtnSaveAdd.setTooltip(new Tooltip("Save your data and let you do another transaction"));
 		gmbtnSave.setTooltip(new Tooltip("Save your data and take you to dashboard"));
 		Tooltip.install(gmdateDate, new Tooltip("Choose date when your transaction happend"));
 		Tooltip.install(gmtxtAmount, new Tooltip("How much Tk. you have get"));
@@ -458,6 +461,73 @@ public class MakeATransactionController extends MakeATransactionModel {
 		Tooltip.install(gmcmboSource, new Tooltip("Name of Income Sources, where from you get Tk."));
 		Tooltip.install(gmcmboMethod, new Tooltip("In which way you get the money"));
 		Tooltip.install(gmlblWalletBalance, new Tooltip("Your wallet balance now"));
+		
+		exbtnGoToDashboard.setTooltip(new Tooltip("Take you to Dashboard"));
+		exbtnCreateSector.setTooltip(new Tooltip("Create your expenditure sector where you expense Tk."));
+		exbtnAdjustBalance.setTooltip(new Tooltip("Let you set application Wallet Balance \n"
+				+ "according to how much Tk. at your hand now."));
+		exbtnGoToCashCalculate.setTooltip(new Tooltip("Calculate how much Tk. at your hand now"));
+		exbtnSaveAndAdd.setTooltip(new Tooltip("Save your data and let you do another transaction"));
+		exbtnSave.setTooltip(new Tooltip("Save your data and take you to dashboard"));
+		Tooltip.install(exdateDate, new Tooltip("Choose date when your transaction happend"));
+		Tooltip.install(extxtAmount, new Tooltip("How much Tk. you have expensed"));
+		Tooltip.install(extxtDescription, new Tooltip("Add a description of your transaction."));
+		Tooltip.install(excmboSector, new Tooltip("Name of Expenditure Sector, \n"
+				+ "where you expense your Tk."));
+		Tooltip.install(exlblWalletBalance, new Tooltip("Your wallet balance now"));
+		
+		lendbtnGoToDashboard.setTooltip(new Tooltip("Take you to Dashboard"));
+		lendbtnCancel.setTooltip(new Tooltip("Clear all input at lend tab"));
+		lendbtnSave.setTooltip(new Tooltip("Save your data and let you do another transaction"));
+		Tooltip.install(lenddateDate, new Tooltip("Choose date when your transaction happend"));
+		Tooltip.install(lendlblBkBalance, new Tooltip("Your bKash account balance"));
+		Tooltip.install(lendlblRocBalance, new Tooltip("Your Rocket account balance"));
+		Tooltip.install(lendlblWalletBalance, new Tooltip("Your wallet balance now"));
+		Tooltip.install(lendTable, new Tooltip("List of your Borrowed/Lended Tk."));
+		Tooltip.install(lendlblTotalLendTk, new Tooltip("Your total Lended Tk."));
+		Tooltip.install(lendlblTotalBorrowTk, new Tooltip("Your total Borrowed Tk."));
+		Tooltip.install(bocmboType, new Tooltip("Define wheather you take tk or \n"
+				+ "you are going to return a borrowed tk"));
+		Tooltip.install(bocmboMethod, new Tooltip("In which way you borrowed/return the money"));
+		Tooltip.install(botxtFromWhom, new Tooltip("From whom you borrowed the money"));
+		Tooltip.install(bocmboRepaidPerson, new Tooltip("To whom you going to return the borrowed money"));
+		Tooltip.install(botxtAmountWithCharge, new Tooltip("How much tk. you borrowed/returned"));
+		Tooltip.install(botxtExactAmount, new Tooltip("If you borrowed tk. through bKash/Rocket \n"
+				+ "then may the borrowed tk is different \n"
+				+ "form transaction tk, because of the bank charge."));
+		Tooltip.install(lecmboType, new Tooltip("Define wheather you give tk or \n"
+				+ "you are going to take back the given tk"));
+		Tooltip.install(lecmboMethod, new Tooltip("In which way you given/take the money"));
+		Tooltip.install(letxtFromWhom, new Tooltip("To whom you given the money"));
+		Tooltip.install(lecmboRepaidPerson, new Tooltip("From whom you going to take back given money"));
+		Tooltip.install(letxtAmountWithCharge, new Tooltip("How much tk. you given/take"));
+		Tooltip.install(letxtExactAmount, new Tooltip("If you given tk. through bKash/Rocket \n"
+				+ "then may the given tk is different \n"
+				+ "form transaction tk, because of the bank charge."));
+		
+		bnkbtnGoToDashboard.setTooltip(new Tooltip("Take you to Dashboard"));
+		bnkbtnSettings.setTooltip(new Tooltip("Take you to Bank Settings"));
+		bnkbtnSave.setTooltip(new Tooltip("Save data and let you do another transaction"));
+		bnkbtnCancel.setTooltip(new Tooltip("Clear all input"));
+		Tooltip.install(bnkWalletBalance, new Tooltip("Your wallet balance now"));
+		Tooltip.install(bnkdateDate, new Tooltip("Choose date when your transaction happend"));
+		Tooltip.install(perlblAccountBalance, new Tooltip("Personal account balance"));
+		Tooltip.install(percmboAmountNature, new Tooltip("Select Tk. debited or credited"));
+		Tooltip.install(pertxtAmount, new Tooltip("How much Tk. Debited/Credited"));
+		bkbtnAdjustBalance.setTooltip(new Tooltip("Let you set this application bKash account balance \n"
+				+ "according to how much Tk. at your original bKash account now."));
+		Tooltip.install(bklblAccountBalance, new Tooltip("bKash Account Balance"));
+		Tooltip.install(bkcmboTransactionType, new Tooltip("The transaction you are going to record \n"
+				+ "wheather it is your personal or for other person"));
+		Tooltip.install(bkcmboAmountNature, new Tooltip("Select Tk. debited or credited"));
+		Tooltip.install(bktxtAmount, new Tooltip("How much Tk. Debited/Credited"));
+		rocbtnAdjustBalance.setTooltip(new Tooltip("Let you set this application Rocket account balance \n"
+				+ "according to how much Tk. at your original Rocket account now."));
+		Tooltip.install(roclblAccountBalance, new Tooltip("Rocket Account Balance"));
+		Tooltip.install(roccmboTransactionType, new Tooltip("The transaction you are going to record \n"
+				+ "wheather it is your personal or for other person"));
+		Tooltip.install(roccmboAmountNature, new Tooltip("Select Tk. debited or credited"));
+		Tooltip.install(roctxtAmount, new Tooltip("How much Tk. Debited/Credited"));
 	}
 
 	
@@ -516,8 +586,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 		} catch (Exception e) {}
 	}
 
-//////////////////////////////////////////// Menue Function ////////////////////////////////////////////
-//---------------------------------------------------------------------------------------------------------//
+//////////////////////////////////////////// Menu Function ////////////////////////////////////////////
+//----------------------------------------------------------------------------------------------------//
 	@FXML
 	private void mnuDashboard(ActionEvent event) {
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
@@ -635,12 +705,16 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void mnuHowTo(ActionEvent event) {
-		
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToHelp(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
 	}
 	
 	@FXML
 	private void mnuAbout(ActionEvent event) {
-		
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToAbout(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
 	}
 	
 	@FXML
@@ -670,9 +744,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 		}
 		gmlblLetterRemainmsg.setText("");
 		gmlblBalanceUpdateMsg.setText(" ");
-		gmtxtAmount.clear();
 		gmlblWarningMsg.setText("");
-		gmtxtDescription.clear();
 		gmtxtDescription.setEditable(true);
 		gmLoadSource();
 		loadMethod();
@@ -759,13 +831,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Message");
 				confirmationMsg.setHeaderText(null);
-				confirmationMsg.setContentText("Source created successfully");
+				confirmationMsg.setContentText("Source "+typedName+" created successfully");
 				Stage SettingsStage = (Stage) MakeATransactionStage.getScene().getWindow();
 				confirmationMsg.setX(SettingsStage.getX() + 200);
 				confirmationMsg.setY(SettingsStage.getY() + 170);
 				confirmationMsg.showAndWait();
 				
-				gmInitialize();
+				gmLoadSource();
 			}
 		}
 //		(new TabAccess()).setTabName("tabSource");
@@ -833,6 +905,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 				(new GetMoney()).saveGetMoneyData(stringData);
 				
 				gmInitialize();
+				gmtxtAmount.clear();
+				gmtxtDescription.clear();
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Successfull Transaction");
@@ -1084,8 +1158,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 		if (getWeekStatus()) {
 			exdateDate.setShowWeekNumbers(true);
 		}
-		extxtAmount.clear();
-		extxtDescription.clear();
 		exlblWarningMsg.setText("");
 		exlblLetterRemainmsg.setText("");
 		showWalletBalance();
@@ -1095,10 +1167,46 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void exGoToSectorBtn(ActionEvent event) {
-		(new TabAccess()).setTabName("tabSector");
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Create Sector");
+		dialog.setHeaderText("Create your expenditure sector, where you expense Tk.");
+		dialog.setContentText("Please Type a Name :");
 		Stage MakeATransactionStage = (Stage) exbtnCreateSector.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		dialog.setX(MakeATransactionStage.getX() + 150);
+		dialog.setY(MakeATransactionStage.getY() + 170);
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+			String typedName = result.get();
+			if (typedName.length() == 0) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Operation Failed");
+				alert.setHeaderText(null);
+				alert.setContentText("Write a Sector Name Please");
+				alert.setX(MakeATransactionStage.getX() + 200);
+				alert.setY(MakeATransactionStage.getY() + 170);
+				alert.showAndWait();
+			} else if (countWords(typedName) == 0) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Operation Failed");
+				alert.setHeaderText(null);
+				alert.setContentText("Write a Sector Name Please");
+				alert.setX(MakeATransactionStage.getX() + 200);
+				alert.setY(MakeATransactionStage.getY() + 170);
+				alert.showAndWait();
+			} else {
+				new Sector().createSector(typedName);
+				
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Message");
+				confirmationMsg.setHeaderText(null);
+				confirmationMsg.setContentText("Sector "+typedName+ " created successfully");
+				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+				confirmationMsg.showAndWait();
+				
+				exLoadSector();
+			}
+		}
 	}
 	
 	
@@ -1111,8 +1219,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	
 	@FXML
-	private void exCancelBtn(ActionEvent event) {
-		exInitialize();
+	private void exbtnSaveAndAdd(ActionEvent event) {
+		if (amountIsZero(extxtAmount.getText())) {
+			exlblWarningMsg.setText("Empty or Zero is not approved.");
+		} else {
+			exSaveFunction();
+		}
 	}
 	
 	
@@ -1210,6 +1322,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 			exlblWarningMsg.setText("Empty or Zero is not approved.");
 		} else {
 			exSaveFunction();
+			Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+			(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+			MakeATransactionStage.close();
 		}
 	}
 	
@@ -1261,6 +1376,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 			(new Expense()).saveExpenseData(expenseData);
 			
 			exInitialize();
+			extxtAmount.clear();
+			extxtDescription.clear();
 			
 			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 			confirmationMsg.setTitle("Successfull Transaction");

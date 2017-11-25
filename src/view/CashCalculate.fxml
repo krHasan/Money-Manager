@@ -15,14 +15,6 @@
    <children>
       <MenuBar prefHeight="30.0" prefWidth="800.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem fx:id="mnuCreateSource" mnemonicParsing="false" onAction="#mnuCreateSource" text="Create Source" />
-                  <MenuItem fx:id="mnuCreateSector" mnemonicParsing="false" onAction="#mnuCreateSector" text="Create Sector" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuExit" mnemonicParsing="false" onAction="#mnuExit" text="Exit" />
-               </items>
-          </Menu>
           <Menu mnemonicParsing="false" text="Operation">
             <items>
               <MenuItem fx:id="mnuDashboard" mnemonicParsing="false" onAction="#mnuDashboard" text="Dashboard" />
@@ -32,10 +24,22 @@
                   <MenuItem fx:id="mnuLend" mnemonicParsing="false" onAction="#mnuLend" text="Lend" />
                   <MenuItem fx:id="mnuBank" mnemonicParsing="false" onAction="#mnuBank" text="Bank" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" onAction="#mnuTransactionHistory" text="Transaction Hirtory" />
+                  <MenuItem fx:id="mnuSettings" mnemonicParsing="false" onAction="#mnuSettings" text="Settings" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" onAction="#mnuTransactionHistory" text="Transaction History" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mnuCashCalculate" mnemonicParsing="false" onAction="#mnuCashCalculate" text="Cash Calculate" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mnuExit" mnemonicParsing="false" onAction="#mnuExit" text="Exit" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Tools">
+          <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="mnuCreateSource" mnemonicParsing="false" onAction="#mnuCreateSource" text="Create Source" />
+                  <MenuItem fx:id="mnuCreateSector" mnemonicParsing="false" onAction="#mnuCreateSector" text="Create Sector" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Settings">
             <items>
               <MenuItem fx:id="mnuBankSettings" mnemonicParsing="false" onAction="#mnuBankSettings" text="Bank Settings" />
                   <MenuItem fx:id="mnuSourceSettings" mnemonicParsing="false" onAction="#mnuSourceSettings" text="Source Settings" />
@@ -43,6 +47,16 @@
                   <MenuItem fx:id="mnuSystemSettings" mnemonicParsing="false" onAction="#mnuSystemSettings" text="System Settings" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem fx:id="mnuHowTo" mnemonicParsing="false" onAction="#mnuHowTo" text="How to Use" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="About">
+              <items>
+                <MenuItem fx:id="mnuAbout" mnemonicParsing="false" onAction="#mnuAbout" text="About Developer" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
       <Button fx:id="btnDashboard" focusTraversable="false" layoutX="523.0" layoutY="286.0" mnemonicParsing="false" onAction="#btnDashboard" prefHeight="30.0" prefWidth="150.0" text="Dashboard">

@@ -8,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.RegistrationIssueModel;
@@ -62,6 +63,18 @@ public class RegistrationIssueController extends RegistrationIssueModel {
 			loadSQuestion();
 			btnDelete.setManaged(false);
 		}
+		
+		btnCancel.setTooltip(new Tooltip("Cancel the process and take you to Sign In window"));
+		btnSave.setTooltip(new Tooltip("Save your new password and security question"));
+		btnDelete.setTooltip(new Tooltip("If all information is given correctly \n"
+				+ "then this user will be deleted"));
+		Tooltip.install(txtUsername, new Tooltip("Your Username"));
+		Tooltip.install(passPassword, new Tooltip("Give a password, this should not contain space"));
+		Tooltip.install(passReTypePassword, new Tooltip("Retype the password"));
+		Tooltip.install(cmboSecurityQuestion, new Tooltip("Choose a security question"));
+		Tooltip.install(txtAnswer, new Tooltip("Answer your question. Remember this answer.\n"
+				+ "If you forget your password, this will \n"
+				+ "help you to recover your account."));
 	}
 	
 //////////////////////// Main Functionality /////////////////////////////
@@ -87,7 +100,12 @@ public class RegistrationIssueController extends RegistrationIssueModel {
 	
 	@FXML
 	private void passPassword() {
-		lblMsgInformation.setText("");
+		if (containswhitespace(passPassword.getText())) {
+			lblMsgInformation.setText("Space isn't allowed for password");
+			passPassword.clear();
+		} else {
+			lblMsgInformation.setText("");
+		}
 	}
 	
 	

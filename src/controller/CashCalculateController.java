@@ -13,12 +13,7 @@ import operation.GoToOperation;
 import tab.TabAccess;
 
 public class CashCalculateController extends CashCalculateModel {
-	@FXML
-	private MenuItem mnuCreateSource;
-	@FXML
-	private MenuItem mnuCreateSector;
-	@FXML
-	private MenuItem mnuExit;
+	
 	@FXML
 	private MenuItem mnuDashboard;
 	@FXML
@@ -30,7 +25,17 @@ public class CashCalculateController extends CashCalculateModel {
 	@FXML
 	private MenuItem mnuBank;
 	@FXML
+	private MenuItem mnuSettings;
+	@FXML
 	private MenuItem mnuTransactionHistory;
+	@FXML
+	private MenuItem mnuCashCalculate;
+	@FXML
+	private MenuItem mnuExit;
+	@FXML
+	private MenuItem mnuCreateSource;
+	@FXML
+	private MenuItem mnuCreateSector;
 	@FXML
 	private MenuItem mnuBankSettings;
 	@FXML
@@ -39,6 +44,10 @@ public class CashCalculateController extends CashCalculateModel {
 	private MenuItem mnuSectorSettings;
 	@FXML
 	private MenuItem mnuSystemSettings;
+	@FXML
+	private MenuItem mnuHowTo;
+	@FXML
+	private MenuItem mnuAbout;
 	
 	@FXML
 	private Button btnDashboard;
@@ -109,7 +118,7 @@ public class CashCalculateController extends CashCalculateModel {
 		btnMakeATransaction.setTooltip(new Tooltip("Will Take you to Expense"));
 		btnSignOut.setTooltip(new Tooltip("Sign Out from Application"));
 		Tooltip.install(lblWalletBalance, new Tooltip("Your wallet balance now"));
-		Tooltip.install(lblUserFullName, new Tooltip("User Full Name"));
+		Tooltip.install(lblUserFullName, new Tooltip("User's Full Name"));
 		Tooltip.install(txt1000, new Tooltip("Number of 1000 Tk. Notes in your hand"));
 		Tooltip.install(txt500, new Tooltip("Number of 500 Tk. Notes in your hand"));
 		Tooltip.install(txt100, new Tooltip("Number of 100 Tk. Notes in your hand"));
@@ -121,36 +130,15 @@ public class CashCalculateController extends CashCalculateModel {
 		Tooltip.install(txt1, new Tooltip("Number of 1 Tk. Notes in your hand"));
 	}
 	
-/////////////////// Menu Function ///////////////////////////
-	@FXML
-	private void mnuCreateSource(ActionEvent event) {
-		(new TabAccess()).setTabName("tabSource");
-		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
-	}
-
-	@FXML
-	private void mnuCreateSector(ActionEvent event) {
-		(new TabAccess()).setTabName("tabSector");
-		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
-	}
-
-	@FXML
-	private void mnuExit(ActionEvent event) {
-		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		CashCalculateStage.close();
-	}
-	
+//////////////////////////////////////////// Menu Function ////////////////////////////////////////////
+//---------------------------------------------------------------------------------------------------//
 	@FXML
 	private void mnuDashboard(ActionEvent event) {
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToDashboard(CashCalculateStage.getX(), CashCalculateStage.getY());
 		CashCalculateStage.close();
 	}
-
+	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney");
@@ -182,11 +170,48 @@ public class CashCalculateController extends CashCalculateModel {
 		(new GoToOperation()).goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
 		CashCalculateStage.close();
 	}
-
+	
+	@FXML
+	private void mnuSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabBank");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+	
 	@FXML
 	private void mnuTransactionHistory(ActionEvent event) {
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToTransactionHistory(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+	
+	@FXML
+	private void mnuCashCalculate(ActionEvent event) {
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToCashCalculate(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+	
+	@FXML
+	private void mnuExit(ActionEvent event) {
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		CashCalculateStage.close();
+	}
+	
+	@FXML
+	private void mnuCreateSource(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSource");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+
+	@FXML
+	private void mnuCreateSector(ActionEvent event) {
+		(new TabAccess()).setTabName("tabSector");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
 		CashCalculateStage.close();
 	}
 
@@ -221,7 +246,20 @@ public class CashCalculateController extends CashCalculateModel {
 		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
 		CashCalculateStage.close();
 	}
-
+	
+	@FXML
+	private void mnuHowTo(ActionEvent event) {
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToHelp(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+	
+	@FXML
+	private void mnuAbout(ActionEvent event) {
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToAbout(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
 	
 ///////////////////// Button Function ///////////////////////////
 	@FXML
