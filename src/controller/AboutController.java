@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -200,6 +202,25 @@ public class AboutController extends DateAndClock {
 	}
 	
 	
+	@FXML
+	private void hyperlinkLinkedin(ActionEvent event) {
+	    openWebpage("https://www.linkedin.com/in/kr-hasan");
+	}
+	
+	
+	@FXML
+	private void hyperlinkGit(ActionEvent event) {
+	    openWebpage("https://github.com/krHasan");
+	}
+	
+	
+	public static void openWebpage(String url) {
+	    try {
+	        new ProcessBuilder("x-www-browser", url).start();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 }
 
 

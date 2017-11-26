@@ -16,11 +16,13 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart.Series;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -211,6 +213,15 @@ public class DashboardController extends DashboardModel {
 		Tooltip.install(cmboExpenseMonthList, new Tooltip("All transacted month name"));
 		Tooltip.install(cmboSectorList, new Tooltip("Name of Expenditure Sector, where you expense your Tk."));
 		Tooltip.install(lblTotalExpense, new Tooltip("Total Tk. from this Expenditure Sector"));
+		
+		if (userIsNew()) {		
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Welcome");
+			confirmationMsg.setHeaderText("Welcome to Money Manager, Recorder of Your Personal Finance");
+			confirmationMsg.setContentText("Before starting to use, please setup your account from Settings.");
+			confirmationMsg.showAndWait();
+			updateLastAccessDate();
+		}
 	}
 	
 	

@@ -1,13 +1,9 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Map;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import operation.BankIssue;
 import operation.ComboboxList;
 import system.DateAndClock;
 import tab.SettingBank;

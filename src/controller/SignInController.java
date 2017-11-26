@@ -95,16 +95,7 @@ public class SignInController extends SignInModel {
 			addMonth();
 			
 			if (userIsNew()) {			
-				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
-				confirmationMsg.setTitle("Welcome");
-				confirmationMsg.setHeaderText("Welcome to Your Money Manager");
-				confirmationMsg.setContentText("Before Starting Please Setup Your Account First.");
-				confirmationMsg.setX(SignInStage.getX() + 200);
-				confirmationMsg.setY(SignInStage.getY() + 170);
-				confirmationMsg.showAndWait();
-				
-				(new TabAccess()).setTabName("tabSystem");
-				goToSettings(SignInStage.getX(), SignInStage.getY());
+				goToDashboard(SignInStage.getX(), SignInStage.getY());
 				SignInStage.close();
 			} else {
 				updateLastAccessDate();

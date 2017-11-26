@@ -1,8 +1,6 @@
 package controller;
 
-import java.io.File;
-import java.io.FileReader;
-
+import help.Help;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -67,28 +65,8 @@ public class HelpController extends DateAndClock {
 		loadInfo();
 	}
 	
-	@SuppressWarnings("resource")
 	private void loadInfo() {
-		try {
-//			String workingDir = System.getProperty("user.dir");
-//			String filePath = workingDir + File.separator +"src"+ File.separator +"help"+ File.separator + "HowToUse.txt";
-			FileReader reader1 = new FileReader("HowToUse.txt");
-			FileReader reader2 = new FileReader("HowToUse.txt");
-			@SuppressWarnings("unused")
-			int charactar,length,a=0,arrayLength=0;
-			while((length = reader1.read()) != -1) {
-				arrayLength++;
-			}
-			char ch[] = new char[arrayLength];
-			while((charactar = reader2.read()) != -1) {
-				ch[a] = (char) charactar;
-				a++;
-			}
-			String stringValueOfCharArray = String.valueOf(ch);
-			txtInfoContainer.setText(stringValueOfCharArray);
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
+			txtInfoContainer.setText(new Help().loadHelpInfo());
 	}
 	
 ////////////////////////////////////////////Menu Function ////////////////////////////////////////////

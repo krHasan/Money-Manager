@@ -189,8 +189,6 @@ public class SettingsController extends SettingsModel {
 	private Button systembtnChangePassword;
 	@FXML
 	private Button systembtnSave;
-	@FXML
-	private Button systembtnWalletBalance;
 	
 	@FXML
 	private TextField systemtxtUsername;
@@ -234,8 +232,6 @@ public class SettingsController extends SettingsModel {
 	public void initialize() {
 		showTab();
 		lblUserFullName.setText(getUserFullName());
-		if(!userIsNew()) {systembtnWalletBalance.setManaged(false);}
-		updateLastAccessDate();
 		
 		btnSignOut.setTooltip(new Tooltip("Sign Out from application"));
 		Tooltip.install(lblUserFullName, new Tooltip("User's Full Name"));
@@ -283,8 +279,6 @@ public class SettingsController extends SettingsModel {
 		
 		systembtnChangeName.setTooltip(new Tooltip("Change your name"));
 		systembtnChangePassword.setTooltip(new Tooltip("Change your password"));
-		systembtnWalletBalance.setTooltip(new Tooltip("Let you set your initial wallet balance\n"
-				+ "this will be available new user only"));
 		systembtnSave.setTooltip(new Tooltip("Save changes of your date and time format"));
 		Tooltip.install(systemtxtUsername, new Tooltip("Your Username"));
 		Tooltip.install(systemtxtName, new Tooltip("Your full name"));

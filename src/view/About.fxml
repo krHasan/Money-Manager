@@ -70,8 +70,8 @@
             <Font name="Comic Sans MS" size="13.0" />
          </font>
       </Label>
-      <Hyperlink alignment="CENTER" layoutX="300.0" layoutY="260.0" prefHeight="28.0" prefWidth="200.0" text="https://github.com/krHasan" />
-      <Hyperlink alignment="CENTER" layoutX="270.0" layoutY="283.0" prefHeight="28.0" prefWidth="260.0" text="https://www.linkedin.com/in/kr-hasan" />
+      <Hyperlink alignment="CENTER" layoutX="300.0" layoutY="260.0" onAction="#hyperlinkGit" prefHeight="28.0" prefWidth="200.0" text="https://github.com/krHasan" />
+      <Hyperlink alignment="CENTER" layoutX="270.0" layoutY="283.0" onAction="#hyperlinkLinkedin" prefHeight="28.0" prefWidth="260.0" text="https://www.linkedin.com/in/kr-hasan" />
       <Label alignment="CENTER" layoutX="300.0" layoutY="177.0" prefHeight="28.0" prefWidth="200.0" text="Developer Info" textFill="#250404" underline="true">
          <font>
             <Font name="Comic Sans MS Bold" size="15.0" />
