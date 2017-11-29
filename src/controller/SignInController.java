@@ -75,6 +75,10 @@ public class SignInController extends SignInModel {
 			}
 		} catch (Exception e) {}
 		
+		if (!isDBConnected()) {
+			lblWrongAuthentication.setText("Database not found");
+		}
+		
 		btnSignIn.setTooltip(new Tooltip("If Username and Password will \n"
 				+ "correct you will be signed in"));
 		btnCancel.setTooltip(new Tooltip("Cancel the action"));

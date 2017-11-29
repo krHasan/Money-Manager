@@ -1,5 +1,6 @@
 /controller/
 /database/
+/help/
 /model/
 /operation/
 /system/
@@ -7,7 +8,3 @@
 /tableAndgraph/
 /view/
 /web/
-/html/
-/js_files/
-/imges/
-/help/
