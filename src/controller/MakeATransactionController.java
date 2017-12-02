@@ -30,6 +30,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.MakeATransactionModel;
 import operation.BankIssue;
+import operation.ComboboxList;
 import operation.GoToOperation;
 import system.DateFormatManager;
 import system.UnitConverter;
@@ -733,6 +734,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void tabGetMoney() {
 		gmInitialize();
+//		System.out.println(gmdateDate.getValue().getMonth());
 	}
 	
 	
@@ -857,7 +859,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				
 				stringData.put("gmTime", timeToSave());
 				stringData.put("gmDate", (new DateFormatManager()).toString(gmdateDate.getValue()));
-				stringData.put("gmMonth", monthToSave());
+				stringData.put("gmMonth", monthToSave(gmdateDate.getValue()));
 				stringData.put("gmAmount", gmtxtAmount.getText());
 				
 				if ((gmcmboMethod.getValue()).equals("bKash")) {
@@ -903,6 +905,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				}
 				
 				(new GetMoney()).saveGetMoneyData(stringData);
+				(new ComboboxList()).setAllMonth(monthToSave(gmdateDate.getValue()), yearToSave(gmdateDate.getValue()));
 				
 				gmInitialize();
 				gmtxtAmount.clear();
@@ -1020,7 +1023,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				
 				stringData.put("gmTime", timeToSave());
 				stringData.put("gmDate", (new DateFormatManager()).toString(gmdateDate.getValue()));
-				stringData.put("gmMonth", monthToSave());
+				stringData.put("gmMonth", monthToSave(gmdateDate.getValue()));
 				stringData.put("gmAmount", gmtxtAmount.getText());
 				
 				if ((gmcmboMethod.getValue()).equals("bKash")) {
@@ -1066,7 +1069,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				}
 				
 				(new GetMoney()).saveGetMoneyData(stringData);
-				
+				(new ComboboxList()).setAllMonth(monthToSave(gmdateDate.getValue()), yearToSave(gmdateDate.getValue()));
 //				gmInitialize();
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
@@ -1335,7 +1338,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			
 			expenseData.put("exTime", timeToSave());
 			expenseData.put("exDate", (new DateFormatManager()).toString(exdateDate.getValue()));
-			expenseData.put("exMonth", monthToSave());
+			expenseData.put("exMonth", monthToSave(exdateDate.getValue()));
 			
 			if (adjustBtnPressed) {
 				expenseData.put("exAmount", exAdjustAmount);
@@ -1374,6 +1377,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			}
 			
 			(new Expense()).saveExpenseData(expenseData);
+			(new ComboboxList()).setAllMonth(monthToSave(exdateDate.getValue()), yearToSave(exdateDate.getValue()));
 			
 			exInitialize();
 			extxtAmount.clear();
@@ -2341,7 +2345,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 						} else {
 							boleData.put("boTime", timeToSave());
 							boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-							boleData.put("boMonth", monthToSave());
+							boleData.put("boMonth", monthToSave(lenddateDate.getValue()));
 							boleData.put("boType", bocmboType.getValue());
 							boleData.put("boMethod", bocmboMethod.getValue());
 							boleData.put("boWhom", botxtFromWhom.getText());
@@ -2357,6 +2361,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							(new Borrow()).saveBorrowData(boleData);
 							(new Borrow()).addBorrowSummaryData(boleData);
 							(new Bkash()).saveBorrowBkashData(boleData);
+							(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 							setCurrentbKashBalance(updatedbKashBalance(botxtAmountWithCharge.getText(), "Cash In"));
 //							setCurrentbKashBalance(boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Money Take"));
 							setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(), "Money Take"));
@@ -2385,7 +2390,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 						} else {
 							boleData.put("boTime", timeToSave());
 							boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-							boleData.put("boMonth", monthToSave());
+							boleData.put("boMonth", monthToSave(lenddateDate.getValue()));
 							boleData.put("boType", bocmboType.getValue());
 							boleData.put("boMethod", bocmboMethod.getValue());
 							boleData.put("boWhom", botxtFromWhom.getText());
@@ -2401,6 +2406,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							(new Borrow()).saveBorrowData(boleData);
 							(new Borrow()).addBorrowSummaryData(boleData);
 							(new Rocket()).saveBorrowRocketData(boleData);
+							(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 							setCurrentRocketBalance(updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash In", boGetSelectedrbtnName()));
 //							setCurrentRocketBalance(boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Money Take"));
 							setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(), "Money Take"));
@@ -2428,7 +2434,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 						} else {
 							boleData.put("boTime", timeToSave());
 							boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-							boleData.put("boMonth", monthToSave());
+							boleData.put("boMonth", monthToSave(lenddateDate.getValue()));
 							boleData.put("boType", bocmboType.getValue());
 							boleData.put("boMethod", bocmboMethod.getValue());
 							boleData.put("boWhom", botxtFromWhom.getText());
@@ -2443,7 +2449,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 							
 							(new Borrow()).saveBorrowData(boleData);
 							(new Borrow()).addBorrowSummaryData(boleData);
-							(new GetMoney()).saveBorrowGMData(boleData);
+//							(new GetMoney()).saveBorrowGMData(boleData);
+							(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 							setCurrentWalletBalance(gmWalletBalanceAfter(botxtAmountWithCharge.getText()));
 							setTotalBorrowTk(updatedTotalBorrowTk(botxtAmountWithCharge.getText(), "Money Take"));
 							boInitialize();
@@ -2475,7 +2482,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							if (boRepayValidation(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
 								boleData.put("boTime", timeToSave());
 								boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-								boleData.put("boMonth", monthToSave());
+								boleData.put("boMonth", monthToSave(lenddateDate.getValue()));
 								boleData.put("boType", bocmboType.getValue());
 								boleData.put("boMethod", bocmboMethod.getValue());
 								boleData.put("boWhom", bocmboRepaidPerson.getValue());
@@ -2495,6 +2502,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 									(new Borrow()).deleteBorrowSummaryData(boleData);
 								}
 								(new Bkash()).saveBorrowBkashData(boleData);
+								(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 								setCurrentbKashBalance(updatedbKashBalance(botxtAmountWithCharge.getText(), boGetSelectedrbtnName()));
 //								setCurrentbKashBalance(boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Return Borrowed Money"));
 								setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(),"Return Borrowed Money"));
@@ -2533,7 +2541,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							if (boRepayValidation(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
 								boleData.put("boTime", timeToSave());
 								boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-								boleData.put("boMonth", monthToSave());
+								boleData.put("boMonth", monthToSave(lenddateDate.getValue()));
 								boleData.put("boType", bocmboType.getValue());
 								boleData.put("boMethod", bocmboMethod.getValue());
 								boleData.put("boWhom", bocmboRepaidPerson.getValue());
@@ -2553,6 +2561,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 									(new Borrow()).deleteBorrowSummaryData(boleData);
 								}
 								(new Rocket()).saveBorrowRocketData(boleData);
+								(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 								setCurrentRocketBalance(updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash Out", boGetSelectedrbtnName()));
 //								setCurrentRocketBalance(boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Return Borrowed Money"));
 								setTotalBorrowTk(updatedTotalBorrowTk(botxtExactAmount.getText(),"Return Borrowed Money"));
@@ -2591,7 +2600,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							if (boRepayValidation(botxtAmountWithCharge.getText(), bocmboRepaidPerson.getValue())) {
 								boleData.put("boTime", timeToSave());
 								boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-								boleData.put("boMonth", monthToSave());
+								boleData.put("boMonth", monthToSave(lenddateDate.getValue()));
 								boleData.put("boType", bocmboType.getValue());
 								boleData.put("boMethod", bocmboMethod.getValue());
 								boleData.put("boWhom", bocmboRepaidPerson.getValue());
@@ -2610,7 +2619,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 								} else {
 									(new Borrow()).deleteBorrowSummaryData(boleData);
 								}
-								(new GetMoney()).saveBorrowGMData(boleData);
+//								(new GetMoney()).saveBorrowGMData(boleData);
+								(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 								setCurrentWalletBalance(exWalletBalanceAfter(botxtAmountWithCharge.getText()));
 								setTotalBorrowTk(updatedTotalBorrowTk(botxtAmountWithCharge.getText(),"Return Borrowed Money"));
 								boInitialize();
@@ -2654,7 +2664,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 						} else {
 							boleData.put("leTime", timeToSave());
 							boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-							boleData.put("leMonth", monthToSave());
+							boleData.put("leMonth", monthToSave(lenddateDate.getValue()));
 							boleData.put("leType", lecmboType.getValue());
 							boleData.put("leMethod", lecmboMethod.getValue());
 							boleData.put("leWhom", letxtFromWhom.getText());
@@ -2670,6 +2680,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							(new Lend()).saveLendData(boleData);
 							(new Lend()).addLendSummaryData(boleData);
 							(new Bkash()).saveLendBkashData(boleData);
+							(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 							setCurrentbKashBalance(updatedbKashBalance(letxtAmountWithCharge.getText(), leGetSelectedrbtnName()));
 //							setCurrentbKashBalance(leBkBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Give Money"));
 							setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(), "Give Money"));
@@ -2697,7 +2708,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 						} else {
 							boleData.put("leTime", timeToSave());
 							boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-							boleData.put("leMonth", monthToSave());
+							boleData.put("leMonth", monthToSave(lenddateDate.getValue()));
 							boleData.put("leType", lecmboType.getValue());
 							boleData.put("leMethod", lecmboMethod.getValue());
 							boleData.put("leWhom", letxtFromWhom.getText());
@@ -2713,6 +2724,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							(new Lend()).saveLendData(boleData);
 							(new Lend()).addLendSummaryData(boleData);
 							(new Rocket()).saveLendRocketData(boleData);
+							(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 							setCurrentRocketBalance(updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash Out", leGetSelectedrbtnName()));
 //							setCurrentRocketBalance(leRocBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Give Money"));
 							setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(), "Give Money"));
@@ -2740,7 +2752,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 						} else {
 							boleData.put("leTime", timeToSave());
 							boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-							boleData.put("leMonth", monthToSave());
+							boleData.put("leMonth", monthToSave(lenddateDate.getValue()));
 							boleData.put("leType", lecmboType.getValue());
 							boleData.put("leMethod", lecmboMethod.getValue());
 							boleData.put("leWhom", letxtFromWhom.getText());
@@ -2755,7 +2767,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 							
 							(new Lend()).saveLendData(boleData);
 							(new Lend()).addLendSummaryData(boleData);
-							(new GetMoney()).saveLendGMData(boleData);
+//							(new GetMoney()).saveLendGMData(boleData);
+							(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 							setCurrentWalletBalance(exWalletBalanceAfter(letxtAmountWithCharge.getText()));
 							setTotalLendTk(updatedTotalLendTk(letxtAmountWithCharge.getText(), "Give Money"));
 							leInitialize();
@@ -2787,7 +2800,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							if (leRepayValidation(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
 								boleData.put("leTime", timeToSave());
 								boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-								boleData.put("leMonth", monthToSave());
+								boleData.put("leMonth", monthToSave(lenddateDate.getValue()));
 								boleData.put("leType", lecmboType.getValue());
 								boleData.put("leMethod", lecmboMethod.getValue());
 								boleData.put("leWhom", lecmboRepaidPerson.getValue());
@@ -2807,6 +2820,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 									(new Lend()).deleteLendSummaryData(boleData);
 								}
 								(new Bkash()).saveLendBkashData(boleData);
+								(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 								setCurrentbKashBalance(updatedbKashBalance(letxtAmountWithCharge.getText(), "Cash In"));
 //								setCurrentbKashBalance(leBkBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Take Back Lended Money"));
 								setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(),"Take Back Lended Money"));
@@ -2845,7 +2859,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							if (leRepayValidation(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
 								boleData.put("leTime", timeToSave());
 								boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-								boleData.put("leMonth", monthToSave());
+								boleData.put("leMonth", monthToSave(lenddateDate.getValue()));
 								boleData.put("leType", lecmboType.getValue());
 								boleData.put("leMethod", lecmboMethod.getValue());
 								boleData.put("leWhom", lecmboRepaidPerson.getValue());
@@ -2865,6 +2879,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 									(new Lend()).deleteLendSummaryData(boleData);
 								}
 								(new Rocket()).saveLendRocketData(boleData);
+								(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 								setCurrentRocketBalance(updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash In", leGetSelectedrbtnName()));
 //								setCurrentRocketBalance(leRocBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Take Back Lended Money"));
 								setTotalLendTk(updatedTotalLendTk(letxtExactAmount.getText(),"Take Back Lended Money"));
@@ -2903,7 +2918,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							if (leRepayValidation(letxtAmountWithCharge.getText(), lecmboRepaidPerson.getValue())) {
 								boleData.put("leTime", timeToSave());
 								boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
-								boleData.put("leMonth", monthToSave());
+								boleData.put("leMonth", monthToSave(lenddateDate.getValue()));
 								boleData.put("leType", lecmboType.getValue());
 								boleData.put("leMethod", lecmboMethod.getValue());
 								boleData.put("leWhom", lecmboRepaidPerson.getValue());
@@ -2922,7 +2937,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 								} else {
 									(new Lend()).deleteLendSummaryData(boleData);
 								}
-								(new GetMoney()).saveLendGMData(boleData);
+//								(new GetMoney()).saveLendGMData(boleData);
+								(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 								setCurrentWalletBalance(gmWalletBalanceAfter(letxtAmountWithCharge.getText()));
 								setTotalLendTk(updatedTotalLendTk(letxtAmountWithCharge.getText(),"Take Back Lended Money"));
 								leInitialize();
@@ -3795,7 +3811,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			try {
 				bnkData.put("bkTime", timeToSave());
 				bnkData.put("bkDate", (new DateFormatManager()).toString(bnkdateDate.getValue()));
-				bnkData.put("bkMonth", monthToSave());
+				bnkData.put("bkMonth", monthToSave(bnkdateDate.getValue()));
 				bnkData.put("bkBalanceBefore", getbkAccountBalance());
 				if (bnkAdjustBtnPressed) {
 					bnkData.put("bkType", "Adjusted Balance");
@@ -3819,12 +3835,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 						if (bkcmboAmountNature.getValue().equals("Debit")) {
 							bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
 							bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(bktxtAmount.getText()));
-							(new GetMoney()).saveBnkBkashData(bnkData);
+//							(new GetMoney()).saveBnkBkashData(bnkData);
 							setCurrentWalletBalance(gmWalletBalanceAfter(bktxtAmount.getText()));
 						}
 					}
 				}
 				
+				(new ComboboxList()).setAllMonth(monthToSave(bnkdateDate.getValue()), yearToSave(bnkdateDate.getValue()));
 				bkInitialize();
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
@@ -3851,7 +3868,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			try {
 				bnkData.put("rocTime", timeToSave());
 				bnkData.put("rocDate", (new DateFormatManager()).toString(bnkdateDate.getValue()));
-				bnkData.put("rocMonth", monthToSave());
+				bnkData.put("rocMonth", monthToSave(bnkdateDate.getValue()));
 				bnkData.put("rocBalanceBefore", getRocAccountBalance());
 				if (bnkAdjustBtnPressed) {
 					bnkData.put("rocType", "Adjusted Balance");
@@ -3877,7 +3894,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							setCurrentRocketBalance(updatedRocketBalance(roctxtAmount.getText(), "Cash Out", rocGetSelectedRbtn()));
 							bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
 							bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(roctxtAmount.getText()));
-							(new GetMoney()).saveBnkRocketData(bnkData);
+//							(new GetMoney()).saveBnkRocketData(bnkData);
 							setCurrentWalletBalance(gmWalletBalanceAfter(roctxtAmount.getText()));
 						}
 					} else {
@@ -3892,6 +3909,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 					(new Rocket()).saveBnkRocketData(bnkData);
 				}
 				
+				(new ComboboxList()).setAllMonth(monthToSave(bnkdateDate.getValue()), yearToSave(bnkdateDate.getValue()));
 				rocInitialize();
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
@@ -3917,7 +3935,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			try {
 				bnkData.put("perTime", timeToSave());
 				bnkData.put("perDate", (new DateFormatManager()).toString(bnkdateDate.getValue()));
-				bnkData.put("perMonth", monthToSave());
+				bnkData.put("perMonth", monthToSave(bnkdateDate.getValue()));
 				bnkData.put("perNature", percmboAmountNature.getValue());
 				bnkData.put("perAmount", pertxtAmount.getText());
 				bnkData.put("perBalanceBefore", getPerAccountBalance());
@@ -3926,19 +3944,20 @@ public class MakeATransactionController extends MakeATransactionModel {
 					bnkData.put("perBalanceAfter", updatedPersonalBalance(pertxtAmount.getText(), "Credit"));
 					bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
 					bnkData.put("gmWalletBalanceAfter", exWalletBalanceAfter(pertxtAmount.getText()));
-					(new GetMoney()).saveBnkPersonalData(bnkData);
+//					(new GetMoney()).saveBnkPersonalData(bnkData);
 					setCurrentWalletBalance(exWalletBalanceAfter(pertxtAmount.getText()));
 					setCurrentPersonalBalance(updatedPersonalBalance(pertxtAmount.getText(), "Credit"));
 				} else {
 					bnkData.put("perBalanceAfter", updatedPersonalBalance(pertxtAmount.getText(), "Debit"));
 					bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
 					bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(pertxtAmount.getText()));
-					(new GetMoney()).saveBnkPersonalData(bnkData);
+//					(new GetMoney()).saveBnkPersonalData(bnkData);
 					setCurrentWalletBalance(gmWalletBalanceAfter(pertxtAmount.getText()));
 					setCurrentPersonalBalance(updatedPersonalBalance(pertxtAmount.getText(), "Debit"));
 				}
 				(new Personal()).saveBnkPersonalData(bnkData);
 				
+				(new ComboboxList()).setAllMonth(monthToSave(bnkdateDate.getValue()), yearToSave(bnkdateDate.getValue()));
 				perInitialize();
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);

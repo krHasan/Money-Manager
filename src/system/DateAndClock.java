@@ -68,7 +68,7 @@ public class DateAndClock extends UserBasic {
 	}
 	
 	
-	public static String getMonth() {
+	public static String getThisMonthName() {
 		DateFormat monthFormat = new SimpleDateFormat("MMM-yy");
 		Calendar today = Calendar.getInstance();
     	String thisMonth = monthFormat.format(today.getTime());
@@ -132,33 +132,6 @@ public class DateAndClock extends UserBasic {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	
-	public void addMonth() {
-		String dbLastMonth = "No Month";
-		
-		String getLastMonth = "SELECT * FROM All_Months ORDER BY ID DESC LIMIT 1";
-		try (Connection conn = connector();
-				Statement stmt = conn.createStatement();
-				ResultSet result = stmt.executeQuery(getLastMonth)) {
-			if (result.next()) {
-				dbLastMonth = result.getString("allTransactionMonth");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if (!dbLastMonth.equals(getMonth())) {
-			String addMonthYear = "INSERT INTO All_Months(allYear, allTransactionMonth) VALUES(?,?)";
-			try (Connection conn = connector();
-					PreparedStatement pstmt = conn.prepareStatement(addMonthYear)) {
-				pstmt.setString(1, getYear());
-				pstmt.setString(2, getMonth());
-				pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}	
 	}
 
 	

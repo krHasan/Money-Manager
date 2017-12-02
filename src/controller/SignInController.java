@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.SignInModel;
+import operation.ComboboxList;
 import operation.GoToRegistration;
 import tab.TabAccess;
 
@@ -96,7 +97,7 @@ public class SignInController extends SignInModel {
 	private void logIn(ActionEvent event) {
 		if (authentication(txtUsername.getText(), passPassword.getText())) {
 			Stage SignInStage = (Stage) btnSignIn.getScene().getWindow();
-			addMonth();
+			new ComboboxList().setAllMonth(getThisMonthName(), getYear());
 			
 			if (userIsNew()) {			
 				goToDashboard(SignInStage.getX(), SignInStage.getY());
@@ -123,10 +124,12 @@ public class SignInController extends SignInModel {
 			alert.setTitle("Confirmation");
 			alert.setHeaderText("Only one user can use this at a time");
 			alert.setContentText("User exists, Delete this one?");
+			Stage SignInStage = (Stage) lblNewUser.getScene().getWindow();
+			alert.setX(SignInStage.getX()+200);
+			alert.setY(SignInStage.getY()+170);
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
 				(new TabAccess()).setreRegistrationLodingStatus("deleteUser");
-				Stage SignInStage = (Stage) lblNewUser.getScene().getWindow();
 				(new GoToRegistration()).goToReRegistration(SignInStage.getX(), SignInStage.getY());
 				SignInStage.close();
 			}

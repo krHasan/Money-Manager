@@ -1,5 +1,9 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import operation.BankIssue;
@@ -110,8 +114,19 @@ public class MakeATransactionModel extends DateAndClock {
 	}
 	
 	
-	public String monthToSave() {
-		return getMonth();
+	public String monthToSave(LocalDate localdate) {
+		java.util.Date date = java.sql.Date.valueOf(localdate);
+		DateFormat monthFormat = new SimpleDateFormat("MMM-yy");
+    	String Month = monthFormat.format(date);
+		return Month;
+	}
+	
+	
+	public String yearToSave(LocalDate localdate) {
+		java.util.Date date = java.sql.Date.valueOf(localdate);
+		DateFormat monthFormat = new SimpleDateFormat("yyyy");
+    	String year = monthFormat.format(date);
+		return year;
 	}
 	
 	

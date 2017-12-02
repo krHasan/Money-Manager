@@ -25,8 +25,7 @@ public class HistorySearch extends DatabaseConnection {
 	
 	@SuppressWarnings("unchecked")
 	public Collection<JSONObject> getAllHistory() {
-		int minIDnumber = new MaxMinGlobalID().getMinIDNumber(monthName);
-		int maxIDnumber = new MaxMinGlobalID().getMaxIDNumber(monthName);
+		int gIDnumbers[] = new MaxMinGlobalID().getGlobalIDNumbers(monthName);
 		
 		Collection<JSONObject> allData = new LinkedList<JSONObject>();
 		
@@ -45,7 +44,7 @@ public class HistorySearch extends DatabaseConnection {
 		
 		if (typedFilterName.equals("All")) {
 			
-			for (int max = maxIDnumber; max >= minIDnumber; max--) {
+			for (int max : gIDnumbers) {
 				
 				String gmresult = "SELECT * FROM Get_Money WHERE globalID = ?";
 				try (Connection conn = connector();
@@ -210,7 +209,7 @@ public class HistorySearch extends DatabaseConnection {
 			
 		} else if(typedFilterName.equals("Get Money")) {
 
-			for (int max = maxIDnumber; max >= minIDnumber; max--) {
+			for (int max : gIDnumbers) {
 				String gmresult = "SELECT * FROM Get_Money WHERE globalID = ?";
 				try (Connection conn = connector();
 						PreparedStatement pstmt = conn.prepareStatement(gmresult)) {
@@ -238,7 +237,7 @@ public class HistorySearch extends DatabaseConnection {
 			
 		} else if(typedFilterName.equals("Expense")) {
 
-			for (int max = maxIDnumber; max >= minIDnumber; max--) {
+			for (int max : gIDnumbers) {
 				String exresult = "SELECT * FROM Expense WHERE globalID = ?";
 				try (Connection conn = connector();
 						PreparedStatement pstmt = conn.prepareStatement(exresult)) {
@@ -263,7 +262,7 @@ public class HistorySearch extends DatabaseConnection {
 			
 		} else if(typedFilterName.equals("Borrow")) {
 
-			for (int max = maxIDnumber; max >= minIDnumber; max--) {
+			for (int max : gIDnumbers) {
 				String boresult = "SELECT * FROM Borrow WHERE globalID = ?";
 				try (Connection conn = connector();
 						PreparedStatement pstmt = conn.prepareStatement(boresult)) {
@@ -292,7 +291,7 @@ public class HistorySearch extends DatabaseConnection {
 			
 		} else if(typedFilterName.equals("Lend")) {
 
-			for (int max = maxIDnumber; max >= minIDnumber; max--) {
+			for (int max : gIDnumbers) {
 				String leresult = "SELECT * FROM Lend WHERE globalID = ?";
 				try (Connection conn = connector();
 						PreparedStatement pstmt = conn.prepareStatement(leresult)) {
@@ -321,7 +320,7 @@ public class HistorySearch extends DatabaseConnection {
 			
 		} else if(typedFilterName.equals("bKash")) {
 
-			for (int max = maxIDnumber; max >= minIDnumber; max--) {
+			for (int max : gIDnumbers) {
 				String bkresult = "SELECT * FROM bKash WHERE globalID = ?";
 				try (Connection conn = connector();
 						PreparedStatement pstmt = conn.prepareStatement(bkresult)) {
@@ -347,7 +346,7 @@ public class HistorySearch extends DatabaseConnection {
 			
 		} else if(typedFilterName.equals("Rocket")) {
 
-			for (int max = maxIDnumber; max >= minIDnumber; max--) {
+			for (int max : gIDnumbers) {
 				String rocresult = "SELECT * FROM Rocket WHERE globalID = ?";
 				try (Connection conn = connector();
 						PreparedStatement pstmt = conn.prepareStatement(rocresult)) {
@@ -373,7 +372,7 @@ public class HistorySearch extends DatabaseConnection {
 			
 		} else if(typedFilterName.equals("Personal")) {
 
-			for (int max = maxIDnumber; max >= minIDnumber; max--) {
+			for (int max : gIDnumbers) {
 				String perresult = "SELECT * FROM Personal WHERE globalID = ?";
 				try (Connection conn = connector();
 						PreparedStatement pstmt = conn.prepareStatement(perresult)) {
@@ -397,10 +396,11 @@ public class HistorySearch extends DatabaseConnection {
 			
 		} else if (new ComboboxList().isFilterInSource(typedFilterName)) {
 	
-			String sourceFilterSQL = "SELECT * FROM Get_Money WHERE gmSource = ? ORDER BY globalID DESC";
+			String sourceFilterSQL = "SELECT * FROM Get_Money WHERE gmSource = ? AND gmMonth = ? ORDER BY globalID DESC";
 			try (Connection conn = connector();
 					PreparedStatement pstmt = conn.prepareStatement(sourceFilterSQL)) {
 				pstmt.setString(1, typedFilterName);
+				pstmt.setString(2, monthName);
 				ResultSet result = pstmt.executeQuery();
 				while (result.next()) {
 					JSONObject sourceData = new JSONObject();
@@ -423,10 +423,11 @@ public class HistorySearch extends DatabaseConnection {
 	
 		} else if (new ComboboxList().isFilterInSector(typedFilterName)) {
 		
-			String sectorresult = "SELECT * FROM Expense WHERE exSector = ? ORDER BY globalID DESC";
+			String sectorresult = "SELECT * FROM Expense WHERE exSector = ? AND exMonth = ? ORDER BY globalID DESC";
 			try (Connection conn = connector();
 					PreparedStatement pstmt = conn.prepareStatement(sectorresult)) {
 				pstmt.setString(1, typedFilterName);
+				pstmt.setString(2, monthName);
 				ResultSet result = pstmt.executeQuery();
 				while (result.next()) {
 					JSONObject sectorData = new JSONObject();

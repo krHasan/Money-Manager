@@ -118,37 +118,7 @@
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txt1000" alignment="CENTER" layoutX="211.0" layoutY="145.0" onKeyReleased="#txt1000" prefHeight="30.0" prefWidth="55.0" promptText="0">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txt500" alignment="CENTER" layoutX="211.0" layoutY="185.0" onKeyReleased="#txt500" prefHeight="30.0" prefWidth="55.0" promptText="0">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txt100" alignment="CENTER" layoutX="211.0" layoutY="225.0" onKeyReleased="#txt100" prefHeight="30.0" prefWidth="55.0" promptText="0">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txt50" alignment="CENTER" layoutX="211.0" layoutY="265.0" onKeyReleased="#txt50" prefHeight="30.0" prefWidth="55.0" promptText="0">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txt20" alignment="CENTER" layoutX="211.0" layoutY="305.0" onKeyReleased="#txt20" prefHeight="30.0" prefWidth="55.0" promptText="0">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txt10" alignment="CENTER" layoutX="211.0" layoutY="345.0" onKeyReleased="#txt10" prefHeight="30.0" prefWidth="55.0" promptText="0">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="txt5" alignment="CENTER" layoutX="211.0" layoutY="385.0" onKeyReleased="#txt5" prefHeight="30.0" prefWidth="55.0" promptText="0">
+      <TextField fx:id="txt1" alignment="CENTER" layoutX="211.0" layoutY="465.0" onKeyReleased="#txt1" prefHeight="30.0" prefWidth="55.0" promptText="0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -158,7 +128,37 @@
             <Font name="Arial" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="txt1" alignment="CENTER" layoutX="211.0" layoutY="465.0" onKeyReleased="#txt1" prefHeight="30.0" prefWidth="55.0" promptText="0">
+      <TextField fx:id="txt5" alignment="CENTER" layoutX="211.0" layoutY="385.0" onKeyReleased="#txt5" prefHeight="30.0" prefWidth="55.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt10" alignment="CENTER" layoutX="211.0" layoutY="345.0" onKeyReleased="#txt10" prefHeight="30.0" prefWidth="55.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt20" alignment="CENTER" layoutX="211.0" layoutY="305.0" onKeyReleased="#txt20" prefHeight="30.0" prefWidth="55.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt50" alignment="CENTER" layoutX="211.0" layoutY="265.0" onKeyReleased="#txt50" prefHeight="30.0" prefWidth="55.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt100" alignment="CENTER" layoutX="211.0" layoutY="225.0" onKeyReleased="#txt100" prefHeight="30.0" prefWidth="55.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt500" alignment="CENTER" layoutX="211.0" layoutY="185.0" onKeyReleased="#txt500" prefHeight="30.0" prefWidth="55.0" promptText="0">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt1000" alignment="CENTER" layoutX="211.0" layoutY="145.0" onKeyReleased="#txt1000" prefHeight="30.0" prefWidth="55.0" promptText="0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>

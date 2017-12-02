@@ -96,8 +96,17 @@ public class DateFormatManager extends StringConverter<LocalDate> {
 	
 	
 //	public static void main(String[] args) {
-//		FormatManager access = new FormatManager();
-//		System.out.println(access.getDateFormat());
+//		DateFormatManager access = new DateFormatManager();
+//		access.fromString("01 December, 2017");
+//		DateFormat monthFormat = new SimpleDateFormat("MMM-yy");
+//		Calendar today = Calendar.getInstance();
+//		java.util.Date date = java.sql.Date.valueOf(access.fromString("01 December, 2017"));
+//    	String thisMonth = monthFormat.format(date);
+//    	System.out.println(thisMonth);
 //	}
 
 }
+
+
+
+

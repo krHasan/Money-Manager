@@ -39,6 +39,7 @@ import tableAndgraph.ExpenseChart;
 import tableAndgraph.GetMoneyChart;
 
 public class DashboardController extends DashboardModel {
+//	JavaFX Node object 
 	@FXML
 	private AnchorPane container;
 	
@@ -160,10 +161,13 @@ public class DashboardController extends DashboardModel {
 ////////////////////////////////// General Function //////////////////////////////
 	@FXML
 	public void initialize() {
+//		show user name and current balance status
 		lblUserFullName.setText(userFullName());
 		lblWalletBalance.setText(addThousandSeparator(getWalletBalance()));
 		lblTotalBorrow.setText(addThousandSeparator(getTotalBorrowTk()));
 		lblTotalLend.setText(addThousandSeparator(getTotalLendTk()));
+		
+//		show balance if service is enabled
 		if (BankIssue.isbKashActivated()) {
 			lblbKashName.setVisible(true);
 			lblbKashBalance.setVisible(true);
@@ -181,16 +185,18 @@ public class DashboardController extends DashboardModel {
 			lblRocketBalance.setVisible(false);
 		}
 		lblPersonalBalance.setText(getPerAccountBalance());
-		showAllGetMoneyMonths();
-		showSource();
-		showAllExpenseMonths();
-		showSector();
-		showSourceAmount();
-		showSectorAmount();
-		getMoneyChart();
-		expenseChart();
-		clock();
 		
+		showAllGetMoneyMonths(); //load all transacted Get Money month
+		showSource(); // load all active sources
+		showAllExpenseMonths(); //load all transacted Expense month
+		showSector(); //load all active sectors
+		showSourceAmount(); //show total amount by selected source
+		showSectorAmount();//show total amount by selected sector
+		getMoneyChart(); //generate chart value
+		expenseChart();
+		clock(); //run the analog clock
+		
+//		add tooltip
 		btnSignOut.setTooltip(new Tooltip("Sign Out from Application"));
 		btnMakeATransaction.setTooltip(new Tooltip("Take you to your transaction window"));
 		btnCashCalculate.setTooltip(new Tooltip("Calculate how much money at your hand now"));
@@ -214,6 +220,7 @@ public class DashboardController extends DashboardModel {
 		Tooltip.install(cmboSectorList, new Tooltip("Name of Expenditure Sector, where you expense your Tk."));
 		Tooltip.install(lblTotalExpense, new Tooltip("Total Tk. from this Expenditure Sector"));
 		
+//		show welcome note if the user is new
 		if (userIsNew()) {		
 			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 			confirmationMsg.setTitle("Welcome");
@@ -225,11 +232,11 @@ public class DashboardController extends DashboardModel {
 	}
 	
 	
-	@FXML
+	@FXML //open expected stage on click
 	private void btnRefreshCharts(ActionEvent ev) {
-		Stage DashboardStage = (Stage) btnRefreshCharts.getScene().getWindow();
-		(new GoToOperation()).goToDashboard(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		Stage DashboardStage = (Stage) btnRefreshCharts.getScene().getWindow();//make object for this stage
+		(new GoToOperation()).goToDashboard(DashboardStage.getX(), DashboardStage.getY()); //open expected stage
+		DashboardStage.close(); //close this stage
 	}
 	
 	
@@ -243,7 +250,7 @@ public class DashboardController extends DashboardModel {
 	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
-		(new TabAccess()).setTabName("tabGetMoney");
+		(new TabAccess()).setTabName("tabGetMoney"); //define which tab should open
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
 		DashboardStage.close();
@@ -404,42 +411,43 @@ public class DashboardController extends DashboardModel {
 	
 	
 ///////////////////////  Others Function ///////////////////////////
+	//load all transacted Get Money month
 	private void showAllGetMoneyMonths() {
 		cmboGetMoneyMonthList.setItems(loadAllGetMoneyMonths());
 		cmboGetMoneyMonthList.getSelectionModel().selectFirst();
 	}
 	
-	
+	//load all active sources
 	private void showSource() {
 		cmboSourceList.setItems(loadSource());
 		cmboSourceList.getSelectionModel().selectFirst();
 	}
 	
-	
+//	show total amount by selected source
 	private void showSourceAmount() {
 		lblTotalGetMoney.setText(getAmountBySource(cmboGetMoneyMonthList.getValue(), cmboSourceList.getValue()));
 	}
 	
-	
+//	load all transacted expense months
 	private void showAllExpenseMonths() {
 		cmboExpenseMonthList.setItems(loadAllExpenseMonths());
 		cmboExpenseMonthList.getSelectionModel().selectFirst();
 	}
 	
-	
+//	load all active sector
 	private void showSector() {
 		cmboSectorList.setItems(loadSector());
 		cmboSectorList.getSelectionModel().selectFirst();
 	}
 
-	
+//	show total amount by selected sector
 	private void showSectorAmount() {
 		try {
 			lblTotalExpense.setText(getAmountBySector(cmboExpenseMonthList.getValue(), cmboSectorList.getValue()));
 		} catch (Exception e) {}
 	}
 	
-	
+//	Action events
 	@FXML
 	private void cmboGetMoneyMonthList(ActionEvent event) {
 		try {
@@ -448,14 +456,12 @@ public class DashboardController extends DashboardModel {
 		} catch (Exception e) {}
 	}
 	
-	
 	@FXML
 	private void cmboSourceList(ActionEvent event) {
 		try {
 			showSourceAmount();
 		} catch (Exception e) {}
 	}
-	
 	
 	@FXML
 	private void cmboExpenseMonthList(ActionEvent event) {
@@ -465,7 +471,6 @@ public class DashboardController extends DashboardModel {
 		} catch (Exception e) {}
 	}
 	
-	
 	@FXML
 	private void cmboSectorList(ActionEvent event) {
 		try {
@@ -473,7 +478,7 @@ public class DashboardController extends DashboardModel {
 		} catch (Exception e) {}
 	}
 	
-	
+//	show value in charts
 	private void getMoneyChart() {
 		gmXaxis.setLabel("Sources Name");
 		gmYaxis.setLabel("Amount");
@@ -481,7 +486,6 @@ public class DashboardController extends DashboardModel {
 		Series<String, Number> gmChartData = GetMoneyChart.getSourceData(cmboGetMoneyMonthList.getValue());
 		chartGetMoney.getData().add(gmChartData);
 	}
-	
 	
 	private void expenseChart() {
 		exXaxis.setLabel("Sectors Name");

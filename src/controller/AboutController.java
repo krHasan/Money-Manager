@@ -13,7 +13,7 @@ import system.DateAndClock;
 import tab.TabAccess;
 
 public class AboutController extends DateAndClock {
-	
+//	create Menu node object
 	@FXML
 	private MenuItem mnuDashboard;
 	@FXML
@@ -59,22 +59,24 @@ public class AboutController extends DateAndClock {
 //////////////////// General Function //////////////////////////////
 	@FXML
 	public void initialize() {
+//		load user full name on Menu
 		lblUserFullName.setText(userFullName());
 		
 	}
 	
 //////////////////////////////////////////// Menu Function ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------//
-	@FXML
+//	all menu function
+	@FXML 
 	private void mnuDashboard(ActionEvent event) {
-		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToDashboard(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow(); // create stage object
+		(new GoToOperation()).goToDashboard(AboutStage.getX(), AboutStage.getY()); // start expected stage
+		AboutStage.close(); //close this stage
 	}
 	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
-		(new TabAccess()).setTabName("tabGetMoney");
+		(new TabAccess()).setTabName("tabGetMoney"); //name of which Tab should open
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(AboutStage.getX(), AboutStage.getY());
 		AboutStage.close();
@@ -204,16 +206,16 @@ public class AboutController extends DateAndClock {
 	
 	@FXML
 	private void hyperlinkLinkedin(ActionEvent event) {
-	    openWebpage("https://www.linkedin.com/in/kr-hasan");
+	    openWebpage("https://www.linkedin.com/in/kr-hasan"); //clicking this link will open Linkedin profile
 	}
 	
 	
 	@FXML
 	private void hyperlinkGit(ActionEvent event) {
-	    openWebpage("https://github.com/krHasan");
+	    openWebpage("https://github.com/krHasan"); //clicking this link will open github profile
 	}
 	
-	
+//	method for opening the parameter link on user default browser
 	public static void openWebpage(String url) {
 	    try {
 	        new ProcessBuilder("x-www-browser", url).start();

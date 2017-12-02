@@ -855,7 +855,7 @@
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="mnuSettings" mnemonicParsing="false" onAction="#mnuSettings" text="Settings" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" onAction="#mnuTransactionHistory" text="Transaction Hirtory" />
+                  <MenuItem fx:id="mnuTransactionHistory" mnemonicParsing="false" onAction="#mnuTransactionHistory" text="Transaction History" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="mnuCashCalculate" mnemonicParsing="false" onAction="#mnuCashCalculate" text="Cash Calculate" />
                   <SeparatorMenuItem mnemonicParsing="false" />

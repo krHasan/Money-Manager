@@ -1,6 +1,7 @@
 package operation;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -349,7 +350,7 @@ public class ComboboxList extends DatabaseConnection {
 			String list[] = new String[getAllMonthSize()];
 			String sql = "SELECT allTransactionMonth \n"
 					+ "FROM All_Months \n"
-					+ "ORDER BY allTransactionMonth";
+					+ "ORDER BY allTransactionMonth DESC";
 			try (Connection conn = connector();
 					Statement stmt = conn.createStatement();
 					ResultSet result = stmt.executeQuery(sql)) {
@@ -385,6 +386,28 @@ public class ComboboxList extends DatabaseConnection {
 		return size;
 	}
 	
+	
+	public void setAllMonth(String monthName, String yearName) {
+		String getDBMonth = "SELECT * FROM All_Months WHERE allTransactionMonth = ?";
+		String addMonthYear = "INSERT INTO All_Months(allYear, allTransactionMonth) VALUES(?,?)";
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(getDBMonth)) {
+			pstmt.setString(1, monthName);
+			ResultSet result = pstmt.executeQuery();
+			if (!result.next()) {
+				try (Connection conn2 = connector();
+						PreparedStatement pstmt2 = conn2.prepareStatement(addMonthYear)) {
+					pstmt2.setString(1, yearName);
+					pstmt2.setString(2, monthName);
+					pstmt2.executeUpdate();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 //	public String[] getAllYear() {
 //		if(getAllYearSize()>0) {
@@ -604,11 +627,11 @@ public class ComboboxList extends DatabaseConnection {
 		return list;
 	}
 	
-	public static void main(String[] args) {
-		ComboboxList access = new ComboboxList();
-		System.out.println(access.permanantFilterSize());
-		System.out.println(access.getSourceArraySize());
-		System.out.println(access.getSectorArraySize());
+//	public static void main(String[] args) {
+//		ComboboxList access = new ComboboxList();
+//		System.out.println(access.permanantFilterSize());
+//		System.out.println(access.getSourceArraySize());
+//		System.out.println(access.getSectorArraySize());
 //		String list[] = access.getSourceList();
 //		for (String string : list) {
 //			System.out.println("Source :"+string);
@@ -618,7 +641,7 @@ public class ComboboxList extends DatabaseConnection {
 //		for (String string : list2) {
 //			System.out.println("Method: "+string);
 //		}
-	}
+//	}
 }
 
 

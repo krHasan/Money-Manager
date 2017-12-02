@@ -18,7 +18,7 @@ Money Manager have three main focusing window
 
 When you Signed In, program shows the "Dashboard" window first. You can initialize your wallet balance using "Adjust Balance" button from Expense Tab in Make A Transaction window. 
 
-Here I added some very short videos to show how can you use MOney-Manager. I suggest, please see them to understand how it works.
+Here I added some very short videos to show how can you use Money-Manager. I suggest, please see them to understand how it works.
 
 ### Sign In
 [![Sign In](https://img.youtube.com/vi/Lbe8yS7ethc/0.jpg)](https://youtu.be/Lbe8yS7ethc)

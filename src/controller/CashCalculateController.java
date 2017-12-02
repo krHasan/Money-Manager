@@ -13,7 +13,7 @@ import operation.GoToOperation;
 import tab.TabAccess;
 
 public class CashCalculateController extends CashCalculateModel {
-	
+	//JavaFX Menu node object
 	@FXML
 	private MenuItem mnuDashboard;
 	@FXML
@@ -49,6 +49,7 @@ public class CashCalculateController extends CashCalculateModel {
 	@FXML
 	private MenuItem mnuAbout;
 	
+//	button object
 	@FXML
 	private Button btnDashboard;
 	@FXML
@@ -56,6 +57,7 @@ public class CashCalculateController extends CashCalculateModel {
 	@FXML
 	private Button btnSignOut;
 	
+//	Label object
 	@FXML
 	private Label lblLongClock;
 	@FXML
@@ -87,6 +89,7 @@ public class CashCalculateController extends CashCalculateModel {
 	@FXML
 	private Label lblWarningMsg;
 	
+//	TextField object
 	@FXML
 	private TextField txt1000;
 	@FXML
@@ -110,10 +113,11 @@ public class CashCalculateController extends CashCalculateModel {
 //////////////////// General Function //////////////////////////////
 	@FXML
 	public void initialize() {
-		lblUserFullName.setText(userFullName());
-		lblWalletBalance.setText(addThousandSeparator(getWalletBalance()));
-		CashCalculate();
+		lblUserFullName.setText(userFullName()); //show user full name on Menu
+		lblWalletBalance.setText(addThousandSeparator(getWalletBalance())); //show current wallet balance
+		CashCalculate(); //set all field initialize value to 0
 		
+//		add tooltip on mouse hover
 		btnDashboard.setTooltip(new Tooltip("Will Take you to Dashboard"));
 		btnMakeATransaction.setTooltip(new Tooltip("Will Take you to Expense"));
 		btnSignOut.setTooltip(new Tooltip("Sign Out from Application"));
@@ -132,16 +136,17 @@ public class CashCalculateController extends CashCalculateModel {
 	
 //////////////////////////////////////////// Menu Function ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------//
+//	all menu function
 	@FXML
 	private void mnuDashboard(ActionEvent event) {
-		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToDashboard(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow(); //create this stage object
+		(new GoToOperation()).goToDashboard(CashCalculateStage.getX(), CashCalculateStage.getY()); //open expected stage
+		CashCalculateStage.close(); //close this stage
 	}
 	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
-		(new TabAccess()).setTabName("tabGetMoney");
+		(new TabAccess()).setTabName("tabGetMoney");//define which tab should open
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
 		CashCalculateStage.close();
@@ -286,8 +291,9 @@ public class CashCalculateController extends CashCalculateModel {
 	
 	
 ///////////////////// Cash Calculate Function ///////////////////////////
-	final String InvalidInput = "Invalid Input. Type within 0 to 9999";
+	final String InvalidInput = "Invalid Input. Type within 0 to 9999";//message if input string is invalid
 	
+//	On Key Released Event for all textfield
 	@FXML
 	private void txt1000() {
 		if (validAmount(txt1000.getText())) {
@@ -405,14 +411,16 @@ public class CashCalculateController extends CashCalculateModel {
 		}
 	}
 	
-	
+//	calculate amount of money
 	public void CashCalculate() {
+//		add zero if field is empty
 		TextField zero[] = {txt1000, txt500, txt100, txt50, txt20, txt10, txt5, txt2, txt1};
 		for (TextField textField : zero) {
 			if (textField.getText().isEmpty()) {
 				textField.setText("0");
 			}
 		}
+//		main calculation
 		int total1000 = stringToInt(txt1000.getText())*1000;
 		lbl1000.setText(" = " + addThousandSeparator(intToString(total1000)));
 		
