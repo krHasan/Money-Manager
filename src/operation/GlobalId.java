@@ -44,6 +44,18 @@ public class GlobalId extends DatabaseConnection {
 	}
 	
 	
+	public static void setGlobalId(int updateGID) {
+		String sql = "UPDATE System_Settings SET globalId = ? WHERE ID = 1";
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)){
+			pstmt.setInt(1, updateGID);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 //	public static void main(String[] args) {
 //		System.out.println(getGlobalid());
 //	}

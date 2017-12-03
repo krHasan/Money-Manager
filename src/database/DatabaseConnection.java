@@ -16,10 +16,12 @@ public class DatabaseConnection {
         Connection conn = null;
         try {
         	Class.forName("org.sqlite.JDBC");
-//            String url = "jdbc:sqlite::resource:database/Money_Manager.db";
-//            String url = "jdbc:sqlite:/home/"+System.getProperty("user.name")+"/Money_Manager.db";
-//        	String url = "jdbc:sqlite:Money_Manager.db";
-        	String url = "jdbc:sqlite:/opt/Money-Manager/app/resources/Money_Manager.db";
+        	//for Linux distribution
+//            String url = "jdbc:sqlite:/home/"+System.getProperty("user.name")+"/Money-ManagerDB/Money_Manager.db";
+            
+          //for Windows distribution
+            String url = "jdbc:sqlite:Money_Manager.db";
+            
             conn = DriverManager.getConnection(url);
 //            System.out.println("Connection to SQLite has been established.");
         } catch (SQLException | ClassNotFoundException e) {

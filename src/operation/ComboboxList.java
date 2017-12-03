@@ -4,6 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
 
 import database.DatabaseConnection;
 
@@ -346,19 +352,37 @@ public class ComboboxList extends DatabaseConnection {
 	
 	
 	public String[] getAllMonth() {
+		List<Date>  dates = new ArrayList<Date>();
 		if(getAllMonthSize()>0) {
 			String list[] = new String[getAllMonthSize()];
 			String sql = "SELECT allTransactionMonth \n"
 					+ "FROM All_Months \n"
 					+ "ORDER BY allTransactionMonth DESC";
 			try (Connection conn = connector();
-					Statement stmt = conn.createStatement();
-					ResultSet result = stmt.executeQuery(sql)) {
-					int index = 0;
-					while (result.next()) {
-						list[index] = result.getString("allTransactionMonth");
-						++index;			
-					}
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sql)) {
+				int index = 0;
+				while (result.next()) {
+					list[index] = result.getString("allTransactionMonth");
+					++index;			
+				}
+				for (String dateString : list) {
+					Date date;
+					date = new SimpleDateFormat("MMM-yy").parse(dateString);
+					dates.add(date);
+				}
+				Collections.sort(dates, new Comparator<Date>() {
+
+							@Override
+							public int compare(Date o1, Date o2) {
+								return o2.compareTo(o1);
+							}
+				});
+				int index2 = 0;
+				for (Date date : dates) {
+					list[index2] = new SimpleDateFormat("MMM-yy").format(date);
+					++index2;
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -537,6 +561,7 @@ public class ComboboxList extends DatabaseConnection {
 	
 	
 	public String[] getAllGetMoneyMonth() {
+		List<Date>  dates = new ArrayList<Date>();
 		if(getAllGetMoneyMonthSize()>0) {
 			String list[] = new String[getAllGetMoneyMonthSize()];
 			String sql = "SELECT DISTINCT gmMonth \n"
@@ -549,6 +574,23 @@ public class ComboboxList extends DatabaseConnection {
 					while (result.next()) {
 						list[index] = result.getString("gmMonth");
 						++index;			
+					}
+					for (String dateString : list) {
+						Date date;
+						date = new SimpleDateFormat("MMM-yy").parse(dateString);
+						dates.add(date);
+					}
+					Collections.sort(dates, new Comparator<Date>() {
+
+								@Override
+								public int compare(Date o1, Date o2) {
+									return o2.compareTo(o1);
+								}
+					});
+					int index2 = 0;
+					for (Date date : dates) {
+						list[index2] = new SimpleDateFormat("MMM-yy").format(date);
+						++index2;
 					}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -579,6 +621,7 @@ public class ComboboxList extends DatabaseConnection {
 	
 	
 	public String[] getAllExpenseMonth() {
+		List<Date>  dates = new ArrayList<Date>();
 		if(getAllExpenseMonthSize()>0) {
 			String list[] = new String[getAllExpenseMonthSize()];
 			String sql = "SELECT DISTINCT exMonth \n"
@@ -591,6 +634,23 @@ public class ComboboxList extends DatabaseConnection {
 					while (result.next()) {
 						list[index] = result.getString("exMonth");
 						++index;			
+					}
+					for (String dateString : list) {
+						Date date;
+						date = new SimpleDateFormat("MMM-yy").parse(dateString);
+						dates.add(date);
+					}
+					Collections.sort(dates, new Comparator<Date>() {
+
+								@Override
+								public int compare(Date o1, Date o2) {
+									return o2.compareTo(o1);
+								}
+					});
+					int index2 = 0;
+					for (Date date : dates) {
+						list[index2] = new SimpleDateFormat("MMM-yy").format(date);
+						++index2;
 					}
 			} catch (Exception e) {
 				e.printStackTrace();
