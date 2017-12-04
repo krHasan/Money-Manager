@@ -102,6 +102,28 @@ public class Borrow extends DatabaseConnection {
 	}
 	
 	
+	public void updateBorrowSummaryDataForUndo(Map<String, String> borrowData) {
+		long dbAmount = UnitConverter.stringToLong(boRepayPersonBorrowedAmount(borrowData.get("boWhom")));
+		long exactTk = UnitConverter.stringToLong(borrowData.get("boExactTk"));
+		String updatedAmount = UnitConverter.longToString(dbAmount + exactTk);
+		
+		String sql = "UPDATE Borrow_Summary SET boExactTk = ?\n"
+				+ "WHERE boWhom = ?";
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setString(1, updatedAmount);
+			pstmt.setString(2, borrowData.get("boWhom"));
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public void deleteBorrowSummaryData(Map<String, String> borrowData) {
 			
 		String sql = "DELETE FROM Borrow_Summary \n"

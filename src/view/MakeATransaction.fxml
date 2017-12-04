@@ -281,7 +281,7 @@
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="botxtExactAmount" alignment="CENTER" layoutX="223.0" layoutY="312.0" onKeyReleased="#boExactAmountValidation" prefHeight="27.0" prefWidth="150.0">
+                                    <TextField fx:id="botxtExactAmount" alignment="CENTER" layoutX="223.0" layoutY="305.0" onKeyReleased="#boExactAmountValidation" prefHeight="27.0" prefWidth="150.0">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
@@ -316,12 +316,12 @@
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblExactAmount" layoutX="25.0" layoutY="312.0" prefHeight="27.0" prefWidth="194.0">
+                                    <Label fx:id="bolblExactAmount" layoutX="25.0" layoutY="305.0" prefHeight="27.0" prefWidth="194.0">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblWarningMsg" layoutX="25.0" layoutY="295.0" textFill="RED">
+                                    <Label fx:id="bolblWarningMsg" layoutX="25.0" layoutY="288.0" textFill="RED">
                                        <font>
                                           <Font name="Arial" size="12.0" />
                                        </font>
@@ -352,7 +352,7 @@
                                           <Font name="Arial" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblAmountValidationMsg2" layoutX="170.0" layoutY="341.0" textFill="#da0c0c">
+                                    <Label fx:id="bolblAmountValidationMsg2" layoutX="170.0" layoutY="334.0" textFill="#da0c0c">
                                        <font>
                                           <Font name="Arial" size="12.0" />
                                        </font>
@@ -383,7 +383,7 @@
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="letxtExactAmount" alignment="CENTER" layoutX="223.0" layoutY="312.0" onKeyReleased="#leExactAmountValidation" prefHeight="27.0" prefWidth="150.0">
+                                    <TextField fx:id="letxtExactAmount" alignment="CENTER" layoutX="223.0" layoutY="305.0" onKeyReleased="#leExactAmountValidation" prefHeight="27.0" prefWidth="150.0">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
@@ -418,12 +418,12 @@
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lelblExactAmount" layoutX="25.0" layoutY="312.0" prefHeight="27.0" prefWidth="194.0">
+                                    <Label fx:id="lelblExactAmount" layoutX="25.0" layoutY="305.0" prefHeight="27.0" prefWidth="194.0">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lelblWarningMsg" layoutX="25.0" layoutY="295.0" textFill="RED">
+                                    <Label fx:id="lelblWarningMsg" layoutX="25.0" layoutY="288.0" textFill="RED">
                                        <font>
                                           <Font name="Arial" size="12.0" />
                                        </font>
@@ -453,7 +453,7 @@
                                        <font>
                                           <Font name="Arial" size="12.0" />
                                        </font></Label>
-                                    <Label fx:id="lelblAmountValidationMsg2" layoutX="170.0" layoutY="341.0" textFill="#c30606">
+                                    <Label fx:id="lelblAmountValidationMsg2" layoutX="170.0" layoutY="334.0" textFill="#c30606">
                                        <font>
                                           <Font name="Arial" size="12.0" />
                                        </font></Label>

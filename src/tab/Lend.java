@@ -100,6 +100,28 @@ public class Lend extends DatabaseConnection {
 			e.printStackTrace();
 		}
 	}
+
+	
+	public void updateLendSummaryDataForUndo(Map<String, String> LendData) {
+		long dbAmount = UnitConverter.stringToLong(leRepayPersonLendedAmount(LendData.get("leWhom")));
+		long exactTk = UnitConverter.stringToLong(LendData.get("leExactTk"));
+		String updatedAmount = UnitConverter.longToString(dbAmount + exactTk);
+		
+		String sql = "UPDATE Lend_Summary SET leExactTk = ?\n"
+				+ "WHERE leWhom = ?";
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setString(1, updatedAmount);
+			pstmt.setString(2, LendData.get("leWhom"));
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	public void deleteLendSummaryData(Map<String, String> LendData) {

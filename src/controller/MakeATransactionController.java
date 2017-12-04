@@ -2358,9 +2358,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("bkBalanceBefore", longToString(currentbKashBalance()));
 							boleData.put("bkBalanceAfter", updatedbKashBalance(botxtAmountWithCharge.getText(), "Cash In"));
 							
-							(new Borrow()).saveBorrowData(boleData);
 							(new Borrow()).addBorrowSummaryData(boleData);
 							(new Bkash()).saveBorrowBkashData(boleData);
+							(new Borrow()).saveBorrowData(boleData);
 							(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 							setCurrentbKashBalance(updatedbKashBalance(botxtAmountWithCharge.getText(), "Cash In"));
 //							setCurrentbKashBalance(boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Money Take"));
@@ -2403,9 +2403,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("rocBalanceBefore", longToString(currentRocketBalance()));
 							boleData.put("rocBalanceAfter", updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash In", boGetSelectedrbtnName()));
 							
-							(new Borrow()).saveBorrowData(boleData);
 							(new Borrow()).addBorrowSummaryData(boleData);
 							(new Rocket()).saveBorrowRocketData(boleData);
+							(new Borrow()).saveBorrowData(boleData);
 							(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 							setCurrentRocketBalance(updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash In", boGetSelectedrbtnName()));
 //							setCurrentRocketBalance(boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Money Take"));
@@ -2449,6 +2449,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 							
 							(new Borrow()).saveBorrowData(boleData);
 							(new Borrow()).addBorrowSummaryData(boleData);
+							// if it activate, then you have to change in Undo Class --> undoBorrow() method
 //							(new GetMoney()).saveBorrowGMData(boleData);
 							(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 							setCurrentWalletBalance(gmWalletBalanceAfter(botxtAmountWithCharge.getText()));
@@ -2495,13 +2496,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 								boleData.put("bkBalanceBefore", longToString(currentbKashBalance()));
 								boleData.put("bkBalanceAfter", updatedbKashBalance(botxtAmountWithCharge.getText(), boGetSelectedrbtnName()));
 								
-								(new Borrow()).saveBorrowData(boleData);
 								if (boisTypedAmountLessThanBorrowed(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
 									(new Borrow()).updateBorrowSummaryData(boleData);
 								} else {
 									(new Borrow()).deleteBorrowSummaryData(boleData);
 								}
 								(new Bkash()).saveBorrowBkashData(boleData);
+								(new Borrow()).saveBorrowData(boleData);
 								(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 								setCurrentbKashBalance(updatedbKashBalance(botxtAmountWithCharge.getText(), boGetSelectedrbtnName()));
 //								setCurrentbKashBalance(boBkBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Return Borrowed Money"));
@@ -2554,13 +2555,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 								boleData.put("rocBalanceBefore", longToString(currentRocketBalance()));
 								boleData.put("rocBalanceAfter", updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash Out", boGetSelectedrbtnName()));
 								
-								(new Borrow()).saveBorrowData(boleData);
 								if (boisTypedAmountLessThanBorrowed(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
 									(new Borrow()).updateBorrowSummaryData(boleData);
 								} else {
 									(new Borrow()).deleteBorrowSummaryData(boleData);
 								}
 								(new Rocket()).saveBorrowRocketData(boleData);
+								(new Borrow()).saveBorrowData(boleData);
 								(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 								setCurrentRocketBalance(updatedRocketBalance(botxtAmountWithCharge.getText(), "Cash Out", boGetSelectedrbtnName()));
 //								setCurrentRocketBalance(boRocBalanceAfter(botxtAmountWithCharge.getText(), boBankChargeShow(), "Return Borrowed Money"));
@@ -2619,6 +2620,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 								} else {
 									(new Borrow()).deleteBorrowSummaryData(boleData);
 								}
+								// if it activate, then you have to change in Undo Class --> undoBorrow() method
 //								(new GetMoney()).saveBorrowGMData(boleData);
 								(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 								setCurrentWalletBalance(exWalletBalanceAfter(botxtAmountWithCharge.getText()));
@@ -2677,9 +2679,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("bkBalanceBefore", longToString(currentbKashBalance()));
 							boleData.put("bkBalanceAfter", updatedbKashBalance(letxtAmountWithCharge.getText(), leGetSelectedrbtnName()));
 							
-							(new Lend()).saveLendData(boleData);
 							(new Lend()).addLendSummaryData(boleData);
 							(new Bkash()).saveLendBkashData(boleData);
+							(new Lend()).saveLendData(boleData);
 							(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 							setCurrentbKashBalance(updatedbKashBalance(letxtAmountWithCharge.getText(), leGetSelectedrbtnName()));
 //							setCurrentbKashBalance(leBkBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Give Money"));
@@ -2721,9 +2723,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 							boleData.put("rocBalanceBefore", longToString(currentRocketBalance()));
 							boleData.put("rocBalanceAfter", updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash Out", leGetSelectedrbtnName()));
 							
-							(new Lend()).saveLendData(boleData);
 							(new Lend()).addLendSummaryData(boleData);
 							(new Rocket()).saveLendRocketData(boleData);
+							(new Lend()).saveLendData(boleData);
 							(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 							setCurrentRocketBalance(updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash Out", leGetSelectedrbtnName()));
 //							setCurrentRocketBalance(leRocBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Give Money"));
@@ -2813,13 +2815,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 								boleData.put("bkBalanceBefore", longToString(currentbKashBalance()));
 								boleData.put("bkBalanceAfter", updatedbKashBalance(letxtAmountWithCharge.getText(), "Cash In"));
 								
-								(new Lend()).saveLendData(boleData);
 								if (leisTypedAmountLessThanLended(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
 									(new Lend()).updateLendSummaryData(boleData);
 								} else {
 									(new Lend()).deleteLendSummaryData(boleData);
 								}
 								(new Bkash()).saveLendBkashData(boleData);
+								(new Lend()).saveLendData(boleData);
 								(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 								setCurrentbKashBalance(updatedbKashBalance(letxtAmountWithCharge.getText(), "Cash In"));
 //								setCurrentbKashBalance(leBkBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Take Back Lended Money"));
@@ -2872,13 +2874,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 								boleData.put("rocBalanceBefore", longToString(currentRocketBalance()));
 								boleData.put("rocBalanceAfter", updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash In", leGetSelectedrbtnName()));
 								
-								(new Lend()).saveLendData(boleData);
 								if (leisTypedAmountLessThanLended(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
 									(new Lend()).updateLendSummaryData(boleData);
 								} else {
 									(new Lend()).deleteLendSummaryData(boleData);
 								}
 								(new Rocket()).saveLendRocketData(boleData);
+								(new Lend()).saveLendData(boleData);
 								(new ComboboxList()).setAllMonth(monthToSave(lenddateDate.getValue()), yearToSave(lenddateDate.getValue()));
 								setCurrentRocketBalance(updatedRocketBalance(letxtAmountWithCharge.getText(), "Cash In", leGetSelectedrbtnName()));
 //								setCurrentRocketBalance(leRocBalanceAfter(letxtAmountWithCharge.getText(), leBankChargeShow(), "Take Back Lended Money"));
