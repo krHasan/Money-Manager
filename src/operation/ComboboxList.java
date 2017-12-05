@@ -39,30 +39,6 @@ public class ComboboxList extends DatabaseConnection {
 			return list;
 		}
 	}
-	public String[] getSourceListForDashboard() {
-		if(getSourceArraySize()>0) {
-			String list[] = new String[getSourceArraySize()+1];
-			String sql = "SELECT sourceList \n"
-					+ "FROM Source_List";
-			try (Connection conn = connector();
-					Statement stmt = conn.createStatement();
-					ResultSet result = stmt.executeQuery(sql)) {
-					list[0] = "All";
-					int index = 1;
-					while (result.next()) {
-						list[index] = result.getString("sourceList");
-						++index;			
-					}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return list;
-			
-		} else {
-			String list[] = {"No Source"};
-			return list;
-		}
-	}
 	public int getSourceArraySize() {
 		int size = 0;
 		String sqlid = "SELECT * \n"
@@ -76,6 +52,66 @@ public class ComboboxList extends DatabaseConnection {
 				}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		return size;
+	}
+	
+	
+	public String[] getSourceListForDashboard() {
+		if(getSourceArraySizeForDashboard()>0) {
+			String list[] = new String[getSourceArraySizeForDashboard()];
+			String sql = "SELECT sourceList \n"
+					+ "FROM Source_List";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					list[0] = "All";
+					int index = 1;
+					if (BankIssue.isbKashActivated() && BankIssue.isRocketActivated()) {
+						while (result.next()) {
+							list[index] = result.getString("sourceList");
+							++index;			
+						}
+						list[getSourceArraySize()+1] = "bKash";
+						list[getSourceArraySize()+2] = "Rocket";
+					} else if (BankIssue.isbKashActivated()) {
+						while (result.next()) {
+							list[index] = result.getString("sourceList");
+							++index;			
+						}
+						list[getSourceArraySize()+1] = "bKash";
+					} else if (BankIssue.isRocketActivated()) {
+						while (result.next()) {
+							list[index] = result.getString("sourceList");
+							++index;			
+						}
+						list[getSourceArraySize()+1] = "Rocket";
+					} else {
+						while (result.next()) {
+							list[index] = result.getString("sourceList");
+							++index;			
+						}
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Source"};
+			return list;
+		}
+	}
+	public int getSourceArraySizeForDashboard() {
+		int size = 0;
+		if (BankIssue.isbKashActivated() && BankIssue.isRocketActivated()) {
+			size = getSourceArraySize()+3;
+		} else if (BankIssue.isbKashActivated()) {
+			size = getSourceArraySize()+2;
+		} else if (BankIssue.isRocketActivated()) {
+			size = getSourceArraySize()+2;
+		} else {
+			size = getSourceArraySize()+1;
 		}
 		return size;
 	}

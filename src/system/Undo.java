@@ -15,31 +15,52 @@ public class Undo extends DateAndClock {
 	
 	public String actionUndo() {
 		String feedback = null;
+		boolean limit = false;
 		int globalID = 0;
 		String getGID = "SELECT globalId FROM System_Settings";
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
 				ResultSet result = stmt.executeQuery(getGID)) {
 			globalID = result.getInt("globalId")-1;
-			System.out.println(globalID);
 		} catch (Exception e) {e.printStackTrace();}
 		
-		if (undoGetMoney(globalID)) {
-			feedback = "Last \"Get Money\" transaction has been rollbacked";
-		} else if(undoExpense(globalID)) {
-			feedback = "Last \"Expense\" transaction has been rollbacked";
-		} else if(undoBorrow(globalID)) {
-			feedback = "Last \"Borrow\" transaction has been rollbacked";
-		} else if(undoLend(globalID)) {
-			feedback = "Last \"Lend\" transaction has been rollbacked";
-		} else if(undobKash(globalID)) {
-			feedback = "Last \"bKash\" transaction has been rollbacked";
-		} else if(undoRocket(globalID)) {
-			feedback = "Last \"Rocket\" transaction has been rollbacked";
-		} else if(undoPersonal(globalID)) {
-			feedback = "Last \"Personal\" transaction has been rollbacked";
+		int undoId = 0;
+		String getUID = "SELECT undoId FROM System_Settings";
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(getUID)) {
+			undoId = result.getInt("undoId");
+		} catch (Exception e) {e.printStackTrace();}
+		 
+		if (globalID <= undoId) {
+			limit = false;
+		} else if((globalID-undoId)>=1 && (globalID-undoId)<=5) {
+			limit = true;
+		} else if((globalID-undoId)>5) {
+			limit = true;
+			GlobalId.setUndoId((globalID-5));
+		}
+		
+		if (limit) {
+			if (undoGetMoney(globalID)) {
+				feedback = "Last \"Get Money\" transaction has been rollbacked";
+			} else if(undoExpense(globalID)) {
+				feedback = "Last \"Expense\" transaction has been rollbacked";
+			} else if(undoBorrow(globalID)) {
+				feedback = "Last \"Borrow\" transaction has been rollbacked";
+			} else if(undoLend(globalID)) {
+				feedback = "Last \"Lend\" transaction has been rollbacked";
+			} else if(undobKash(globalID)) {
+				feedback = "Last \"bKash\" transaction has been rollbacked";
+			} else if(undoRocket(globalID)) {
+				feedback = "Last \"Rocket\" transaction has been rollbacked";
+			} else if(undoPersonal(globalID)) {
+				feedback = "Last \"Personal\" transaction has been rollbacked";
+			} else {
+				feedback = "Something Problem";
+			}
 		} else {
-			feedback = "Something Problem";
+			feedback = "Sorry! Undo Limit is Over";
 		}
 		
 		return feedback;
@@ -660,7 +681,27 @@ public class Undo extends DateAndClock {
 				pstmtbk.executeUpdate();
 			} catch (Exception e) {e.printStackTrace();}
 			
-			if (bkType.equals("Personal") && !bkNature.equals("Cash In")) {
+			if (bkType.equals("Get Money") && !bkNature.equals("Credited by Cash In")) {
+				String undogm = "SELECT * FROM Get_Money WHERE globalID = ?";
+				String deletegm = "DELETE FROM Get_Money WHERE globalID = ?";
+				String gmWalletBalanceBefore = null;
+				try (Connection conn = connector();
+						PreparedStatement pstmt = conn.prepareStatement(undogm)) {
+					pstmt.setInt(1, --globalID);
+					ResultSet gmResult = pstmt.executeQuery();
+					gmWalletBalanceBefore = gmResult.getString("gmWalletBalanceBefore");
+				} catch (Exception e) {e.printStackTrace();}
+				
+				try (Connection conngm = connector();
+						PreparedStatement pstmt = conngm.prepareStatement(deletegm)){
+					pstmt.setInt(1, globalID);
+					pstmt.executeUpdate();
+				} catch (Exception e) {e.printStackTrace();}
+				
+				setCurrentWalletBalance(removeThousandSeparator(gmWalletBalanceBefore));
+			}
+			
+			if (bkType.equals("Personal") && !bkNature.equals("Credited by Cash In")) {
 				setCurrentWalletBalance(longToString(currentWalletBalance()-stringToLong(removeThousandSeparator(bkAmount))));
 			}
 			
@@ -702,8 +743,30 @@ public class Undo extends DateAndClock {
 				pstmtroc.executeUpdate();
 			} catch (Exception e) {e.printStackTrace();}
 			
-			if (rocType.equals("Personal")) {
+			if (rocType.equals("Get Money")) {
 				if (rocNature.equals("ATM") || rocNature.equals("TopUp") || rocNature.equals("Agent") || rocNature.equals("Branch") || rocNature.equals("Send Money")) {
+					String undogm = "SELECT * FROM Get_Money WHERE globalID = ?";
+					String deletegm = "DELETE FROM Get_Money WHERE globalID = ?";
+					String gmWalletBalanceBefore = null;
+					try (Connection conn = connector();
+							PreparedStatement pstmt = conn.prepareStatement(undogm)) {
+						pstmt.setInt(1, --globalID);
+						ResultSet gmResult = pstmt.executeQuery();
+						gmWalletBalanceBefore = gmResult.getString("gmWalletBalanceBefore");
+					} catch (Exception e) {e.printStackTrace();}
+					
+					try (Connection conngm = connector();
+							PreparedStatement pstmt = conngm.prepareStatement(deletegm)){
+						pstmt.setInt(1, globalID);
+						pstmt.executeUpdate();
+					} catch (Exception e) {e.printStackTrace();}
+					
+					setCurrentWalletBalance(removeThousandSeparator(gmWalletBalanceBefore));
+				}
+			}
+			
+			if (rocType.equals("Personal")) {
+				if (rocNature.equals("Debited by ATM") || rocNature.equals("Debited by TopUp") || rocNature.equals("Debited by Agent") || rocNature.equals("Debited by Branch") || rocNature.equals("Debited by Send Money")) {
 					setCurrentWalletBalance(longToString(
 							currentWalletBalance() - stringToLong(removeThousandSeparator(rocAmount))));
 				}
@@ -759,11 +822,10 @@ public class Undo extends DateAndClock {
 	}
 	
 	
-	public static void main(String[] args) {
-		Undo access = new Undo();
-		System.out.println(access.actionUndo());
+//	public static void main(String[] args) {
+//		Undo access = new Undo();
+//		System.out.println(access.actionUndo());
 //		GlobalId.setGlobalId(14);
-		
-	}
+//	}
 	
 }

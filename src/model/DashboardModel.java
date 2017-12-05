@@ -67,7 +67,7 @@ public class DashboardModel extends DateAndClock {
 	public String getAmountBySource(String monthName, String sourceName) {
 		long totalAmountinLong = 0;
 		if (sourceName.equals("All")) {
-			String sourceList[] = new ComboboxList().getSourceList();
+			String sourceList[] = new ComboboxList().getSourceListForDashboard();
 			for (String string : sourceList) {
 				totalAmountinLong += new Source().getAmountBySourceFromGM(monthName, string);
 			}

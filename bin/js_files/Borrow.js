@@ -53,11 +53,11 @@ function printBorrow(i, history){
                                            "<span style='color: #8f8f8f; line-height: 25px'>"+history.boDate+"   "+history.boTime+"</span>")
   // $(".div-bopost"+i+"-container-1-2").append("Amount : " + "<b>"+history.boTk+"</b>")
   // $(".div-bopost"+i+"-container-1-3").append("Exact Amount : " + "<b>"+history.boExactTk+"</b>")
-  $(".div-bopost"+i+"-container-2").append("<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Method  </span>" + history.boMethod+"<br>"+
-                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Amount Nature  </span>" + history.boNature+"<br>"+
-                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Bank Charge  </span>" + history.boBnkCharge+"<br>"+
+  $(".div-bopost"+i+"-container-2").append("<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Borrow Transaction With  </span>" + history.boWhom+"<br>"+
                                            "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Type  </span>" + history.boType+"<br>"+
-                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Borrow Transaction With  </span>" + history.boWhom)
+                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Method  </span>" + history.boMethod+"<br>"+
+                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Amount Nature  </span>" + history.boNature+"<br>"+
+                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Bank Charge  </span>" + history.boBnkCharge)
   // $(".div-bopost"+i+"-container-2-2").append("Type : " + history.boType)
   // $(".div-bopost"+i+"-container-2-3").append("Borrow Transaction With : " + history.boWhom)
   $(".div-bopost"+i+"-container-3").append("<span style='font-weight: bold; color: #8f8f8f; line-height: 30px'>Total Borrowed TK</span>"+"<br>"+

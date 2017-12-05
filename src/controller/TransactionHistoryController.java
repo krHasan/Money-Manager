@@ -8,12 +8,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -21,6 +23,7 @@ import model.TransactionHistoryModel;
 import netscape.javascript.JSObject;
 import operation.GoToOperation;
 import system.DateFormatManager;
+import system.Undo;
 import tab.TabAccess;
 import web.HistorySearch;
 import web.HistorySearchByDate;
@@ -49,6 +52,8 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	private MenuItem mnuCreateSource;
 	@FXML
 	private MenuItem mnuCreateSector;
+	@FXML
+	private MenuItem mnuUndo;
 	@FXML
 	private MenuItem mnuBankSettings;
 	@FXML
@@ -197,6 +202,20 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 		TransactionHistoryStage.close();
 	}
 
+	@FXML
+	private void mnuUndo(ActionEvent event) {
+		String feedback = new Undo().actionUndo();
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Action Successful");
+		alert.setHeaderText(null);
+		alert.setContentText(feedback);
+		alert.setX(TransactionHistoryStage.getX() + 190);
+		alert.setY(TransactionHistoryStage.getY() + 190);
+		initialize();
+		alert.showAndWait();
+	}
+	
 	@FXML
 	private void mnuBankSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");

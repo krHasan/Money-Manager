@@ -33,6 +33,7 @@ import operation.BankIssue;
 import operation.ComboboxList;
 import operation.GoToOperation;
 import system.DateFormatManager;
+import system.Undo;
 import system.UnitConverter;
 import tab.Bkash;
 import tab.Borrow;
@@ -73,6 +74,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private MenuItem mnuCreateSource;
 	@FXML
 	private MenuItem mnuCreateSector;
+	@FXML
+	private MenuItem mnuUndo;
 	@FXML
 	private MenuItem mnuBankSettings;
 	@FXML
@@ -671,6 +674,26 @@ public class MakeATransactionController extends MakeATransactionModel {
 		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
 		MakeATransactionStage.close();
 	}
+	
+	@FXML
+	private void mnuUndo(ActionEvent event) {
+		String feedback = new Undo().actionUndo();
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Action Successful");
+		alert.setHeaderText(null);
+		alert.setContentText(feedback);
+		alert.setX(MakeATransactionStage.getX() + 190);
+		alert.setY(MakeATransactionStage.getY() + 190);
+		initialize();
+		gmInitialize();
+		exInitialize();
+		leInitialize();
+		bkInitialize();
+		rocInitialize();
+		perInitialize();
+		alert.showAndWait();
+	}
 
 	@FXML
 	private void mnuBankSettings(ActionEvent event) {
@@ -1258,7 +1281,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			extxtDescription.setEditable(false);
 			exlblLetterRemainmsg.setText("You cross the limit");
 		} else {
-			exlblLetterRemainmsg.setText("Word remain: "+wordRemain+" out of 100");
+			exlblLetterRemainmsg.setText("Word remain: "+wordRemain+"/100");
 		}
 	}
 	
@@ -3313,40 +3336,22 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	
 	private void bkAction() {
-		if (bkcmboTransactionType.getValue().equals("Personal")) {
-			if (bkcmboAmountNature.getValue().equals("Credit")) {
-				bklblBankChargeName.setText("");
-				bklblBankCharge.setText("");
-				bklblAmountNature.setText("");
-				bklblUpdateBalance.setText("");
-				bkAmountValidationMsg.setText("");
-				bkRbtnHide();
-				bkUpdatedBkBalanceShow();
-			} else {
-				bklblBankChargeName.setText("Bank Charge");
-				bklblAmountNature.setText("Cash Debited By");
-				bkAmountValidationMsg.setText("");
-				bkRbtnShow();
-				bkUpdatedBkBalanceShow();
-				bkBankChargeShow();
-			}
+		if (bkcmboAmountNature.getValue().equals("Credit")) {
+			bklblBankChargeName.setText("");
+			bklblBankCharge.setText("");
+			bklblAmountNature.setText("");
+			bklblUpdateBalance.setText("");
+			bkAmountValidationMsg.setText("");
+			bkRbtnHide();
+			bkUpdatedBkBalanceShow();
 		} else {
-			if (bkcmboAmountNature.getValue().equals("Credit")) {
-				bklblBankChargeName.setText("");
-				bklblBankCharge.setText("");
-				bklblAmountNature.setText("");
-				bklblUpdateBalance.setText("");
-				bkAmountValidationMsg.setText("");
-				bkRbtnHide();
-				bkUpdatedBkBalanceShow();
-			} else {
-				bklblBankChargeName.setText("Bank Charge");
-				bklblAmountNature.setText("Cash Debited By");
-				bkAmountValidationMsg.setText("");
-				bkRbtnShow();
-				bkUpdatedBkBalanceShow();
-				bkBankChargeShow();
-			}
+			bklblBankChargeName.setText("Bank Charge");
+			bklblAmountNature.setText("Cash Debited By");
+			bkAmountValidationMsg.setText("");
+			bklblBankCharge.setText("0.00");
+			bkRbtnShow();
+			bkUpdatedBkBalanceShow();
+			bkBankChargeShow();
 		}
 	}
 	
@@ -3599,39 +3604,22 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	
 	private void rocAction() {
-		if (roccmboTransactionType.getValue().equals("Personal")) {
-			if (roccmboAmountNature.getValue().equals("Credit")) {
-				roclblBankChargeName.setText("Bank Charge");
-				roclblAmountNature.setText("Cash Credited By");
-				rocAmountValidationMsg.setText("");
-				rocUpdatedRocBalanceShow();
-				rocInRbtnShow();
-				rocBankChargeShow();
-			} else {
-				roclblBankChargeName.setText("Bank Charge");
-				roclblAmountNature.setText("Cash Debited By");
-				rocAmountValidationMsg.setText("");
-				rocOutRbtnShow();
-				rocUpdatedRocBalanceShow();
-				rocBankChargeShow();
-			}
+		if (roccmboAmountNature.getValue().equals("Credit")) {
+			roclblBankChargeName.setText("Bank Charge");
+			roclblAmountNature.setText("Cash Credited By");
+			rocAmountValidationMsg.setText("");
+			rocUpdatedRocBalanceShow();
+			rocInRbtnShow();
+			rocBankChargeShow();
 		} else {
-			if (roccmboAmountNature.getValue().equals("Credit")) {
-				roclblBankChargeName.setText("Bank Charge");
-				roclblAmountNature.setText("Cash Credited By");
-				rocAmountValidationMsg.setText("");
-				rocUpdatedRocBalanceShow();
-				rocInRbtnShow();
-				rocBankChargeShow();
-			} else {
-				roclblBankChargeName.setText("Bank Charge");
-				roclblAmountNature.setText("Cash Debited By");
-				rocAmountValidationMsg.setText("");
-				rocOutRbtnShow();
-				rocUpdatedRocBalanceShow();
-				rocBankChargeShow();
-			}
+			roclblBankChargeName.setText("Bank Charge");
+			roclblAmountNature.setText("Cash Debited By");
+			rocAmountValidationMsg.setText("");
+			rocOutRbtnShow();
+			rocUpdatedRocBalanceShow();
+			rocBankChargeShow();
 		}
+
 	}
 
 	
@@ -3826,28 +3814,36 @@ public class MakeATransactionController extends MakeATransactionModel {
 					setCurrentbKashBalance(bnkAdjustBalAfter);
 				} else {
 					bnkData.put("bkType", bkcmboTransactionType.getValue());
-					bnkData.put("bkNature", bkGetSelectedRbtn());
+					if (bkcmboAmountNature.getValue().equals("Credit")) {
+						bnkData.put("bkNature", "Credited by "+bkGetSelectedRbtn());						
+					} else {
+						bnkData.put("bkNature", "Debited by "+bkGetSelectedRbtn());
+					}
 					bnkData.put("bkAmount", bktxtAmount.getText());
 					bnkData.put("bkBnkCharge", bkBankChargeShow());
 					bnkData.put("bkBalanceAfter", updatedbKashBalance(bktxtAmount.getText(), bkGetSelectedRbtn()));
 					
-					(new Bkash()).saveBnkBkashData(bnkData);
-					setCurrentbKashBalance(updatedbKashBalance(bktxtAmount.getText(), bkGetSelectedRbtn()));
-					if (bkcmboTransactionType.getValue().equals("Personal")) {
-						if (bkcmboAmountNature.getValue().equals("Debit")) {
+					if (bkcmboAmountNature.getValue().equals("Debit")) {
+						if (bkcmboTransactionType.getValue().equals("Personal")) {
 							bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
 							bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(bktxtAmount.getText()));
-//							(new GetMoney()).saveBnkBkashData(bnkData);
+							setCurrentWalletBalance(gmWalletBalanceAfter(bktxtAmount.getText()));
+						} else if(bkcmboTransactionType.getValue().equals("Get Money")) {
+							bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
+							bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(bktxtAmount.getText()));
+							(new GetMoney()).saveBnkBkashData(bnkData);
 							setCurrentWalletBalance(gmWalletBalanceAfter(bktxtAmount.getText()));
 						}
 					}
+					(new Bkash()).saveBnkBkashData(bnkData);
+					setCurrentbKashBalance(updatedbKashBalance(bktxtAmount.getText(), bkGetSelectedRbtn()));
 				}
 				
 				(new ComboboxList()).setAllMonth(monthToSave(bnkdateDate.getValue()), yearToSave(bnkdateDate.getValue()));
 				bkInitialize();
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
-				confirmationMsg.setTitle("Successfull Transaction");
+				confirmationMsg.setTitle("Successful Transaction");
 				confirmationMsg.setHeaderText(null);
 				confirmationMsg.setContentText("Your transaction completed successfully.");
 				Stage MakeATransactionStage = (Stage) bnkbtnSave.getScene().getWindow();
@@ -3883,30 +3879,34 @@ public class MakeATransactionController extends MakeATransactionModel {
 					setCurrentRocketBalance(bnkAdjustBalAfter);
 				} else {
 					bnkData.put("rocType", roccmboTransactionType.getValue());
-					bnkData.put("rocNature", rocGetSelectedRbtn());
+					if (roccmboAmountNature.getValue().equals("Credit")) {
+						bnkData.put("rocNature", "Credited by "+rocGetSelectedRbtn());
+					} else {
+						bnkData.put("rocNature", "Debited by "+rocGetSelectedRbtn());
+					}
 					bnkData.put("rocAmount", roctxtAmount.getText());
 					bnkData.put("rocBnkCharge", rocBankChargeShow());
 					
-					if (roccmboTransactionType.getValue().equals("Personal")) {
-						if (roccmboAmountNature.getValue().equals("Credit")) {
-							bnkData.put("rocBalanceAfter", updatedRocketBalance(roctxtAmount.getText(), "Cash In", rocGetSelectedRbtn()));
-							setCurrentRocketBalance(updatedRocketBalance(roctxtAmount.getText(), "Cash In", rocGetSelectedRbtn()));
-						} else {
-							bnkData.put("rocBalanceAfter", updatedRocketBalance(roctxtAmount.getText(), "Cash Out", rocGetSelectedRbtn()));
-							setCurrentRocketBalance(updatedRocketBalance(roctxtAmount.getText(), "Cash Out", rocGetSelectedRbtn()));
+					if (roccmboAmountNature.getValue().equals("Credit")) {
+
+						bnkData.put("rocBalanceAfter", updatedRocketBalance(roctxtAmount.getText(), "Cash In", rocGetSelectedRbtn()));
+						setCurrentRocketBalance(updatedRocketBalance(roctxtAmount.getText(), "Cash In", rocGetSelectedRbtn()));
+
+					} else {
+						bnkData.put("rocBalanceAfter", updatedRocketBalance(roctxtAmount.getText(), "Cash Out", rocGetSelectedRbtn()));
+						setCurrentRocketBalance(updatedRocketBalance(roctxtAmount.getText(), "Cash Out", rocGetSelectedRbtn()));
+						
+						if (roccmboTransactionType.getValue().equals("Personal")) {
 							bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
 							bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(roctxtAmount.getText()));
-//							(new GetMoney()).saveBnkRocketData(bnkData);
-							setCurrentWalletBalance(gmWalletBalanceAfter(roctxtAmount.getText()));
+							setCurrentWalletBalance(gmWalletBalanceAfter(roctxtAmount.getText()));							
+						} else if(roccmboTransactionType.getValue().equals("Get Money")) {
+							bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
+							bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(roctxtAmount.getText()));
+							(new GetMoney()).saveBnkRocketData(bnkData);
+							setCurrentWalletBalance(gmWalletBalanceAfter(roctxtAmount.getText()));								
 						}
-					} else {
-						if (roccmboAmountNature.getValue().equals("Credit")) {
-							bnkData.put("rocBalanceAfter", updatedRocketBalance(roctxtAmount.getText(), "Cash In", rocGetSelectedRbtn()));
-							setCurrentRocketBalance(updatedRocketBalance(roctxtAmount.getText(), "Cash In", rocGetSelectedRbtn()));
-						} else {
-							bnkData.put("rocBalanceAfter", updatedRocketBalance(roctxtAmount.getText(), "Cash Out", rocGetSelectedRbtn()));
-							setCurrentRocketBalance(updatedRocketBalance(roctxtAmount.getText(), "Cash Out", rocGetSelectedRbtn()));
-						}
+						
 					}
 					(new Rocket()).saveBnkRocketData(bnkData);
 				}
@@ -3946,14 +3946,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 					bnkData.put("perBalanceAfter", updatedPersonalBalance(pertxtAmount.getText(), "Credit"));
 					bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
 					bnkData.put("gmWalletBalanceAfter", exWalletBalanceAfter(pertxtAmount.getText()));
-//					(new GetMoney()).saveBnkPersonalData(bnkData);
 					setCurrentWalletBalance(exWalletBalanceAfter(pertxtAmount.getText()));
 					setCurrentPersonalBalance(updatedPersonalBalance(pertxtAmount.getText(), "Credit"));
 				} else {
 					bnkData.put("perBalanceAfter", updatedPersonalBalance(pertxtAmount.getText(), "Debit"));
 					bnkData.put("gmWalletBalanceBefore", longToString(currentWalletBalance()));
 					bnkData.put("gmWalletBalanceAfter", gmWalletBalanceAfter(pertxtAmount.getText()));
-//					(new GetMoney()).saveBnkPersonalData(bnkData);
 					setCurrentWalletBalance(gmWalletBalanceAfter(pertxtAmount.getText()));
 					setCurrentPersonalBalance(updatedPersonalBalance(pertxtAmount.getText(), "Debit"));
 				}

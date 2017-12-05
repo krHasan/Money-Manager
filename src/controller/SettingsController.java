@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -62,6 +63,8 @@ public class SettingsController extends SettingsModel {
 	private MenuItem mnuCreateSource;
 	@FXML
 	private MenuItem mnuCreateSector;
+	@FXML
+	private MenuItem mnuUndo;
 	@FXML
 	private MenuItem mnuBankSettings;
 	@FXML
@@ -145,6 +148,8 @@ public class SettingsController extends SettingsModel {
 	private Button sourcebtnArchive;
 	@FXML
 	private Button sourcebtnUnarchive;
+	@FXML
+	private Button sourcebtnDelete;
 	
 	@FXML
 	private TextField sourcetxtSourceName;
@@ -153,6 +158,8 @@ public class SettingsController extends SettingsModel {
 	private ComboBox<String> sourcecmboArchive;
 	@FXML
 	private ComboBox<String> sourcecmboUnArchive;
+	@FXML
+	private ComboBox<String> sourcecmboDelete;
 	
 	@FXML
 	private Label sourcelblWarningMsg;
@@ -167,6 +174,8 @@ public class SettingsController extends SettingsModel {
 	private Button sectorbtnArchive;
 	@FXML
 	private Button sectorbtnUnarchive;
+	@FXML
+	private Button sectorbtnDelete;
 	
 	@FXML
 	private TextField sectortxtSourceName;
@@ -175,6 +184,8 @@ public class SettingsController extends SettingsModel {
 	private ComboBox<String> sectorcmboArchive;
 	@FXML
 	private ComboBox<String> sectorcmboUnArchive;
+	@FXML
+	private ComboBox<String> sectorcmboDelete;
 	
 	@FXML
 	private Label sectorlblWarningMsg;
@@ -387,6 +398,23 @@ public class SettingsController extends SettingsModel {
 		SettingsStage.close();
 	}
 
+	@FXML
+	private void mnuUndo(ActionEvent event) {
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Action Failed");
+		alert.setHeaderText("Undo Function Works Only From \"Make A Transaction\" and \"History\" Window");
+		alert.setContentText("Press \"OK\" to go to \"Make A Transaction\" window");
+		alert.setX(SettingsStage.getX() + 60);
+		alert.setY(SettingsStage.getY() + 170);
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			(new TabAccess()).setTabName("tabGetMoney"); //name of which Tab should open
+			(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
+			SettingsStage.close();
+		}
+	}
+	
 	@FXML
 	private void mnuBankSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
@@ -907,6 +935,36 @@ public class SettingsController extends SettingsModel {
 	
 	
 	@FXML
+	private void sourcebtnDelete(ActionEvent event) {
+		try {
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Delete Source");
+			alert.setHeaderText("Are you sure?");
+			alert.setContentText("You are going to delete Source \""+ sourcecmboDelete.getValue() + "\" ");
+			alert.setX(SettingsStage.getX() + 210);
+			alert.setY(SettingsStage.getY() + 170);
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == ButtonType.OK){
+				
+				source.deleteSource(sourcecmboDelete.getValue());
+				
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Message");
+				confirmationMsg.setHeaderText(null);
+				confirmationMsg.setContentText(sourcecmboDelete.getValue()+ " Deleted Successfully");
+				confirmationMsg.setX(SettingsStage.getX() + 190);
+				confirmationMsg.setY(SettingsStage.getY() + 190);
+				confirmationMsg.showAndWait();
+			}
+			
+			tabSourceInitialize();
+		} catch (Exception e) {}
+	}
+	
+	
+	@FXML
 	private void archiveSource(ActionEvent event) {
 		try {
 			source.archiveSource(sourcecmboArchive.getValue());
@@ -949,11 +1007,17 @@ public class SettingsController extends SettingsModel {
 			if (new ComboboxList().getSourceArraySize() == 0) {
 				sourcecmboArchive.setDisable(true);
 				sourcebtnArchive.setDisable(true);
+				sourcecmboDelete.setDisable(true);
+				sourcebtnDelete.setDisable(true);
 			} else {
 				sourcecmboArchive.setDisable(false);
 				sourcebtnArchive.setDisable(false);
+				sourcecmboDelete.setDisable(false);
+				sourcebtnDelete.setDisable(false);
 				sourcecmboArchive.setItems(getActiveSourceList());
 				sourcecmboArchive.getSelectionModel().selectFirst();
+				sourcecmboDelete.setItems(getActiveSourceList());
+				sourcecmboDelete.getSelectionModel().selectFirst();
 			}
 		} catch (Exception e) {}
 	}
@@ -1015,6 +1079,36 @@ public class SettingsController extends SettingsModel {
 	
 	
 	@FXML
+	private void sectorbtnDelete(ActionEvent event) {
+		try {
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Delete Sector");
+			alert.setHeaderText("Are you sure?");
+			alert.setContentText("You are going to delete Sector \""+ sectorcmboDelete.getValue() + "\" ");
+			alert.setX(SettingsStage.getX() + 210);
+			alert.setY(SettingsStage.getY() + 170);
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == ButtonType.OK){
+				
+				sector.deleteSector(sectorcmboDelete.getValue());
+				
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Message");
+				confirmationMsg.setHeaderText(null);
+				confirmationMsg.setContentText(sectorcmboDelete.getValue()+ " Deleted Successfully");
+				confirmationMsg.setX(SettingsStage.getX() + 190);
+				confirmationMsg.setY(SettingsStage.getY() + 190);
+				confirmationMsg.showAndWait();
+			}
+			
+			tabSectorInitialize();
+		} catch (Exception e) {}
+	}
+	
+	
+	@FXML
 	private void archiveSector(ActionEvent event) {
 		try {
 			sector.archiveSector(sectorcmboArchive.getValue());
@@ -1057,11 +1151,17 @@ public class SettingsController extends SettingsModel {
 			if (new ComboboxList().getSectorArraySize() == 0) {
 				sectorcmboArchive.setDisable(true);
 				sectorbtnArchive.setDisable(true);
+				sectorcmboDelete.setDisable(true);
+				sectorbtnDelete.setDisable(true);
 			} else {
 				sectorcmboArchive.setDisable(false);
 				sectorbtnArchive.setDisable(false);
+				sectorcmboDelete.setDisable(false);
+				sectorbtnDelete.setDisable(false);
 				sectorcmboArchive.setItems(getActiveSectorList());
 				sectorcmboArchive.getSelectionModel().selectFirst();
+				sectorcmboDelete.setItems(getActiveSectorList());
+				sectorcmboDelete.getSelectionModel().selectFirst();
 			}
 		} catch (Exception e) {}
 	}

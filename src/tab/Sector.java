@@ -18,6 +18,20 @@ public class Sector extends DashboardModel {
 			e.printStackTrace();
 		}
 	}
+
+	
+	public void deleteSector(String sectorName) {
+		String delete = "DELETE FROM Sector_List WHERE sectorList = ?";
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(delete)){
+			pstmt.setString(1, sectorName);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 	
 	
 	public void archiveSector(String sectorName) {

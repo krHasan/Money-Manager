@@ -20,6 +20,20 @@ public class Source extends DashboardModel {
 	}
 	
 	
+	public void deleteSource(String sourceName) {
+		String delete = "DELETE FROM Source_List WHERE sourceList = ?";
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(delete)){
+			pstmt.setString(1, sourceName);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
 	public void archiveSource(String sourceName) {
 		String delete = "DELETE FROM Source_List WHERE sourceList = ?";
 		String insert = "INSERT INTO Archived_Source_List (sourceArchiveList) VALUES(?)";

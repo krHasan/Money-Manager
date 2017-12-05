@@ -39,7 +39,7 @@ public class DeleteUserCredentials extends DatabaseConnection {
 			"rocCashCashOutAgentCharge = ?, rocCashCashOutBranchCharge = ? \n" +
 			"WHERE ID = 1";
 	String initializeSystem_Settings = "UPDATE System_Settings \n" +
-			"SET timeFormat = ?, dateFormat = ?, weekNumber = ?, globalId = ?, bKashInitializeStatus = ?, RocketInitializeStatus = ? \n" +
+			"SET timeFormat = ?, dateFormat = ?, weekNumber = ?, globalId = ?, undoId = ? \n" +
 			"WHERE ID = 1";
 	String initializeCurrent_Access = "UPDATE Current_Access \n" +
 			"SET tabName = ?, reRegistrationLodingStatus = ? \n" +
@@ -232,8 +232,7 @@ public class DeleteUserCredentials extends DatabaseConnection {
 			pstmt.setString(2, "dd MMMM, yyyy");
 			pstmt.setString(3, "false");
 			pstmt.setInt(4, 1);
-			pstmt.setString(5, "true");
-			pstmt.setString(6, "true");
+			pstmt.setInt(5, 0);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

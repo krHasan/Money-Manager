@@ -1,12 +1,17 @@
 package controller;
 
+import java.util.Optional;
+
 import help.Help;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import operation.GoToOperation;
 import system.DateAndClock;
@@ -36,6 +41,8 @@ public class HelpController extends DateAndClock {
 	private MenuItem mnuCreateSource;
 	@FXML
 	private MenuItem mnuCreateSector;
+	@FXML
+	private MenuItem mnuUndo;
 	@FXML
 	private MenuItem mnuBankSettings;
 	@FXML
@@ -152,6 +159,23 @@ public class HelpController extends DateAndClock {
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToSettings(HelpStage.getX(), HelpStage.getY());
 		HelpStage.close();
+	}
+	
+	@FXML
+	private void mnuUndo(ActionEvent event) {
+		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Action Failed");
+		alert.setHeaderText("Undo Function Works Only From \"Make A Transaction\" and \"History\" Window");
+		alert.setContentText("Press \"OK\" to go to \"Make A Transaction\" window");
+		alert.setX(HelpStage.getX() + 60);
+		alert.setY(HelpStage.getY() + 170);
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			(new TabAccess()).setTabName("tabGetMoney"); //name of which Tab should open
+			(new GoToOperation()).goToMakeATransaction(HelpStage.getX(), HelpStage.getY());
+			HelpStage.close();
+		}
 	}
 
 	@FXML

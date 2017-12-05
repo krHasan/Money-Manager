@@ -27,7 +27,7 @@
       <content>
         <AnchorPane fx:id="gmAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#anchorPaneAction" prefHeight="550.0" prefWidth="800.0">
                <children>
-                  <TextField fx:id="gmtxtAmount" alignment="CENTER" layoutX="80.0" layoutY="101.0" onKeyReleased="#gmAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00.00">
+                  <TextField fx:id="gmtxtAmount" alignment="CENTER" layoutX="80.0" layoutY="69.0" onKeyReleased="#gmAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00.00">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -82,27 +82,27 @@
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label focusTraversable="false" layoutX="82.0" layoutY="78.0" prefHeight="20.0" prefWidth="59.0" text="Amount">
+                  <Label focusTraversable="false" layoutX="82.0" layoutY="46.0" prefHeight="20.0" prefWidth="59.0" text="Amount">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label focusTraversable="false" layoutX="82.0" layoutY="156.0" prefHeight="20.0" prefWidth="150.0" text="Description">
+                  <Label focusTraversable="false" layoutX="82.0" layoutY="124.0" prefHeight="20.0" prefWidth="150.0" text="Description">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="64.0" layoutY="348.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="64.0" layoutY="316.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gmlblWalletBalance" alignment="CENTER" focusTraversable="false" layoutX="218.0" layoutY="348.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
+                  <Label fx:id="gmlblWalletBalance" alignment="CENTER" focusTraversable="false" layoutX="218.0" layoutY="316.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gmlblWarningMsg" focusTraversable="false" layoutX="80.0" layoutY="136.0" textFill="RED">
+                  <Label fx:id="gmlblWarningMsg" focusTraversable="false" layoutX="80.0" layoutY="104.0" textFill="RED">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -129,19 +129,19 @@
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></RadioButton>
-                  <TextArea fx:id="gmtxtDescription" focusTraversable="false" layoutX="80.0" layoutY="180.0" onKeyReleased="#gmDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
+                  <TextArea fx:id="gmtxtDescription" focusTraversable="false" layoutX="80.0" layoutY="148.0" onKeyReleased="#gmDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font></TextArea>
-                  <DatePicker fx:id="gmdateDate" editable="false" focusTraversable="false" layoutX="555.0" layoutY="28.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
+                  <DatePicker fx:id="gmdateDate" editable="false" focusTraversable="false" layoutX="544.0" layoutY="44.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
-                  <Button fx:id="gmbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard">
+                  <Button fx:id="gmbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></Button>
-                  <Label fx:id="gmlblLetterRemainmsg" focusTraversable="false" layoutX="80.0" layoutY="298.0">
+                  <Label fx:id="gmlblLetterRemainmsg" focusTraversable="false" layoutX="80.0" layoutY="266.0">
                   	<font>
                         <Font name="Arial" size="13.0" />
                     </font>
@@ -153,12 +153,12 @@
       <content>
         <AnchorPane fx:id="exAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#anchorPaneAction" prefHeight="550.0" prefWidth="800.0">
                <children>
-                  <TextField fx:id="extxtAmount" alignment="CENTER" layoutX="80.0" layoutY="101.0" onKeyReleased="#exAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00">
+                  <TextField fx:id="extxtAmount" alignment="CENTER" layoutX="80.0" layoutY="65.0" onKeyReleased="#exAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
                   </TextField>
-                  <ComboBox fx:id="excmboSector" layoutX="425.0" layoutY="151.0" prefHeight="32.0" prefWidth="200.0">
+                  <ComboBox fx:id="excmboSector" layoutX="401.0" layoutY="177.0" prefHeight="32.0" prefWidth="200.0">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></ComboBox>
@@ -178,7 +178,7 @@
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="exbtnCreateSector" focusTraversable="false" layoutX="642.0" layoutY="151.0" mnemonicParsing="false" onAction="#exGoToSectorBtn" prefHeight="32.0" prefWidth="120.0" text="Create Sector">
+                  <Button fx:id="exbtnCreateSector" focusTraversable="false" layoutX="618.0" layoutY="177.0" mnemonicParsing="false" onAction="#exGoToSectorBtn" prefHeight="32.0" prefWidth="120.0" text="Create Sector">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -186,46 +186,46 @@
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <DatePicker fx:id="exdateDate" editable="false" focusTraversable="false" layoutX="555.0" layoutY="28.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
+                  <DatePicker fx:id="exdateDate" editable="false" focusTraversable="false" layoutX="527.0" layoutY="65.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
-                  <Label layoutX="427.0" layoutY="127.0" prefHeight="20.0" prefWidth="150.0" text="Expenditure Sector">
+                  <Label layoutX="403.0" layoutY="153.0" prefHeight="20.0" prefWidth="150.0" text="Expenditure Sector">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="82.0" layoutY="78.0" prefHeight="20.0" prefWidth="145.0" text="Expensed Amount">
+                  <Label layoutX="82.0" layoutY="42.0" prefHeight="20.0" prefWidth="145.0" text="Expensed Amount">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="82.0" layoutY="166.0" prefHeight="20.0" prefWidth="150.0" text="Description">
+                  <Label layoutX="82.0" layoutY="123.0" prefHeight="20.0" prefWidth="150.0" text="Description">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="335.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :">
+                  <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="299.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="exlblWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="335.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
+                  <Label fx:id="exlblWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="299.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="exlblWarningMsg" layoutX="80.0" layoutY="133.0" textFill="RED">
+                  <Label fx:id="exlblWarningMsg" layoutX="80.0" layoutY="100.0" textFill="#a40404">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="extxtDescription" focusTraversable="false" layoutX="80.0" layoutY="190.0" onKeyReleased="#exDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
+                  <TextArea fx:id="extxtDescription" focusTraversable="false" layoutX="80.0" layoutY="147.0" onKeyReleased="#exDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
                   </TextArea>
-                  <Button fx:id="exbtnAdjustBalance" focusTraversable="false" layoutX="119.0" layoutY="384.0" mnemonicParsing="false" onAction="#exAdjustBalance" prefHeight="32.0" prefWidth="135.0" text="Adjust Balance">
+                  <Button fx:id="exbtnAdjustBalance" focusTraversable="false" layoutX="124.0" layoutY="348.0" mnemonicParsing="false" onAction="#exAdjustBalance" prefHeight="32.0" prefWidth="135.0" text="Adjust Balance">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -233,16 +233,16 @@
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="exbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard">
+                  <Button fx:id="exbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="11.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></Button>
-                  <Label fx:id="exlblLetterRemainmsg" layoutX="80.0" layoutY="307.0">
+                  <Label fx:id="exlblLetterRemainmsg" layoutX="130.0" layoutY="266.0" textFill="#036558">
                   	<font>
                         <Font name="Arial" size="13.0" />
                     </font>
                   </Label>
-                  <Button fx:id="exbtnGoToCashCalculate" focusTraversable="false" layoutX="119.0" layoutY="430.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="32.0" prefWidth="135.0" text="Cash Calculate">
+                  <Button fx:id="exbtnGoToCashCalculate" focusTraversable="false" layoutX="124.0" layoutY="394.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="32.0" prefWidth="135.0" text="Cash Calculate">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -479,7 +479,7 @@
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <DatePicker fx:id="lenddateDate" editable="false" focusTraversable="false" layoutX="575.0" layoutY="14.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
+                  <DatePicker fx:id="lenddateDate" editable="false" focusTraversable="false" layoutX="572.0" layoutY="14.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
@@ -495,7 +495,7 @@
                         <TableColumn fx:id="lendTblColumnAmount" prefWidth="79.0" text="Amount" />
                     </columns>
                   </TableView>
-                  <Button fx:id="lendbtnGoToDashboard" focusTraversable="false" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard">
+                  <Button fx:id="lendbtnGoToDashboard" focusTraversable="false" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></Button>
@@ -509,12 +509,12 @@
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="361.0" layoutY="14.0" prefHeight="28.0" prefWidth="110.0" text="Wallet Balance :">
+                  <Label alignment="CENTER_RIGHT" layoutX="331.0" layoutY="14.0" prefHeight="28.0" prefWidth="110.0" text="Wallet Balance :">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblWalletBalance" alignment="CENTER" layoutX="473.0" layoutY="14.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
+                  <Label fx:id="lendlblWalletBalance" alignment="CENTER" layoutX="443.0" layoutY="14.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
@@ -524,22 +524,22 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblbkAccountBalanceName" alignment="CENTER" layoutX="168.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="bKash">
+                  <Label fx:id="lendlblbkAccountBalanceName" alignment="CENTER" layoutX="83.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="bKash">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblBkBalance" alignment="CENTER" layoutX="168.0" layoutY="23.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #FF89C9;">
+                  <Label fx:id="lendlblBkBalance" alignment="CENTER" layoutX="83.0" layoutY="23.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #FF89C9;">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblRocBalance" alignment="CENTER" layoutX="268.0" layoutY="23.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #aadb7b;">
+                  <Label fx:id="lendlblRocBalance" alignment="CENTER" layoutX="183.0" layoutY="23.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #aadb7b;">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblrocAccountBalanceName" alignment="CENTER" layoutX="268.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="Rocket">
+                  <Label fx:id="lendlblrocAccountBalanceName" alignment="CENTER" layoutX="183.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="Rocket">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -811,15 +811,15 @@
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <DatePicker fx:id="bnkdateDate" editable="false" focusTraversable="false" layoutX="575.0" layoutY="14.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
+                  <DatePicker fx:id="bnkdateDate" editable="false" focusTraversable="false" layoutX="540.0" layoutY="14.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
-                  <Button fx:id="bnkbtnGoToDashboard" focusTraversable="false" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard">
+                  <Button fx:id="bnkbtnGoToDashboard" focusTraversable="false" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></Button>
-                  <Button fx:id="bnkbtnSettings" focusTraversable="false" layoutX="196.0" layoutY="14.0" mnemonicParsing="false" onAction="#bnkSettingBtn" prefHeight="28.0" prefWidth="98.0" text="Settings">
+                  <Button fx:id="bnkbtnSettings" focusTraversable="false" layoutX="196.0" layoutY="14.0" mnemonicParsing="false" onAction="#bnkSettingBtn" prefHeight="28.0" prefWidth="98.0" text="Settings" visible="false">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -827,12 +827,12 @@
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Label alignment="CENTER_RIGHT" layoutX="336.0" layoutY="14.0" prefHeight="28.0" prefWidth="110.0" text="Wallet Balance :">
+                  <Label alignment="CENTER_RIGHT" layoutX="159.0" layoutY="14.0" prefHeight="28.0" prefWidth="110.0" text="Wallet Balance :">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="bnkWalletBalance" alignment="CENTER" layoutX="448.0" layoutY="14.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
+                  <Label fx:id="bnkWalletBalance" alignment="CENTER" layoutX="271.0" layoutY="14.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
@@ -868,6 +868,11 @@
                   <MenuItem fx:id="mnuCreateSector" mnemonicParsing="false" onAction="#mnuCreateSector" text="Create Sector" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem fx:id="mnuUndo" mnemonicParsing="false" onAction="#mnuUndo" text="Undo Last Action" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Settings">
             <items>
                   <MenuItem fx:id="mnuBankSettings" mnemonicParsing="false" onAction="#mnuBankSettings" text="Bank Settings" />

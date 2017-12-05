@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Optional;
 
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
@@ -18,6 +19,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -65,6 +67,8 @@ public class DashboardController extends DashboardModel {
 	private MenuItem mnuCreateSource;
 	@FXML
 	private MenuItem mnuCreateSector;
+	@FXML
+	private MenuItem mnuUndo;
 	@FXML
 	private MenuItem mnuBankSettings;
 	@FXML
@@ -323,6 +327,23 @@ public class DashboardController extends DashboardModel {
 		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
 		DashboardStage.close();
 	}
+	
+	@FXML
+	private void mnuUndo(ActionEvent event) {
+		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Action Failed");
+		alert.setHeaderText("Undo Function Works Only From \"Make A Transaction\" and \"History\" Window");
+		alert.setContentText("Press \"OK\" to go to \"Make A Transaction\" window");
+		alert.setX(DashboardStage.getX() + 60);
+		alert.setY(DashboardStage.getY() + 170);
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			(new TabAccess()).setTabName("tabGetMoney"); //name of which Tab should open
+			(new GoToOperation()).goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
+			DashboardStage.close();
+		}
+	}
 
 	@FXML
 	private void mnuBankSettings(ActionEvent event) {
@@ -482,7 +503,7 @@ public class DashboardController extends DashboardModel {
 	private void getMoneyChart() {
 		gmXaxis.setLabel("Sources Name");
 		gmYaxis.setLabel("Amount");
-		chartGetMoney.setTitle("Get Money(" + cmboGetMoneyMonthList.getValue()+")");
+		chartGetMoney.setTitle("Get Money( " + cmboGetMoneyMonthList.getValue()+" )");
 		Series<String, Number> gmChartData = GetMoneyChart.getSourceData(cmboGetMoneyMonthList.getValue());
 		chartGetMoney.getData().add(gmChartData);
 	}
@@ -490,7 +511,7 @@ public class DashboardController extends DashboardModel {
 	private void expenseChart() {
 		exXaxis.setLabel("Sectors Name");
 		exYaxis.setLabel("Amount");
-		chartExpense.setTitle("Expense(" + cmboExpenseMonthList.getValue()+")");
+		chartExpense.setTitle("Expense( " + cmboExpenseMonthList.getValue()+" )");
 		Series<String, Number> exChartData = ExpenseChart.getExpenseData(cmboExpenseMonthList.getValue());
 		chartExpense.getData().add(exChartData);
 	}

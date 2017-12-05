@@ -344,7 +344,7 @@ public class MakeATransactionModel extends DateAndClock {
 //---------------------------------------------------------------------------------------------------------//
 
 	public ObservableList<String> bnkTransactionType() {
-		ObservableList<String> list = FXCollections.observableArrayList("Personal","Outside");
+		ObservableList<String> list = FXCollections.observableArrayList("Personal", "Outside", "Get Money");
 		return list;
 	}
 	

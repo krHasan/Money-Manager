@@ -53,11 +53,11 @@ function printLend(i, history){
                                            "<span style='color: #8f8f8f; line-height: 25px'>"+history.leDate+"   "+history.leTime+"</span>")
   // $(".div-lepost"+i+"-container-1-2").append("Amount : " + "<b>"+history.leTk+"</b>")
   // $(".div-lepost"+i+"-container-1-3").append("Exact Amount : " + "<b>"+history.leExactTk+"</b>")
-  $(".div-lepost"+i+"-container-2").append("<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Method  </span>" + history.leMethod+"<br>"+
-                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Amount Nature  </span>" + history.leNature+"<br>"+
-                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Bank Charge  </span>" + history.leBnkCharge+"<br>"+
+  $(".div-lepost"+i+"-container-2").append("<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Lend Transaction With  </span>" + history.leWhom+"<br>"+
                                            "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Type  </span>" + history.leType+"<br>"+
-                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Lend Transaction With  </span>" + history.leWhom)
+                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Method  </span>" + history.leMethod+"<br>"+
+                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Amount Nature  </span>" + history.leNature+"<br>"+
+                                           "<span style='font-weight: bold; color: #8f8f8f; line-height: 22px'>Bank Charge  </span>" + history.leBnkCharge)
   // $(".div-lepost"+i+"-container-2-2").append("Type : " + history.leType)
   // $(".div-lepost"+i+"-container-2-3").append("Lend Transaction With : " + history.leWhom)
   $(".div-lepost"+i+"-container-3").append("<span style='font-weight: bold; color: #8f8f8f; line-height: 30px'>Total Lended TK.</span>"+"<br>"+

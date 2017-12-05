@@ -45,6 +45,11 @@
                   <MenuItem fx:id="mnuCreateSector" mnemonicParsing="false" onAction="#mnuCreateSector" text="Create Sector" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem fx:id="mnuUndo" mnemonicParsing="false" onAction="#mnuUndo" text="Undo Last Action" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Settings">
             <items>
                   <MenuItem fx:id="mnuBankSettings" mnemonicParsing="false" onAction="#mnuBankSettings" text="Bank Settings" />

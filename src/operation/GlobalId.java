@@ -56,6 +56,19 @@ public class GlobalId extends DatabaseConnection {
 		}
 	}
 	
+	
+	public static void setUndoId(int updateUID) {
+		String sql = "UPDATE System_Settings SET undoId = ? WHERE ID = 1";
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(sql)){
+			pstmt.setInt(1, updateUID);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 //	public static void main(String[] args) {
 //		System.out.println(getGlobalid());
 //	}
