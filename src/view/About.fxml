@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AboutController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #5b5766;" stylesheets="@../css/About.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AboutController">
    <children>
-      <MenuBar prefHeight="30.0" prefWidth="800.0">
+      <MenuBar prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: #cfd8dc;">
         <menus>
           <Menu mnemonicParsing="false" text="Operation">
             <items>
@@ -64,20 +64,20 @@
         </menus>
       </MenuBar>
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" />
-      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
-      <Label alignment="CENTER" layoutX="300.0" layoutY="210.0" prefHeight="28.0" prefWidth="200.0" text="Khandoker Rakib Hasan" textFill="#250404">
+      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="100.0" style="-fx-background-color: #cfd8dc;" text="Sign Out" />
+      <Label alignment="CENTER" layoutX="300.0" layoutY="210.0" prefHeight="28.0" prefWidth="200.0" text="Khandoker Rakib Hasan" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="300.0" layoutY="235.0" prefHeight="28.0" prefWidth="200.0" text="hasanbappi@gmail.com" textFill="#250404">
+      <Label alignment="CENTER" layoutX="300.0" layoutY="235.0" prefHeight="28.0" prefWidth="200.0" text="hasanbappi@gmail.com" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS" size="13.0" />
          </font>
       </Label>
       <Hyperlink alignment="CENTER" layoutX="300.0" layoutY="260.0" onAction="#hyperlinkGit" prefHeight="28.0" prefWidth="200.0" text="https://github.com/krHasan" />
       <Hyperlink alignment="CENTER" layoutX="270.0" layoutY="283.0" onAction="#hyperlinkLinkedin" prefHeight="28.0" prefWidth="260.0" text="https://www.linkedin.com/in/kr-hasan" />
-      <Label alignment="CENTER" layoutX="300.0" layoutY="177.0" prefHeight="28.0" prefWidth="200.0" text="Developer Info" textFill="#250404" underline="true">
+      <Label alignment="CENTER" layoutX="300.0" layoutY="177.0" prefHeight="28.0" prefWidth="200.0" text="Developer Info" textFill="WHITE" underline="true">
          <font>
             <Font name="Comic Sans MS Bold" size="15.0" />
          </font>

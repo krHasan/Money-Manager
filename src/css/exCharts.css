@@ -1,10 +1,14 @@
 .axis-label {
-  -fx-text-fill: #d11141;
+  -fx-text-fill: #f0416d;
+}
+
+.axis {
+  -fx-tick-label-fill: white;
 }
 
 .chart-title {
-  -fx-text-fill: #d11141;
-  -fx-font-size: 1.2em;
+  -fx-text-fill: #f0416d;
+  -fx-font-size: 1.2em
 }
 
 .chart-plot-background {
@@ -28,6 +32,6 @@
 }*/
 
 /*.chart {
-	-fx-border-width: 1.5px;
+	-fx-border-width: 1px;
 	-fx-border-color: blue;
 }*/

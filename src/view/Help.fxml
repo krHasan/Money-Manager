@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #5b5766;" stylesheets="@../css/Help.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpController">
    <children>
-      <MenuBar prefHeight="30.0" prefWidth="800.0">
+      <MenuBar prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: #cfd8dc;">
         <menus>
           <Menu mnemonicParsing="false" text="Operation">
             <items>
@@ -64,7 +64,7 @@
         </menus>
       </MenuBar>
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" />
-      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
+      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="100.0" style="-fx-background-color: #cfd8dc;" text="Sign Out" />
       <TextArea fx:id="txtInfoContainer" editable="false" layoutX="14.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="35.0">
          <font>
             <Font name="Ubuntu" size="14.0" />

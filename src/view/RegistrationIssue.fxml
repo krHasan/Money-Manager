@@ -9,18 +9,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationIssueController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #5b5766;" stylesheets="@../css/RegistrationIssue.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationIssueController">
    <children>
       <Label fx:id="lblHeading" alignment="CENTER" layoutX="155.0" layoutY="71.0" prefHeight="16.0" prefWidth="500.0" textFill="#d413aa">
          <font>
             <Font name="Comic Sans MS Bold" size="28.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="158.0" prefHeight="30.0" prefWidth="150.0" text="Username : " />
-      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="203.0" prefHeight="30.0" prefWidth="150.0" text="Password : " />
-      <Label fx:id="lblReTypePassword" alignment="CENTER_RIGHT" layoutX="183.0" layoutY="248.0" prefHeight="30.0" prefWidth="150.0" text="Re-Type Password : " />
-      <Label alignment="CENTER_RIGHT" layoutX="163.0" layoutY="293.0" prefHeight="30.0" prefWidth="170.0" text="Security Question(S.Q.) : " />
-      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="338.0" prefHeight="30.0" prefWidth="150.0" text="Answer : " />
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="158.0" prefHeight="30.0" prefWidth="150.0" text="Username : " textFill="#eeeeee">
+         <font>
+            <Font name="Ubuntu" size="13.0" />
+         </font></Label>
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="203.0" prefHeight="30.0" prefWidth="150.0" text="Password : " textFill="#eeeeee">
+         <font>
+            <Font name="Ubuntu" size="13.0" />
+         </font></Label>
+      <Label fx:id="lblReTypePassword" alignment="CENTER_RIGHT" layoutX="183.0" layoutY="248.0" prefHeight="30.0" prefWidth="150.0" text="Re-Type Password : " textFill="#eeeeee">
+         <font>
+            <Font name="Ubuntu" size="13.0" />
+         </font></Label>
+      <Label alignment="CENTER_RIGHT" layoutX="163.0" layoutY="293.0" prefHeight="30.0" prefWidth="170.0" text="Security Question(S.Q.) : " textFill="#eeeeee">
+         <font>
+            <Font name="Ubuntu" size="13.0" />
+         </font></Label>
+      <Label alignment="CENTER_RIGHT" layoutX="183.0" layoutY="338.0" prefHeight="30.0" prefWidth="150.0" text="Answer : " textFill="#eeeeee">
+         <font>
+            <Font name="Ubuntu" size="13.0" />
+         </font></Label>
       <TextField fx:id="txtUsername" layoutX="333.0" layoutY="158.0" onKeyReleased="#txtUsername" prefHeight="30.0" prefWidth="200.0" promptText="Username" />
       <PasswordField fx:id="passPassword" layoutX="333.0" layoutY="203.0" onKeyReleased="#passPassword" prefHeight="30.0" prefWidth="200.0" promptText="Password" />
       <PasswordField fx:id="passReTypePassword" layoutX="333.0" layoutY="248.0" onKeyReleased="#passReTypePassword" prefHeight="30.0" prefWidth="200.0" promptText="Re-Type Password" />
@@ -29,27 +44,36 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></ComboBox>
       <TextField fx:id="txtAnswer" layoutX="333.0" layoutY="338.0" onKeyReleased="#txtAnswer" prefHeight="30.0" prefWidth="200.0" promptText="Answer the Question" />
-      <Button fx:id="btnDelete" focusTraversable="false" layoutX="428.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="30.0" prefWidth="100.0" text="Delete">
+      <Button fx:id="btnDelete" focusTraversable="false" layoutX="428.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #EE0000;" text="Delete" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></Button>
-      <Button fx:id="btnCancel" layoutX="272.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnCancel" prefHeight="30.0" prefWidth="100.0" text="Cancel">
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></Button>
-      <Label fx:id="lblMsgPassword" layoutX="539.0" layoutY="253.0" prefHeight="20.0" prefWidth="150.0" textFill="RED">
+         </cursor>
          <font>
-            <Font size="12.0" />
+            <Font name="Ubuntu Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="btnCancel" layoutX="272.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnCancel" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #140e0e;" text="Cancel" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <font>
+            <Font name="Ubuntu Bold" size="13.0" />
+         </font></Button>
+      <Label fx:id="lblMsgPassword" layoutX="539.0" layoutY="253.0" prefHeight="20.0" prefWidth="150.0" textFill="#ff4444">
+         <font>
+            <Font name="Ubuntu Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblMsgInformation" alignment="CENTER" layoutX="278.0" layoutY="123.0" prefHeight="20.0" prefWidth="250.0" textFill="RED">
+      <Label fx:id="lblMsgInformation" alignment="CENTER" layoutX="278.0" layoutY="123.0" prefHeight="20.0" prefWidth="250.0" textFill="#ff4444">
          <font>
-            <Font size="12.0" />
+            <Font name="Ubuntu Bold" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="btnSave" focusTraversable="false" layoutX="428.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="30.0" prefWidth="100.0" text="Save">
+      <Button fx:id="btnSave" focusTraversable="false" layoutX="428.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #1a9544;" text="Save" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></Button>
+         </cursor>
+         <font>
+            <Font name="Ubuntu Bold" size="13.0" />
+         </font></Button>
    </children>
 </AnchorPane>

@@ -1,6 +1,8 @@
 /* commenting */
 .root {
-	-fx-background-color: #a3e6df;	
+	-fx-background-color: #a3e6df;
+  -fx-font-family: "Ubuntu";
+  -fx-font-size: 13.5px;
 }
 
 #lblForgetPassword:hover {

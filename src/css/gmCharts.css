@@ -1,9 +1,13 @@
 .axis-label {
-  -fx-text-fill: #00b159;
+  -fx-text-fill: #00ff80;
+}
+
+.axis {
+  -fx-tick-label-fill: white;
 }
 
 .chart-title {
-  -fx-text-fill: #00b159;
+  -fx-text-fill: #00ff80;
   -fx-font-size: 1.2em;
 }
 

@@ -1,0 +1,8 @@
+.root {
+  -fx-font-family: "Ubuntu";
+  -fx-font-size: 13.5px;
+}
+
+#anchorPane {
+    -fx-background-image:url('../imges/dashboard.jpg');
+}

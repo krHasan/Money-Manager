@@ -325,10 +325,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Tab tabBank;
 	
 	@FXML
-	private Button bnkbtnCancel;
-	@FXML
-	private Button bnkbtnSave;
-	@FXML
 	private Button bnkbtnGoToDashboard;
 	@FXML
 	private Button bnkbtnSettings;
@@ -347,7 +343,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private ComboBox<String> bkcmboTransactionType;
 	@FXML
 	private ComboBox<String> bkcmboAmountNature;
-	
+
+	@FXML
+	private Button bkbtnCancel;
+	@FXML
+	private Button bkbtnSave;
 	@FXML
 	private Button bkbtnAdjustBalance;
 	
@@ -388,6 +388,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private ComboBox<String> roccmboAmountNature;
 
 	@FXML
+	private Button rocbtnCancel;
+	@FXML
+	private Button rocbtnSave;
+	@FXML
 	private Button rocbtnAdjustBalance;
 	
 	@FXML
@@ -423,6 +427,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private ComboBox<String> percmboAmountNature;
+	
+	@FXML
+	private Button perbtnCancel;
+	@FXML
+	private Button perbtnSave;
 	
 	@FXML
 	private TextField pertxtAmount;
@@ -511,8 +520,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 		
 		bnkbtnGoToDashboard.setTooltip(new Tooltip("Take you to Dashboard"));
 		bnkbtnSettings.setTooltip(new Tooltip("Take you to Bank Settings"));
-		bnkbtnSave.setTooltip(new Tooltip("Save data and let you do another transaction"));
-		bnkbtnCancel.setTooltip(new Tooltip("Clear all input"));
+		perbtnSave.setTooltip(new Tooltip("Save data and let you do another transaction"));
+		perbtnCancel.setTooltip(new Tooltip("Clear all input"));
+		bkbtnSave.setTooltip(new Tooltip("Save data and let you do another transaction"));
+		bkbtnCancel.setTooltip(new Tooltip("Clear all input"));
+		rocbtnSave.setTooltip(new Tooltip("Save data and let you do another transaction"));
+		rocbtnCancel.setTooltip(new Tooltip("Clear all input"));
 		Tooltip.install(bnkWalletBalance, new Tooltip("Your wallet balance now"));
 		Tooltip.install(bnkdateDate, new Tooltip("Choose date when your transaction happend"));
 		Tooltip.install(perlblAccountBalance, new Tooltip("Personal account balance"));
@@ -1152,7 +1165,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			gmtxtDescription.setEditable(false);
 			gmlblLetterRemainmsg.setText("You cross the limit");
 		} else {
-			gmlblLetterRemainmsg.setText("Word remain: "+wordRemain+" out of 100");
+			gmlblLetterRemainmsg.setText("Word remain: "+wordRemain+"/100");
 		}
 	}
 	
@@ -3755,7 +3768,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setTitle("Transaction Failed");
 				alert.setHeaderText(null);
 				alert.setContentText("Zero or Empty is not allowed");
-				Stage MakeATransactionStage = (Stage) bnkbtnSave.getScene().getWindow();
+				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
 				alert.showAndWait();
@@ -3768,7 +3781,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setTitle("Transaction Failed");
 				alert.setHeaderText(null);
 				alert.setContentText("Zero or Empty is not allowed");
-				Stage MakeATransactionStage = (Stage) bnkbtnSave.getScene().getWindow();
+				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
 				alert.showAndWait();
@@ -3781,7 +3794,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setTitle("Transaction Failed");
 				alert.setHeaderText(null);
 				alert.setContentText("Zero or Empty is not allowed");
-				Stage MakeATransactionStage = (Stage) bnkbtnSave.getScene().getWindow();
+				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
 				alert.showAndWait();
@@ -3846,7 +3859,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				confirmationMsg.setTitle("Successful Transaction");
 				confirmationMsg.setHeaderText(null);
 				confirmationMsg.setContentText("Your transaction completed successfully.");
-				Stage MakeATransactionStage = (Stage) bnkbtnSave.getScene().getWindow();
+				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
 				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
 				confirmationMsg.showAndWait();
@@ -3855,7 +3868,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setTitle("Transaction Failed");
 				alert.setHeaderText(null);
 				alert.setContentText("There something is wrong.");
-				Stage MakeATransactionStage = (Stage) bnkbtnSave.getScene().getWindow();
+				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
 				alert.showAndWait();
@@ -3918,7 +3931,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				confirmationMsg.setTitle("Successfull Transaction");
 				confirmationMsg.setHeaderText(null);
 				confirmationMsg.setContentText("Your transaction completed successfully.");
-				Stage MakeATransactionStage = (Stage) bnkbtnSave.getScene().getWindow();
+				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
 				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
 				confirmationMsg.showAndWait();
@@ -3927,7 +3940,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setTitle("Transaction Failed");
 				alert.setHeaderText(null);
 				alert.setContentText("There something is wrong.");
-				Stage MakeATransactionStage = (Stage) bnkbtnSave.getScene().getWindow();
+				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
 				alert.showAndWait();
@@ -3964,7 +3977,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				confirmationMsg.setTitle("Successfull Transaction");
 				confirmationMsg.setHeaderText(null);
 				confirmationMsg.setContentText("Your transaction completed successfully.");
-				Stage MakeATransactionStage = (Stage) bnkbtnSave.getScene().getWindow();
+				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
 				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
 				confirmationMsg.showAndWait();
@@ -3973,7 +3986,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setTitle("Transaction Failed");
 				alert.setHeaderText(null);
 				alert.setContentText("There something is wrong.");
-				Stage MakeATransactionStage = (Stage) bnkbtnSave.getScene().getWindow();
+				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
 				alert.showAndWait();

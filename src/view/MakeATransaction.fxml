@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -19,15 +20,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MakeATransactionController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" stylesheets="@../css/MakeATransaction.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MakeATransactionController">
    <children>
-<TabPane fx:id="tabPane" layoutY="29.0" prefHeight="518.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+<TabPane fx:id="tabPane" layoutY="29.0" prefHeight="518.0" prefWidth="800.0" style="-fx-background-color: #1c2331;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
   <tabs>
-    <Tab fx:id="tabGetMoney" onSelectionChanged="#tabGetMoney" text="     Get Money     ">
+    <Tab id="tabGetMoneyCSS" fx:id="tabGetMoney" onSelectionChanged="#tabGetMoney" text="     Get Money     ">
       <content>
-        <AnchorPane fx:id="gmAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#anchorPaneAction" prefHeight="550.0" prefWidth="800.0">
+        <AnchorPane fx:id="gmAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#anchorPaneAction" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #5b5766;">
                <children>
-                  <TextField fx:id="gmtxtAmount" alignment="CENTER" layoutX="80.0" layoutY="69.0" onKeyReleased="#gmAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00.00">
+                  <TextField fx:id="gmtxtAmount" alignment="CENTER" layoutX="80.0" layoutY="86.0" onKeyReleased="#gmAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00.00">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -40,118 +41,124 @@
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></ComboBox>
-                  <Button fx:id="gmbtnSave" layoutX="448.0" layoutY="435.0" mnemonicParsing="false" onAction="#gmSavebtn" prefHeight="28.0" prefWidth="110.0" text="Save">
+                  <Button fx:id="gmbtnSave" layoutX="448.0" layoutY="435.0" mnemonicParsing="false" onAction="#gmSavebtn" prefHeight="28.0" prefWidth="110.0" style="-fx-background-color: #1a9544;" text="Save" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Ubuntu Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="gmbtnSaveAdd" cancelButton="true" defaultButton="true" layoutX="607.0" layoutY="435.0" mnemonicParsing="false" onAction="#gmbtnSaveAdd" prefHeight="28.0" prefWidth="141.0" text="Save &amp; Add More">
+                  <Button fx:id="gmbtnSaveAdd" cancelButton="true" defaultButton="true" layoutX="607.0" layoutY="435.0" mnemonicParsing="false" onAction="#gmbtnSaveAdd" prefHeight="28.0" prefWidth="141.0" style="-fx-background-color: #1a9544;" text="Save &amp; Add More" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Ubuntu Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="gmbtnCreateSource" focusTraversable="false" layoutX="635.0" layoutY="126.0" mnemonicParsing="false" onAction="#gmGoToSourceBtn" prefHeight="32.0" prefWidth="120.0" text="Create Source">
+                  <Button fx:id="gmbtnCreateSource" focusTraversable="false" layoutX="635.0" layoutY="128.0" mnemonicParsing="false" onAction="#gmGoToSourceBtn" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #0097A7;" text="Create Source" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Ubuntu Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                   </Button>
-                  <Button fx:id="gmbtnSettings" focusTraversable="false" layoutX="635.0" layoutY="200.0" mnemonicParsing="false" onAction="#gmSettingBtn" prefHeight="32.0" prefWidth="120.0" text="Settings">
+                  <Button fx:id="gmbtnSettings" focusTraversable="false" layoutX="635.0" layoutY="202.0" mnemonicParsing="false" onAction="#gmSettingBtn" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #0097A7;" text="Settings" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Ubuntu Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                   </Button>
-                  <Label focusTraversable="false" layoutX="420.0" layoutY="102.0" prefHeight="20.0" prefWidth="150.0" text="Source of Money">
+                  <Label focusTraversable="false" layoutX="420.0" layoutY="101.0" prefHeight="20.0" prefWidth="150.0" text="Source of Money" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label focusTraversable="false" layoutX="420.0" layoutY="176.0" prefHeight="20.0" prefWidth="150.0" text="Method">
+                  <Label focusTraversable="false" layoutX="420.0" layoutY="175.0" prefHeight="20.0" prefWidth="150.0" text="Method" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label focusTraversable="false" layoutX="82.0" layoutY="46.0" prefHeight="20.0" prefWidth="59.0" text="Amount">
+                  <Label focusTraversable="false" layoutX="82.0" layoutY="61.0" prefHeight="20.0" prefWidth="59.0" text="Amount" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label focusTraversable="false" layoutX="82.0" layoutY="124.0" prefHeight="20.0" prefWidth="150.0" text="Description">
+                  <Label focusTraversable="false" layoutX="82.0" layoutY="140.0" prefHeight="20.0" prefWidth="150.0" text="Description" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="64.0" layoutY="316.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="64.0" layoutY="333.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gmlblWalletBalance" alignment="CENTER" focusTraversable="false" layoutX="218.0" layoutY="316.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
+                  <Label fx:id="gmlblWalletBalance" alignment="CENTER" focusTraversable="false" layoutX="218.0" layoutY="333.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa; -fx-border-color: #757575; -fx-border-radius: 5px;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gmlblWarningMsg" focusTraversable="false" layoutX="80.0" layoutY="104.0" textFill="RED">
+                  <Label fx:id="gmlblWarningMsg" focusTraversable="false" layoutX="80.0" layoutY="121.0" textFill="#5b0101">
                      <font>
-                        <Font name="Arial" size="12.0" />
+                        <Font name="Ubuntu Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gmlblBalanceUpdateMsg" focusTraversable="false" layoutX="418.0" layoutY="243.0">
+                  <Label fx:id="gmlblBalanceUpdateMsg" focusTraversable="false" layoutX="418.0" layoutY="241.0" textFill="#eeeeee">
                      <font>
-                        <Font name="Arial" size="12.0" />
+                        <Font name="Ubuntu" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gmlblAmountNature" focusTraversable="false" layoutX="440.0" layoutY="268.0" prefHeight="20.0" prefWidth="150.0" text="Amount Nature">
+                  <Label fx:id="gmlblAmountNature" focusTraversable="false" layoutX="440.0" layoutY="268.0" prefHeight="20.0" prefWidth="150.0" text="Cash In by" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="gmrbtnAgent" focusTraversable="false" layoutX="454.0" layoutY="296.0" mnemonicParsing="false" onMouseClicked="#gmRbtnAgentClick">
+                  <RadioButton fx:id="gmrbtnAgent" focusTraversable="false" layoutX="444.0" layoutY="296.0" mnemonicParsing="false" onMouseClicked="#gmRbtnAgentClick" textFill="#eeeeee">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></RadioButton>
-                  <RadioButton fx:id="gmrbtnSendMoney" focusTraversable="false" layoutX="454.0" layoutY="321.0" mnemonicParsing="false" onMouseClicked="#gmRbtnSendMoneyClick">
+                  <RadioButton fx:id="gmrbtnSendMoney" focusTraversable="false" layoutX="444.0" layoutY="321.0" mnemonicParsing="false" onMouseClicked="#gmRbtnSendMoneyClick" textFill="#eeeeee">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></RadioButton>
-                  <RadioButton fx:id="gmrbtnBranch" focusTraversable="false" layoutX="454.0" layoutY="346.0" mnemonicParsing="false" onMouseClicked="#gmRbtnBranceClick">
+                  <RadioButton fx:id="gmrbtnBranch" focusTraversable="false" layoutX="444.0" layoutY="346.0" mnemonicParsing="false" onMouseClicked="#gmRbtnBranceClick" textFill="#eeeeee">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></RadioButton>
-                  <TextArea fx:id="gmtxtDescription" focusTraversable="false" layoutX="80.0" layoutY="148.0" onKeyReleased="#gmDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
+                  <TextArea fx:id="gmtxtDescription" focusTraversable="false" layoutX="80.0" layoutY="165.0" onKeyReleased="#gmDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
                      <font>
-                        <Font name="Arial" size="14.0" />
+                        <Font name="Ubuntu" size="14.0" />
                      </font></TextArea>
-                  <DatePicker fx:id="gmdateDate" editable="false" focusTraversable="false" layoutX="544.0" layoutY="44.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
+                  <DatePicker fx:id="gmdateDate" editable="false" focusTraversable="false" layoutX="519.0" layoutY="44.0" prefHeight="28.0" prefWidth="235.0" promptText="Select A Date">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
-                  <Button fx:id="gmbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
+                  <Button fx:id="gmbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="45.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></Button>
-                  <Label fx:id="gmlblLetterRemainmsg" focusTraversable="false" layoutX="80.0" layoutY="266.0">
+                  <Label fx:id="gmlblLetterRemainmsg" focusTraversable="false" layoutX="130.0" layoutY="283.0" textFill="#ebebeb">
                   	<font>
-                        <Font name="Arial" size="13.0" />
+                        <Font name="Ubuntu" size="13.0" />
                     </font>
                   </Label>
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab fx:id="tabExpense" onSelectionChanged="#tabExpense" text="      Expense      ">
+    <Tab id="tabExpenseCSS" fx:id="tabExpense" onSelectionChanged="#tabExpense" text="      Expense      ">
       <content>
-        <AnchorPane fx:id="exAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#anchorPaneAction" prefHeight="550.0" prefWidth="800.0">
+        <AnchorPane fx:id="exAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#anchorPaneAction" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #4B515D;">
                <children>
                   <TextField fx:id="extxtAmount" alignment="CENTER" layoutX="80.0" layoutY="65.0" onKeyReleased="#exAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00">
                      <font>
@@ -162,106 +169,115 @@
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></ComboBox>
-                  <Button fx:id="exbtnSave" layoutX="448.0" layoutY="435.0" mnemonicParsing="false" onAction="#exSaveBtn" prefHeight="28.0" prefWidth="111.0" text="Save">
+                  <Button fx:id="exbtnSave" layoutX="448.0" layoutY="435.0" mnemonicParsing="false" onAction="#exSaveBtn" prefHeight="28.0" prefWidth="111.0" style="-fx-background-color: #1a9644;" text="Save" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Ubuntu Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="exbtnSaveAndAdd" defaultButton="true" layoutX="607.0" layoutY="435.0" mnemonicParsing="false" onAction="#exbtnSaveAndAdd" prefHeight="28.0" prefWidth="141.0" text="Save &amp; Add More">
+                  <Button fx:id="exbtnSaveAndAdd" defaultButton="true" layoutX="607.0" layoutY="435.0" mnemonicParsing="false" onAction="#exbtnSaveAndAdd" prefHeight="28.0" prefWidth="141.0" style="-fx-background-color: #1a9644;" text="Save &amp; Add More" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Ubuntu Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="exbtnCreateSector" focusTraversable="false" layoutX="618.0" layoutY="177.0" mnemonicParsing="false" onAction="#exGoToSectorBtn" prefHeight="32.0" prefWidth="120.0" text="Create Sector">
+                  <Button fx:id="exbtnCreateSector" focusTraversable="false" layoutX="618.0" layoutY="179.0" mnemonicParsing="false" onAction="#exGoToSectorBtn" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #0097a7;" text="Create Sector" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Ubuntu Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                   </Button>
-                  <DatePicker fx:id="exdateDate" editable="false" focusTraversable="false" layoutX="527.0" layoutY="65.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
+                  <DatePicker fx:id="exdateDate" editable="false" focusTraversable="false" layoutX="502.0" layoutY="65.0" prefHeight="28.0" prefWidth="235.0" promptText="Select A Date">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
-                  <Label layoutX="403.0" layoutY="153.0" prefHeight="20.0" prefWidth="150.0" text="Expenditure Sector">
+                  <Label layoutX="403.0" layoutY="151.0" prefHeight="20.0" prefWidth="150.0" text="Expenditure Sector" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="82.0" layoutY="42.0" prefHeight="20.0" prefWidth="145.0" text="Expensed Amount">
+                  <Label layoutX="82.0" layoutY="40.0" prefHeight="20.0" prefWidth="145.0" text="Expensed Amount" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="82.0" layoutY="123.0" prefHeight="20.0" prefWidth="150.0" text="Description">
+                  <Label layoutX="82.0" layoutY="121.0" prefHeight="20.0" prefWidth="150.0" text="Description" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="299.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :">
+                  <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="299.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="exlblWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="299.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
+                  <Label fx:id="exlblWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="299.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa; -fx-border-color: #757575; -fx-border-radius: 5px;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="exlblWarningMsg" layoutX="80.0" layoutY="100.0" textFill="#a40404">
+                  <Label fx:id="exlblWarningMsg" layoutX="80.0" layoutY="100.0" textFill="#b20606">
                      <font>
-                        <Font name="Arial" size="12.0" />
+                        <Font name="Ubuntu Bold" size="13.0" />
                      </font>
                   </Label>
                   <TextArea fx:id="extxtDescription" focusTraversable="false" layoutX="80.0" layoutY="147.0" onKeyReleased="#exDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
                      <font>
-                        <Font name="Arial" size="14.0" />
+                        <Font name="Ubuntu" size="14.0" />
                      </font>
                   </TextArea>
-                  <Button fx:id="exbtnAdjustBalance" focusTraversable="false" layoutX="124.0" layoutY="348.0" mnemonicParsing="false" onAction="#exAdjustBalance" prefHeight="32.0" prefWidth="135.0" text="Adjust Balance">
+                  <Button fx:id="exbtnAdjustBalance" focusTraversable="false" layoutX="124.0" layoutY="348.0" mnemonicParsing="false" onAction="#exAdjustBalance" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Adjust Balance" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Ubuntu Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                   </Button>
                   <Button fx:id="exbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="11.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></Button>
-                  <Label fx:id="exlblLetterRemainmsg" layoutX="130.0" layoutY="266.0" textFill="#036558">
+                  <Label fx:id="exlblLetterRemainmsg" layoutX="130.0" layoutY="266.0" textFill="#eeeeee">
                   	<font>
-                        <Font name="Arial" size="13.0" />
+                        <Font name="Ubuntu" size="13.0" />
                     </font>
                   </Label>
-                  <Button fx:id="exbtnGoToCashCalculate" focusTraversable="false" layoutX="124.0" layoutY="394.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="32.0" prefWidth="135.0" text="Cash Calculate">
+                  <Button fx:id="exbtnGoToCashCalculate" focusTraversable="false" layoutX="124.0" layoutY="394.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Cash Calculate" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Ubuntu Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                   </Button>
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab fx:id="tabLend" onSelectionChanged="#tabLend" text="       Lend       ">
+      <Tab id="tabLendCSS" fx:id="tabLend" onSelectionChanged="#tabLend" text="       Lend       ">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #515357;">
                <children>
-                  <TabPane fx:id="lendTabPane" layoutX="342.0" layoutY="56.0" prefHeight="380.0" prefWidth="458.0" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane fx:id="lendTabPane" layoutX="342.0" layoutY="56.0" prefHeight="380.0" prefWidth="458.0" style="-fx-background-color: #1c2331;" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab fx:id="tabBorrow" onSelectionChanged="#boInitialize" text="     Borrow     ">
+                      <Tab id="tabBorrowCSS" fx:id="tabBorrow" onSelectionChanged="#boInitialize" text="     Borrow     ">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="428.0">
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="428.0" style="-fx-background-color: #3F729B;">
                                  <children>
                                     <ComboBox fx:id="bocmboType" layoutX="208.0" layoutY="15.0" onAction="#boTypeAction" prefHeight="27.0" prefWidth="216.0">
                                        <cursor>
@@ -286,84 +302,84 @@
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Label layoutX="25.0" layoutY="15.0" prefHeight="27.0" prefWidth="171.0" text="Borrow Type :">
+                                    <Label layoutX="25.0" layoutY="15.0" prefHeight="27.0" prefWidth="171.0" text="Borrow Type :" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="25.0" layoutY="52.0" prefHeight="27.0" prefWidth="171.0" text="Method :">
+                                    <Label layoutX="25.0" layoutY="52.0" prefHeight="27.0" prefWidth="171.0" text="Method :" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblPersonName" layoutX="25.0" layoutY="89.0" prefHeight="27.0" prefWidth="171.0">
+                                    <Label fx:id="bolblPersonName" layoutX="25.0" layoutY="89.0" prefHeight="27.0" prefWidth="171.0" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblAmountWithCharge" layoutX="25.0" layoutY="126.0" prefHeight="27.0" prefWidth="171.0">
+                                    <Label fx:id="bolblAmountWithCharge" layoutX="25.0" layoutY="126.0" prefHeight="27.0" prefWidth="171.0" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblBankChargeName" alignment="CENTER" layoutX="350.0" layoutY="95.0" prefHeight="27.0" prefWidth="97.0">
+                                    <Label fx:id="bolblBankChargeName" alignment="CENTER" layoutX="350.0" layoutY="95.0" prefHeight="27.0" prefWidth="97.0" textFill="WHITE">
                                        <font>
-                                          <Font name="Arial Bold" size="14.0" />
+                                          <Font name="Ubuntu" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblAmountNature" layoutX="208.0" layoutY="165.0" prefHeight="27.0" prefWidth="142.0">
+                                    <Label fx:id="bolblAmountNature" layoutX="208.0" layoutY="165.0" prefHeight="27.0" prefWidth="142.0" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblExactAmount" layoutX="25.0" layoutY="305.0" prefHeight="27.0" prefWidth="194.0">
+                                    <Label fx:id="bolblExactAmount" layoutX="25.0" layoutY="305.0" prefHeight="27.0" prefWidth="194.0" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblWarningMsg" layoutX="25.0" layoutY="288.0" textFill="RED">
+                                    <Label fx:id="bolblWarningMsg" layoutX="15.0" layoutY="288.0" textFill="#a80202">
                                        <font>
-                                          <Font name="Arial" size="12.0" />
+                                          <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="borbtn1" focusTraversable="false" layoutX="218.0" layoutY="195.0" mnemonicParsing="false" onAction="#boRbtn1Action">
+                                    <RadioButton fx:id="borbtn1" focusTraversable="false" layoutX="218.0" layoutY="195.0" mnemonicParsing="false" onAction="#boRbtn1Action" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="bolblBankCharge" alignment="CENTER" layoutX="350.0" layoutY="119.0" prefHeight="27.0" prefWidth="97.0">
+                                    <Label fx:id="bolblBankCharge" alignment="CENTER" layoutX="350.0" layoutY="119.0" prefHeight="27.0" prefWidth="97.0" textFill="WHITE">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="borbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#boRbtn2Action" prefHeight="18.0" prefWidth="105.0">
+                                    <RadioButton fx:id="borbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#boRbtn2Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="borbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#boRbtn3Action" prefHeight="18.0" prefWidth="105.0">
+                                    <RadioButton fx:id="borbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#boRbtn3Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="borbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#boRbtn4Action" prefHeight="18.0" prefWidth="105.0">
+                                    <RadioButton fx:id="borbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#boRbtn4Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="bolblAmountValidationMsg" layoutX="170.0" layoutY="153.0" textFill="#c30606">
+                                    <Label fx:id="bolblAmountValidationMsg" layoutX="160.0" layoutY="153.0" textFill="#a80202">
                                        <font>
-                                          <Font name="Arial" size="12.0" />
+                                          <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblAmountValidationMsg2" layoutX="170.0" layoutY="334.0" textFill="#da0c0c">
+                                    <Label fx:id="bolblAmountValidationMsg2" layoutX="160.0" layoutY="334.0" textFill="#a80202">
                                        <font>
-                                          <Font name="Arial" size="12.0" />
+                                          <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab fx:id="tabLe" onSelectionChanged="#leInitialize" text="      Lend      ">
+                      <Tab id="tabLeCSS" fx:id="tabLe" onSelectionChanged="#leInitialize" text="      Lend      ">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="445.0">
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="445.0" style="-fx-background-color: #00897B;">
                                  <children>
                                     <ComboBox fx:id="lecmboType" layoutX="208.0" layoutY="15.0" onAction="#leTypeAction" prefHeight="27.0" prefWidth="216.0">
                                        <cursor>
@@ -388,74 +404,74 @@
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Label layoutX="25.0" layoutY="15.0" prefHeight="27.0" prefWidth="171.0" text="Lend Type :">
+                                    <Label layoutX="25.0" layoutY="15.0" prefHeight="27.0" prefWidth="171.0" text="Lend Type :" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="25.0" layoutY="52.0" prefHeight="27.0" prefWidth="171.0" text="Method :">
+                                    <Label layoutX="25.0" layoutY="52.0" prefHeight="27.0" prefWidth="171.0" text="Method :" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lelblPersonName" layoutX="25.0" layoutY="89.0" prefHeight="27.0" prefWidth="171.0">
+                                    <Label fx:id="lelblPersonName" layoutX="25.0" layoutY="89.0" prefHeight="27.0" prefWidth="171.0" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lelblAmountWithCharge" layoutX="25.0" layoutY="126.0" prefHeight="27.0" prefWidth="171.0">
+                                    <Label fx:id="lelblAmountWithCharge" layoutX="25.0" layoutY="126.0" prefHeight="27.0" prefWidth="171.0" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lelblBankChargeName" alignment="CENTER" layoutX="350.0" layoutY="95.0" prefHeight="27.0" prefWidth="97.0">
+                                    <Label fx:id="lelblBankChargeName" alignment="CENTER" layoutX="350.0" layoutY="95.0" prefHeight="27.0" prefWidth="97.0" textFill="WHITE">
                                        <font>
-                                          <Font name="Arial Bold" size="14.0" />
+                                          <Font name="Ubuntu" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lelblAmountNature" layoutX="208.0" layoutY="165.0" prefHeight="27.0" prefWidth="142.0">
+                                    <Label fx:id="lelblAmountNature" layoutX="208.0" layoutY="165.0" prefHeight="27.0" prefWidth="142.0" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lelblExactAmount" layoutX="25.0" layoutY="305.0" prefHeight="27.0" prefWidth="194.0">
+                                    <Label fx:id="lelblExactAmount" layoutX="25.0" layoutY="305.0" prefHeight="27.0" prefWidth="194.0" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lelblWarningMsg" layoutX="25.0" layoutY="288.0" textFill="RED">
+                                    <Label fx:id="lelblWarningMsg" layoutX="15.0" layoutY="288.0" textFill="#a40808">
                                        <font>
-                                          <Font name="Arial" size="12.0" />
+                                          <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="lerbtn1" focusTraversable="false" layoutX="218.0" layoutY="195.0" mnemonicParsing="false" onAction="#leRbtn1Action">
+                                    <RadioButton fx:id="lerbtn1" focusTraversable="false" layoutX="218.0" layoutY="195.0" mnemonicParsing="false" onAction="#leRbtn1Action" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="lelblBankCharge" alignment="CENTER" layoutX="350.0" layoutY="119.0" prefHeight="27.0" prefWidth="97.0">
+                                    <Label fx:id="lelblBankCharge" alignment="CENTER" layoutX="350.0" layoutY="119.0" prefHeight="27.0" prefWidth="97.0" textFill="WHITE">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="lerbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#leRbtn2Action" prefHeight="18.0" prefWidth="105.0">
+                                    <RadioButton fx:id="lerbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#leRbtn2Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="lerbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#leRbtn3Action" prefHeight="18.0" prefWidth="105.0">
+                                    <RadioButton fx:id="lerbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#leRbtn3Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="lerbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#leRbtn4Action" prefHeight="18.0" prefWidth="105.0">
+                                    <RadioButton fx:id="lerbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#leRbtn4Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="lelblAmountValidationMsg" layoutX="170.0" layoutY="153.0" textFill="#d00808">
+                                    <Label fx:id="lelblAmountValidationMsg" layoutX="160.0" layoutY="153.0" textFill="#a40808">
                                        <font>
-                                          <Font name="Arial" size="12.0" />
+                                          <Font name="Ubuntu Bold" size="13.0" />
                                        </font></Label>
-                                    <Label fx:id="lelblAmountValidationMsg2" layoutX="170.0" layoutY="334.0" textFill="#c30606">
+                                    <Label fx:id="lelblAmountValidationMsg2" layoutX="160.0" layoutY="334.0" textFill="#a40808">
                                        <font>
-                                          <Font name="Arial" size="12.0" />
+                                          <Font name="Ubuntu Bold" size="13.0" />
                                        </font></Label>
                                  </children>
                               </AnchorPane>
@@ -463,17 +479,17 @@
                       </Tab>
                     </tabs>
                   </TabPane>
-                  <Button fx:id="lendbtnSave" defaultButton="true" layoutX="618.0" layoutY="440.0" mnemonicParsing="false" onAction="#lendSaveBtn" prefHeight="28.0" prefWidth="111.0" text="Save">
+                  <Button fx:id="lendbtnSave" defaultButton="true" layoutX="618.0" layoutY="443.0" mnemonicParsing="false" onAction="#lendSaveBtn" prefHeight="28.0" prefWidth="111.0" style="-fx-background-color: #1a9544;" text="Save" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Ubuntu Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="lendbtnCancel" cancelButton="true" layoutX="465.0" layoutY="440.0" mnemonicParsing="false" onAction="#LendCancelBtn" prefHeight="28.0" prefWidth="111.0" text="Cancel">
+                  <Button fx:id="lendbtnCancel" cancelButton="true" layoutX="465.0" layoutY="443.0" mnemonicParsing="false" onAction="#LendCancelBtn" prefHeight="28.0" prefWidth="111.0" style="-fx-background-color: #140e0e;" text="Cancel" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Ubuntu Bold" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
@@ -483,12 +499,12 @@
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
-                  <Label fx:id="lendlblTableHeading" alignment="CENTER" layoutX="85.0" layoutY="61.0" prefHeight="20.0" prefWidth="179.0">
+                  <Label fx:id="lendlblTableHeading" alignment="CENTER" layoutX="85.0" layoutY="61.0" prefHeight="20.0" prefWidth="179.0" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="lendTable" focusTraversable="false" layoutX="3.0" layoutY="89.0" prefHeight="345.0" prefWidth="336.0">
+                  <TableView fx:id="lendTable" focusTraversable="false" layoutX="3.0" layoutY="89.0" prefHeight="345.0" prefWidth="336.0" style="-fx-background-color: #EEEEEE;" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="461.0">
                     <columns>
                       <TableColumn fx:id="lendTblColumnName" prefWidth="95.0" text="Name" />
                       <TableColumn fx:id="lendTblColumnDate" prefWidth="160.0" text="Date" />
@@ -499,47 +515,47 @@
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></Button>
-                  <Label fx:id="lendlblTotalBorrowTk" alignment="CENTER" layoutX="200.0" layoutY="440.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #ff80a6;">
+                  <Label fx:id="lendlblTotalBorrowTk" alignment="CENTER" layoutX="200.0" layoutY="440.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #ff80a6; -fx-border-color: Black; -fx-border-radius: 2px;">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblTotalLendTk" alignment="CENTER" layoutX="200.0" layoutY="440.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #e2e19a;">
+                  <Label fx:id="lendlblTotalLendTk" alignment="CENTER" layoutX="200.0" layoutY="440.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #e2e19a; -fx-border-color: Black; -fx-border-radius: 2px;">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="331.0" layoutY="14.0" prefHeight="28.0" prefWidth="110.0" text="Wallet Balance :">
+                  <Label alignment="CENTER_RIGHT" layoutX="331.0" layoutY="14.0" prefHeight="28.0" prefWidth="110.0" text="Wallet Balance :" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblWalletBalance" alignment="CENTER" layoutX="443.0" layoutY="14.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
+                  <Label fx:id="lendlblWalletBalance" alignment="CENTER" layoutX="443.0" layoutY="14.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa; -fx-border-radius: 5px; -fx-border-color: #757575;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblTotalLendName" alignment="CENTER_RIGHT" layoutX="25.0" layoutY="440.0" prefHeight="28.0" prefWidth="171.0">
+                  <Label fx:id="lendlblTotalLendName" alignment="CENTER_RIGHT" layoutX="25.0" layoutY="440.0" prefHeight="28.0" prefWidth="171.0" textFill="#eeeeee">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblbkAccountBalanceName" alignment="CENTER" layoutX="83.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="bKash">
+                  <Label fx:id="lendlblbkAccountBalanceName" alignment="CENTER" layoutX="83.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="bKash" textFill="#eeeeee">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblBkBalance" alignment="CENTER" layoutX="83.0" layoutY="23.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #FF89C9;">
+                  <Label fx:id="lendlblBkBalance" alignment="CENTER" layoutX="83.0" layoutY="23.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #FF89C9; -fx-border-color: Black; -fx-border-radius: 2px;">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblRocBalance" alignment="CENTER" layoutX="183.0" layoutY="23.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #aadb7b;">
+                  <Label fx:id="lendlblRocBalance" alignment="CENTER" layoutX="183.0" layoutY="23.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #aadb7b; -fx-border-color: Black; -fx-border-radius: 2px;">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblrocAccountBalanceName" alignment="CENTER" layoutX="183.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="Rocket">
+                  <Label fx:id="lendlblrocAccountBalanceName" alignment="CENTER" layoutX="183.0" layoutY="3.0" prefHeight="20.0" prefWidth="80.0" text="Rocket" textFill="#eeeeee">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -547,15 +563,15 @@
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab fx:id="tabBank" onSelectionChanged="#tabBank" text="       Bank       ">
+      <Tab id="tabBankCSS" fx:id="tabBank" onSelectionChanged="#tabBank" text="       Bank       ">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #37474F;">
                <children>
-                  <TabPane fx:id="bnkTabPane" layoutY="53.0" prefHeight="388.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane fx:id="bnkTabPane" layoutY="56.0" prefHeight="430.0" prefWidth="800.0" style="-fx-background-color: #1c2331;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
                     <tabs>
-                        <Tab fx:id="tabPersonal" onSelectionChanged="#perInitialize" text="     Personal     ">
+                        <Tab id="tabPersonal" fx:id="tabPersonal" onSelectionChanged="#perInitialize" text="     Personal     ">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #45526e;">
                                  <children>
                                     <ComboBox fx:id="percmboAmountNature" layoutX="523.0" layoutY="97.0" prefHeight="32.0" prefWidth="200.0">
                                        <cursor>
@@ -566,252 +582,284 @@
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Label layoutX="370.0" layoutY="97.0" prefHeight="32.0" prefWidth="154.0" text="Amount Nature :">
+                                    <Label layoutX="370.0" layoutY="97.0" prefHeight="32.0" prefWidth="154.0" text="Amount Nature :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="370.0" layoutY="149.0" prefHeight="32.0" prefWidth="154.0" text="Amount :">
+                                    <Label layoutX="370.0" layoutY="149.0" prefHeight="32.0" prefWidth="154.0" text="Amount :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER_RIGHT" layoutX="42.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :">
+                                    <Label alignment="CENTER_RIGHT" layoutX="42.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="perlblAccountBalance" alignment="CENTER" layoutX="200.0" layoutY="125.0" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #4CD2FF;">
+                                    <Label fx:id="perlblAccountBalance" alignment="CENTER" layoutX="200.0" layoutY="125.0" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #4CD2FF; -fx-border-color: Black; -fx-border-radius: 2px;">
                                        <font>
                                           <Font name="Arial Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="perAmountValidationMsg" layoutX="503.0" layoutY="183.0" textFill="#c30606">
+                                    <Label fx:id="perAmountValidationMsg" layoutX="480.0" layoutY="183.0" textFill="#fc5555">
                                        <font>
-                                          <Font name="Arial" size="12.0" />
+                                          <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
                                     </Label>
+                                          <Button fx:id="perbtnSave" defaultButton="true" layoutX="618.0" layoutY="339.0" mnemonicParsing="false" onAction="#bnkSaveBtn" prefHeight="28.0" prefWidth="111.0" style="-fx-background-color: #1a9544;" text="Save" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <Button fx:id="perbtnCancel" cancelButton="true" layoutX="465.0" layoutY="339.0" mnemonicParsing="false" onAction="#bnkCancelBtn" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: #140e0e;" text="Cancel" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                          </Button>
                                  </children>
                               </AnchorPane>
                           </content>
                         </Tab>
-                      <Tab fx:id="tabbKash" onSelectionChanged="#bkInitialize" text="      bKash      ">
+                      <Tab id="tabbKash" fx:id="tabbKash" onSelectionChanged="#bkInitialize" text="      bKash      ">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="368.0" prefWidth="800.0">
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="354.0" prefWidth="800.0" style="-fx-background-color: #3f4355;">
                                  <children>
-                                    <ComboBox fx:id="bkcmboTransactionType" layoutX="523.0" layoutY="45.0" onAction="#bkTypeAction" prefHeight="32.0" prefWidth="200.0">
+                                    <ComboBox fx:id="bkcmboTransactionType" layoutX="523.0" layoutY="35.0" onAction="#bkTypeAction" prefHeight="32.0" prefWidth="200.0">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></ComboBox>
-                                    <ComboBox fx:id="bkcmboAmountNature" layoutX="523.0" layoutY="97.0" onAction="#bkNatureAction" prefHeight="32.0" prefWidth="200.0">
+                                    <ComboBox fx:id="bkcmboAmountNature" layoutX="523.0" layoutY="87.0" onAction="#bkNatureAction" prefHeight="32.0" prefWidth="200.0">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></ComboBox>
-                                    <TextField fx:id="bktxtAmount" alignment="CENTER" layoutX="523.0" layoutY="149.0" onKeyReleased="#bkAmountValidation" prefHeight="32.0" prefWidth="120.0" promptText="00">
+                                    <TextField fx:id="bktxtAmount" alignment="CENTER" layoutX="523.0" layoutY="139.0" onKeyReleased="#bkAmountValidation" prefHeight="32.0" prefWidth="120.0" promptText="00">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Label layoutX="370.0" layoutY="97.0" prefHeight="32.0" prefWidth="154.0" text="Amount Nature :">
+                                    <Label layoutX="370.0" layoutY="87.0" prefHeight="32.0" prefWidth="154.0" text="Amount Nature :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="370.0" layoutY="45.0" prefHeight="32.0" prefWidth="154.0" text="Transaction Type :">
+                                    <Label layoutX="370.0" layoutY="35.0" prefHeight="32.0" prefWidth="154.0" text="Transaction Type :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="370.0" layoutY="149.0" prefHeight="32.0" prefWidth="154.0" text="Amount :">
+                                    <Label layoutX="370.0" layoutY="139.0" prefHeight="32.0" prefWidth="154.0" text="Amount :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER_RIGHT" layoutX="42.0" layoutY="91.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :">
+                                    <Label alignment="CENTER_RIGHT" layoutX="42.0" layoutY="81.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bklblAccountBalance" alignment="CENTER" layoutX="200.0" layoutY="91.0" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #FF89C9;">
+                                    <Label fx:id="bklblAccountBalance" alignment="CENTER" layoutX="200.0" layoutY="81.0" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #FF89C9; -fx-border-color: Black; -fx-border-radius: 2px;">
                                        <font>
                                           <Font name="Arial Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="bkbtnAdjustBalance" focusTraversable="false" layoutX="109.0" layoutY="170.0" mnemonicParsing="false" onAction="#bnkAdjustBalAction" prefHeight="32.0" prefWidth="135.0" text="Adjust Balance">
+                                    <Button fx:id="bkbtnAdjustBalance" focusTraversable="false" layoutX="109.0" layoutY="160.0" mnemonicParsing="false" onAction="#bnkAdjustBalAction" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Adjust Balance" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Ubuntu Bold" size="14.0" />
                                        </font>
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor>
                                     </Button>
-                                    <Label fx:id="bklblBankChargeName" alignment="CENTER" layoutX="667.0" layoutY="140.0" prefHeight="27.0" prefWidth="97.0" text="Bank Charge">
+                                    <Label fx:id="bklblBankChargeName" alignment="CENTER" layoutX="667.0" layoutY="130.0" prefHeight="27.0" prefWidth="97.0" text="Bank Charge" textFill="#eeeeee">
                                        <font>
-                                          <Font name="Arial Bold" size="14.0" />
+                                          <Font name="Ubuntu" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bklblAmountNature" layoutX="523.0" layoutY="196.0" prefHeight="27.0" prefWidth="142.0" text="Cash Repay Mehtod">
+                                    <Label fx:id="bklblAmountNature" layoutX="523.0" layoutY="186.0" prefHeight="27.0" prefWidth="142.0" text="Cash Repay Mehtod" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="bkrbtn1" focusTraversable="false" layoutX="533.0" layoutY="226.0" mnemonicParsing="false" onAction="#bkCmboAction1" text="Cash Out">
+                                    <RadioButton fx:id="bkrbtn1" focusTraversable="false" layoutX="533.0" layoutY="216.0" mnemonicParsing="false" onAction="#bkCmboAction1" text="Cash Out" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="bklblBankCharge" alignment="CENTER" layoutX="667.0" layoutY="165.0" prefHeight="27.0" prefWidth="97.0">
+                                    <Label fx:id="bklblBankCharge" alignment="CENTER" layoutX="667.0" layoutY="155.0" prefHeight="27.0" prefWidth="97.0" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="bkrbtn2" focusTraversable="false" layoutX="533.0" layoutY="251.0" mnemonicParsing="false" onAction="#bkCmboAction2" prefHeight="18.0" prefWidth="105.0" text="Buy Airtime">
+                                    <RadioButton fx:id="bkrbtn2" focusTraversable="false" layoutX="533.0" layoutY="241.0" mnemonicParsing="false" onAction="#bkCmboAction2" prefHeight="18.0" prefWidth="105.0" text="Buy Airtime" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="bkrbtn3" focusTraversable="false" layoutX="533.0" layoutY="276.0" mnemonicParsing="false" onAction="#bkCmboAction3" prefHeight="18.0" prefWidth="105.0" text="Send Money">
+                                    <RadioButton fx:id="bkrbtn3" focusTraversable="false" layoutX="533.0" layoutY="266.0" mnemonicParsing="false" onAction="#bkCmboAction3" prefHeight="18.0" prefWidth="105.0" text="Send Money" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="bkrbtn4" focusTraversable="false" layoutX="533.0" layoutY="301.0" mnemonicParsing="false" onAction="#bkCmboAction4" prefHeight="18.0" prefWidth="105.0" text="Payment">
+                                    <RadioButton fx:id="bkrbtn4" focusTraversable="false" layoutX="533.0" layoutY="291.0" mnemonicParsing="false" onAction="#bkCmboAction4" prefHeight="18.0" prefWidth="105.0" text="Payment" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="bkrbtn5" focusTraversable="false" layoutX="533.0" layoutY="326.0" mnemonicParsing="false" onAction="#bkCmboAction5" prefHeight="18.0" prefWidth="105.0" text="ATM">
+                                    <RadioButton fx:id="bkrbtn5" focusTraversable="false" layoutX="533.0" layoutY="316.0" mnemonicParsing="false" onAction="#bkCmboAction5" prefHeight="18.0" prefWidth="105.0" text="ATM" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="bklblUpdateBalance" alignment="CENTER" layoutX="74.0" layoutY="132.0" prefHeight="16.0" prefWidth="202.0">
+                                    <Label fx:id="bklblUpdateBalance" alignment="CENTER" layoutX="71.0" layoutY="122.0" prefHeight="16.0" prefWidth="216.0" textFill="#eeeeee">
                                        <font>
-                                          <Font name="Arial" size="12.0" />
+                                          <Font name="Ubuntu" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bkAmountValidationMsg" layoutX="458.0" layoutY="183.0" textFill="#c30404">
+                                    <Label fx:id="bkAmountValidationMsg" layoutX="440.0" layoutY="173.0" textFill="#ff7373">
                                        <font>
-                                          <Font name="Arial" size="12.0" />
+                                          <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
                                     </Label>
+                                          <Button fx:id="bkbtnSave" defaultButton="true" layoutX="618.0" layoutY="358.0" mnemonicParsing="false" onAction="#bnkSaveBtn" prefHeight="28.0" prefWidth="111.0" style="-fx-background-color: #1a9544;" text="Save" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <Button fx:id="bkbtnCancel" cancelButton="true" layoutX="465.0" layoutY="358.0" mnemonicParsing="false" onAction="#bnkCancelBtn" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: #140e0e;" text="Cancel" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                          </Button>
                                  </children>
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab fx:id="tabRocket" onSelectionChanged="#rocInitialize" text="      Rocket      ">
+                      <Tab id="tabRocket" fx:id="tabRocket" onSelectionChanged="#rocInitialize" text="      Rocket      ">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #484848;">
                                  <children>
-                                    <ComboBox fx:id="roccmboTransactionType" layoutX="523.0" layoutY="45.0" onAction="#rocTypeAction" prefHeight="32.0" prefWidth="200.0">
+                                    <ComboBox fx:id="roccmboTransactionType" layoutX="523.0" layoutY="36.0" onAction="#rocTypeAction" prefHeight="32.0" prefWidth="200.0">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></ComboBox>
-                                    <ComboBox fx:id="roccmboAmountNature" layoutX="523.0" layoutY="97.0" onAction="#rocNatureAction" prefHeight="32.0" prefWidth="200.0">
+                                    <ComboBox fx:id="roccmboAmountNature" layoutX="523.0" layoutY="88.0" onAction="#rocNatureAction" prefHeight="32.0" prefWidth="200.0">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></ComboBox>
-                                    <TextField fx:id="roctxtAmount" alignment="CENTER" layoutX="523.0" layoutY="149.0" onKeyReleased="#rocAmountValidation" prefHeight="32.0" prefWidth="120.0" promptText="00">
+                                    <TextField fx:id="roctxtAmount" alignment="CENTER" layoutX="523.0" layoutY="140.0" onKeyReleased="#rocAmountValidation" prefHeight="32.0" prefWidth="120.0" promptText="00">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Label layoutX="370.0" layoutY="97.0" prefHeight="32.0" prefWidth="154.0" text="Amount Nature :">
+                                    <Label layoutX="370.0" layoutY="88.0" prefHeight="32.0" prefWidth="154.0" text="Amount Nature :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="370.0" layoutY="45.0" prefHeight="32.0" prefWidth="154.0" text="Transaction Type :">
+                                    <Label layoutX="370.0" layoutY="36.0" prefHeight="32.0" prefWidth="154.0" text="Transaction Type :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="370.0" layoutY="149.0" prefHeight="32.0" prefWidth="154.0" text="Amount :">
+                                    <Label layoutX="370.0" layoutY="140.0" prefHeight="32.0" prefWidth="154.0" text="Amount :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER_RIGHT" layoutX="42.0" layoutY="91.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :">
+                                    <Label alignment="CENTER_RIGHT" layoutX="42.0" layoutY="82.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="roclblAccountBalance" alignment="CENTER" layoutX="200.0" layoutY="91.0" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #aadb7b;">
+                                    <Label fx:id="roclblAccountBalance" alignment="CENTER" layoutX="200.0" layoutY="82.0" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: #aadb7b; -fx-border-color: black; -fx-border-radius: 2px;">
                                        <font>
                                           <Font name="Arial Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="rocbtnAdjustBalance" focusTraversable="false" layoutX="109.0" layoutY="170.0" mnemonicParsing="false" onAction="#bnkAdjustBalAction" prefHeight="32.0" prefWidth="135.0" text="Adjust Balance">
+                                    <Button fx:id="rocbtnAdjustBalance" focusTraversable="false" layoutX="109.0" layoutY="161.0" mnemonicParsing="false" onAction="#bnkAdjustBalAction" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Adjust Balance" textFill="WHITE">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Ubuntu Bold" size="14.0" />
                                        </font>
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor>
                                     </Button>
-                                    <Label fx:id="roclblBankChargeName" alignment="CENTER" layoutX="667.0" layoutY="140.0" prefHeight="27.0" prefWidth="97.0" text="Bank Charge">
+                                    <Label fx:id="roclblBankChargeName" alignment="CENTER" layoutX="667.0" layoutY="131.0" prefHeight="27.0" prefWidth="97.0" text="Bank Charge" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="roclblAmountNature" layoutX="523.0" layoutY="195.0" prefHeight="27.0" prefWidth="142.0" text="Cash Repay Mehtod">
+                                    <Label fx:id="roclblAmountNature" layoutX="523.0" layoutY="186.0" prefHeight="27.0" prefWidth="142.0" text="Cash Repay Mehtod" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="rocrbtn1" focusTraversable="false" layoutX="533.0" layoutY="225.0" mnemonicParsing="false" onAction="#rocCmboAction1" text="ATM">
+                                    <RadioButton fx:id="rocrbtn1" focusTraversable="false" layoutX="533.0" layoutY="216.0" mnemonicParsing="false" onAction="#rocCmboAction1" text="ATM" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="roclblBankCharge" alignment="CENTER" layoutX="667.0" layoutY="165.0" prefHeight="27.0" prefWidth="97.0" text="9.25">
+                                    <Label fx:id="roclblBankCharge" alignment="CENTER" layoutX="667.0" layoutY="156.0" prefHeight="27.0" prefWidth="97.0" text="9.25" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="rocrbtn2" focusTraversable="false" layoutX="533.0" layoutY="250.0" mnemonicParsing="false" onAction="#rocCmboAction2" prefHeight="18.0" prefWidth="105.0" text="TopUp">
+                                    <RadioButton fx:id="rocrbtn2" focusTraversable="false" layoutX="533.0" layoutY="241.0" mnemonicParsing="false" onAction="#rocCmboAction2" prefHeight="18.0" prefWidth="105.0" text="TopUp" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="rocrbtn3" focusTraversable="false" layoutX="533.0" layoutY="275.0" mnemonicParsing="false" onAction="#rocCmboAction3" prefHeight="18.0" prefWidth="105.0" text="Agent">
+                                    <RadioButton fx:id="rocrbtn3" focusTraversable="false" layoutX="533.0" layoutY="266.0" mnemonicParsing="false" onAction="#rocCmboAction3" prefHeight="18.0" prefWidth="105.0" text="Agent" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="rocrbtn4" focusTraversable="false" layoutX="533.0" layoutY="300.0" mnemonicParsing="false" onAction="#rocCmboAction4" prefHeight="18.0" prefWidth="105.0" text="Send Money">
+                                    <RadioButton fx:id="rocrbtn4" focusTraversable="false" layoutX="533.0" layoutY="291.0" mnemonicParsing="false" onAction="#rocCmboAction4" prefHeight="18.0" prefWidth="105.0" text="Send Money" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="rocrbtn5" focusTraversable="false" layoutX="533.0" layoutY="325.0" mnemonicParsing="false" onAction="#rocCmboAction5" prefHeight="18.0" prefWidth="105.0" text="Branch">
+                                    <RadioButton fx:id="rocrbtn5" focusTraversable="false" layoutX="533.0" layoutY="316.0" mnemonicParsing="false" onAction="#rocCmboAction5" prefHeight="18.0" prefWidth="105.0" text="Branch" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="roclblUpdateBalance" alignment="CENTER" layoutX="74.0" layoutY="132.0" prefHeight="16.0" prefWidth="202.0">
+                                    <Label fx:id="roclblUpdateBalance" alignment="CENTER" layoutX="74.0" layoutY="123.0" prefHeight="16.0" prefWidth="202.0" textFill="#eeeeee">
                                        <font>
-                                          <Font name="Arial" size="12.0" />
+                                          <Font name="Ubuntu" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="rocAmountValidationMsg" layoutX="458.0" layoutY="183.0" textFill="#bc0303">
+                                    <Label fx:id="rocAmountValidationMsg" layoutX="440.0" layoutY="174.0" textFill="#ff5e5e">
                                        <font>
-                                          <Font name="Arial" size="12.0" />
+                                          <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
                                     </Label>
+                                    <Button fx:id="rocbtnSave" defaultButton="true" layoutX="618.0" layoutY="358.0" mnemonicParsing="false" onAction="#bnkSaveBtn" prefHeight="28.0" prefWidth="111.0" style="-fx-background-color: #1a9544;" text="Save" textFill="WHITE">
+                                       <font>
+                                          <Font name="Ubuntu Bold" size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button fx:id="rocbtnCancel" cancelButton="true" layoutX="465.0" layoutY="358.0" mnemonicParsing="false" onAction="#bnkCancelBtn" prefHeight="29.0" prefWidth="111.0" style="-fx-background-color: #140e0e;" text="Cancel" textFill="WHITE">
+                                       <font>
+                                          <Font name="Ubuntu Bold" size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor>
+                                    </Button>
                                  </children>
                               </AnchorPane>
                         </content>
                       </Tab>
                     </tabs>
                   </TabPane>
-                  <Button fx:id="bnkbtnSave" defaultButton="true" layoutX="618.0" layoutY="440.0" mnemonicParsing="false" onAction="#bnkSaveBtn" prefHeight="28.0" prefWidth="111.0" text="Save">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="bnkbtnCancel" cancelButton="true" layoutX="465.0" layoutY="440.0" mnemonicParsing="false" onAction="#bnkCancelBtn" prefHeight="28.0" prefWidth="111.0" text="Cancel">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor>
-                  </Button>
-                  <DatePicker fx:id="bnkdateDate" editable="false" focusTraversable="false" layoutX="540.0" layoutY="14.0" prefHeight="28.0" prefWidth="210.0" promptText="Select A Date">
+                  <DatePicker fx:id="bnkdateDate" editable="false" focusTraversable="false" layoutX="483.0" layoutY="12.0" prefHeight="28.0" prefWidth="235.0" promptText="Select A Date">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
@@ -827,12 +875,12 @@
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Label alignment="CENTER_RIGHT" layoutX="159.0" layoutY="14.0" prefHeight="28.0" prefWidth="110.0" text="Wallet Balance :">
+                  <Label alignment="CENTER_RIGHT" layoutX="117.0" layoutY="12.0" prefHeight="28.0" prefWidth="110.0" text="Wallet Balance :" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="bnkWalletBalance" alignment="CENTER" layoutX="271.0" layoutY="14.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa;">
+                  <Label fx:id="bnkWalletBalance" alignment="CENTER" layoutX="229.0" layoutY="12.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa; -fx-border-radius: 5px; -fx-border-color: #757575;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
@@ -842,7 +890,7 @@
       </Tab>
   </tabs>
 </TabPane>
-      <MenuBar layoutX="25.0" prefHeight="30.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar layoutX="25.0" prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: #cfd8dc;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="Operation">
             <items>
@@ -893,6 +941,6 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="btnSignOut" layoutX="700.0" layoutY="-3.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out" />
+      <Button fx:id="btnSignOut" layoutX="700.0" layoutY="-3.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #cfd8dc;" text="Sign Out" />
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" />
 </children></AnchorPane>

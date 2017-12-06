@@ -108,19 +108,25 @@ public class DashboardController extends DashboardModel {
 	@FXML
 	private Label lblTotalExpense;
 	@FXML
+	private Label lblbKashName;
+	@FXML
 	private Label lblbKashBalance;
+	@FXML
+	private Label lblRocketName;
 	@FXML
 	private Label lblRocketBalance;
 	@FXML
+	private Label lblPersonalName;
+	@FXML
 	private Label lblPersonalBalance;
+	@FXML
+	private Label lblBorrowName;
 	@FXML
 	private Label lblTotalBorrow;
 	@FXML
+	private Label lblLendName;
+	@FXML
 	private Label lblTotalLend;
-	@FXML
-	private Label lblbKashName;
-	@FXML
-	private Label lblRocketName;
 	
 	@FXML
 	private ComboBox<String> cmboGetMoneyMonthList;
@@ -173,20 +179,10 @@ public class DashboardController extends DashboardModel {
 		
 //		show balance if service is enabled
 		if (BankIssue.isbKashActivated()) {
-			lblbKashName.setVisible(true);
-			lblbKashBalance.setVisible(true);
 			lblbKashBalance.setText(addThousandSeparator(getbkAccountBalance()));
-		} else {
-			lblbKashName.setVisible(false);
-			lblbKashBalance.setVisible(false);
 		}
 		if (BankIssue.isRocketActivated()) {
-			lblRocketName.setVisible(true);
-			lblRocketBalance.setVisible(true);
 			lblRocketBalance.setText(addThousandSeparator(getRocAccountBalance()));
-		} else {
-			lblRocketName.setVisible(false);
-			lblRocketBalance.setVisible(false);
 		}
 		lblPersonalBalance.setText(getPerAccountBalance());
 		
@@ -199,6 +195,7 @@ public class DashboardController extends DashboardModel {
 		getMoneyChart(); //generate chart value
 		expenseChart();
 		clock(); //run the analog clock
+		showAllCurrentStatus();
 		
 //		add tooltip
 		btnSignOut.setTooltip(new Tooltip("Sign Out from Application"));
@@ -623,6 +620,82 @@ public class DashboardController extends DashboardModel {
 //	    return sb.toString();
 //	}
 	
+	
+	private void showAllCurrentStatus() {
+
+		final Timeline status = new Timeline(
+				new KeyFrame(Duration.seconds(0),
+						new EventHandler<ActionEvent>() {
+					@Override public void handle(ActionEvent actionEvent) {
+						showBalanceStatus(currentBalanceStatus());
+					}
+				}
+						),
+				new KeyFrame(Duration.seconds(3))
+				);
+		status.setCycleCount(Animation.INDEFINITE);
+		status.play();
+	}
+	
+	
+	private void showBalanceStatus(int status) {
+		if (status == 1) { // Borrow
+			lblBorrowName.setVisible(true);
+			lblTotalBorrow.setVisible(true);
+			lblLendName.setVisible(false);
+			lblTotalLend.setVisible(false);
+			lblPersonalName.setVisible(false);
+			lblPersonalBalance.setVisible(false);
+			lblbKashName.setVisible(false);
+			lblbKashBalance.setVisible(false);
+			lblRocketName.setVisible(false);
+			lblRocketBalance.setVisible(false);
+		} else if(status == 2) { // Lend
+			lblBorrowName.setVisible(false);
+			lblTotalBorrow.setVisible(false);
+			lblLendName.setVisible(true);
+			lblTotalLend.setVisible(true);
+			lblPersonalName.setVisible(false);
+			lblPersonalBalance.setVisible(false);
+			lblbKashName.setVisible(false);
+			lblbKashBalance.setVisible(false);
+			lblRocketName.setVisible(false);
+			lblRocketBalance.setVisible(false);
+		} else if(status == 3) { // Personal
+			lblBorrowName.setVisible(false);
+			lblTotalBorrow.setVisible(false);
+			lblLendName.setVisible(false);
+			lblTotalLend.setVisible(false);
+			lblPersonalName.setVisible(true);
+			lblPersonalBalance.setVisible(true);
+			lblbKashName.setVisible(false);
+			lblbKashBalance.setVisible(false);
+			lblRocketName.setVisible(false);
+			lblRocketBalance.setVisible(false);
+		} else if(status == 4) { // bKash
+			lblBorrowName.setVisible(false);
+			lblTotalBorrow.setVisible(false);
+			lblLendName.setVisible(false);
+			lblTotalLend.setVisible(false);
+			lblPersonalName.setVisible(false);
+			lblPersonalBalance.setVisible(false);
+			lblbKashName.setVisible(true);
+			lblbKashBalance.setVisible(true);
+			lblRocketName.setVisible(false);
+			lblRocketBalance.setVisible(false);
+		} else if(status == 5) { // Rocket
+			lblBorrowName.setVisible(false);
+			lblTotalBorrow.setVisible(false);
+			lblLendName.setVisible(false);
+			lblTotalLend.setVisible(false);
+			lblPersonalName.setVisible(false);
+			lblPersonalBalance.setVisible(false);
+			lblbKashName.setVisible(false);
+			lblbKashBalance.setVisible(false);
+			lblRocketName.setVisible(true);
+			lblRocketBalance.setVisible(true);
+		}
+	}
 	
 }
 

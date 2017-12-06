@@ -10,11 +10,12 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TransactionHistoryController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #5b5766;" stylesheets="@../css/History.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TransactionHistoryController">
    <children>
-      <MenuBar layoutX="25.0" prefHeight="30.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar layoutX="25.0" prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: #cfd8dc;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="Operation">
             <items>
@@ -65,30 +66,33 @@
             </Menu>
         </menus>
       </MenuBar>
-      <ComboBox fx:id="cmboHistoryMonth" layoutX="99.0" layoutY="35.0" onAction="#cmboHistoryMonth" prefHeight="28.0" prefWidth="110.0">
+      <ComboBox fx:id="cmboHistoryMonth" layoutX="99.0" layoutY="37.0" onAction="#cmboHistoryMonth" prefHeight="28.0" prefWidth="110.0">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></ComboBox>
-      <ComboBox fx:id="cmboFilterList" layoutX="301.0" layoutY="35.0" onAction="#cmboFilterList" prefHeight="28.0" prefWidth="170.0">
+      <ComboBox fx:id="cmboFilterList" layoutX="301.0" layoutY="37.0" onAction="#cmboFilterList" prefHeight="28.0" prefWidth="170.0">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></ComboBox>
-      <Button fx:id="btnGo" layoutX="715.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnGo" prefHeight="28.0" prefWidth="70.0" text="Go">
+      <Button fx:id="btnGo" layoutX="715.0" layoutY="37.0" mnemonicParsing="false" onAction="#btnGo" prefHeight="28.0" prefWidth="70.0" style="-fx-background-color: #0097a7;" text="Go" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></Button>
-      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="-2.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" text="Sign Out">
+         </cursor>
+         <font>
+            <Font name="Ubuntu Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="100.0" style="-fx-background-color: #cfd8dc;" text="Sign Out">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></Button>
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="35.0" prefHeight="28.0" prefWidth="90.0" text="History For : " />
-      <Label alignment="CENTER_RIGHT" layoutX="231.0" layoutY="35.0" prefHeight="28.0" prefWidth="70.0" text="Filter By : " />
-      <DatePicker fx:id="datePicker" editable="false" focusTraversable="false" layoutX="494.0" layoutY="35.0" prefHeight="28.0" prefWidth="210.0" promptText="Search by Date">
+      <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="37.0" prefHeight="28.0" prefWidth="90.0" text="History For : " textFill="#ebe7e7" />
+      <Label alignment="CENTER_RIGHT" layoutX="231.0" layoutY="37.0" prefHeight="28.0" prefWidth="70.0" text="Filter By : " textFill="#ebe7e7" />
+      <DatePicker fx:id="datePicker" editable="false" focusTraversable="false" layoutX="494.0" layoutY="37.0" prefHeight="28.0" prefWidth="210.0" promptText="Search by Date">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></DatePicker>
-      <WebView fx:id="webview" focusTraversable="false" layoutX="115.0" layoutY="103.0" prefHeight="470.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <WebView fx:id="webview" focusTraversable="false" layoutX="115.0" layoutY="103.0" prefHeight="470.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="78.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></WebView>

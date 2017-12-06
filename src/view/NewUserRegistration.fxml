@@ -9,18 +9,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewUserRegistrationController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #5b5766;" stylesheets="@../css/NewUser.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewUserRegistrationController">
    <children>
-      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="129.0" prefHeight="30.0" prefWidth="150.0" text="Your Name : " />
-      <Label alignment="CENTER" layoutX="286.0" layoutY="59.0" prefHeight="16.0" prefWidth="273.0" text="New User Registration " textFill="#13a1d6">
+      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="129.0" prefHeight="30.0" prefWidth="150.0" text="Your Name : " textFill="#eeeeee" />
+      <Label alignment="CENTER" layoutX="288.0" layoutY="59.0" prefHeight="16.0" prefWidth="273.0" text="New User Registration " textFill="#13a1d6">
          <font>
             <Font name="Comic Sans MS Bold" size="22.0" />
          </font></Label>
-      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="174.0" prefHeight="30.0" prefWidth="150.0" text="Username : " />
-      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="219.0" prefHeight="30.0" prefWidth="150.0" text="Password : " />
-      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="264.0" prefHeight="30.0" prefWidth="150.0" text="Re-Type Password : " />
-      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="309.0" prefHeight="30.0" prefWidth="150.0" text="Security Question : " />
-      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="354.0" prefHeight="30.0" prefWidth="150.0" text="Answer : " />
+      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="174.0" prefHeight="30.0" prefWidth="150.0" text="Username : " textFill="#eeeeee" />
+      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="219.0" prefHeight="30.0" prefWidth="150.0" text="Password : " textFill="#eeeeee" />
+      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="264.0" prefHeight="30.0" prefWidth="150.0" text="Re-Type Password : " textFill="#eeeeee" />
+      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="309.0" prefHeight="30.0" prefWidth="150.0" text="Security Question : " textFill="#eeeeee" />
+      <Label alignment="CENTER_RIGHT" layoutX="203.0" layoutY="354.0" prefHeight="30.0" prefWidth="150.0" text="Answer : " textFill="#eeeeee" />
       <TextField fx:id="txtName" layoutX="353.0" layoutY="129.0" onKeyReleased="#txtName" prefHeight="30.0" prefWidth="200.0" promptText="Your Name" />
       <TextField fx:id="txtUsername" layoutX="353.0" layoutY="174.0" onKeyReleased="#txtUsername" prefHeight="30.0" prefWidth="200.0" promptText="Username" />
       <PasswordField fx:id="passPassword" layoutX="353.0" layoutY="219.0" onKeyReleased="#passPassword" prefHeight="30.0" prefWidth="200.0" promptText="Password" />
@@ -30,22 +30,28 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></ComboBox>
       <TextField fx:id="txtAnswer" layoutX="353.0" layoutY="354.0" onKeyReleased="#txtAnswer" prefHeight="30.0" prefWidth="200.0" promptText="Answer the Question" />
-      <Button fx:id="btnRegistration" layoutX="448.0" layoutY="414.0" mnemonicParsing="false" onAction="#btnRegistration" prefHeight="30.0" prefWidth="100.0" text="Registration">
+      <Button fx:id="btnRegistration" layoutX="448.0" layoutY="414.0" mnemonicParsing="false" onAction="#btnRegistration" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #1a9544;" text="Registration" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></Button>
-      <Button fx:id="btnCancel" layoutX="292.0" layoutY="414.0" mnemonicParsing="false" onAction="#btnCancel" prefHeight="30.0" prefWidth="100.0" text="Cancel">
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></Button>
-      <Label fx:id="lblMsg" layoutX="559.0" layoutY="269.0" prefHeight="20.0" prefWidth="150.0" textFill="RED">
+         </cursor>
          <font>
-            <Font size="12.0" />
+            <Font name="Ubuntu Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="btnCancel" layoutX="292.0" layoutY="414.0" mnemonicParsing="false" onAction="#btnCancel" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #140e0e;" text="Cancel" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <font>
+            <Font name="Ubuntu Bold" size="13.0" />
+         </font></Button>
+      <Label fx:id="lblMsg" layoutX="559.0" layoutY="269.0" prefHeight="20.0" prefWidth="150.0" textFill="#ff6464">
+         <font>
+            <Font name="Ubuntu Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblMsg1" alignment="CENTER" layoutX="352.0" layoutY="101.0" prefHeight="20.0" prefWidth="200.0" textFill="RED">
+      <Label fx:id="lblMsg1" alignment="CENTER" layoutX="352.0" layoutY="101.0" prefHeight="20.0" prefWidth="200.0" textFill="#ff6464">
          <font>
-            <Font size="12.0" />
+            <Font name="Ubuntu Bold" size="13.0" />
          </font>
       </Label>
    </children>

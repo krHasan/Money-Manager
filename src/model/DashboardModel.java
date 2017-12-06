@@ -2,6 +2,7 @@ package model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import operation.BankIssue;
 import operation.ComboboxList;
 import system.DateAndClock;
 import system.UnitConverter;
@@ -92,7 +93,68 @@ public class DashboardModel extends DateAndClock {
 	}
 	
 	
+	int carrier = 1;
+	public int currentBalanceStatus() {
+		int status = 0;
+		if (BankIssue.isbKashActivated() && BankIssue.isRocketActivated()) {
+			if(carrier == 5) {
+				status = carrier;
+				carrier = 1;
+			} else {
+				status = carrier;
+				this.carrier = carrier+1;
+			}			
+		} else if(BankIssue.isbKashActivated()) {
+			if(carrier == 4) {
+				status = carrier;
+				carrier = 1;
+			} else {
+				status = carrier;
+				this.carrier = carrier+1;
+			}
+		} else if(BankIssue.isRocketActivated()) {
+			if(carrier == 5) {
+				status = carrier;
+				carrier = 1;
+			} else {
+				if (carrier == 4) {
+					status = 5;
+					carrier = 5;
+				} else {
+					status = carrier;
+					this.carrier = carrier+1;
+				}
+			}
+		} else {
+			if(carrier == 3) {
+				status = carrier;
+				carrier = 1;
+			} else {
+				status = carrier;
+				this.carrier = carrier+1;
+			}
+		}
+
+		return status;
+	}
+	
+//	public static void main(String[] args) {
+//		DashboardModel access = new DashboardModel();
+//		System.out.println(access.currentBalanceStatus());
+//		System.out.println(access.currentBalanceStatus());
+//		System.out.println(access.currentBalanceStatus());
+//		System.out.println(access.currentBalanceStatus());
+//		System.out.println(access.currentBalanceStatus());
+//		System.out.println(access.currentBalanceStatus());
+//		System.out.println(access.currentBalanceStatus());
+//		System.out.println(access.currentBalanceStatus());
+//		System.out.println(access.currentBalanceStatus());
+//		System.out.println(access.currentBalanceStatus());
+//		System.out.println(access.currentBalanceStatus());
+//	}
 }
+
+
 
 
 
