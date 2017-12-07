@@ -239,7 +239,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></Button>
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="496.0" prefHeight="30.0" prefWidth="200.0" />
-      <Label fx:id="lblWarningMsg" alignment="CENTER" layoutX="71.0" layoutY="112.0" prefHeight="21.0" prefWidth="340.0" textFill="#f55656">
+      <Label fx:id="lblWarningMsg" alignment="CENTER" layoutX="71.0" layoutY="112.0" prefHeight="21.0" prefWidth="340.0" textFill="#ff5e5e">
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font></Label>

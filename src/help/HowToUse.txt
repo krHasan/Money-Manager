@@ -1,81 +1,82 @@
 
-Money Manager is an application which can help you to keep record of your personal finance. Many of us don't maintain document of how much tk we get in a month and how much expense because that seems very painy to them. This application will help them to do so.
+Money Manager is an application which can help you to keep record of your personal finance. Many of us don't maintain document of how much money we get in a month and how much expense because that seems very painy to us. This application will help us to keep a record of our every transaction.
 
 Money Manager have three main focusing window
 1. Make A Transaction
 2. Settings
 3. Transaction History
 
-When you Signed In, program shows the "Dashboard" window first.
+When you Signed In, program shows the "Dashboard" window first. You can initialize your wallet balance using "Adjust Balance" button from Expense Tab in Make A Transaction window.
+
+
 
 Make A Transaction
 ================
 In a transaction process there happens mainly two thing, one how to money get/add to account and other is how to expense/give from account. Money Manager have get money, expense, borrow, lend, bank transaction to fullfill those needs.
 
-	Tab: Get Money
-	-----------------------
-	Let you to create record of how money add to your wallet/account. 
-	# Source of Money - your income source from where you get your money. You can create your personalize source 
-					by pressing "Create Source" button
-	# Method - in which way you get your money. By default Hand to Hand is shown. If you active your bKash or 
-					Rocket account form "Settings", then it will appear in this list.
+
+Tab: Get Money
+-----------------------
+Let you to create record of how money add to your wallet/account. 
+
+# Source of Money - your income source from where you get your money. You can create your personalize source by pressing "Create Source" button
+
+# Method - by which way you get your money. By default Hand to Hand is shown. If you active your bKash or Rocket account form "Settings", then it will appear in this list.
+
 	
-	Tab: Expense
-	-------------------
-	Create record of how much money you have expensed form your wallte/account
-	# Expenditure Sector - your expenditure sector where you expense your money. You can create your personal 
-					expenditure sector by pressing "Create Secot" button.
-	# Adjust Balance - Sometimes it happens that we forgot the amount of expenses money. Adjust Balance process 
-					will let you to set Money Manager wallet balance according to how much money at your hand 
-					now. Just press it and give the amount.
+Tab: Expense
+-------------------
+Create record of how much money you have expensed form your wallet/account
+
+# Expenditure Sector - your expenditure sector where you expense your money. You can create your personal expenditure sector by pressing "Create Secotr" button.
+
+# Adjust Balance - Sometimes it happens that we forgot the amount of expenses money. Adjust Balance process will let you to set Money Manager wallet balance according to how much money at your hand now. Just press it and give the amount at your hand now. It will set this amount as Money-Manager's updated wallet balance.
+
 					
-	Tab: Lend
-	--------------
-	A table shows your Borrow/Lend summary when you travers Borrow or Lend tab here
-	# Borrow Type - choose "Money Take" option if you take money. Choose "Return Borrowed Money" if you want to
-					return a borrowed money.
-	# Method - in which way you take money. By default Hand to Hand is shown. If you active your bKash or Rocket 
-					account form "Settings", then it will appear in this list.
-	# Amount With Charge - if you choose bKash or Rocket as your payment method, then you should type here the 
-					exact transaction amount. For example suppose you have borrowed 1020 tk from someone using 
-					bKash here 20 tk. is extra because of the bank charge. Your original borrowed amount may 1000tk 
-	# Amount Without Charge - here you type exact borrowed amount, that means that 1000 tk which i described.
-	# Lend Type - choose "Give Money" option if you given money to someone as lend. Choose "Take Back Lended 
-					Money" if you take back lended money.
+Tab: Lend
+--------------
+A table shows your Borrow/Lend summary when you travers Borrow or Lend tab here
+
+# Borrow Type - choose "Money Take" option if you take money. Choose "Return Borrowed Money" if you want to	return a borrowed money.
+
+# Method - by which way you have taken/returned money. By default Hand to Hand is shown. If you active your bKash or Rocket account form "Settings", then it will appear in this list.
+
+# Amount With Charge - if you choose bKash or Rocket as your transaction method, then you should type here the exact transaction amount. For example, suppose you have borrowed 1020 tk from someone using bKash here 20 tk. is extra maybe because of the bank charge. Your original borrowed amount may 1000tk	At the time when your return you will return 1000 tk only. But if your original borrowed amount is 1020 tk, then type it exactly 1020.
+
+# Amount Without Charge - here you type exact borrowed amount. Remember "Amount with charge" is your exact transaction amount and "Amount Without Charge" is your exact borrowed amount, that means that 1000 tk which i described.
+
+# Lend Type - choose "Give Money" option if you given money to someone as lend. Choose "Take Back Lended Money" if you take back lended money.
+
 					
-	Tab: Bank
-	--------------
-	bKash and Rocket is mobile banking service in Banglasesh. If you are outside of Banglaseh then you have no
-	need to these accounts. So you should disable those service from Bank Settings. By default those are remain
-	disabled, unless you enable form Bank Settings. But "Personal" is your own bank, so you can use it weather 
-	you are in Banglaseh or not.
+Tab: Bank
+--------------
+bKash and Rocket is mobile banking service in Banglasesh. If you are outside of Banglaseh then you have no need to these accounts. So you should disable those service from Bank Settings. By default those are remain disabled, unless you enable form Bank Settings. But "Personal" is your own bank. Credit or Debit money as	your wish. If you Credit here then it will cut from your wallet and add personal account. Debit will cut	from personal and add to wallet.
 	
+
+
 	
 Settings
 =======
-	Tab: Bank
-	-------------
-	bKash and Rocket is mobile banking service in Banglasesh. If you are outside of Banglaseh then you have no 
-	need to these accounts. But if you are a Bangladeshi and have these accounts then you can use these accounts.
+Tab: Bank
+-------------
+bKash and Rocket is mobile banking service in Banglasesh. If you are outside of Banglaseh then you have no need to these accounts. But if you are a Bangladeshi and have these accounts then you can use these accounts. You can set transaction charges of bKash or Rocket here.
 	
-	Tab: Source
-	--------------
-	Form here you can create your money income source, can archive active source form transaction and 
-	also unarchive a source.
+Tab: Source
+--------------
+Form here you can create your money income source, can archive active source, unarchive a source and delete a source.
 
-	Tab: Sector
-	--------------
-	Form here you can create your expenditure sector, can archive active sectors form transaction and also 
-	unarchive a sector.
+Tab: Sector
+--------------
+Form here you can create your expenditure sector, can archive active sectors, unarchive a sector and delete a sector.
 	
-	Tab: System
-	--------------
-	Choose your preferred date and time format. 
+Tab: System
+--------------
+Choose your preferred date and time format. 
 	
 	
 Transaction History
 =================
-This shows your all transaction history. You can see history by filter, also by date.
+This shows your all transaction history. You can search history by filter, also by a date.
 
 	
 	

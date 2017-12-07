@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -669,7 +670,7 @@ public class Undo extends DateAndClock {
 				bkBalanceBefore = bkResult.getString("bkBalanceBefore");
 				bkType = bkResult.getString("bkType");
 				bkNature = bkResult.getString("bkNature");
-				bkAmount = bkResult.getString("bkAmount");
+				bkAmount = (bkResult.getString("bkAmount")).replaceAll("[^0-9.*]", "");
 				feedback = true;
 			}
 		} catch (Exception e) {e.printStackTrace();}
@@ -731,7 +732,7 @@ public class Undo extends DateAndClock {
 				rocBalanceBefore = rocResult.getString("rocBalanceBefore");
 				rocType = rocResult.getString("rocType");
 				rocNature = rocResult.getString("rocNature");
-				rocAmount = rocResult.getString("rocAmount");
+				rocAmount = (rocResult.getString("rocAmount")).replaceAll("[^0-9.*]", "");
 				feedback = true;
 			}
 		} catch (Exception e) {e.printStackTrace();}
@@ -744,7 +745,7 @@ public class Undo extends DateAndClock {
 			} catch (Exception e) {e.printStackTrace();}
 			
 			if (rocType.equals("Get Money")) {
-				if (rocNature.equals("ATM") || rocNature.equals("TopUp") || rocNature.equals("Agent") || rocNature.equals("Branch") || rocNature.equals("Send Money")) {
+				if (rocNature.equals("Debited by ATM") || rocNature.equals("Debited by TopUp") || rocNature.equals("Debited by Agent") || rocNature.equals("Debited by Branch") || rocNature.equals("Debited by Send Money")) {
 					String undogm = "SELECT * FROM Get_Money WHERE globalID = ?";
 					String deletegm = "DELETE FROM Get_Money WHERE globalID = ?";
 					String gmWalletBalanceBefore = null;
@@ -820,12 +821,21 @@ public class Undo extends DateAndClock {
 		
 		return feedback;
 	}
+
 	
+//	private void test() {
+//		String str = "qwerty1qwerty2kj.oi9jg6";      
+////		str = str.replaceAll("[^0-9]+", "");
+//		str = str.replaceAll("[^0-9.*]", "");
+////		System.out.println(Arrays.asList(str.trim().split(" ")));
+//		System.out.println(str);
+//	}
 	
 //	public static void main(String[] args) {
 //		Undo access = new Undo();
 //		System.out.println(access.actionUndo());
 //		GlobalId.setGlobalId(14);
+//		access.test();
 //	}
 	
 }

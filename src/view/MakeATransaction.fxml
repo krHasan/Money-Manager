@@ -94,7 +94,7 @@
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label focusTraversable="false" layoutX="82.0" layoutY="140.0" prefHeight="20.0" prefWidth="150.0" text="Description" textFill="#eeeeee">
+                  <Label focusTraversable="false" layoutX="82.0" layoutY="149.0" prefHeight="20.0" prefWidth="150.0" text="Description" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -109,7 +109,7 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gmlblWarningMsg" focusTraversable="false" layoutX="80.0" layoutY="121.0" textFill="#5b0101">
+                  <Label fx:id="gmlblWarningMsg" focusTraversable="false" layoutX="80.0" layoutY="121.0" textFill="#ff5e5e">
                      <font>
                         <Font name="Ubuntu Bold" size="13.0" />
                      </font>
@@ -136,7 +136,7 @@
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></RadioButton>
-                  <TextArea fx:id="gmtxtDescription" focusTraversable="false" layoutX="80.0" layoutY="165.0" onKeyReleased="#gmDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
+                  <TextArea fx:id="gmtxtDescription" focusTraversable="false" layoutX="80.0" layoutY="174.0" onKeyReleased="#gmDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
                      <font>
                         <Font name="Ubuntu" size="14.0" />
                      </font></TextArea>
@@ -148,7 +148,7 @@
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></Button>
-                  <Label fx:id="gmlblLetterRemainmsg" focusTraversable="false" layoutX="130.0" layoutY="283.0" textFill="#ebebeb">
+                  <Label fx:id="gmlblLetterRemainmsg" focusTraversable="false" layoutX="130.0" layoutY="292.0" textFill="#ebebeb">
                   	<font>
                         <Font name="Ubuntu" size="13.0" />
                     </font>
@@ -160,7 +160,7 @@
       <content>
         <AnchorPane fx:id="exAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#anchorPaneAction" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #4B515D;">
                <children>
-                  <TextField fx:id="extxtAmount" alignment="CENTER" layoutX="80.0" layoutY="65.0" onKeyReleased="#exAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00">
+                  <TextField fx:id="extxtAmount" alignment="CENTER" layoutX="80.0" layoutY="86.0" onKeyReleased="#exAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -205,37 +205,37 @@
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="82.0" layoutY="40.0" prefHeight="20.0" prefWidth="145.0" text="Expensed Amount" textFill="#eeeeee">
+                  <Label layoutX="82.0" layoutY="61.0" prefHeight="20.0" prefWidth="145.0" text="Expensed Amount" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="82.0" layoutY="121.0" prefHeight="20.0" prefWidth="150.0" text="Description" textFill="#eeeeee">
+                  <Label layoutX="82.0" layoutY="148.0" prefHeight="20.0" prefWidth="150.0" text="Description" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="299.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :" textFill="#eeeeee">
+                  <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="319.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="exlblWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="299.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa; -fx-border-color: #757575; -fx-border-radius: 5px;">
+                  <Label fx:id="exlblWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="319.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa; -fx-border-color: #757575; -fx-border-radius: 5px;">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="exlblWarningMsg" layoutX="80.0" layoutY="100.0" textFill="#b20606">
+                  <Label fx:id="exlblWarningMsg" layoutX="80.0" layoutY="121.0" textFill="#ff5e5e">
                      <font>
                         <Font name="Ubuntu Bold" size="13.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="extxtDescription" focusTraversable="false" layoutX="80.0" layoutY="147.0" onKeyReleased="#exDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
+                  <TextArea fx:id="extxtDescription" focusTraversable="false" layoutX="80.0" layoutY="174.0" onKeyReleased="#exDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
                      <font>
                         <Font name="Ubuntu" size="14.0" />
                      </font>
                   </TextArea>
-                  <Button fx:id="exbtnAdjustBalance" focusTraversable="false" layoutX="124.0" layoutY="348.0" mnemonicParsing="false" onAction="#exAdjustBalance" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Adjust Balance" textFill="WHITE">
+                  <Button fx:id="exbtnAdjustBalance" focusTraversable="false" layoutX="124.0" layoutY="372.0" mnemonicParsing="false" onAction="#exAdjustBalance" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Adjust Balance" textFill="WHITE">
                      <font>
                         <Font name="Ubuntu Bold" size="14.0" />
                      </font>
@@ -246,16 +246,16 @@
                               <Insets />
                            </opaqueInsets>
                   </Button>
-                  <Button fx:id="exbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="11.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
+                  <Button fx:id="exbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="34.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></Button>
-                  <Label fx:id="exlblLetterRemainmsg" layoutX="130.0" layoutY="266.0" textFill="#eeeeee">
+                  <Label fx:id="exlblLetterRemainmsg" layoutX="130.0" layoutY="293.0" textFill="#eeeeee">
                   	<font>
                         <Font name="Ubuntu" size="13.0" />
                     </font>
                   </Label>
-                  <Button fx:id="exbtnGoToCashCalculate" focusTraversable="false" layoutX="124.0" layoutY="394.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Cash Calculate" textFill="WHITE">
+                  <Button fx:id="exbtnGoToCashCalculate" focusTraversable="false" layoutX="124.0" layoutY="410.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Cash Calculate" textFill="WHITE">
                      <font>
                         <Font name="Ubuntu Bold" size="14.0" />
                      </font>
@@ -337,7 +337,7 @@
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblWarningMsg" layoutX="15.0" layoutY="288.0" textFill="#a80202">
+                                    <Label fx:id="bolblWarningMsg" layoutX="10.0" layoutY="288.0" text="Due to Bank Charges, amount may not be accurate. Type exact Amount" textFill="#ff5e5e">
                                        <font>
                                           <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
@@ -363,12 +363,12 @@
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="bolblAmountValidationMsg" layoutX="160.0" layoutY="153.0" textFill="#a80202">
+                                    <Label fx:id="bolblAmountValidationMsg" layoutX="132.0" layoutY="153.0" text="Invalid Input. Type within 0.00 to 9999999.99" textFill="#ff5e5e">
                                        <font>
                                           <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bolblAmountValidationMsg2" layoutX="160.0" layoutY="334.0" textFill="#a80202">
+                                    <Label fx:id="bolblAmountValidationMsg2" layoutX="149.0" layoutY="331.0" text="Invalid Input. Type within 0.00 to 9999999.99" textFill="#ff5e5e">
                                        <font>
                                           <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
@@ -439,7 +439,7 @@
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lelblWarningMsg" layoutX="15.0" layoutY="288.0" textFill="#a40808">
+                                    <Label fx:id="lelblWarningMsg" layoutX="10.0" layoutY="288.0" text="Due to Bank Charges, amount may not be accurate. Type exact Amount" textFill="#ff5e5e">
                                        <font>
                                           <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
@@ -465,11 +465,11 @@
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="lelblAmountValidationMsg" layoutX="160.0" layoutY="153.0" textFill="#a40808">
+                                    <Label fx:id="lelblAmountValidationMsg" layoutX="132.0" layoutY="153.0" text="Invalid Input. Type within 0.00 to 9999999.99" textFill="#ff5e5e">
                                        <font>
                                           <Font name="Ubuntu Bold" size="13.0" />
                                        </font></Label>
-                                    <Label fx:id="lelblAmountValidationMsg2" layoutX="160.0" layoutY="334.0" textFill="#a40808">
+                                    <Label fx:id="lelblAmountValidationMsg2" layoutX="149.0" layoutY="331.0" text="Invalid Input. Type within 0.00 to 9999999.99" textFill="#ff5e5e">
                                        <font>
                                           <Font name="Ubuntu Bold" size="13.0" />
                                        </font></Label>
@@ -602,7 +602,7 @@
                                           <Font name="Arial Bold" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="perAmountValidationMsg" layoutX="480.0" layoutY="183.0" textFill="#fc5555">
+                                    <Label fx:id="perAmountValidationMsg" layoutX="487.0" layoutY="183.0" textFill="#ff5e5e">
                                        <font>
                                           <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
@@ -717,7 +717,7 @@
                                           <Font name="Ubuntu" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bkAmountValidationMsg" layoutX="440.0" layoutY="173.0" textFill="#ff7373">
+                                    <Label fx:id="bkAmountValidationMsg" layoutX="445.0" layoutY="173.0" text="Invalid Input. Type within 0.00 to 9999999.99" textFill="#ff5e5e">
                                        <font>
                                           <Font name="Ubuntu Bold" size="13.0" />
                                        </font>
@@ -832,7 +832,7 @@
                                           <Font name="Ubuntu" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="rocAmountValidationMsg" layoutX="440.0" layoutY="174.0" textFill="#ff5e5e">
+                                    <Label fx:id="rocAmountValidationMsg" layoutX="444.0" layoutY="174.0" text="Invalid Input. Type within 0.00 to 9999999.99" textFill="#ff5e5e">
                                        <font>
                                           <Font name="Ubuntu Bold" size="13.0" />
                                        </font>

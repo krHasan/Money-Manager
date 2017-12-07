@@ -44,12 +44,12 @@
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font></Button>
-      <Label fx:id="lblMsg" layoutX="559.0" layoutY="269.0" prefHeight="20.0" prefWidth="150.0" textFill="#ff6464">
+      <Label fx:id="lblMsg" layoutX="559.0" layoutY="269.0" prefHeight="20.0" prefWidth="150.0" textFill="#ff5e5e">
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblMsg1" alignment="CENTER" layoutX="352.0" layoutY="101.0" prefHeight="20.0" prefWidth="200.0" textFill="#ff6464">
+      <Label fx:id="lblMsg1" alignment="CENTER" layoutX="352.0" layoutY="101.0" prefHeight="20.0" prefWidth="200.0" textFill="#ff5e5e">
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font>

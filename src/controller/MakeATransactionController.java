@@ -698,7 +698,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 		alert.setContentText(feedback);
 		alert.setX(MakeATransactionStage.getX() + 190);
 		alert.setY(MakeATransactionStage.getY() + 190);
-		initialize();
+//		initialize();
 		gmInitialize();
 		exInitialize();
 		leInitialize();
@@ -770,16 +770,15 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void tabGetMoney() {
 		gmInitialize();
-//		System.out.println(gmdateDate.getValue().getMonth());
-	}
-	
-	
-	private void gmInitialize() {
 		gmdateDate.setConverter(formatManager);
 		gmdateDate.setValue(date);
 		if (getWeekStatus()) {
 			gmdateDate.setShowWeekNumbers(true);
 		}
+	}
+	
+	
+	private void gmInitialize() {
 		gmlblLetterRemainmsg.setText("");
 		gmlblBalanceUpdateMsg.setText(" ");
 		gmlblWarningMsg.setText("");
@@ -1188,15 +1187,15 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void tabExpense() {
 		exInitialize();
-	}
-	
-	
-	private void exInitialize() {
 		exdateDate.setConverter(formatManager);
 		exdateDate.setValue(date);
 		if (getWeekStatus()) {
 			exdateDate.setShowWeekNumbers(true);
 		}
+	}
+	
+	
+	private void exInitialize() {
 		exlblWarningMsg.setText("");
 		exlblLetterRemainmsg.setText("");
 		showWalletBalance();
@@ -1448,6 +1447,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void tabLend() {
 		boInitialize();
+		lenddateDate.setConverter(formatManager);
+		lenddateDate.setValue(date);
+		if (getWeekStatus()) {
+			lenddateDate.setShowWeekNumbers(true);
+		}
 	}
 
 	
@@ -1455,11 +1459,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private void boInitialize() {
 		selectedTabName = "Borrow";
 		try {
-			lenddateDate.setConverter(formatManager);
-			lenddateDate.setValue(date);
-			if (getWeekStatus()) {
-				lenddateDate.setShowWeekNumbers(true);
-			}
 			showBorroTblData();
 		} catch (Exception e) {}
 		showWalletBalance();
@@ -1492,8 +1491,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void leInitialize() {
 		selectedTabName = "Lend";
-		lenddateDate.setConverter(formatManager);
-		lenddateDate.setValue(date);
+//		lenddateDate.setConverter(formatManager);
+//		lenddateDate.setValue(date);
 		showLendTblData();
 		showWalletBalance();
 		showTotalLendTk();
@@ -3016,6 +3015,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void tabBank() {
+		try {
+			bnkdateDate.setConverter(formatManager);
+			bnkdateDate.setValue(date);
+			if (getWeekStatus()) {
+				bnkdateDate.setShowWeekNumbers(true);
+			}
+		} catch (Exception e) {}
 		if (!BankIssue.isbKashActivated()) {
 			tabbKash.setDisable(true);
 		} else {
@@ -3039,13 +3045,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void bkInitialize() {
 		bnkSelectedTabName = "bKash";
-		try {
-			bnkdateDate.setConverter(formatManager);
-			bnkdateDate.setValue(date);
-			if (getWeekStatus()) {
-				bnkdateDate.setShowWeekNumbers(true);
-			}
-		} catch (Exception e) {}
 		bkLoadType();
 		bkLoadNature();
 		bkAccountBalanceShow();
@@ -3063,13 +3062,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void rocInitialize() {
 		bnkSelectedTabName = "Rocket";
-		try {
-			bnkdateDate.setConverter(formatManager);
-			bnkdateDate.setValue(date);
-			if (getWeekStatus()) {
-				bnkdateDate.setShowWeekNumbers(true);
-			}
-		} catch (Exception e) {}
+//		try {
+//			bnkdateDate.setConverter(formatManager);
+//			bnkdateDate.setValue(date);
+//			if (getWeekStatus()) {
+//				bnkdateDate.setShowWeekNumbers(true);
+//			}
+//		} catch (Exception e) {}
 		rocLoadType();
 		rocLoadNature();
 		rocAccountBalanceShow();
@@ -3087,13 +3086,13 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void perInitialize() {
 		bnkSelectedTabName = "Personal";
-		try {
-			bnkdateDate.setConverter(formatManager);
-			bnkdateDate.setValue(date);
-			if (getWeekStatus()) {
-				bnkdateDate.setShowWeekNumbers(true);
-			}
-		} catch (Exception e) {}
+//		try {
+//			bnkdateDate.setConverter(formatManager);
+//			bnkdateDate.setValue(date);
+//			if (getWeekStatus()) {
+//				bnkdateDate.setShowWeekNumbers(true);
+//			}
+//		} catch (Exception e) {}
 		perLoadNature();
 		perAccountBalanceShow();
 		showWalletBalance();

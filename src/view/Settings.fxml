@@ -286,7 +286,7 @@
                            <font>
                               <Font name="Ubuntu Bold" size="14.0" />
                            </font></Button>
-                        <Label fx:id="bnkInvalidChargeMsg" layoutX="360.0" layoutY="226.0" textFill="#cd0606">
+                        <Label fx:id="bnkInvalidChargeMsg" layoutX="341.0" layoutY="226.0" textFill="#ff5e5e">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
@@ -349,7 +349,7 @@
                            <font>
                               <Font name="Ubuntu Bold" size="14.0" />
                            </font></Button>
-                        <Label fx:id="sourcelblWarningMsg" layoutX="180.0" layoutY="148.0" textFill="#e40c0c">
+                        <Label fx:id="sourcelblWarningMsg" layoutX="180.0" layoutY="148.0" textFill="#ff5e5e">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font>
@@ -430,7 +430,7 @@
                            <font>
                               <Font name="Ubuntu Bold" size="14.0" />
                            </font></Button>
-                        <Label fx:id="sectorlblWarningMsg" layoutX="180.0" layoutY="148.0" textFill="#c90505">
+                        <Label fx:id="sectorlblWarningMsg" layoutX="180.0" layoutY="148.0" textFill="#ff5e5e">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font>
@@ -553,7 +553,7 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Label fx:id="systemlblWarningMsg" layoutX="152.0" layoutY="235.0" textFill="#a80b0b">
+                        <Label fx:id="systemlblWarningMsg" layoutX="152.0" layoutY="235.0" textFill="#ff5e5e">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font>
