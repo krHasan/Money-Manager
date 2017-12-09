@@ -1,14 +1,15 @@
 # Money Manager
-Money Manager is an application which can help you to keep record of your personal finance. Many of us don't maintain document of how much tk we get in a month and how much expense because that seems very painy to us. This application will help them to do so.
+Money Manager is an application which can help you to keep record of your personal finance. Many of us don't maintain document of how much money we get in a month and how much expense because that seems very painy to us. This application will help us to keep a record of our every transaction.
 
 # Technologies
 Here I use Model–view–controller(MVC) architecture to build this application. Tecnologies I used are
-  - JavaFX Framework (A Java language framework)
-  - FXML (For creating view)
-  - JavaScript (To show history)
-  - JQuery (To show history)
-  - json-simple (To generate history data)
-  - Collection Frameworks (To save data from controller to database)
+  - Java
+  - JavaFX Framework
+  - FXML
+  - JavaScript
+  - JQuery
+  - json-simple
+  - Collection Frameworks
 
 # Workthrough
 Money Manager have three main focusing window
@@ -21,22 +22,19 @@ When you Signed In, program shows the "Dashboard" window first. You can initiali
 Here I added some very short videos to show how can you use Money-Manager. I suggest, please see them to understand how it works.
 
 ### Sign In
-[![Sign In](https://img.youtube.com/vi/Lbe8yS7ethc/0.jpg)](https://youtu.be/Lbe8yS7ethc)
+[![Sign In](/files/signin.jpg?raw=true)](https://youtu.be/Gz0cHR09qkY)
 
 ### Make A Transaction
 In a transaction process there happens mainly two thing, one how to money get/add to account and other is how to expense/give from account. Money Manager have get money, expense, borrow, lend, bank transaction to fullfill those needs.
-[![Make A Transaction](https://img.youtube.com/vi/83dL3Gj00ww/0.jpg)](https://youtu.be/83dL3Gj00ww)
+[![Make A Transaction](/files/transaction.jpg?raw=true)](https://youtu.be/WCDlF-soUz4)
 
 ### Settings
-[![Settings](https://img.youtube.com/vi/9PHVfxrHNM4/0.jpg)](https://youtu.be/9PHVfxrHNM4)
+[![Settings](/files/settings.jpg?raw=true)](https://youtu.be/y3gMMBL95UA)
 
 ### Transaction History
-[![Transaction History](https://img.youtube.com/vi/3EZIWbHAfhc/0.jpg)](https://youtu.be/3EZIWbHAfhc)
+[![Transaction History](/files/history.jpg?raw=true)](https://youtu.be/yLFyqNvpSIU)
 
-### Other Window
-[![Other Window](https://img.youtube.com/vi/VS3HsjhZksM/0.jpg)](https://youtu.be/VS3HsjhZksM)
-
-### Development
+## Development
 
 Want to contribute? Great!
 I will come to with how to contribute very soon.
