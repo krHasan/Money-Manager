@@ -95,6 +95,8 @@ public class CashCalculateController extends CashCalculateModel {
 	private Label lblNote;
 	@FXML
 	private Label lblWarningMsg;
+	@FXML
+	private Label lblSub;
 	
 //	TextField object
 	@FXML
@@ -474,6 +476,12 @@ public class CashCalculateController extends CashCalculateModel {
 		
 		String totalCash = intToString(total1000+total500+total100+total50+total20+total10+total5+total2+total1);
 		lblTotal.setText(addThousandSeparator(totalCash));
+		
+		if (stringToLong(totalCash) == 0) {
+			lblSub.setText("");
+		} else {
+			lblSub.setText("  -  "+addThousandSeparator(totalCash)+"  =  "+intToString(longToint(currentWalletBalance())-stringToInt(totalCash)));
+		}
 	}
 	
 	
@@ -481,3 +489,17 @@ public class CashCalculateController extends CashCalculateModel {
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

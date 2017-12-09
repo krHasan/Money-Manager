@@ -12,6 +12,9 @@ public class UnitConverter extends DatabaseConnection {
 		return balance/100.00;
 	}
 	
+	public static int longToint(long balance) {
+		return (int) (balance/100);
+	}
 	
 	public static long doubleTolong(double balance) {
 		return (long) (balance*100);

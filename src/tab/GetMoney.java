@@ -118,7 +118,7 @@ public class GetMoney extends DatabaseConnection {
 			pstmt.setString(6, "bKash");
 			pstmt.setString(7, bnkData.get("bkBnkCharge"));
 			pstmt.setString(8, "Data from bKash");
-			pstmt.setString(9, bnkData.get("bkType"));
+			pstmt.setString(9, "Rocket");
 			pstmt.setString(10, bnkData.get("bkNature"));
 			pstmt.setString(11, UnitConverter.addThousandSeparator(bnkData.get("gmWalletBalanceBefore")));
 			pstmt.setString(12, UnitConverter.addThousandSeparator(bnkData.get("gmWalletBalanceAfter")));
@@ -148,7 +148,7 @@ public class GetMoney extends DatabaseConnection {
 			pstmt.setString(6, "Rocket");
 			pstmt.setString(7, bnkData.get("rocBnkCharge"));
 			pstmt.setString(8, "Data from Rocket");
-			pstmt.setString(9, bnkData.get("rocType"));
+			pstmt.setString(9, "Rocket");
 			pstmt.setString(10, bnkData.get("rocNature"));
 			pstmt.setString(11, UnitConverter.addThousandSeparator(bnkData.get("gmWalletBalanceBefore")));
 			pstmt.setString(12, UnitConverter.addThousandSeparator(bnkData.get("gmWalletBalanceAfter")));

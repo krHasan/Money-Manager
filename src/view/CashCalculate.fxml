@@ -78,7 +78,7 @@
          <font>
             <Font name="Ubuntu Bold" size="14.0" />
          </font></Button>
-      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="145.0" prefHeight="30.0" prefWidth="60.0" text="1000 X " textFill="#eeeeee">
+      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="465.0" prefHeight="30.0" prefWidth="60.0" text="1000 X " textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -89,17 +89,17 @@
          </font>
       </Label>
       <Label fx:id="lblNote" alignment="CENTER" layoutX="151.0" layoutY="110.0" prefHeight="30.0" prefWidth="170.0" text="Number of Notes" textFill="#eeeeee" />
-      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="425.0" prefHeight="30.0" prefWidth="60.0" text="2 X " textFill="#eeeeee">
+      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="185.0" prefHeight="30.0" prefWidth="60.0" text="2 X " textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="385.0" prefHeight="30.0" prefWidth="60.0" text="5 X " textFill="#eeeeee">
+      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="225.0" prefHeight="30.0" prefWidth="60.0" text="5 X " textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="345.0" prefHeight="30.0" prefWidth="60.0" text="10 X " textFill="#eeeeee">
+      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="265.0" prefHeight="30.0" prefWidth="60.0" text="10 X " textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -109,42 +109,42 @@
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="265.0" prefHeight="30.0" prefWidth="60.0" text="50 X " textFill="#eeeeee">
+      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="345.0" prefHeight="30.0" prefWidth="60.0" text="50 X " textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="225.0" prefHeight="30.0" prefWidth="60.0" text="100 X " textFill="#eeeeee">
+      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="385.0" prefHeight="30.0" prefWidth="60.0" text="100 X " textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="185.0" prefHeight="30.0" prefWidth="60.0" text="500 X " textFill="#eeeeee">
+      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="425.0" prefHeight="30.0" prefWidth="60.0" text="500 X " textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="465.0" prefHeight="30.0" prefWidth="60.0" text="1 X " textFill="#eeeeee">
+      <Label alignment="CENTER_RIGHT" layoutX="151.0" layoutY="145.0" prefHeight="30.0" prefWidth="60.0" text="1 X " textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txt1" alignment="CENTER" layoutX="211.0" layoutY="465.0" onKeyReleased="#txt1" prefHeight="30.0" prefWidth="55.0" promptText="0">
+      <TextField fx:id="txt1" alignment="CENTER" layoutX="211.0" layoutY="146.0" onKeyReleased="#txt1" prefHeight="30.0" prefWidth="55.0" promptText="0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="txt2" alignment="CENTER" layoutX="211.0" layoutY="425.0" onKeyReleased="#txt2" prefHeight="30.0" prefWidth="55.0" promptText="0">
+      <TextField fx:id="txt2" alignment="CENTER" layoutX="211.0" layoutY="185.0" onKeyReleased="#txt2" prefHeight="30.0" prefWidth="55.0" promptText="0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="txt5" alignment="CENTER" layoutX="211.0" layoutY="385.0" onKeyReleased="#txt5" prefHeight="30.0" prefWidth="55.0" promptText="0">
+      <TextField fx:id="txt5" alignment="CENTER" layoutX="211.0" layoutY="225.0" onKeyReleased="#txt5" prefHeight="30.0" prefWidth="55.0" promptText="0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="txt10" alignment="CENTER" layoutX="211.0" layoutY="345.0" onKeyReleased="#txt10" prefHeight="30.0" prefWidth="55.0" promptText="0">
+      <TextField fx:id="txt10" alignment="CENTER" layoutX="211.0" layoutY="265.0" onKeyReleased="#txt10" prefHeight="30.0" prefWidth="55.0" promptText="0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -154,42 +154,42 @@
             <Font name="Arial" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="txt50" alignment="CENTER" layoutX="211.0" layoutY="265.0" onKeyReleased="#txt50" prefHeight="30.0" prefWidth="55.0" promptText="0">
+      <TextField fx:id="txt50" alignment="CENTER" layoutX="211.0" layoutY="345.0" onKeyReleased="#txt50" prefHeight="30.0" prefWidth="55.0" promptText="0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="txt100" alignment="CENTER" layoutX="211.0" layoutY="225.0" onKeyReleased="#txt100" prefHeight="30.0" prefWidth="55.0" promptText="0">
+      <TextField fx:id="txt100" alignment="CENTER" layoutX="211.0" layoutY="385.0" onKeyReleased="#txt100" prefHeight="30.0" prefWidth="55.0" promptText="0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="txt500" alignment="CENTER" layoutX="211.0" layoutY="185.0" onKeyReleased="#txt500" prefHeight="30.0" prefWidth="55.0" promptText="0">
+      <TextField fx:id="txt500" alignment="CENTER" layoutX="211.0" layoutY="425.0" onKeyReleased="#txt500" prefHeight="30.0" prefWidth="55.0" promptText="0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="txt1000" alignment="CENTER" layoutX="211.0" layoutY="145.0" onKeyReleased="#txt1000" prefHeight="30.0" prefWidth="55.0" promptText="0">
+      <TextField fx:id="txt1000" alignment="CENTER" layoutX="211.0" layoutY="465.0" onKeyReleased="#txt1000" prefHeight="30.0" prefWidth="55.0" promptText="0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </TextField>
-      <Label fx:id="lbl1000" layoutX="266.0" layoutY="145.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl1000" layoutX="266.0" layoutY="465.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl500" layoutX="266.0" layoutY="185.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl500" layoutX="266.0" layoutY="425.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl100" layoutX="266.0" layoutY="225.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl100" layoutX="266.0" layoutY="385.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl50" layoutX="266.0" layoutY="265.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl50" layoutX="266.0" layoutY="345.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -199,22 +199,22 @@
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl2" layoutX="266.0" layoutY="425.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl2" layoutX="266.0" layoutY="185.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl5" layoutX="266.0" layoutY="385.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl5" layoutX="266.0" layoutY="225.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl10" layoutX="266.0" layoutY="345.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl10" layoutX="266.0" layoutY="265.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl1" layoutX="266.0" layoutY="465.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl1" layoutX="266.0" layoutY="145.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -243,5 +243,10 @@
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font></Label>
+      <Label fx:id="lblSub" layoutX="382.0" layoutY="49.0" prefHeight="40.0" prefWidth="200.0" textFill="#eeeeee">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

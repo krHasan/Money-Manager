@@ -74,7 +74,7 @@ function printExpense(i, history){
                                         "<span style='font-weight: bold; font-size: 18px; line-height: 30px'>"+history.exAmount+" TK</span>"+"<br>"+
                                         "<span style='color: #8f8f8f; line-height: 20px'>"+history.exDate+"   "+history.exTime+"</span>")
   // $(".div-expost"+i+"-subcon-1-2").append("Amount : " + "<b>"+history.exAmount+"</b>")
-  $(".div-expost"+i+"-subcon-2").append("<span style='font-weight: bold; color: #8f8f8f; line-height: 85px'>Source  </span>" + history.exSector)
+  $(".div-expost"+i+"-subcon-2").append("<span style='font-weight: bold; color: #8f8f8f; line-height: 85px'>Sector </span>" + history.exSector)
   // $(".div-expost"+i+"-subcon-2-2").append("Sector : " + history.exSector)
   $(".div-expost"+i+"-subcon-3").append("<span style='font-weight: bold; color: #8f8f8f; line-height: 30px'>Wallet Balance</span>"+"<br>"+
                                           "<span style='line-height: 23px'>Before  </span>"+history.exWalletBalanceBefore+" Tk."+"<br>"+
