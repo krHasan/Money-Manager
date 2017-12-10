@@ -2,11 +2,11 @@
 Money Manager is an application which can help you to keep record of your personal finance. Many of us don't maintain document of how much money we get in a month and how much expense because that seems very painy to us. This application will help us to keep a record of our every transaction.
 
 Money Manager have three main focusing window
-1. Make A Transaction
+1. Make A Transaction 
 2. Settings
 3. Transaction History
 
-When you Signed In, program shows the "Dashboard" window first. You can initialize your wallet balance using "Adjust Balance" button from Expense Tab in Make A Transaction window.
+When you Signed In, program shows the "Dashboard" window first. New user will see a welcome mesage. When you will begin to use Money-Manager, it is sure that your wallet balance will not Zero. There will have some money.So you need to set this balance state as Money-Manager wallet state. To fulfill the need "Adjust Balance" process will help you. Just press "Adjust Balance" button from Expense Tab in Make A Transaction window and type your original wallet amount. It will set to Money-Manager wallet balance. You can also set bKash and Rocket initial balance like this way.
 
 
 
@@ -19,38 +19,44 @@ Tab: Get Money
 -----------------------
 Let you to create record of how money add to your wallet/account. 
 
-# Source of Money - your income source from where you get your money. You can create your personalize source by pressing "Create Source" button
+# Source of Money: your income source from where you get your money. You can create your personalize source by pressing "Create Source" button
 
-# Method - by which way you get your money. By default Hand to Hand is shown. If you active your bKash or Rocket account form "Settings", then it will appear in this list.
+# Method: by which way you get your money. By default Hand to Hand is shown. If you active your bKash or Rocket account form "Settings", then it will appear in this list.
 
 	
 Tab: Expense
 -------------------
 Create record of how much money you have expensed form your wallet/account
 
-# Expenditure Sector - your expenditure sector where you expense your money. You can create your personal expenditure sector by pressing "Create Secotr" button.
+# Expenditure Sector: your expenditure sector where you expense your money. You can create your personal expenditure sector by pressing "Create Secotr" button.
 
-# Adjust Balance - Sometimes it happens that we forgot the amount of expenses money. Adjust Balance process will let you to set Money Manager wallet balance according to how much money at your hand now. Just press it and give the amount at your hand now. It will set this amount as Money-Manager's updated wallet balance.
+# Adjust Balance: Sometimes it happens that we forgot the amount of expenses money. Adjust Balance process will let you to set Money Manager wallet balance according to how much money at your hand now. Just press it and give the amount at your hand now. It will set this amount as Money-Manager's updated wallet balance.
 
 					
 Tab: Lend
 --------------
 A table shows your Borrow/Lend summary when you travers Borrow or Lend tab here
 
-# Borrow Type - choose "Money Take" option if you take money. Choose "Return Borrowed Money" if you want to	return a borrowed money.
+# Borrow Type: choose "Money Take" option if you take money. Choose "Return Borrowed Money" if you want to	return a borrowed money.
 
-# Method - by which way you have taken/returned money. By default Hand to Hand is shown. If you active your bKash or Rocket account form "Settings", then it will appear in this list.
+# Method: by which way you have taken/returned money. By default Hand to Hand is shown. If you active your bKash or Rocket account form "Settings", then it will appear in this list.
 
-# Amount With Charge - if you choose bKash or Rocket as your transaction method, then you should type here the exact transaction amount. For example, suppose you have borrowed 1020 tk from someone using bKash here 20 tk. is extra maybe because of the bank charge. Your original borrowed amount may 1000tk	At the time when your return you will return 1000 tk only. But if your original borrowed amount is 1020 tk, then type it exactly 1020.
+# Amount With Charge: if you choose bKash or Rocket as your transaction method, then you should type here the exact transaction amount. For example, suppose you have borrowed 1020 tk from someone using bKash here 20 tk. is extra maybe because of the bank charge. Your original borrowed amount may 1000tk	At the time when your return you will return 1000 tk only. But if your original borrowed amount is 1020 tk, then type it exactly 1020.
 
-# Amount Without Charge - here you type exact borrowed amount. Remember "Amount with charge" is your exact transaction amount and "Amount Without Charge" is your exact borrowed amount, that means that 1000 tk which i described.
+# Amount Without Charge: here you type exact borrowed amount. Remember "Amount with charge" is your exact transaction amount and "Amount Without Charge" is your exact borrowed amount, that means that 1000 tk which i described.
 
-# Lend Type - choose "Give Money" option if you given money to someone as lend. Choose "Take Back Lended Money" if you take back lended money.
+# Lend Type: choose "Give Money" option if you given money to someone as lend. Choose "Take Back Lended Money" if you take back lended money.
 
 					
 Tab: Bank
 --------------
 bKash and Rocket is mobile banking service in Banglasesh. If you are outside of Banglaseh then you have no need to these accounts. So you should disable those service from Bank Settings. By default those are remain disabled, unless you enable form Bank Settings. But "Personal" is your own bank. Credit or Debit money as	your wish. If you Credit here then it will cut from your wallet and add personal account. Debit will cut	from personal and add to wallet.
+
+# Transaction Type: There 3 type of transaction. Personal, Outside and Get Money. If you credit money then there is no deffenence among them, but if you debit money then 
+"Personal" will add the debited money to your wallet, 
+"Outside" will only debit bank account balance, it won't add debited money to wallet
+"Get Money" will add the debited money to wallet and also create a Get Money transaction.
+
 	
 
 

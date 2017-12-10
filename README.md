@@ -1,6 +1,9 @@
 # Money Manager
 Money Manager is an application which can help you to keep record of your personal finance. Many of us don't maintain document of how much money we get in a month and how much expense because that seems very painy to us. This application will help us to keep a record of our every transaction.
 
+# Download
+Download Money-Manager for Linux, windows and Mac from [Here](https://drive.google.com/open?id=1p5izodhPK-JPNdc5HZo16nLhpiaszzvC) 
+
 # Technologies
 Here I use Model–view–controller(MVC) architecture to build this application. Tecnologies I used are
   - Java
@@ -21,21 +24,28 @@ When you Signed In, program shows the "Dashboard" window first. You can initiali
 
 Here I added some very short videos to show how can you use Money-Manager. I suggest, please see them to understand how it works.
 
-### Sign In
-[![Sign In](/files/signin.jpg?raw=true)](https://youtu.be/Gz0cHR09qkY)
+#### Sign In
+<p align="center">
+  <a href="https://youtu.be/Gz0cHR09qkY" target="_blank"><img src="/files/signin.jpg?raw=true"></a>
+</p>
 
-### Make A Transaction
+#### Make A Transaction
 In a transaction process there happens mainly two thing, one how to money get/add to account and other is how to expense/give from account. Money Manager have get money, expense, borrow, lend, bank transaction to fullfill those needs.
-[![Make A Transaction](/files/transaction.jpg?raw=true)](https://youtu.be/WCDlF-soUz4)
+<p align="center">
+  <a href="https://youtu.be/WCDlF-soUz4" target="_blank"><img src="/files/transaction.jpg?raw=true"></a>
+</p>
 
-### Settings
-[![Settings](/files/settings.jpg?raw=true)](https://youtu.be/y3gMMBL95UA)
+#### Settings
+<p align="center">
+  <a href="https://youtu.be/y3gMMBL95UA" target="_blank"><img src="/files/settings.jpg?raw=true"></a>
+</p>
 
-### Transaction History
-[![Transaction History](/files/history.jpg?raw=true)](https://youtu.be/yLFyqNvpSIU)
+#### Transaction History
+<p align="center">
+  <a href="https://youtu.be/yLFyqNvpSIU" target="_blank"><img src="/files/history.jpg?raw=true"></a>
+</p>
 
 ## Development
-
 Want to contribute? Great!
 I will come to with how to contribute very soon.
 

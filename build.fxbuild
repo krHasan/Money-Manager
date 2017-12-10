@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <anttasks:AntTask xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:anttasks="http://org.eclipse.fx.ide.jdt/1.0" buildDirectory="${project}/build" cssToBin="true">
   <deploy packagingFormat="deb">
-    <application name="Money-Manager" mainclass="view.SignInStage" version="1.2" toolkit="fx"/>
+    <application name="Money-Manager" mainclass="view.SignInStage" version="2017.02" toolkit="fx"/>
     <info title="Money-Manager" vendor="krHasan"/>
   </deploy>
   <signjar/>

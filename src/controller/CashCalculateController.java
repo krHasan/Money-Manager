@@ -480,7 +480,7 @@ public class CashCalculateController extends CashCalculateModel {
 		if (stringToLong(totalCash) == 0) {
 			lblSub.setText("");
 		} else {
-			lblSub.setText("  -  "+addThousandSeparator(totalCash)+"  =  "+intToString(longToint(currentWalletBalance())-stringToInt(totalCash)));
+			lblSub.setText("-  "+addThousandSeparator(totalCash)+"  =  "+addThousandSeparator(intToString(longToint(currentWalletBalance())-stringToInt(totalCash))));
 		}
 	}
 	
