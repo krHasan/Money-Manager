@@ -83,7 +83,7 @@
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="344.0" layoutY="305.0" prefHeight="30.0" prefWidth="55.0" text=" Total = " textFill="#eeeeee">
+      <Label layoutX="351.0" layoutY="305.0" prefHeight="30.0" text=" Total = " textFill="#eeeeee">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
@@ -174,57 +174,57 @@
             <Font name="Arial" size="14.0" />
          </font>
       </TextField>
-      <Label fx:id="lbl1000" layoutX="266.0" layoutY="465.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl1000" layoutX="266.0" layoutY="465.0" prefHeight="30.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl500" layoutX="266.0" layoutY="425.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl500" layoutX="266.0" layoutY="425.0" prefHeight="30.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl100" layoutX="266.0" layoutY="385.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl100" layoutX="266.0" layoutY="385.0" prefHeight="30.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl50" layoutX="266.0" layoutY="345.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl50" layoutX="266.0" layoutY="345.0" prefHeight="30.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl20" layoutX="266.0" layoutY="305.0" prefHeight="30.0" prefWidth="70.0" textFill="#eeeeee">
+      <Label fx:id="lbl20" layoutX="266.0" layoutY="305.0" prefHeight="30.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl2" layoutX="266.0" layoutY="185.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl2" layoutX="266.0" layoutY="185.0" prefHeight="30.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl5" layoutX="266.0" layoutY="225.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl5" layoutX="266.0" layoutY="225.0" prefHeight="30.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl10" layoutX="266.0" layoutY="265.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl10" layoutX="266.0" layoutY="265.0" prefHeight="30.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lbl1" layoutX="266.0" layoutY="145.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lbl1" layoutX="266.0" layoutY="145.0" prefHeight="30.0" textFill="#eeeeee">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblTotal" alignment="CENTER" layoutX="399.0" layoutY="305.0" prefHeight="30.0" prefWidth="85.0" textFill="#eeeeee">
+      <Label fx:id="lblTotal" alignment="CENTER" layoutX="406.0" layoutY="305.0" prefHeight="30.0" textFill="#eeeeee">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="122.0" layoutY="49.0" prefHeight="40.0" prefWidth="150.0" text="Wallet Balance : " textFill="#eeeeee">
+      <Label alignment="CENTER_RIGHT" layoutX="53.0" layoutY="49.0" prefHeight="40.0" prefWidth="220.0" text="Wallet Balance : " textFill="#eeeeee">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -234,16 +234,16 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="100.0" style="-fx-background-color: #cfd8dc;" text="Sign Out">
+      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="710.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #cfd8dc;" text="Sign Out">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></Button>
-      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="496.0" prefHeight="30.0" prefWidth="200.0" />
+      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="410.0" prefHeight="30.0" prefWidth="300.0" />
       <Label fx:id="lblWarningMsg" alignment="CENTER" layoutX="71.0" layoutY="112.0" prefHeight="21.0" prefWidth="340.0" textFill="#ff5e5e">
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font></Label>
-      <Label fx:id="lblSub" layoutX="382.0" layoutY="49.0" prefHeight="40.0" prefWidth="200.0" textFill="#eeeeee">
+      <Label fx:id="lblSub" layoutX="382.0" layoutY="49.0" prefHeight="40.0" textFill="#eeeeee">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>

@@ -63,8 +63,8 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" />
-      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="100.0" style="-fx-background-color: #cfd8dc;" text="Sign Out" />
+      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="410.0" prefHeight="30.0" prefWidth="300.0" />
+      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="710.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #cfd8dc;" text="Sign Out" />
       <Label alignment="CENTER" layoutX="250.0" layoutY="210.0" prefHeight="28.0" prefWidth="300.0" text="Khandoker Rakib Hasan" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="17.0" />
@@ -77,11 +77,11 @@
       </Label>
       <Hyperlink alignment="CENTER" layoutX="250.0" layoutY="264.0" onAction="#hyperlinkGit" prefHeight="28.0" prefWidth="300.0" text="https://github.com/krHasan">
          <font>
-            <Font name="Ubuntu" size="15.0" />
+            <Font name="Ubuntu" size="16.0" />
          </font></Hyperlink>
       <Hyperlink alignment="CENTER" layoutX="220.0" layoutY="289.0" onAction="#hyperlinkLinkedin" prefHeight="28.0" prefWidth="360.0" text="https://www.linkedin.com/in/kr-hasan">
          <font>
-            <Font name="Ubuntu" size="15.0" />
+            <Font name="Ubuntu" size="16.0" />
          </font></Hyperlink>
       <Label alignment="CENTER" layoutX="250.0" layoutY="177.0" prefHeight="28.0" prefWidth="300.0" text="Developer Info" textFill="WHITE" underline="true">
          <font>

@@ -71,11 +71,11 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="-1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #cfd8dc;" text="Sign Out">
+      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="710.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #cfd8dc;" text="Sign Out">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></Button>
-      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" text="Khandoker Rakib Hasan" />
+      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="410.0" prefHeight="30.0" prefWidth="300.0" text="Khandoker Rakib Hasan" />
       <Button fx:id="btnDashboard" disable="true" focusTraversable="false" layoutX="120.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnDashboard" prefHeight="28.0" text="Dashboard" visible="false">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
@@ -315,22 +315,22 @@
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></ComboBox>
-                        <Label alignment="CENTER" layoutX="93.0" layoutY="78.0" prefHeight="28.0" prefWidth="256.0" text="Create Money Income Source" textFill="#eeeeee">
+                        <Label alignment="CENTER" layoutX="107.0" layoutY="78.0" prefHeight="28.0" text="Create Money Income Source" textFill="#eeeeee">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="497.0" layoutY="78.0" prefHeight="28.0" prefWidth="130.0" text="Archive Source" textFill="#eeeeee">
+                        <Label alignment="CENTER" layoutX="497.0" layoutY="78.0" prefHeight="28.0" text="Archive Source" textFill="#eeeeee">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="493.0" layoutY="251.0" prefHeight="28.0" prefWidth="137.0" text="Unarchive Source" textFill="#eeeeee">
+                        <Label alignment="CENTER" layoutX="490.0" layoutY="251.0" prefHeight="28.0" text="Unarchive Source" textFill="#eeeeee">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="79.0" layoutY="118.0" prefHeight="28.0" prefWidth="100.0" text="Source Name : " textFill="#eeeeee">
+                        <Label alignment="CENTER_RIGHT" layoutX="59.0" layoutY="118.0" prefHeight="28.0" prefWidth="120.0" text="Source Name : " textFill="#eeeeee">
                            <font>
                               <Font name="Ubuntu" size="14.0" />
                            </font>
@@ -359,7 +359,7 @@
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor>
                         </ComboBox>
-                        <Label alignment="CENTER" layoutX="159.0" layoutY="251.0" prefHeight="28.0" prefWidth="130.0" text="Delete Source" textFill="#eeeeee">
+                        <Label alignment="CENTER" layoutX="168.0" layoutY="251.0" prefHeight="28.0" text="Delete Source" textFill="#eeeeee">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
@@ -396,22 +396,22 @@
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></ComboBox>
-                        <Label alignment="CENTER" layoutX="118.0" layoutY="78.0" prefHeight="28.0" prefWidth="208.0" text="Create Expenditure Sector" textFill="#ebebeb">
+                        <Label alignment="CENTER" layoutX="118.0" layoutY="78.0" prefHeight="28.0" text="Create Expenditure Sector" textFill="#ebebeb">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="498.0" layoutY="78.0" prefHeight="28.0" prefWidth="130.0" text="Archive Sector" textFill="#ebebeb">
+                        <Label alignment="CENTER" layoutX="501.0" layoutY="78.0" prefHeight="28.0" text="Archive Sector" textFill="#ebebeb">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="496.0" layoutY="249.0" prefHeight="28.0" prefWidth="137.0" text="Unarchive Sector" textFill="#ebebeb">
+                        <Label alignment="CENTER" layoutX="496.0" layoutY="249.0" prefHeight="28.0" text="Unarchive Sector" textFill="#ebebeb">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="79.0" layoutY="118.0" prefHeight="28.0" prefWidth="100.0" text="Sector Name : " textFill="#ebebeb">
+                        <Label alignment="CENTER_RIGHT" layoutX="48.0" layoutY="118.0" prefHeight="28.0" prefWidth="131.0" text="Sector Name : " textFill="#ebebeb">
                            <font>
                               <Font name="Ubuntu" size="14.0" />
                            </font>
@@ -440,7 +440,7 @@
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor>
                         </ComboBox>
-                        <Label alignment="CENTER" layoutX="158.0" layoutY="249.0" prefHeight="28.0" prefWidth="130.0" text="Delete Sector" textFill="#ebebeb">
+                        <Label alignment="CENTER" layoutX="167.0" layoutY="249.0" prefHeight="28.0" text="Delete Sector" textFill="#ebebeb">
                            <font>
                               <Font name="Arial Bold" size="16.0" />
                            </font>
@@ -494,7 +494,7 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="systemlblRePassword" alignment="CENTER_RIGHT" layoutX="15.0" layoutY="290.0" prefHeight="28.0" prefWidth="133.0" text="Re-Type Password : " textFill="#eeeeee">
+                        <Label fx:id="systemlblRePassword" alignment="CENTER_RIGHT" layoutX="4.0" layoutY="290.0" prefHeight="28.0" prefWidth="144.0" text="Re-Type Password : " textFill="#eeeeee">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>

@@ -62,7 +62,7 @@
          </font>
       </Label>
       <Label fx:id="lblOutdateMsg" alignment="TOP_CENTER" contentDisplay="CENTER" focusTraversable="false" layoutY="99.0" prefHeight="10.0" prefWidth="800.0" textAlignment="CENTER" textFill="#c30505" textOverrun="CLIP" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Label fx:id="lblWrongAuthentication" contentDisplay="CENTER" focusTraversable="false" layoutX="464.0" layoutY="125.0" prefHeight="19.0" prefWidth="230.0" textAlignment="CENTER" textFill="#c30505" textOverrun="CLIP" />
+      <Label fx:id="lblWrongAuthentication" contentDisplay="CENTER" focusTraversable="false" layoutX="464.0" layoutY="125.0" prefHeight="19.0" textAlignment="CENTER" textFill="#c30505" textOverrun="CLIP" />
       <Label fx:id="lblForgetPassword" alignment="CENTER" focusTraversable="false" layoutX="498.0" layoutY="379.0" onMouseClicked="#forgotPassword" prefHeight="30.0" prefWidth="200.0" text="Forget Password">
          <font>
             <Font name="Ubuntu" size="16.0" />

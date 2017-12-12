@@ -81,13 +81,13 @@
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font></Button>
-      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="700.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="100.0" style="-fx-background-color: #cfd8dc;" text="Sign Out">
+      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="710.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #cfd8dc;" text="Sign Out">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></Button>
-      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" />
+      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="410.0" prefHeight="30.0" prefWidth="300.0" />
       <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="37.0" prefHeight="28.0" prefWidth="90.0" text="History For : " textFill="#ebe7e7" />
-      <Label alignment="CENTER_RIGHT" layoutX="231.0" layoutY="37.0" prefHeight="28.0" prefWidth="70.0" text="Filter By : " textFill="#ebe7e7" />
+      <Label alignment="CENTER_RIGHT" layoutX="221.0" layoutY="37.0" prefHeight="28.0" prefWidth="80.0" text="Filter By : " textFill="#ebe7e7" />
       <DatePicker fx:id="datePicker" editable="false" focusTraversable="false" layoutX="494.0" layoutY="37.0" prefHeight="28.0" prefWidth="210.0" promptText="Search by Date">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />

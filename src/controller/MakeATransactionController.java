@@ -1565,7 +1565,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@SuppressWarnings("unchecked")
 	private void showBorroTblData() {
 		try {
-			lendlblTableHeading.setText("Money Borrow History");
+			lendlblTableHeading.setText("Borrow Summary");
 			lendTblColumnName.setCellValueFactory(new PropertyValueFactory<>("boWhom"));
 			lendTblColumnDate.setCellValueFactory(new PropertyValueFactory<>("boDate"));
 			lendTblColumnAmount.setCellValueFactory(new PropertyValueFactory<>("boExactTk"));
@@ -1964,7 +1964,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@SuppressWarnings("unchecked")
 	private void showLendTblData() {
-		lendlblTableHeading.setText("Money Lend History");
+		lendlblTableHeading.setText("Lend Summary");
 		try {
 			lendTblColumnName.setCellValueFactory(new PropertyValueFactory<>("leWhom"));
 			lendTblColumnDate.setCellValueFactory(new PropertyValueFactory<>("leDate"));

@@ -58,12 +58,12 @@
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font></Button>
-      <Label fx:id="lblMsgPassword" layoutX="539.0" layoutY="253.0" prefHeight="20.0" prefWidth="150.0" textFill="#ff5e5e">
+      <Label fx:id="lblMsgPassword" layoutX="539.0" layoutY="253.0" prefHeight="20.0" textFill="#ff5e5e">
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblMsgInformation" alignment="CENTER" layoutX="278.0" layoutY="123.0" prefHeight="20.0" prefWidth="250.0" textFill="#ff5e5e">
+      <Label fx:id="lblMsgInformation" alignment="CENTER" layoutX="266.0" layoutY="123.0" prefHeight="20.0" prefWidth="300.0" textFill="#ff5e5e">
          <font>
             <Font name="Ubuntu Bold" size="13.0" />
          </font>

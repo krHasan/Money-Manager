@@ -79,27 +79,27 @@
                               <Insets />
                            </opaqueInsets>
                   </Button>
-                  <Label focusTraversable="false" layoutX="420.0" layoutY="101.0" prefHeight="20.0" prefWidth="150.0" text="Source of Money" textFill="#eeeeee">
+                  <Label focusTraversable="false" layoutX="420.0" layoutY="101.0" prefHeight="20.0" text="Source of Money" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label focusTraversable="false" layoutX="420.0" layoutY="175.0" prefHeight="20.0" prefWidth="150.0" text="Method" textFill="#eeeeee">
+                  <Label focusTraversable="false" layoutX="420.0" layoutY="175.0" prefHeight="20.0" text="Method" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label focusTraversable="false" layoutX="82.0" layoutY="61.0" prefHeight="20.0" prefWidth="59.0" text="Amount" textFill="#eeeeee">
+                  <Label focusTraversable="false" layoutX="82.0" layoutY="61.0" prefHeight="20.0" text="Amount" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label focusTraversable="false" layoutX="82.0" layoutY="149.0" prefHeight="20.0" prefWidth="150.0" text="Description" textFill="#eeeeee">
+                  <Label focusTraversable="false" layoutX="82.0" layoutY="149.0" prefHeight="20.0" text="Description" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="64.0" layoutY="333.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :" textFill="#eeeeee">
+                  <Label alignment="CENTER_RIGHT" focusTraversable="false" layoutX="60.0" layoutY="333.0" prefHeight="35.0" prefWidth="157.0" text="Wallet Balance :" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -119,7 +119,7 @@
                         <Font name="Ubuntu" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="gmlblAmountNature" focusTraversable="false" layoutX="440.0" layoutY="268.0" prefHeight="20.0" prefWidth="150.0" text="Cash In by" textFill="#eeeeee">
+                  <Label fx:id="gmlblAmountNature" focusTraversable="false" layoutX="440.0" layoutY="268.0" prefHeight="20.0" text="Cash In by" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -200,22 +200,22 @@
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
-                  <Label layoutX="403.0" layoutY="151.0" prefHeight="20.0" prefWidth="150.0" text="Expenditure Sector" textFill="#eeeeee">
+                  <Label layoutX="403.0" layoutY="151.0" prefHeight="20.0" text="Expenditure Sector" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="82.0" layoutY="61.0" prefHeight="20.0" prefWidth="145.0" text="Expensed Amount" textFill="#eeeeee">
+                  <Label layoutX="82.0" layoutY="61.0" prefHeight="20.0" text="Expensed Amount" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="82.0" layoutY="148.0" prefHeight="20.0" prefWidth="150.0" text="Description" textFill="#eeeeee">
+                  <Label layoutX="82.0" layoutY="148.0" prefHeight="20.0" text="Description" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="319.0" prefHeight="35.0" prefWidth="150.0" text="Wallet Balance :" textFill="#eeeeee">
+                  <Label alignment="CENTER_RIGHT" layoutX="47.0" layoutY="319.0" prefHeight="35.0" prefWidth="166.0" text="Wallet Balance :" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -351,15 +351,15 @@
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="borbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#boRbtn2Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
+                                    <RadioButton fx:id="borbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#boRbtn2Action" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="borbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#boRbtn3Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
+                                    <RadioButton fx:id="borbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#boRbtn3Action" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="borbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#boRbtn4Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
+                                    <RadioButton fx:id="borbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#boRbtn4Action" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
@@ -453,15 +453,15 @@
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="lerbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#leRbtn2Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
+                                    <RadioButton fx:id="lerbtn2" focusTraversable="false" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" onAction="#leRbtn2Action" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="lerbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#leRbtn3Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
+                                    <RadioButton fx:id="lerbtn3" focusTraversable="false" layoutX="218.0" layoutY="243.0" mnemonicParsing="false" onAction="#leRbtn3Action" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="lerbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#leRbtn4Action" prefHeight="18.0" prefWidth="105.0" textFill="WHITE">
+                                    <RadioButton fx:id="lerbtn4" focusTraversable="false" layoutX="218.0" layoutY="267.0" mnemonicParsing="false" onAction="#leRbtn4Action" textFill="WHITE">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
@@ -499,7 +499,7 @@
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
-                  <Label fx:id="lendlblTableHeading" alignment="CENTER" layoutX="85.0" layoutY="61.0" prefHeight="20.0" prefWidth="179.0" textFill="#eeeeee">
+                  <Label fx:id="lendlblTableHeading" alignment="CENTER" layoutX="75.0" layoutY="61.0" prefHeight="20.0" prefWidth="200.0" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
@@ -525,7 +525,7 @@
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="331.0" layoutY="14.0" prefHeight="28.0" prefWidth="110.0" text="Wallet Balance :" textFill="#eeeeee">
+                  <Label alignment="CENTER_RIGHT" layoutX="283.0" layoutY="14.0" prefHeight="28.0" prefWidth="159.0" text="Wallet Balance :" textFill="#eeeeee">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
@@ -535,7 +535,7 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lendlblTotalLendName" alignment="CENTER_RIGHT" layoutX="25.0" layoutY="440.0" prefHeight="28.0" prefWidth="171.0" textFill="#eeeeee">
+                  <Label fx:id="lendlblTotalLendName" alignment="CENTER_RIGHT" layoutX="3.0" layoutY="440.0" prefHeight="28.0" prefWidth="193.0" textFill="#eeeeee">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -592,7 +592,7 @@
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER_RIGHT" layoutX="42.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :" textFill="#eeeeee">
+                                    <Label alignment="CENTER_RIGHT" layoutX="45.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
@@ -659,7 +659,7 @@
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER_RIGHT" layoutX="42.0" layoutY="81.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :" textFill="#eeeeee">
+                                    <Label alignment="CENTER_RIGHT" layoutX="45.0" layoutY="81.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
@@ -682,7 +682,7 @@
                                           <Font name="Ubuntu" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="bklblAmountNature" layoutX="523.0" layoutY="186.0" prefHeight="27.0" prefWidth="142.0" text="Cash Repay Mehtod" textFill="#eeeeee">
+                                    <Label fx:id="bklblAmountNature" layoutX="523.0" layoutY="186.0" prefHeight="27.0" text="Cash Repay Mehtod" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
@@ -696,23 +696,23 @@
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="bkrbtn2" focusTraversable="false" layoutX="533.0" layoutY="241.0" mnemonicParsing="false" onAction="#bkCmboAction2" prefHeight="18.0" prefWidth="105.0" text="Buy Airtime" textFill="#eeeeee">
+                                    <RadioButton fx:id="bkrbtn2" focusTraversable="false" layoutX="533.0" layoutY="241.0" mnemonicParsing="false" onAction="#bkCmboAction2" text="Buy Airtime" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="bkrbtn3" focusTraversable="false" layoutX="533.0" layoutY="266.0" mnemonicParsing="false" onAction="#bkCmboAction3" prefHeight="18.0" prefWidth="105.0" text="Send Money" textFill="#eeeeee">
+                                    <RadioButton fx:id="bkrbtn3" focusTraversable="false" layoutX="533.0" layoutY="266.0" mnemonicParsing="false" onAction="#bkCmboAction3" text="Send Money" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="bkrbtn4" focusTraversable="false" layoutX="533.0" layoutY="291.0" mnemonicParsing="false" onAction="#bkCmboAction4" prefHeight="18.0" prefWidth="105.0" text="Payment" textFill="#eeeeee">
+                                    <RadioButton fx:id="bkrbtn4" focusTraversable="false" layoutX="533.0" layoutY="291.0" mnemonicParsing="false" onAction="#bkCmboAction4" text="Payment" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="bkrbtn5" focusTraversable="false" layoutX="533.0" layoutY="316.0" mnemonicParsing="false" onAction="#bkCmboAction5" prefHeight="18.0" prefWidth="105.0" text="ATM" textFill="#eeeeee">
+                                    <RadioButton fx:id="bkrbtn5" focusTraversable="false" layoutX="533.0" layoutY="316.0" mnemonicParsing="false" onAction="#bkCmboAction5" text="ATM" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="bklblUpdateBalance" alignment="CENTER" layoutX="71.0" layoutY="122.0" prefHeight="16.0" prefWidth="216.0" textFill="#eeeeee">
+                                    <Label fx:id="bklblUpdateBalance" alignment="CENTER" layoutX="71.0" layoutY="122.0" prefHeight="16.0" textFill="#eeeeee">
                                        <font>
                                           <Font name="Ubuntu" size="13.0" />
                                        </font>
@@ -774,7 +774,7 @@
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER_RIGHT" layoutX="42.0" layoutY="82.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :" textFill="#eeeeee">
+                                    <Label alignment="CENTER_RIGHT" layoutX="45.0" layoutY="82.0" prefHeight="35.0" prefWidth="150.0" text="Account Balance :" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="15.0" />
                                        </font>
@@ -797,7 +797,7 @@
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="roclblAmountNature" layoutX="523.0" layoutY="186.0" prefHeight="27.0" prefWidth="142.0" text="Cash Repay Mehtod" textFill="#eeeeee">
+                                    <Label fx:id="roclblAmountNature" layoutX="523.0" layoutY="186.0" prefHeight="27.0" text="Cash Repay Mehtod" textFill="#eeeeee">
                                        <font>
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
@@ -811,23 +811,23 @@
                                           <Font name="Arial" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="rocrbtn2" focusTraversable="false" layoutX="533.0" layoutY="241.0" mnemonicParsing="false" onAction="#rocCmboAction2" prefHeight="18.0" prefWidth="105.0" text="TopUp" textFill="#eeeeee">
+                                    <RadioButton fx:id="rocrbtn2" focusTraversable="false" layoutX="533.0" layoutY="241.0" mnemonicParsing="false" onAction="#rocCmboAction2" text="TopUp" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="rocrbtn3" focusTraversable="false" layoutX="533.0" layoutY="266.0" mnemonicParsing="false" onAction="#rocCmboAction3" prefHeight="18.0" prefWidth="105.0" text="Agent" textFill="#eeeeee">
+                                    <RadioButton fx:id="rocrbtn3" focusTraversable="false" layoutX="533.0" layoutY="266.0" mnemonicParsing="false" onAction="#rocCmboAction3" text="Agent" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="rocrbtn4" focusTraversable="false" layoutX="533.0" layoutY="291.0" mnemonicParsing="false" onAction="#rocCmboAction4" prefHeight="18.0" prefWidth="105.0" text="Send Money" textFill="#eeeeee">
+                                    <RadioButton fx:id="rocrbtn4" focusTraversable="false" layoutX="533.0" layoutY="291.0" mnemonicParsing="false" onAction="#rocCmboAction4" text="Send Money" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <RadioButton fx:id="rocrbtn5" focusTraversable="false" layoutX="533.0" layoutY="316.0" mnemonicParsing="false" onAction="#rocCmboAction5" prefHeight="18.0" prefWidth="105.0" text="Branch" textFill="#eeeeee">
+                                    <RadioButton fx:id="rocrbtn5" focusTraversable="false" layoutX="533.0" layoutY="316.0" mnemonicParsing="false" onAction="#rocCmboAction5" text="Branch" textFill="#eeeeee">
                                        <cursor>
                                           <Cursor fx:constant="CLOSED_HAND" />
                                        </cursor></RadioButton>
-                                    <Label fx:id="roclblUpdateBalance" alignment="CENTER" layoutX="74.0" layoutY="123.0" prefHeight="16.0" prefWidth="202.0" textFill="#eeeeee">
+                                    <Label fx:id="roclblUpdateBalance" alignment="CENTER" layoutX="74.0" layoutY="123.0" prefHeight="16.0" textFill="#eeeeee">
                                        <font>
                                           <Font name="Ubuntu" size="13.0" />
                                        </font>
@@ -875,7 +875,7 @@
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Label alignment="CENTER_RIGHT" layoutX="117.0" layoutY="12.0" prefHeight="28.0" prefWidth="110.0" text="Wallet Balance :" textFill="WHITE">
+                  <Label alignment="CENTER_RIGHT" layoutX="62.0" layoutY="12.0" prefHeight="28.0" prefWidth="166.0" text="Wallet Balance :" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
@@ -941,6 +941,6 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="btnSignOut" layoutX="700.0" layoutY="-3.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #cfd8dc;" text="Sign Out" />
-      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="495.0" prefHeight="30.0" prefWidth="200.0" />
+      <Button fx:id="btnSignOut" layoutX="710.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #cfd8dc;" text="Sign Out" />
+      <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="410.0" prefHeight="30.0" prefWidth="300.0" />
 </children></AnchorPane>
