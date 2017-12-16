@@ -2,7 +2,7 @@
 Money Manager is an application which can help you to keep record of your personal finance. Many of us don't maintain document of how much money we get in a month and how much expense because that seems very painy to us. This application will help us to keep a record of our every transaction.
 
 # Download
-Download Money-Manager for Linux, windows and Mac from [Here](https://drive.google.com/open?id=1p5izodhPK-JPNdc5HZo16nLhpiaszzvC) 
+Download Money-Manager for Linux, windows from [Here](https://drive.google.com/open?id=1p5izodhPK-JPNdc5HZo16nLhpiaszzvC) 
 
 # Technologies
 Here I use Model–view–controller(MVC) architecture to build this application. Tecnologies I used are
