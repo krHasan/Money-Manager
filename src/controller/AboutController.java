@@ -66,7 +66,7 @@ public class AboutController extends DateAndClock {
 	@FXML
 	public void initialize() {
 //		load user full name on Menu
-		lblUserFullName.setText(userFullName());
+		lblUserFullName.setText(userFullName()+" ");
 		
 	}
 	

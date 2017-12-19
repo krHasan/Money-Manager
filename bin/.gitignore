@@ -1,6 +1,10 @@
 /controller/
+/css/
 /database/
 /help/
+/html/
+/imges/
+/js_files/
 /model/
 /operation/
 /system/
@@ -8,6 +12,3 @@
 /tableAndgraph/
 /view/
 /web/
-/imges/
-/js_files/
-/css/

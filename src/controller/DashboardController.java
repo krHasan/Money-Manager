@@ -172,7 +172,7 @@ public class DashboardController extends DashboardModel {
 	@FXML
 	public void initialize() {
 //		show user name and current balance status
-		lblUserFullName.setText(userFullName());
+		lblUserFullName.setText(userFullName()+" ");
 		lblWalletBalance.setText(addThousandSeparator(getWalletBalance()));
 		lblTotalBorrow.setText(addThousandSeparator(getTotalBorrowTk()));
 		lblTotalLend.setText(addThousandSeparator(getTotalLendTk()));

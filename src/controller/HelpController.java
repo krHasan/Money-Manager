@@ -68,7 +68,7 @@ public class HelpController extends DateAndClock {
 ////////////////////General Function //////////////////////////////
 	@FXML
 	public void initialize() {
-		lblUserFullName.setText(userFullName());
+		lblUserFullName.setText(userFullName()+" ");
 		loadInfo();
 	}
 	

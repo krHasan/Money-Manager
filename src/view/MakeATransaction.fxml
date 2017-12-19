@@ -57,7 +57,7 @@
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="gmbtnCreateSource" focusTraversable="false" layoutX="635.0" layoutY="128.0" mnemonicParsing="false" onAction="#gmGoToSourceBtn" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #0097A7;" text="Create Source" textFill="WHITE">
+                  <Button fx:id="gmbtnCreateSource" focusTraversable="false" layoutX="635.0" layoutY="128.0" mnemonicParsing="false" onAction="#gmCreateSourceBtn" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #0097A7;" text="Create Source" textFill="WHITE">
                      <font>
                         <Font name="Ubuntu Bold" size="14.0" />
                      </font>
@@ -185,7 +185,7 @@
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="exbtnCreateSector" focusTraversable="false" layoutX="618.0" layoutY="179.0" mnemonicParsing="false" onAction="#exGoToSectorBtn" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #0097a7;" text="Create Sector" textFill="WHITE">
+                  <Button fx:id="exbtnCreateSector" focusTraversable="false" layoutX="618.0" layoutY="179.0" mnemonicParsing="false" onAction="#exCreateSectorBtn" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #0097a7;" text="Create Sector" textFill="WHITE">
                      <font>
                         <Font name="Ubuntu Bold" size="14.0" />
                      </font>
@@ -941,6 +941,9 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="btnSignOut" layoutX="710.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #cfd8dc;" text="Sign Out" />
+      <Button fx:id="btnSignOut" layoutX="710.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="29.0" prefWidth="90.0" style="-fx-background-radius: 0px;" text="Sign Out">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="410.0" prefHeight="30.0" prefWidth="300.0" />
 </children></AnchorPane>

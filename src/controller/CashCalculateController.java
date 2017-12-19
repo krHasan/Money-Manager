@@ -122,7 +122,7 @@ public class CashCalculateController extends CashCalculateModel {
 //////////////////// General Function //////////////////////////////
 	@FXML
 	public void initialize() {
-		lblUserFullName.setText(userFullName()); //show user full name on Menu
+		lblUserFullName.setText(userFullName()+" "); //show user full name on Menu
 		lblWalletBalance.setText(addThousandSeparator(getWalletBalance())); //show current wallet balance
 		CashCalculate(); //set all field initialize value to 0
 		

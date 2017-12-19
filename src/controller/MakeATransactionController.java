@@ -458,7 +458,19 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	public void initialize() {
 		showTab();
-		lblUserFullName.setText(userFullName());
+		lblUserFullName.setText(userFullName()+" ");
+		
+		gmdateDate.setConverter(formatManager);
+		gmdateDate.setValue(date);
+		if (getWeekStatus()) {
+			gmdateDate.setShowWeekNumbers(true);
+		}
+		
+		exdateDate.setConverter(formatManager);
+		exdateDate.setValue(date);
+		if (getWeekStatus()) {
+			exdateDate.setShowWeekNumbers(true);
+		}
 		
 		btnSignOut.setTooltip(new Tooltip("Sign Out from application"));
 		Tooltip.install(lblUserFullName, new Tooltip("User's Full Name"));
@@ -770,11 +782,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void tabGetMoney() {
 		gmInitialize();
-		gmdateDate.setConverter(formatManager);
-		gmdateDate.setValue(date);
-		if (getWeekStatus()) {
-			gmdateDate.setShowWeekNumbers(true);
-		}
+//		gmdateDate.setConverter(formatManager);
+//		gmdateDate.setValue(date);
+//		if (getWeekStatus()) {
+//			gmdateDate.setShowWeekNumbers(true);
+//		}
 	}
 	
 	
@@ -835,7 +847,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	
 	@FXML
-	private void gmGoToSourceBtn(ActionEvent event) {
+	private void gmCreateSourceBtn(ActionEvent event) {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Create Income Source");
 		dialog.setHeaderText("Create Income Source, Where from you get Tk.");
@@ -874,7 +886,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 				confirmationMsg.setY(SettingsStage.getY() + 170);
 				confirmationMsg.showAndWait();
 				
-				gmLoadSource();
+//				gmLoadSource();
+				gmcmboSource.setItems(gmGetSource());
+				gmcmboSource.getSelectionModel().selectLast();
 			}
 		}
 //		(new TabAccess()).setTabName("tabSource");
@@ -944,7 +958,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				
 				gmInitialize();
 				gmtxtAmount.clear();
-				gmtxtDescription.clear();
+//				gmtxtDescription.clear();
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Successfull Transaction");
@@ -1187,11 +1201,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void tabExpense() {
 		exInitialize();
-		exdateDate.setConverter(formatManager);
-		exdateDate.setValue(date);
-		if (getWeekStatus()) {
-			exdateDate.setShowWeekNumbers(true);
-		}
+//		exdateDate.setConverter(formatManager);
+//		exdateDate.setValue(date);
+//		if (getWeekStatus()) {
+//			exdateDate.setShowWeekNumbers(true);
+//		}
 	}
 	
 	
@@ -1204,7 +1218,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	
 	@FXML
-	private void exGoToSectorBtn(ActionEvent event) {
+	private void exCreateSectorBtn(ActionEvent event) {
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Create Sector");
 		dialog.setHeaderText("Create your expenditure sector, where you expense Tk.");
@@ -1242,7 +1256,9 @@ public class MakeATransactionController extends MakeATransactionModel {
 				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
 				confirmationMsg.showAndWait();
 				
-				exLoadSector();
+//				exLoadSector();
+				excmboSector.setItems(exGetSector());
+				excmboSector.getSelectionModel().selectLast();
 			}
 		}
 	}
@@ -1416,7 +1432,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			
 			exInitialize();
 			extxtAmount.clear();
-			extxtDescription.clear();
+//			extxtDescription.clear();
 			
 			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 			confirmationMsg.setTitle("Successfull Transaction");

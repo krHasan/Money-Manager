@@ -23,6 +23,16 @@
     -fx-background-insets: 0 1 0 1,0,0;
 }
 /*change the tab color when a tab is selected*/
+#btnSignOut {
+	-fx-background-color:  #cfd8dc;
+}
+#btnSignOut:hover {
+	-fx-background-color: #0097A7;
+    -fx-text-fill: white;
+    -fx-font: 14 "Ubuntu";
+    -fx-font-weight: bold;
+}
+
 #tabSectorCSS:selected {
     -fx-background-color:  #4B515D;
 }

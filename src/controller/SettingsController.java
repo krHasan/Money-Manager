@@ -242,7 +242,7 @@ public class SettingsController extends SettingsModel {
 	@FXML
 	public void initialize() {
 		showTab();
-		lblUserFullName.setText(getUserFullName());
+		lblUserFullName.setText(getUserFullName()+" ");
 		
 		btnSignOut.setTooltip(new Tooltip("Sign Out from application"));
 		Tooltip.install(lblUserFullName, new Tooltip("User's Full Name"));

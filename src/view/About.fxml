@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -64,7 +65,10 @@
         </menus>
       </MenuBar>
       <Label fx:id="lblUserFullName" alignment="CENTER_RIGHT" layoutX="410.0" prefHeight="30.0" prefWidth="300.0" />
-      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="710.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #cfd8dc;" text="Sign Out" />
+      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="710.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="29.0" prefWidth="90.0" style="-fx-background-radius: 0px;" text="Sign Out">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label alignment="CENTER" layoutX="250.0" layoutY="210.0" prefHeight="28.0" prefWidth="300.0" text="Khandoker Rakib Hasan" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold" size="17.0" />

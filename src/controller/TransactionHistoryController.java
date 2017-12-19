@@ -100,7 +100,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	
 	@FXML
 	public void initialize() {
-		lblUserFullName.setText(userFullName());
+		lblUserFullName.setText(userFullName()+" ");
 		showAllMonths();
 		showAllFilter();
 		datePicker.setConverter(formatManager);

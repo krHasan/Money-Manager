@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,17 +13,20 @@ import tab.Lend;
 
 public class Undo extends DateAndClock {
 	
+	//Undo last transaction when this method is called, Undo limit is 5
 	public String actionUndo() {
-		String feedback = null;
-		boolean limit = false;
-		int globalID = 0;
+		String feedback = null; //return statement for Undo action
+		boolean limit = false; //check the limit range
+		int globalID = 0; //initialize the global ID variable
 		String getGID = "SELECT globalId FROM System_Settings";
+		//get the last used globalID number
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
 				ResultSet result = stmt.executeQuery(getGID)) {
-			globalID = result.getInt("globalId")-1;
+			globalID = result.getInt("globalId")-1; //set it to "globalID" variable
 		} catch (Exception e) {e.printStackTrace();}
 		
+		//get the undoID status from DB
 		int undoId = 0;
 		String getUID = "SELECT undoId FROM System_Settings";
 		try (Connection conn = connector();
@@ -32,18 +34,21 @@ public class Undo extends DateAndClock {
 				ResultSet result = stmt.executeQuery(getUID)) {
 			undoId = result.getInt("undoId");
 		} catch (Exception e) {e.printStackTrace();}
-		 
-		if (globalID <= undoId) {
+		
+		//check whether Undo limit is over or not
+		if (globalID <= undoId) { 
 			limit = false;
 		} else if((globalID-undoId)>=1 && (globalID-undoId)<=5) {
 			limit = true;
-		} else if((globalID-undoId)>5) {
+		} else if((globalID-undoId)>5) { //set undoID within the limit 5 according to globalID
 			limit = true;
 			GlobalId.setUndoId((globalID-5));
 		}
 		
-		if (limit) {
-			if (undoGetMoney(globalID)) {
+		
+		if (limit) { //if limit is true
+			//check which transaction used the last globalID and roll back that transaction
+			if (undoGetMoney(globalID)) { 
 				feedback = "Last \"Get Money\" transaction has been rollbacked";
 			} else if(undoExpense(globalID)) {
 				feedback = "Last \"Expense\" transaction has been rollbacked";
@@ -342,7 +347,7 @@ public class Undo extends DateAndClock {
 				boleData.put("boWhom", boWhom);
 				boleData.put("boExactTk", removeThousandSeparator(boExactTk));
 				
-				if (!new Borrow().boRepayPersonBorrowedAmount(boWhom).isEmpty()) {
+				if (!new Borrow().boRepayPersonBorrowedAmount(boWhom).equals("0")) {
 					(new Borrow()).updateBorrowSummaryDataForUndo(boleData);
 				} else {
 					(new Borrow()).addBorrowSummaryData(boleData);
@@ -381,7 +386,7 @@ public class Undo extends DateAndClock {
 				boleData.put("boWhom", boWhom);
 				boleData.put("boExactTk", removeThousandSeparator(boExactTk));
 				
-				if (!new Borrow().boRepayPersonBorrowedAmount(boWhom).isEmpty()) {
+				if (!new Borrow().boRepayPersonBorrowedAmount(boWhom).equals("0")) {
 					(new Borrow()).updateBorrowSummaryDataForUndo(boleData);
 				} else {
 					(new Borrow()).addBorrowSummaryData(boleData);
@@ -404,7 +409,7 @@ public class Undo extends DateAndClock {
 				boleData.put("boWhom", boWhom);
 				boleData.put("boExactTk", removeThousandSeparator(boExactTk));
 
-				if (!new Borrow().boRepayPersonBorrowedAmount(boWhom).isEmpty()) {
+				if (!new Borrow().boRepayPersonBorrowedAmount(boWhom).equals("0")) {
 					(new Borrow()).updateBorrowSummaryDataForUndo(boleData);
 				} else {
 					(new Borrow()).addBorrowSummaryData(boleData);
@@ -426,8 +431,10 @@ public class Undo extends DateAndClock {
 	private boolean undoLend(int globalID) {
 		boolean feedback = false;
 		
+		//sql queries for undo last Lend transaction
 		String undoLe = "SELECT * FROM Lend WHERE globalID = ?";
 		String deleteLe = "DELETE FROM Lend WHERE globalID = ?";
+		//variable to store the rollbacked transaction information temporarily
 		String leBalanceBefore = null;
 		String leType = "None";
 		String leMethod = "None";
@@ -435,6 +442,7 @@ public class Undo extends DateAndClock {
 		String leExactTk = null;
 		String leDate = null;
 		
+		//if result set has a result then assign data to correspond variables
 		try (Connection conn = connector();
 				PreparedStatement pstmt = conn.prepareStatement(undoLe)) {
 			pstmt.setInt(1, globalID);
@@ -450,17 +458,23 @@ public class Undo extends DateAndClock {
 			}
 		} catch (Exception e) {e.printStackTrace();}
 		
+		//if lend type is "Give Money"
 		if (leType.equals("Give Money")) {
+			//if lend type is "Give Money" and method is "bKash"
 			if (leMethod.equals("bKash")) {
 				
+				//delete the last Lend transaction
 				try (Connection connle = connector();
 						PreparedStatement pstmtle = connle.prepareStatement(deleteLe)){
 					pstmtle.setInt(1, globalID);
 					pstmtle.executeUpdate();
 				} catch (Exception e) {e.printStackTrace();}
 				
+				//sql queries for bKash transaction
 				String undoBk = "SELECT * FROM bKash WHERE globalID = ?";
 				String deleteBk = "DELETE FROM bKash WHERE globalID = ?";
+				
+				//get the bKash balance before this transaction
 				String bkBalanceBefore = null;
 				try (Connection conn = connector();
 						PreparedStatement pstmt = conn.prepareStatement(undoBk)) {
@@ -469,12 +483,14 @@ public class Undo extends DateAndClock {
 					bkBalanceBefore = bkResult.getString("bkBalanceBefore");
 				} catch (Exception e) {e.printStackTrace();}
 				
+				//then delete that transaction
 				try (Connection connbk = connector();
 						PreparedStatement pstmtbk = connbk.prepareStatement(deleteBk)){
 					pstmtbk.setInt(1, globalID);
 					pstmtbk.executeUpdate();
 				} catch (Exception e) {e.printStackTrace();}
 				
+				//delete summary information from Lend_Summary table
 				String deleteLeSummary = "DELETE FROM Lend_Summary WHERE leWhom = ?";
 				try (Connection connbk = connector();
 						PreparedStatement pstmtbk = connbk.prepareStatement(deleteLeSummary)){
@@ -482,20 +498,27 @@ public class Undo extends DateAndClock {
 					pstmtbk.executeUpdate();
 				} catch (Exception e) {e.printStackTrace();}
 				
+				//roll back bKash balance
 				setCurrentbKashBalance(removeThousandSeparator(bkBalanceBefore));
+				//roll back Total Lend Tk
 				setTotalLendTk(removeThousandSeparator(leBalanceBefore));
+				//roll back globalID
 				GlobalId.setGlobalId(globalID);
 				
+			//if lend type is "Give Money" and method is "Rocket"
 			} else if(leMethod.equals("Rocket")) {
-				
+				//delete the last Lend transaction
 				try (Connection conngm = connector();
 						PreparedStatement pstmtgm = conngm.prepareStatement(deleteLe)){
 					pstmtgm.setInt(1, globalID);
 					pstmtgm.executeUpdate();
 				} catch (Exception e) {e.printStackTrace();}
 				
+				//sql queries for Rocket transaction
 				String undoRoc = "SELECT * FROM Rocket WHERE globalID = ?";
 				String deleteRoc = "DELETE FROM Rocket WHERE globalID = ?";
+				
+				//get the Rocket balance before this transaction
 				String rocBalanceBefore = null;
 				try (Connection conn = connector();
 						PreparedStatement pstmt = conn.prepareStatement(undoRoc)) {
@@ -504,12 +527,14 @@ public class Undo extends DateAndClock {
 					rocBalanceBefore = rocResult.getString("rocBalanceBefore");
 				} catch (Exception e) {e.printStackTrace();}
 				
+				//then delete that transaction
 				try (Connection connroc = connector();
 						PreparedStatement pstmtroc = connroc.prepareStatement(deleteRoc)){
 					pstmtroc.setInt(1, globalID);
 					pstmtroc.executeUpdate();
 				} catch (Exception e) {e.printStackTrace();}
 				
+				//delete summary information from Lend_Summary table
 				String deleteLeSummary = "DELETE FROM Lend_Summary WHERE leWhom = ?";
 				try (Connection connroc = connector();
 						PreparedStatement pstmtroc = connroc.prepareStatement(deleteLeSummary)){
@@ -517,18 +542,23 @@ public class Undo extends DateAndClock {
 					pstmtroc.executeUpdate();
 				} catch (Exception e) {e.printStackTrace();}
 				
+				//roll back Rocket balance
 				setCurrentRocketBalance(removeThousandSeparator(rocBalanceBefore));
+				//roll back Total Lend Tk
 				setTotalLendTk(removeThousandSeparator(leBalanceBefore));
+				//roll back globalID
 				GlobalId.setGlobalId(globalID);
 
+			//if lend type is "Give Money" and method is "Hand to Hand"
 			} else if(leMethod.equals("Hand to Hand")) {
-				
+				//delete the last Lend transaction
 				try (Connection connHH = connector();
 						PreparedStatement pstmtHH = connHH.prepareStatement(deleteLe)){
 					pstmtHH.setInt(1, globalID);
 					pstmtHH.executeUpdate();
 				} catch (Exception e) {e.printStackTrace();}
 				
+				//delete summary information from Lend_Summary table
 				String deleteLeSummary = "DELETE FROM Lend_Summary WHERE leWhom = ?";
 				try (Connection connHH = connector();
 						PreparedStatement pstmtHH = connHH.prepareStatement(deleteLeSummary)){
@@ -536,12 +566,18 @@ public class Undo extends DateAndClock {
 					pstmtHH.executeUpdate();
 				} catch (Exception e) {e.printStackTrace();}
 				
+				//roll back Wallet balance
 				setCurrentWalletBalance(longToString(currentWalletBalance()+stringToLong(removeThousandSeparator(leExactTk))));
+				//roll back Total Lend Tk
 				setTotalLendTk(removeThousandSeparator(leBalanceBefore));
+				//roll back globalID
 				GlobalId.setGlobalId(globalID);
 
 			}
+			
+		//if lend type is "Give Money"
 		} else if(leType.equals("Take Back Lended Money")) {
+			//if lend type is "Take Back Lended Money" and method is "bKash"
 			if (leMethod.equals("bKash")) {
 				
 				try (Connection connle = connector();
@@ -571,7 +607,7 @@ public class Undo extends DateAndClock {
 				boleData.put("leWhom", leWhom);
 				boleData.put("leExactTk", removeThousandSeparator(leExactTk));
 
-				if (!new Lend().leRepayPersonLendedAmount(leWhom).isEmpty()) {
+				if (!new Lend().leRepayPersonLendedAmount(leWhom).equals("0")) {
 					(new Lend()).updateLendSummaryDataForUndo(boleData);
 				} else {
 					(new Lend()).addLendSummaryData(boleData);
@@ -581,6 +617,7 @@ public class Undo extends DateAndClock {
 				setTotalLendTk(removeThousandSeparator(leBalanceBefore));
 				GlobalId.setGlobalId(globalID);
 				
+			//if lend type is "Take Back Lended Money" and method is "Rocket"
 			} else if(leMethod.equals("Rocket")) {
 
 				try (Connection conngm = connector();
@@ -610,7 +647,7 @@ public class Undo extends DateAndClock {
 				boleData.put("leWhom", leWhom);
 				boleData.put("leExactTk", removeThousandSeparator(leExactTk));
 
-				if (!new Lend().leRepayPersonLendedAmount(leWhom).isEmpty()) {
+				if (!new Lend().leRepayPersonLendedAmount(leWhom).equals("0")) {
 					(new Lend()).updateLendSummaryDataForUndo(boleData);
 				} else {
 					(new Lend()).addLendSummaryData(boleData);
@@ -620,8 +657,9 @@ public class Undo extends DateAndClock {
 				setTotalLendTk(removeThousandSeparator(leBalanceBefore));
 				GlobalId.setGlobalId(globalID);
 				
+			//if lend type is "Take Back Lended Money" and method is "Hand to Hand"
 			} else if(leMethod.equals("Hand to Hand")) {
-				
+				//delete the last Lend transaction
 				try (Connection connHH = connector();
 						PreparedStatement pstmtHH = connHH.prepareStatement(deleteLe)){
 					pstmtHH.setInt(1, globalID);
@@ -633,7 +671,7 @@ public class Undo extends DateAndClock {
 				boleData.put("leWhom", leWhom);
 				boleData.put("leExactTk", removeThousandSeparator(leExactTk));
 				
-				if (!new Lend().leRepayPersonLendedAmount(leWhom).isEmpty()) {
+				if (!new Lend().leRepayPersonLendedAmount(leWhom).equals("0")) {
 					(new Lend()).updateLendSummaryDataForUndo(boleData);
 				} else {
 					(new Lend()).addLendSummaryData(boleData);
