@@ -1,0 +1,18 @@
+.root {
+  -fx-font-family: "Ubuntu";
+  -fx-font-size: 13.5px;
+}
+
+#anchorPane {
+    -fx-background-image:url('../imges/dashboard.jpg');
+}
+
+#btnSignOut {
+	-fx-background-color:  #cfd8dc;
+}
+#btnSignOut:hover {
+	-fx-background-color: #0097A7;
+    -fx-text-fill: white;
+    -fx-font: 14 "Ubuntu";
+    -fx-font-weight: bold;
+}

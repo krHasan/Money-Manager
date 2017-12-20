@@ -136,28 +136,28 @@
             <NumberAxis fx:id="exYaxis" side="LEFT" />
          </yAxis>
       </BarChart>
-      <ComboBox fx:id="cmboGetMoneyMonthList" layoutX="37.0" layoutY="239.0" onAction="#cmboGetMoneyMonthList" prefHeight="26.0" prefWidth="150.0">
+      <ComboBox fx:id="cmboGetMoneyMonthList" layoutX="30.0" layoutY="239.0" onAction="#cmboGetMoneyMonthList" prefHeight="26.0" prefWidth="150.0">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></ComboBox>
-      <ComboBox fx:id="cmboSourceList" layoutX="208.0" layoutY="239.0" onAction="#cmboSourceList" prefHeight="26.0" prefWidth="150.0">
+      <ComboBox fx:id="cmboSourceList" layoutX="201.0" layoutY="239.0" onAction="#cmboSourceList" prefHeight="26.0" prefWidth="160.0">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></ComboBox>
-      <Label fx:id="lblTotalGetMoney" alignment="CENTER" layoutX="380.0" layoutY="239.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #DEBBFF; -fx-border-color: black; -fx-border-radius: 2px;">
+      <Label fx:id="lblTotalGetMoney" alignment="CENTER" layoutX="383.0" layoutY="239.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #DEBBFF; -fx-border-color: black; -fx-border-radius: 2px;">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmboExpenseMonthList" layoutX="37.0" layoutY="497.0" onAction="#cmboExpenseMonthList" prefHeight="26.0" prefWidth="150.0">
+      <ComboBox fx:id="cmboExpenseMonthList" layoutX="30.0" layoutY="497.0" onAction="#cmboExpenseMonthList" prefHeight="26.0" prefWidth="150.0">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></ComboBox>
-      <ComboBox fx:id="cmboSectorList" layoutX="208.0" layoutY="497.0" onAction="#cmboSectorList" prefHeight="26.0" prefWidth="150.0">
+      <ComboBox fx:id="cmboSectorList" layoutX="201.0" layoutY="497.0" onAction="#cmboSectorList" prefHeight="26.0" prefWidth="160.0">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor></ComboBox>
-      <Label fx:id="lblTotalExpense" alignment="CENTER" layoutX="380.0" layoutY="497.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #C4E0FF; -fx-border-radius: 2px; -fx-border-color: black;">
+      <Label fx:id="lblTotalExpense" alignment="CENTER" layoutX="383.0" layoutY="497.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #C4E0FF; -fx-border-radius: 2px; -fx-border-color: black;">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>

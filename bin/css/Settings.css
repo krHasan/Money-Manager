@@ -1,0 +1,63 @@
+.root {
+  -fx-font-family: "Ubuntu";
+  -fx-font-size: 13.5px;
+}
+
+/*//////////////////////// tab pane ////////////////////////*/
+/*remove the upper black shade of tab pane*/
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+/*background color of tab*/
+.tab-pane .tab {
+    -fx-background-color: #696969;
+}
+
+/*//////////////////////// tab ////////////////////////*/
+/*minimum width of each tab*/
+.tab-pane {
+    -fx-tab-min-width:90px;
+}
+/*tab padding top right bottom left*/
+.tab {
+    -fx-background-insets: 0 1 0 1,0,0;
+}
+/*change the tab color when a tab is selected*/
+#btnSignOut {
+	-fx-background-color:  #cfd8dc;
+}
+#btnSignOut:hover {
+	-fx-background-color: #0097A7;
+    -fx-text-fill: white;
+    -fx-font: 14 "Ubuntu";
+    -fx-font-weight: bold;
+}
+
+#tabSectorCSS:selected {
+    -fx-background-color:  #4B515D;
+}
+#tabSourceCSS:selected {
+    -fx-background-color:  #37474F;
+}
+#tabSystemCSS:selected {
+    -fx-background-color:   #5b5766;
+}
+#tabBankCSS:selected {
+    -fx-background-color:   #515357;
+}
+/*change the tab font, font-color, alignment*/
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+    -fx-font-size: 13.5px;
+}
+/*change the tab text color when a tab is selected*/
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #a6c462;
+}
+/*override the tab padding*/
+.tab-pane:top *.tab-header-area {
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.416667em 0.166667em 0.0em 0.0em;
+}

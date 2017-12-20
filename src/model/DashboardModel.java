@@ -82,10 +82,12 @@ public class DashboardModel extends DateAndClock {
 	public String getAmountBySector(String monthName, String sectorName) {
 		long totalAmountinLong = 0;
 		if (sectorName.equals("All")) {
+			totalAmountinLong += new Sector().getAmountBySectorFromExpense(monthName, "Adjusted Balance");
 			String sectorList[] = new ComboboxList().getSectorList();
 			for (String string : sectorList) {
 				totalAmountinLong += new Sector().getAmountBySectorFromExpense(monthName, string);
 			}
+			totalAmountinLong -= new Sector().addedAdjustBalance(monthName);
 		} else {
 			totalAmountinLong = new Sector().getAmountBySectorFromExpense(monthName, sectorName);
 		}

@@ -224,7 +224,7 @@ public class ComboboxList extends DatabaseConnection {
 	}
 	public String[] getSectorListForDashboard() {
 		if(getSectorArraySize()>0) {
-			String list[] = new String[getSectorArraySize()+1];
+			String list[] = new String[getSectorArraySize()+2];
 			String sql = "SELECT sectorList \n"
 					+ "FROM Sector_List";
 			try (Connection conn = connector();
@@ -236,6 +236,7 @@ public class ComboboxList extends DatabaseConnection {
 						list[index] = result.getString("sectorList");
 						++index;			
 					}
+					list[getSectorArraySize()+1] = "Adjusted Balance";
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
