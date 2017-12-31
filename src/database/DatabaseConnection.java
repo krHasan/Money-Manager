@@ -17,13 +17,13 @@ public class DatabaseConnection {
         try {
         	Class.forName("org.sqlite.JDBC");
         	//for Linux distribution
-            String url = "jdbc:sqlite:/home/"+System.getProperty("user.name")+"/Money-ManagerDB/Money_Manager.db";
+//            String url = "jdbc:sqlite:/home/"+System.getProperty("user.name")+"/Money-ManagerDB/Money_Manager.db";
             
         	//for Mac distribution
 //        	String url = "jdbc:sqlite:/Users/"+System.getProperty("user.name")+"/Money-ManagerDB/Money_Manager.db";
         	
           //for Windows distribution
-//            String url = "jdbc:sqlite:Money_Manager.db";
+            String url = "jdbc:sqlite:Money_Manager.db";
             
             conn = DriverManager.getConnection(url);
 //            System.out.println("Connection to SQLite has been established.");

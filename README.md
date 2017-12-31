@@ -2,10 +2,10 @@
 Money Manager is an application which can help you to keep record of your personal finance. Many of us don't maintain document of how much money we get in a month and how much expense because that seems very painy to us. This application will help us to keep a record of our every transaction.
 
 # Download
-Download Money-Manager for Linux, windows from [Here](https://drive.google.com/open?id=1p5izodhPK-JPNdc5HZo16nLhpiaszzvC) 
+Download Money-Manager for Linux and windows from [Google Drive](https://drive.google.com/open?id=1p5izodhPK-JPNdc5HZo16nLhpiaszzvC) 
 
 # Technologies
-Here I use Model–view–controller(MVC) architecture to build this application. Tecnologies I used are
+Here I used Model–view–controller(MVC) architecture to build this application. What I used to develop the application are listed below
   - Java
   - JavaFX Framework
   - FXML
@@ -56,9 +56,15 @@ Want to contribute? Great! Here is the process.
  - [Install](http://gluonhq.com/products/scene-builder) and setup Scene Builder (Search google how to add Scene Builder to your IDE. [Here](http://o7planning.org/en/10621/install-javafx-scene-builder-into-eclipse) is an example for Eclipse)
 
 #### Start Development
+Linux Platform:
  - Create a new JavaFX project named "Money-Manager" and delete its application package on `src`
- - Go to that folder in your workspace and initiate the git `$ git init ` with this command
+ - Go to the project folder in your workspace and initiate git `$ git init ` with this command
  - Now [clone](https://help.github.com/articles/cloning-a-repository) the "Money-Manager" repository to that folder
+ - Add `json-simple-1.1.1.jar` and `sqlite-jdbc-3.20.0.jar` as external jar file.
+ 
+Windows Platform: I found few differences between Windows platform and Linux platform. Some feature didn't work on Windows. As I develop this application on Linux so the files in repository will work on Linux. Windows user can download windows development files from [here](https://drive.google.com/open?id=1NZ7oglmL26dlb6bOe9LojnhtCSG85D14). Then follow the steps 
+ - Create a new JavaFX project named "Money-Manager" and delete its application package on `src`
+ - Then copy files inside of `src` folder from your downloaded file and past them to your project `src` folder  
  - Add `json-simple-1.1.1.jar` and `sqlite-jdbc-3.20.0.jar` as external jar file.
 
 Now you are ready to develop. Happy Coding !!!
