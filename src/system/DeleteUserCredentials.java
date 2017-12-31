@@ -14,6 +14,8 @@ public class DeleteUserCredentials extends DatabaseConnection {
 	String deleteArchived_Source_List = "DELETE FROM Archived_Source_List";
 	String deleteArchived_Sector_List = "DELETE FROM Archived_Sector_List";
 	String deleteAll_Months = "DELETE FROM All_Months";
+	String deleteAll_GetMoney_Months = "DELETE FROM All_GetMoney_Months";
+	String deleteAll_Expense_Months = "DELETE FROM All_Expense_Months";
 	String deleteGet_Money = "DELETE FROM Get_Money";
 	String deleteExpense = "DELETE FROM Expense";
 	String deleteBorrow = "DELETE FROM Borrow";
@@ -67,6 +69,20 @@ public class DeleteUserCredentials extends DatabaseConnection {
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();) {
 			stmt.executeUpdate(deleteAll_Months);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();) {
+			stmt.executeUpdate(deleteAll_GetMoney_Months);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();) {
+			stmt.executeUpdate(deleteAll_Expense_Months);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

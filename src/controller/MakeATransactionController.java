@@ -955,6 +955,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				
 				(new GetMoney()).saveGetMoneyData(stringData);
 				(new ComboboxList()).setAllMonth(monthToSave(gmdateDate.getValue()), yearToSave(gmdateDate.getValue()));
+				(new ComboboxList()).setAllGmMonth(monthToSave(gmdateDate.getValue()), yearToSave(gmdateDate.getValue()));
 				
 				gmInitialize();
 				gmtxtAmount.clear();
@@ -1119,6 +1120,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				
 				(new GetMoney()).saveGetMoneyData(stringData);
 				(new ComboboxList()).setAllMonth(monthToSave(gmdateDate.getValue()), yearToSave(gmdateDate.getValue()));
+				(new ComboboxList()).setAllGmMonth(monthToSave(gmdateDate.getValue()), yearToSave(gmdateDate.getValue()));
 //				gmInitialize();
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
@@ -1429,6 +1431,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			
 			(new Expense()).saveExpenseData(expenseData);
 			(new ComboboxList()).setAllMonth(monthToSave(exdateDate.getValue()), yearToSave(exdateDate.getValue()));
+			(new ComboboxList()).setAllExMonth(monthToSave(exdateDate.getValue()), yearToSave(exdateDate.getValue()));
 			
 			exInitialize();
 			extxtAmount.clear();

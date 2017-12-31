@@ -42,13 +42,13 @@ public class DashboardModel extends DateAndClock {
 	
 	
 	public ObservableList<String> loadAllGetMoneyMonths() {
-		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getAllGetMoneyMonth());
+		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getAllGmMonth());
 		return list;
 	}
 	
 	
 	public ObservableList<String> loadAllExpenseMonths() {
-		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getAllExpenseMonth());
+		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getAllExMonth());
 		return list;
 	}
 	

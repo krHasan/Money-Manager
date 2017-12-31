@@ -98,6 +98,8 @@ public class SignInController extends SignInModel {
 		if (authentication(txtUsername.getText(), passPassword.getText())) {
 			Stage SignInStage = (Stage) btnSignIn.getScene().getWindow();
 			new ComboboxList().setAllMonth(getThisMonthName(), getYear());
+			new ComboboxList().setAllGmMonth(getThisMonthName(), getYear());
+			new ComboboxList().setAllExMonth(getThisMonthName(), getYear());
 			
 			if (userIsNew()) {			
 				goToDashboard(SignInStage.getX(), SignInStage.getY());

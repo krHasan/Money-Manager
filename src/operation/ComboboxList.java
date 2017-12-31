@@ -470,6 +470,174 @@ public class ComboboxList extends DatabaseConnection {
 		}
 	}
 	
+	
+	public String[] getAllGmMonth() {
+		List<Date>  dates = new ArrayList<Date>();
+		if(getAllGmMonthSize()>0) {
+			String list[] = new String[getAllGmMonthSize()];
+			String sql = "SELECT gmAllMonth \n"
+					+ "FROM All_GetMoney_Months \n"
+					+ "ORDER BY gmAllMonth DESC";
+			try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sql)) {
+				int index = 0;
+				while (result.next()) {
+					list[index] = result.getString("gmAllMonth");
+					++index;			
+				}
+				for (String dateString : list) {
+					Date date;
+					date = new SimpleDateFormat("MMM-yy").parse(dateString);
+					dates.add(date);
+				}
+				Collections.sort(dates, new Comparator<Date>() {
+
+							@Override
+							public int compare(Date o1, Date o2) {
+								return o2.compareTo(o1);
+							}
+				});
+				int index2 = 0;
+				for (Date date : dates) {
+					list[index2] = new SimpleDateFormat("MMM-yy").format(date);
+					++index2;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Month"};
+			return list;
+		}
+	}
+	public int getAllGmMonthSize() {
+		int size = 0;
+		String sqlid = "SELECT * \n"
+				+ "FROM All_GetMoney_Months";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
+	
+	public void setAllGmMonth(String monthName, String yearName) {
+		String getDBMonth = "SELECT * FROM All_GetMoney_Months WHERE gmAllMonth = ?";
+		String addMonthYear = "INSERT INTO All_GetMoney_Months(allYear, gmAllMonth) VALUES(?,?)";
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(getDBMonth)) {
+			pstmt.setString(1, monthName);
+			ResultSet result = pstmt.executeQuery();
+			if (!result.next()) {
+				try (Connection conn2 = connector();
+						PreparedStatement pstmt2 = conn2.prepareStatement(addMonthYear)) {
+					pstmt2.setString(1, yearName);
+					pstmt2.setString(2, monthName);
+					pstmt2.executeUpdate();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public String[] getAllExMonth() {
+		List<Date>  dates = new ArrayList<Date>();
+		if(getAllExMonthSize()>0) {
+			String list[] = new String[getAllExMonthSize()];
+			String sql = "SELECT exAllMonth \n"
+					+ "FROM All_Expense_Months \n"
+					+ "ORDER BY exAllMonth DESC";
+			try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sql)) {
+				int index = 0;
+				while (result.next()) {
+					list[index] = result.getString("exAllMonth");
+					++index;			
+				}
+				for (String dateString : list) {
+					Date date;
+					date = new SimpleDateFormat("MMM-yy").parse(dateString);
+					dates.add(date);
+				}
+				Collections.sort(dates, new Comparator<Date>() {
+
+							@Override
+							public int compare(Date o1, Date o2) {
+								return o2.compareTo(o1);
+							}
+				});
+				int index2 = 0;
+				for (Date date : dates) {
+					list[index2] = new SimpleDateFormat("MMM-yy").format(date);
+					++index2;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Month"};
+			return list;
+		}
+	}
+	public int getAllExMonthSize() {
+		int size = 0;
+		String sqlid = "SELECT * \n"
+				+ "FROM All_Expense_Months";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
+	
+	public void setAllExMonth(String monthName, String yearName) {
+		String getDBMonth = "SELECT * FROM All_Expense_Months WHERE exAllMonth = ?";
+		String addMonthYear = "INSERT INTO All_Expense_Months(allYear, exAllMonth) VALUES(?,?)";
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(getDBMonth)) {
+			pstmt.setString(1, monthName);
+			ResultSet result = pstmt.executeQuery();
+			if (!result.next()) {
+				try (Connection conn2 = connector();
+						PreparedStatement pstmt2 = conn2.prepareStatement(addMonthYear)) {
+					pstmt2.setString(1, yearName);
+					pstmt2.setString(2, monthName);
+					pstmt2.executeUpdate();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+
+	
 //	public String[] getAllYear() {
 //		if(getAllYearSize()>0) {
 //			String list[] = new String[getAllYearSize()];
@@ -597,124 +765,124 @@ public class ComboboxList extends DatabaseConnection {
 	}
 	
 	
-	public String[] getAllGetMoneyMonth() {
-		List<Date>  dates = new ArrayList<Date>();
-		if(getAllGetMoneyMonthSize()>0) {
-			String list[] = new String[getAllGetMoneyMonthSize()];
-			String sql = "SELECT DISTINCT gmMonth \n"
-					+ "FROM Get_Money \n"
-					+ "ORDER BY gmMonth ASC";
-			try (Connection conn = connector();
-					Statement stmt = conn.createStatement();
-					ResultSet result = stmt.executeQuery(sql)) {
-					int index = 0;
-					while (result.next()) {
-						list[index] = result.getString("gmMonth");
-						++index;			
-					}
-					for (String dateString : list) {
-						Date date;
-						date = new SimpleDateFormat("MMM-yy").parse(dateString);
-						dates.add(date);
-					}
-					Collections.sort(dates, new Comparator<Date>() {
-
-								@Override
-								public int compare(Date o1, Date o2) {
-									return o2.compareTo(o1);
-								}
-					});
-					int index2 = 0;
-					for (Date date : dates) {
-						list[index2] = new SimpleDateFormat("MMM-yy").format(date);
-						++index2;
-					}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return list;
-			
-		} else {
-			String list[] = {"No Month"};
-			return list;
-		}
-	}
-	public int getAllGetMoneyMonthSize() {
-		int size = 0;
-		String sqlid = "SELECT DISTINCT gmMonth \n"
-				+ "FROM Get_Money";
-		
-		try (Connection conn = connector();
-				Statement stmt = conn.createStatement();
-				ResultSet result = stmt.executeQuery(sqlid)) {
-				while (result.next()) {
-					size = size + 1;
-				}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return size;
-	}
-	
-	
-	public String[] getAllExpenseMonth() {
-		List<Date>  dates = new ArrayList<Date>();
-		if(getAllExpenseMonthSize()>0) {
-			String list[] = new String[getAllExpenseMonthSize()];
-			String sql = "SELECT DISTINCT exMonth \n"
-					+ "FROM Expense \n"
-					+ "ORDER BY exMonth ASC";
-			try (Connection conn = connector();
-					Statement stmt = conn.createStatement();
-					ResultSet result = stmt.executeQuery(sql)) {
-					int index = 0;
-					while (result.next()) {
-						list[index] = result.getString("exMonth");
-						++index;			
-					}
-					for (String dateString : list) {
-						Date date;
-						date = new SimpleDateFormat("MMM-yy").parse(dateString);
-						dates.add(date);
-					}
-					Collections.sort(dates, new Comparator<Date>() {
-
-								@Override
-								public int compare(Date o1, Date o2) {
-									return o2.compareTo(o1);
-								}
-					});
-					int index2 = 0;
-					for (Date date : dates) {
-						list[index2] = new SimpleDateFormat("MMM-yy").format(date);
-						++index2;
-					}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return list;
-			
-		} else {
-			String list[] = {"No Month"};
-			return list;
-		}
-	}
-	public int getAllExpenseMonthSize() {
-		int size = 0;
-		String sqlid = "SELECT DISTINCT exMonth \n"
-				+ "FROM Expense";
-		
-		try (Connection conn = connector();
-				Statement stmt = conn.createStatement();
-				ResultSet result = stmt.executeQuery(sqlid)) {
-				while (result.next()) {
-					size = size + 1;
-				}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return size;
-	}
+//	public String[] getAllGetMoneyMonth() {
+//		List<Date>  dates = new ArrayList<Date>();
+//		if(getAllGetMoneyMonthSize()>0) {
+//			String list[] = new String[getAllGetMoneyMonthSize()];
+//			String sql = "SELECT DISTINCT gmMonth \n"
+//					+ "FROM Get_Money \n"
+//					+ "ORDER BY gmMonth ASC";
+//			try (Connection conn = connector();
+//					Statement stmt = conn.createStatement();
+//					ResultSet result = stmt.executeQuery(sql)) {
+//					int index = 0;
+//					while (result.next()) {
+//						list[index] = result.getString("gmMonth");
+//						++index;			
+//					}
+//					for (String dateString : list) {
+//						Date date;
+//						date = new SimpleDateFormat("MMM-yy").parse(dateString);
+//						dates.add(date);
+//					}
+//					Collections.sort(dates, new Comparator<Date>() {
+//
+//								@Override
+//								public int compare(Date o1, Date o2) {
+//									return o2.compareTo(o1);
+//								}
+//					});
+//					int index2 = 0;
+//					for (Date date : dates) {
+//						list[index2] = new SimpleDateFormat("MMM-yy").format(date);
+//						++index2;
+//					}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			return list;
+//			
+//		} else {
+//			String list[] = {"No Month"};
+//			return list;
+//		}
+//	}
+//	public int getAllGetMoneyMonthSize() {
+//		int size = 0;
+//		String sqlid = "SELECT DISTINCT gmMonth \n"
+//				+ "FROM Get_Money";
+//		
+//		try (Connection conn = connector();
+//				Statement stmt = conn.createStatement();
+//				ResultSet result = stmt.executeQuery(sqlid)) {
+//				while (result.next()) {
+//					size = size + 1;
+//				}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return size;
+//	}
+//	
+//	
+//	public String[] getAllExpenseMonth() {
+//		List<Date>  dates = new ArrayList<Date>();
+//		if(getAllExpenseMonthSize()>0) {
+//			String list[] = new String[getAllExpenseMonthSize()];
+//			String sql = "SELECT DISTINCT exMonth \n"
+//					+ "FROM Expense \n"
+//					+ "ORDER BY exMonth ASC";
+//			try (Connection conn = connector();
+//					Statement stmt = conn.createStatement();
+//					ResultSet result = stmt.executeQuery(sql)) {
+//					int index = 0;
+//					while (result.next()) {
+//						list[index] = result.getString("exMonth");
+//						++index;			
+//					}
+//					for (String dateString : list) {
+//						Date date;
+//						date = new SimpleDateFormat("MMM-yy").parse(dateString);
+//						dates.add(date);
+//					}
+//					Collections.sort(dates, new Comparator<Date>() {
+//
+//								@Override
+//								public int compare(Date o1, Date o2) {
+//									return o2.compareTo(o1);
+//								}
+//					});
+//					int index2 = 0;
+//					for (Date date : dates) {
+//						list[index2] = new SimpleDateFormat("MMM-yy").format(date);
+//						++index2;
+//					}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			return list;
+//			
+//		} else {
+//			String list[] = {"No Month"};
+//			return list;
+//		}
+//	}
+//	public int getAllExpenseMonthSize() {
+//		int size = 0;
+//		String sqlid = "SELECT DISTINCT exMonth \n"
+//				+ "FROM Expense";
+//		
+//		try (Connection conn = connector();
+//				Statement stmt = conn.createStatement();
+//				ResultSet result = stmt.executeQuery(sqlid)) {
+//				while (result.next()) {
+//					size = size + 1;
+//				}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return size;
+//	}
 	
 	
 	public String[] getSecurityQuestionList() {
