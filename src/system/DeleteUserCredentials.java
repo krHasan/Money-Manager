@@ -13,6 +13,8 @@ public class DeleteUserCredentials extends DatabaseConnection {
 	String deleteSector_List = "DELETE FROM Sector_List";
 	String deleteArchived_Source_List = "DELETE FROM Archived_Source_List";
 	String deleteArchived_Sector_List = "DELETE FROM Archived_Sector_List";
+	String deleteAdvanced_Sector_List_Add = "DELETE FROM Advanced_Sector_List_Add";
+	String deleteAdvanced_Sector_List_Remove = "DELETE FROM Advanced_Sector_List_Remove";
 	String deleteAll_Months = "DELETE FROM All_Months";
 	String deleteAll_GetMoney_Months = "DELETE FROM All_GetMoney_Months";
 	String deleteAll_Expense_Months = "DELETE FROM All_Expense_Months";
@@ -64,6 +66,15 @@ public class DeleteUserCredentials extends DatabaseConnection {
 	String initializeSector_List4 = "INSERT INTO Sector_List (sectorList) \n" + 
 									"VALUES(?)";
 	
+	String initializeAdvanced_Sector_List1 = "INSERT INTO Advanced_Sector_List_Add (sectorNameOutOfList) \n" + 
+											 "VALUES(?)";
+	String initializeAdvanced_Sector_List2 = "INSERT INTO Advanced_Sector_List_Add (sectorNameOutOfList) \n" + 
+											 "VALUES(?)";
+	String initializeAdvanced_Sector_List3 = "INSERT INTO Advanced_Sector_List_Add (sectorNameOutOfList) \n" + 
+											 "VALUES(?)";
+	String initializeAdvanced_Sector_List4 = "INSERT INTO Advanced_Sector_List_Add (sectorNameOutOfList) \n" + 
+											 "VALUES(?)";
+	
 	
 	public void initializeApplication() {
 		try (Connection conn = connector();
@@ -97,6 +108,20 @@ public class DeleteUserCredentials extends DatabaseConnection {
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();) {
 			stmt.executeUpdate(deleteSector_List);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();) {
+			stmt.executeUpdate(deleteAdvanced_Sector_List_Add);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();) {
+			stmt.executeUpdate(deleteAdvanced_Sector_List_Remove);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -327,11 +352,47 @@ public class DeleteUserCredentials extends DatabaseConnection {
 			e.printStackTrace();
 		}
 		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(initializeAdvanced_Sector_List1)) {		
+			pstmt.setString(1, "Transport");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(initializeAdvanced_Sector_List2)) {		
+			pstmt.setString(1, "Snacks");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(initializeAdvanced_Sector_List3)) {		
+			pstmt.setString(1, "Mobile Load");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		try (Connection conn = connector();
+				PreparedStatement pstmt = conn.prepareStatement(initializeAdvanced_Sector_List4)) {		
+			pstmt.setString(1, "Accessories");
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 //	public static void main(String[] args) {
 //		DeleteUserCredentials access = new DeleteUserCredentials();
 //		access.initializeApplication();
+//		System.out.println("OK");
 //	}
 	
 }

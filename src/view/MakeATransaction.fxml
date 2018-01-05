@@ -144,10 +144,6 @@
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
-                  <Button fx:id="gmbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="45.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor></Button>
                   <Label fx:id="gmlblLetterRemainmsg" focusTraversable="false" layoutX="130.0" layoutY="292.0" textFill="#ebebeb">
                   	<font>
                         <Font name="Ubuntu" size="13.0" />
@@ -159,114 +155,239 @@
     <Tab id="tabExpenseCSS" fx:id="tabExpense" onSelectionChanged="#tabExpense" text="      Expense      ">
       <content>
         <AnchorPane fx:id="exAnchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#anchorPaneAction" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #4B515D;">
-               <children>
-                  <TextField fx:id="extxtAmount" alignment="CENTER" layoutX="80.0" layoutY="86.0" onKeyReleased="#exAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00">
-                     <font>
-                        <Font name="Arial" size="14.0" />
-                     </font>
-                  </TextField>
-                  <ComboBox fx:id="excmboSector" layoutX="401.0" layoutY="177.0" prefHeight="32.0" prefWidth="200.0">
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor></ComboBox>
-                  <Button fx:id="exbtnSave" layoutX="448.0" layoutY="435.0" mnemonicParsing="false" onAction="#exSaveBtn" prefHeight="28.0" prefWidth="111.0" style="-fx-background-color: #1a9644;" text="Save" textFill="WHITE">
-                     <font>
-                        <Font name="Ubuntu Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="exbtnSaveAndAdd" defaultButton="true" layoutX="607.0" layoutY="435.0" mnemonicParsing="false" onAction="#exbtnSaveAndAdd" prefHeight="28.0" prefWidth="141.0" style="-fx-background-color: #1a9644;" text="Save &amp; Add More" textFill="WHITE">
-                     <font>
-                        <Font name="Ubuntu Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="exbtnCreateSector" focusTraversable="false" layoutX="618.0" layoutY="179.0" mnemonicParsing="false" onAction="#exCreateSectorBtn" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #0097a7;" text="Create Sector" textFill="WHITE">
-                     <font>
-                        <Font name="Ubuntu Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                  </Button>
-                  <DatePicker fx:id="exdateDate" editable="false" focusTraversable="false" layoutX="502.0" layoutY="65.0" prefHeight="28.0" prefWidth="235.0" promptText="Select A Date">
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor></DatePicker>
-                  <Label layoutX="403.0" layoutY="151.0" prefHeight="20.0" text="Expenditure Sector" textFill="#eeeeee">
-                     <font>
-                        <Font name="Arial Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="82.0" layoutY="61.0" prefHeight="20.0" text="Expensed Amount" textFill="#eeeeee">
-                     <font>
-                        <Font name="Arial Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="82.0" layoutY="148.0" prefHeight="20.0" text="Description" textFill="#eeeeee">
-                     <font>
-                        <Font name="Arial Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="47.0" layoutY="319.0" prefHeight="35.0" prefWidth="166.0" text="Wallet Balance :" textFill="#eeeeee">
-                     <font>
-                        <Font name="Arial Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="exlblWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="319.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa; -fx-border-color: #757575; -fx-border-radius: 5px;">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="exlblWarningMsg" layoutX="80.0" layoutY="121.0" textFill="#ff5e5e">
-                     <font>
-                        <Font name="Ubuntu Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <TextArea fx:id="extxtDescription" focusTraversable="false" layoutX="80.0" layoutY="174.0" onKeyReleased="#exDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
-                     <font>
-                        <Font name="Ubuntu" size="14.0" />
-                     </font>
-                  </TextArea>
-                  <Button fx:id="exbtnAdjustBalance" focusTraversable="false" layoutX="124.0" layoutY="372.0" mnemonicParsing="false" onAction="#exAdjustBalance" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Adjust Balance" textFill="WHITE">
-                     <font>
-                        <Font name="Ubuntu Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                  </Button>
-                  <Button fx:id="exbtnGoToDashboard" focusTraversable="false" layoutX="135.0" layoutY="34.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor></Button>
-                  <Label fx:id="exlblLetterRemainmsg" layoutX="130.0" layoutY="293.0" textFill="#eeeeee">
-                  	<font>
-                        <Font name="Ubuntu" size="13.0" />
-                    </font>
-                  </Label>
-                  <Button fx:id="exbtnGoToCashCalculate" focusTraversable="false" layoutX="124.0" layoutY="410.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Cash Calculate" textFill="WHITE">
-                     <font>
-                        <Font name="Ubuntu Bold" size="14.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                  </Button>
-               </children></AnchorPane>
+                     <children>
+                        <TabPane layoutX="200.0" layoutY="1.0" prefHeight="485.0" prefWidth="800.0" style="-fx-background-color: #37474F;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <tabs>
+                            <Tab id="tabNormalCSS" text="Normal">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #4B515D;">
+                                       <children>
+                                          <TextField fx:id="extxtAmount" alignment="CENTER" layoutX="80.0" layoutY="73.0" onKeyReleased="#exAmountValidation" prefHeight="32.0" prefWidth="240.0" promptText="00">
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <ComboBox fx:id="excmboSector" layoutX="401.0" layoutY="164.0" prefHeight="32.0" prefWidth="200.0">
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                          </ComboBox>
+                                          <Button fx:id="exbtnSave" layoutX="448.0" layoutY="402.0" mnemonicParsing="false" onAction="#exSaveBtn" prefHeight="28.0" prefWidth="111.0" style="-fx-background-color: #1a9644;" text="Save" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <Button fx:id="exbtnSaveAndAdd" defaultButton="true" layoutX="607.0" layoutY="402.0" mnemonicParsing="false" onAction="#exbtnSaveAndAdd" prefHeight="28.0" prefWidth="141.0" style="-fx-background-color: #1a9644;" text="Save &amp; Add More" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <Button fx:id="exbtnCreateSector" focusTraversable="false" layoutX="618.0" layoutY="166.0" mnemonicParsing="false" onAction="#exCreateSectorBtn" prefHeight="28.0" prefWidth="120.0" style="-fx-background-color: #0097a7;" text="Create Sector" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Button>
+                                          <DatePicker fx:id="exdateDate" editable="false" focusTraversable="false" layoutX="502.0" layoutY="52.0" prefHeight="28.0" prefWidth="235.0" promptText="Select A Date">
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                          </DatePicker>
+                                          <Label layoutX="403.0" layoutY="138.0" prefHeight="20.0" text="Expenditure Sector" textFill="#eeeeee">
+                                             <font>
+                                                <Font name="Arial Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="82.0" layoutY="48.0" prefHeight="20.0" text="Expensed Amount" textFill="#eeeeee">
+                                             <font>
+                                                <Font name="Arial Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="82.0" layoutY="135.0" prefHeight="20.0" text="Description" textFill="#eeeeee">
+                                             <font>
+                                                <Font name="Arial Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="47.0" layoutY="306.0" prefHeight="35.0" prefWidth="166.0" text="Wallet Balance :" textFill="#eeeeee">
+                                             <font>
+                                                <Font name="Arial Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="exlblWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="306.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa; -fx-border-color: #757575; -fx-border-radius: 5px;">
+                                             <font>
+                                                <Font name="Arial Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="exlblWarningMsg" layoutX="80.0" layoutY="108.0" textFill="#ff5e5e">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <TextArea fx:id="extxtDescription" focusTraversable="false" layoutX="80.0" layoutY="161.0" onKeyReleased="#exDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
+                                             <font>
+                                                <Font name="Ubuntu" size="14.0" />
+                                             </font>
+                                          </TextArea>
+                                          <Button fx:id="exbtnAdjustBalance" focusTraversable="false" layoutX="124.0" layoutY="359.0" mnemonicParsing="false" onAction="#exAdjustBalance" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Adjust Balance" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Button>
+                                          <Label fx:id="exlblLetterRemainmsg" layoutX="130.0" layoutY="280.0" textFill="#eeeeee">
+                                             <font>
+                                                <Font name="Ubuntu" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="exbtnGoToCashCalculate" focusTraversable="false" layoutX="124.0" layoutY="397.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Cash Calculate" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab id="tabAdvanceCSS" text="Advanced">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #4B515D;">
+                                       <children>
+                                          <Button fx:id="exbtnGoToExpenseSettings" focusTraversable="false" layoutX="90.0" layoutY="396.0" mnemonicParsing="false" onAction="#exbtnGoToExpenseSettings" prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #0097a7;" text="Advanced Expense Setting" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Button>
+                                          <DatePicker fx:id="exdateAdvancedDate" editable="false" focusTraversable="false" layoutX="80.0" layoutY="27.0" prefHeight="28.0" prefWidth="240.0" promptText="Select A Date">
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                          </DatePicker>
+                                          <Label focusTraversable="false" layoutX="437.0" layoutY="28.0" prefHeight="20.0" prefWidth="290.0" text="Expensed Amount by Multiple Sector" textFill="#eeeeee">
+                                             <font>
+                                                <Font name="Arial Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="82.0" layoutY="79.0" prefHeight="20.0" text="Description" textFill="#eeeeee">
+                                             <font>
+                                                <Font name="Arial Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="47.0" layoutY="250.0" prefHeight="35.0" prefWidth="166.0" text="Wallet Balance :" textFill="#eeeeee">
+                                             <font>
+                                                <Font name="Arial Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="exlblAdvWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="250.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa; -fx-border-color: #757575; -fx-border-radius: 5px;">
+                                             <font>
+                                                <Font name="Arial Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="exlblAdvWarningMsg" layoutX="437.0" layoutY="88.0" textFill="#ff5e5e">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <TextArea fx:id="extxtAdvancedDescription" focusTraversable="false" layoutX="80.0" layoutY="105.0" onKeyReleased="#exAdvDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
+                                             <font>
+                                                <Font name="Ubuntu" size="14.0" />
+                                             </font>
+                                          </TextArea>
+                                          <Button fx:id="exbtnAdvancedAdjustBalance" focusTraversable="false" layoutX="124.0" layoutY="303.0" mnemonicParsing="false" onAction="#exbtnAdvancedAdjustBalance" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Adjust Balance" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Button>
+                                          <Label fx:id="exlblAdvLetterRemainmsg" layoutX="130.0" layoutY="224.0" textFill="#eeeeee">
+                                             <font>
+                                                <Font name="Ubuntu" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="exbtnGoToAdvancedCashCalculate" focusTraversable="false" layoutX="124.0" layoutY="341.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Cash Calculate" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Button>
+                                          <Label fx:id="exlblAdvTotalExpensed" alignment="CENTER" layoutX="437.0" layoutY="66.0" prefHeight="20.0" prefWidth="290.0" textFill="#eeeeee">
+                                             <font>
+                                                <Font name="Arial Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="extxtAdvSector1" alignment="CENTER" layoutX="521.0" layoutY="109.0" onKeyReleased="#extxtAdvSector1" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector1" layoutX="627.0" layoutY="109.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector2" alignment="CENTER" layoutX="521.0" layoutY="144.0" onKeyReleased="#extxtAdvSector2" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector2" layoutX="627.0" layoutY="144.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector3" alignment="CENTER" layoutX="521.0" layoutY="179.0" onKeyReleased="#extxtAdvSector3" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector3" layoutX="627.0" layoutY="179.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector4" alignment="CENTER" layoutX="521.0" layoutY="214.0" onKeyReleased="#extxtAdvSector4" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector4" layoutX="627.0" layoutY="214.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector5" alignment="CENTER" layoutX="521.0" layoutY="249.0" onKeyReleased="#extxtAdvSector5" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector5" layoutX="627.0" layoutY="249.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector6" alignment="CENTER" layoutX="521.0" layoutY="284.0" onKeyReleased="#extxtAdvSector6" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector6" layoutX="627.0" layoutY="284.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector7" alignment="CENTER" layoutX="521.0" layoutY="319.0" onKeyReleased="#extxtAdvSector7" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector7" layoutX="627.0" layoutY="319.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <Button fx:id="exbtnAdvancedSaveAndAdd" defaultButton="true" layoutX="607.0" layoutY="402.0" mnemonicParsing="false" onAction="#exbtnAdvancedSaveAndAdd" prefHeight="28.0" prefWidth="141.0" style="-fx-background-color: #1a9644;" text="Save &amp; Add More" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <Button fx:id="exbtnAdvancedSave" layoutX="448.0" layoutY="402.0" mnemonicParsing="false" onAction="#exbtnAdvancedSave" prefHeight="28.0" prefWidth="111.0" style="-fx-background-color: #1a9644;" text="Save" textFill="WHITE">
+                                             <font>
+                                                <Font name="Ubuntu Bold" size="14.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children></AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children></AnchorPane>
       </content>
     </Tab>
       <Tab id="tabLendCSS" fx:id="tabLend" onSelectionChanged="#tabLend" text="       Lend       ">
@@ -511,10 +632,6 @@
                         <TableColumn fx:id="lendTblColumnAmount" prefWidth="79.0" text="Amount" />
                     </columns>
                   </TableView>
-                  <Button fx:id="lendbtnGoToDashboard" focusTraversable="false" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor></Button>
                   <Label fx:id="lendlblTotalBorrowTk" alignment="CENTER" layoutX="200.0" layoutY="440.0" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #ff80a6; -fx-border-color: Black; -fx-border-radius: 2px;">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
@@ -863,10 +980,6 @@
                      <cursor>
                         <Cursor fx:constant="CLOSED_HAND" />
                      </cursor></DatePicker>
-                  <Button fx:id="bnkbtnGoToDashboard" focusTraversable="false" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToDashboard" prefHeight="28.0" text="Go To Dashboard" visible="false">
-                     <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
-                     </cursor></Button>
                   <Button fx:id="bnkbtnSettings" focusTraversable="false" layoutX="196.0" layoutY="14.0" mnemonicParsing="false" onAction="#bnkSettingBtn" prefHeight="28.0" prefWidth="98.0" text="Settings" visible="false">
                      <font>
                         <Font size="14.0" />
@@ -927,6 +1040,7 @@
                   <MenuItem fx:id="mnuSourceSettings" mnemonicParsing="false" onAction="#mnuSourceSettings" text="Source Settings" />
                   <MenuItem fx:id="mnuSectorSettings" mnemonicParsing="false" onAction="#mnuSectorSettings" text="Sector Settingse" />
               <MenuItem fx:id="mnuSystemSettings" mnemonicParsing="false" onAction="#mnuSystemSettings" text="System Settings" />
+                  <MenuItem fx:id="mnuAdvancedSettings" mnemonicParsing="false" onAction="#mnuAdvancedSettings" text="Advanced Expense Settings" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Help">

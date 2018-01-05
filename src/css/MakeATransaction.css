@@ -36,7 +36,14 @@
 #tabGetMoneyCSS:selected {
     -fx-background-color: #5b5766;
 }
+
 #tabExpenseCSS:selected {
+    -fx-background-color: #37474F;
+}
+#tabNormalCSS:selected {
+    -fx-background-color: #4B515D;
+}
+#tabAdvanceCSS:selected {
     -fx-background-color: #4B515D;
 }
 

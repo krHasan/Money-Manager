@@ -31,6 +31,7 @@ import operation.BankIssue;
 import operation.ComboboxList;
 import operation.GoToOperation;
 import system.DateFormatManager;
+import tab.AdvancedExpense;
 import tab.Sector;
 import tab.SettingBank;
 import tab.Source;
@@ -73,6 +74,8 @@ public class SettingsController extends SettingsModel {
 	private MenuItem mnuSectorSettings;
 	@FXML
 	private MenuItem mnuSystemSettings;
+	@FXML
+	private MenuItem mnuAdvancedSettings;
 	@FXML
 	private MenuItem mnuHowTo;
 	@FXML
@@ -238,6 +241,37 @@ public class SettingsController extends SettingsModel {
 	@FXML
 	private RadioButton DATEMMM;
 	
+////////////////////System ////////////////////////
+	@FXML
+	private Tab tabAdvanced;
+	
+	@FXML
+	private Button advancedBtnAdd;
+	@FXML
+	private Button advancedBtnRemove;
+	
+	@FXML
+	private ComboBox<String> advancedCmboAdd;
+	@FXML
+	private ComboBox<String> advancedCmboRemove;
+	
+	@FXML
+	private Label advancedlblSectorName;
+	@FXML
+	private Label advancedlblSectorName1;
+	@FXML
+	private Label advancedlblSectorName2;
+	@FXML
+	private Label advancedlblSectorName3;
+	@FXML
+	private Label advancedlblSectorName4;
+	@FXML
+	private Label advancedlblSectorName5;
+	@FXML
+	private Label advancedlblSectorName6;
+	@FXML
+	private Label advancedlblSectorName7;
+	
 ////////////////////// General Function /////////////////////////
 	@FXML
 	public void initialize() {
@@ -296,6 +330,12 @@ public class SettingsController extends SettingsModel {
 		Tooltip.install(systemtxtPassword, new Tooltip("Give a password, this should not contain space"));
 		Tooltip.install(systemtxtRePassword, new Tooltip("Retype the password"));
 		Tooltip.install(checkBoxWeekNum, new Tooltip("Show week number in calender"));
+		
+		advancedBtnAdd.setTooltip(new Tooltip("Add selected sector to advanced expense sector list"));
+		advancedBtnRemove.setTooltip(new Tooltip("Remove selected sector from advanced expense sector list"));
+		Tooltip.install(advancedCmboAdd, new Tooltip("Select sector to add to list"));
+		Tooltip.install(advancedCmboRemove, new Tooltip("Select sector to remove from list"));
+		Tooltip.install(advancedlblSectorName, new Tooltip("Advanced expense sector list"));
 	}
 
 	
@@ -307,6 +347,8 @@ public class SettingsController extends SettingsModel {
 			tabPane.getSelectionModel().select(tabSector);
 		} else if (tabName.equals("tabSystem")) {
 			tabPane.getSelectionModel().select(tabSystem);
+		} else if (tabName.equals("tabAdvanced")) {
+			tabPane.getSelectionModel().select(tabAdvanced);
 		} else {
 			tabPane.getSelectionModel().select(tabBank);			
 		}
@@ -442,6 +484,14 @@ public class SettingsController extends SettingsModel {
 	@FXML
 	private void mnuSystemSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSystem");
+		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
+		SettingsStage.close();
+	}
+	
+	@FXML
+	private void mnuAdvancedSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabAdvanced");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
 		SettingsStage.close();
@@ -1040,6 +1090,7 @@ public class SettingsController extends SettingsModel {
 //////////////////////////////////////////// Sector Function  ////////////////////////////////////////////
 //----------------------------------------------------------------------------------------------------////
 	Sector sector = new Sector();
+	AdvancedExpense advancedSector = new AdvancedExpense();
 	
 	@FXML
 	private void tabSectorInitialize() {
@@ -1057,6 +1108,7 @@ public class SettingsController extends SettingsModel {
 		} else {
 			sectorlblWarningMsg.setText("");
 			sector.createSector(sectortxtSourceName.getText());
+			advancedSector.createSectorToAddList(sectortxtSourceName.getText());
 			
 			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 			confirmationMsg.setTitle("Message");
@@ -1093,6 +1145,7 @@ public class SettingsController extends SettingsModel {
 			if (result.get() == ButtonType.OK){
 				
 				sector.deleteSector(sectorcmboDelete.getValue());
+				advancedSector.deleteSectorFromAdvancedList(sectorcmboDelete.getValue());
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Message");
@@ -1479,9 +1532,121 @@ public class SettingsController extends SettingsModel {
 			systemlblWarningMsg.setText("");
 		}
 	}
+	
+	
+////////////////////////////////////////////Advanced Expense Function  ///////////////////////////////////
+//----------------------------------------------------------------------------------------------------////
+	@FXML
+	private void tabAdvancedInitialize() {
+		loadSectorForAdd();
+		loadSectorForRemove();
+		loadSectorInList();
+	}
+	
+	
+	private void loadSectorForAdd() {
+		if (new ComboboxList().getAdvancedSectorInactiveArraySize() == 0) {
+			advancedCmboAdd.setDisable(true);
+			advancedBtnAdd.setDisable(true);
+		} else {
+			advancedCmboAdd.setDisable(false);
+			advancedBtnAdd.setDisable(false);
+			advancedCmboAdd.setItems(getAdvancedSectorListInactive());
+			advancedCmboAdd.getSelectionModel().selectFirst();
+		}
+	}
+	
+	
+	private void loadSectorForRemove() {
+		if (new ComboboxList().getAdvancedSectorActiveArraySize() == 0) {
+			advancedCmboRemove.setDisable(true);
+			advancedBtnRemove.setDisable(true);
+		} else {
+			advancedCmboRemove.setDisable(false);
+			advancedBtnRemove.setDisable(false);
+			advancedCmboRemove.setItems(getAdvancedSectorListActive());
+			advancedCmboRemove.getSelectionModel().selectFirst();
+		}
+	}
+	
+	
+	@FXML
+	private void advancedBtnAdd(ActionEvent event) {
+		try {
+			if (new ComboboxList().getAdvancedSectorActiveArraySize() == 7) {
+				
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Message");
+				confirmationMsg.setHeaderText(null);
+				confirmationMsg.setContentText("You can add maximum 7 sector to this list");
+				Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+				confirmationMsg.setX(SettingsStage.getX() + 200);
+				confirmationMsg.setY(SettingsStage.getY() + 170);
+				tabAdvancedInitialize();
+				confirmationMsg.showAndWait();
+				
+			} else {
+				advancedSector.addSectorToList(advancedCmboAdd.getValue());
+				
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Message");
+				confirmationMsg.setHeaderText(null);
+				confirmationMsg.setContentText(advancedCmboAdd.getValue()+ " is addedd to list successfully");
+				Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+				confirmationMsg.setX(SettingsStage.getX() + 200);
+				confirmationMsg.setY(SettingsStage.getY() + 170);
+				tabAdvancedInitialize();
+				confirmationMsg.showAndWait();
+			}
+		} catch (Exception e) {}
+	}
+	
+	
+	@FXML
+	private void advancedBtnRemove(ActionEvent event) {
+		try {
+			advancedSector.removeSectorFromList(advancedCmboRemove.getValue());
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Message");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText(advancedCmboRemove.getValue()+ " is removed from list successfully");
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			confirmationMsg.setX(SettingsStage.getX() + 200);
+			confirmationMsg.setY(SettingsStage.getY() + 170);
+			tabAdvancedInitialize();
+			confirmationMsg.showAndWait();
+			
+		} catch (Exception e) {}
+	}
+	
+	
+	private void loadSectorInList() {
+		Label lbl[] = {advancedlblSectorName1, advancedlblSectorName2, advancedlblSectorName3, advancedlblSectorName4,
+				advancedlblSectorName5, advancedlblSectorName6, advancedlblSectorName7};
+		
+		String sectorNameInList[] = new ComboboxList().getAdvancedSectorListActive();
+		int indexSize = new ComboboxList().getAdvancedSectorActiveArraySize();
+		int index = 0;
+		
+		for (Label label : lbl) {
+			label.setText("");
+		}
+		
+		for (Label label : lbl) {
+			if((indexSize > 0) && (index < indexSize)) {
+				label.setText(sectorNameInList[index]);
+				++index;
+			}
+		}
+	}
+	
+	
 }
 
 
+
+	
 
 
 

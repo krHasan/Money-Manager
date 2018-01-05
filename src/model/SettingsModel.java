@@ -102,6 +102,18 @@ public class SettingsModel extends DateAndClock {
 		return list;
 	}
 	
+////////////////////// Advanced Expense  ////////////////////////
+	public ObservableList<String> getAdvancedSectorListInactive() {
+		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getAdvancedSectorListInactive());
+		return list;
+	}
+
+
+	public ObservableList<String> getAdvancedSectorListActive() {
+		ObservableList<String> list = FXCollections.observableArrayList((new ComboboxList()).getAdvancedSectorListActive());
+		return list;
+	}
+	
 }
 
 

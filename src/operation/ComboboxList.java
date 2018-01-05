@@ -892,6 +892,88 @@ public class ComboboxList extends DatabaseConnection {
 		return list;
 	}
 	
+	
+	public String[] getAdvancedSectorListInactive() {
+		if(getAdvancedSectorInactiveArraySize()>0) {
+			String list[] = new String[getAdvancedSectorInactiveArraySize()];
+			String sql = "SELECT sectorNameOutOfList \n"
+					+ "FROM Advanced_Sector_List_Add";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("sectorNameOutOfList");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Sector"};
+			return list;
+		}
+	}
+	public int getAdvancedSectorInactiveArraySize() {
+		int size = 0;
+		String sqlid = "SELECT * \n"
+				+ "FROM Advanced_Sector_List_Add";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
+	
+	public String[] getAdvancedSectorListActive() {
+		if(getAdvancedSectorActiveArraySize()>0) {
+			String list[] = new String[getAdvancedSectorActiveArraySize()];
+			String sql = "SELECT sectorNameInTheList \n"
+					+ "FROM Advanced_Sector_List_Remove";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("sectorNameInTheList");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Sector"};
+			return list;
+		}
+	}
+	public int getAdvancedSectorActiveArraySize() {
+		int size = 0;
+		String sqlid = "SELECT * \n"
+				+ "FROM Advanced_Sector_List_Remove";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
 //	public static void main(String[] args) {
 //		ComboboxList access = new ComboboxList();
 //		System.out.println(access.permanantFilterSize());
@@ -907,6 +989,7 @@ public class ComboboxList extends DatabaseConnection {
 //			System.out.println("Method: "+string);
 //		}
 //	}
+	
 }
 
 

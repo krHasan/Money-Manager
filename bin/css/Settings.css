@@ -45,6 +45,10 @@
 #tabBankCSS:selected {
     -fx-background-color:   #515357;
 }
+#advanceExpenseCSS:selected {
+    -fx-background-color:  #4B515D;
+}
+
 /*change the tab font, font-color, alignment*/
 .tab .tab-label {
     -fx-alignment: CENTER;

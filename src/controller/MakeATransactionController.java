@@ -35,6 +35,7 @@ import operation.GoToOperation;
 import system.DateFormatManager;
 import system.Undo;
 import system.UnitConverter;
+import tab.AdvancedExpense;
 import tab.Bkash;
 import tab.Borrow;
 import tab.Expense;
@@ -108,8 +109,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Button gmbtnSaveAdd;
 	@FXML
 	private Button gmbtnSave;
-	@FXML
-	private Button gmbtnGoToDashboard;
 
 	@FXML
 	private RadioButton gmrbtnAgent;
@@ -142,10 +141,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private Label gmlblAmountNature;
 	
-	///////////////////////////////////  Expense  ////////////////////////////////
+///////////////////////////////////  Expense  ////////////////////////////////
 	@FXML
 	private Tab tabExpense;
 	
+////////////////// Normal /////////////////
 	@FXML
 	private AnchorPane exAnchorPane;
 	
@@ -157,8 +157,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Button exbtnSaveAndAdd;
 	@FXML
 	private Button exbtnSave;
-	@FXML
-	private Button exbtnGoToDashboard;
 	@FXML
 	private Button exbtnGoToCashCalculate;
 	
@@ -179,8 +177,64 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Label exlblWarningMsg;
 	@FXML
 	private Label exlblLetterRemainmsg;
+
+////////////////// Advanced /////////////////
+	@FXML
+	private Button exbtnGoToExpenseSettings;
+	@FXML
+	private Button exbtnAdvancedAdjustBalance;
+	@FXML
+	private Button exbtnAdvancedSaveAndAdd;
+	@FXML
+	private Button exbtnAdvancedSave;
+	@FXML
+	private Button exbtnGoToAdvancedCashCalculate;
 	
-	///////////////////////////////////  Lend  ////////////////////////////////
+	@FXML
+	private DatePicker exdateAdvancedDate;
+	
+	@FXML
+	private TextArea extxtAdvancedDescription;
+	
+	@FXML
+	private Label exlblAdvWalletBalance;
+	@FXML
+	private Label exlblAdvLetterRemainmsg;
+	@FXML
+	private Label exlblAdvWarningMsg;
+	@FXML
+	private Label exlblAdvTotalExpensed;
+	@FXML
+	private Label exlblAdvSector1;
+	@FXML
+	private Label exlblAdvSector2;
+	@FXML
+	private Label exlblAdvSector3;
+	@FXML
+	private Label exlblAdvSector4;
+	@FXML
+	private Label exlblAdvSector5;
+	@FXML
+	private Label exlblAdvSector6;
+	@FXML
+	private Label exlblAdvSector7;
+	
+	@FXML
+	private TextField extxtAdvSector1;
+	@FXML
+	private TextField extxtAdvSector2;
+	@FXML
+	private TextField extxtAdvSector3;
+	@FXML
+	private TextField extxtAdvSector4;
+	@FXML
+	private TextField extxtAdvSector5;
+	@FXML
+	private TextField extxtAdvSector6;
+	@FXML
+	private TextField extxtAdvSector7;
+	
+///////////////////////////////////  Lend  ////////////////////////////////
 	@FXML
 	private Tab tabLend;
 	
@@ -188,8 +242,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private Button lendbtnCancel;
 	@FXML
 	private Button lendbtnSave;
-	@FXML
-	private Button lendbtnGoToDashboard;
 	
 	@FXML
 	private Label lendlblTableHeading;
@@ -324,8 +376,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private Tab tabBank;
 	
-	@FXML
-	private Button bnkbtnGoToDashboard;
 	@FXML
 	private Button bnkbtnSettings;
 	
@@ -472,10 +522,15 @@ public class MakeATransactionController extends MakeATransactionModel {
 			exdateDate.setShowWeekNumbers(true);
 		}
 		
+		exdateAdvancedDate.setConverter(formatManager);
+		exdateAdvancedDate.setValue(date);
+		if (getWeekStatus()) {
+			exdateAdvancedDate.setShowWeekNumbers(true);
+		}
+		
 		btnSignOut.setTooltip(new Tooltip("Sign Out from application"));
 		Tooltip.install(lblUserFullName, new Tooltip("User's Full Name"));
 		
-		gmbtnGoToDashboard.setTooltip(new Tooltip("Take you to Dashboard"));
 		gmbtnCreateSource.setTooltip(new Tooltip("Create your income source where you get Tk."));
 		gmbtnSettings.setTooltip(new Tooltip("Take you to Bank Settings"));
 		gmbtnSaveAdd.setTooltip(new Tooltip("Save your data and let you do another transaction"));
@@ -487,7 +542,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 		Tooltip.install(gmcmboMethod, new Tooltip("In which way you get the money"));
 		Tooltip.install(gmlblWalletBalance, new Tooltip("Your wallet balance now"));
 		
-		exbtnGoToDashboard.setTooltip(new Tooltip("Take you to Dashboard"));
 		exbtnCreateSector.setTooltip(new Tooltip("Create your expenditure sector where you expense Tk."));
 		exbtnAdjustBalance.setTooltip(new Tooltip("Let you set application Wallet Balance \n"
 				+ "according to how much Tk. at your hand now."));
@@ -501,7 +555,31 @@ public class MakeATransactionController extends MakeATransactionModel {
 				+ "where you expense your Tk."));
 		Tooltip.install(exlblWalletBalance, new Tooltip("Your wallet balance now"));
 		
-		lendbtnGoToDashboard.setTooltip(new Tooltip("Take you to Dashboard"));
+		exbtnGoToExpenseSettings.setTooltip(new Tooltip("Take you to Advanced Expense Settings"));
+		exbtnAdvancedAdjustBalance.setTooltip(new Tooltip("Let you set application Wallet Balance \n"
+				+ "according to how much Tk. at your hand now."));
+		exbtnGoToAdvancedCashCalculate.setTooltip(new Tooltip("Calculate how much Tk. at your hand now"));
+		exbtnAdvancedSaveAndAdd.setTooltip(new Tooltip("Save your data and let you do another transaction"));
+		exbtnAdvancedSave.setTooltip(new Tooltip("Save your data and take you to dashboard"));
+		Tooltip.install(exdateAdvancedDate, new Tooltip("Choose date when your transaction happend"));
+		Tooltip.install(extxtAdvSector1, new Tooltip("How much Tk. you have expensed to this sector"));
+		Tooltip.install(extxtAdvSector2, new Tooltip("How much Tk. you have expensed to this sector"));
+		Tooltip.install(extxtAdvSector3, new Tooltip("How much Tk. you have expensed to this sector"));
+		Tooltip.install(extxtAdvSector4, new Tooltip("How much Tk. you have expensed to this sector"));
+		Tooltip.install(extxtAdvSector5, new Tooltip("How much Tk. you have expensed to this sector"));
+		Tooltip.install(extxtAdvSector6, new Tooltip("How much Tk. you have expensed to this sector"));
+		Tooltip.install(extxtAdvSector7, new Tooltip("How much Tk. you have expensed to this sector"));
+		Tooltip.install(exlblAdvSector1, new Tooltip("Your choosed sector name"));
+		Tooltip.install(exlblAdvSector2, new Tooltip("Your choosed sector name"));
+		Tooltip.install(exlblAdvSector3, new Tooltip("Your choosed sector name"));
+		Tooltip.install(exlblAdvSector4, new Tooltip("Your choosed sector name"));
+		Tooltip.install(exlblAdvSector5, new Tooltip("Your choosed sector name"));
+		Tooltip.install(exlblAdvSector6, new Tooltip("Your choosed sector name"));
+		Tooltip.install(exlblAdvSector7, new Tooltip("Your choosed sector name"));
+		Tooltip.install(exlblAdvTotalExpensed, new Tooltip("Total expensed Tk in this transaction"));
+		Tooltip.install(extxtAdvancedDescription, new Tooltip("Add a description of your transaction."));
+		Tooltip.install(exlblAdvWalletBalance, new Tooltip("Your wallet balance now"));
+		
 		lendbtnCancel.setTooltip(new Tooltip("Clear all input at lend tab"));
 		lendbtnSave.setTooltip(new Tooltip("Save your data and let you do another transaction"));
 		Tooltip.install(lenddateDate, new Tooltip("Choose date when your transaction happend"));
@@ -530,7 +608,6 @@ public class MakeATransactionController extends MakeATransactionModel {
 				+ "then may the given tk is different \n"
 				+ "form transaction tk, because of the bank charge."));
 		
-		bnkbtnGoToDashboard.setTooltip(new Tooltip("Take you to Dashboard"));
 		bnkbtnSettings.setTooltip(new Tooltip("Take you to Bank Settings"));
 		perbtnSave.setTooltip(new Tooltip("Save data and let you do another transaction"));
 		perbtnCancel.setTooltip(new Tooltip("Clear all input"));
@@ -580,17 +657,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 		try {
 			gmlblWalletBalance.setText(addThousandSeparator(getWalletBalance()));
 			exlblWalletBalance.setText(addThousandSeparator(getWalletBalance()));
+			exlblAdvWalletBalance.setText(addThousandSeparator(getWalletBalance()));
 			lendlblWalletBalance.setText(addThousandSeparator(getWalletBalance()));
 			bnkWalletBalance.setText(addThousandSeparator(getWalletBalance()));
 		} catch (Exception e) {}
-	}
-	
-	
-	@FXML
-	private void returnToDashboard(ActionEvent event) {
-		Stage MakeATransactionStage = (Stage) gmbtnGoToDashboard.getScene().getWindow();
-		(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
 	}
 	
 	
@@ -747,6 +817,14 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void mnuSystemSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSystem");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
+	@FXML
+	private void mnuAdvancedSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabAdvanced");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
 		MakeATransactionStage.close();
@@ -1216,6 +1294,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 		exlblLetterRemainmsg.setText("");
 		showWalletBalance();
 		exLoadSector();
+		
+		exlblAdvWarningMsg.setText("");
+		exlblAdvLetterRemainmsg.setText("");
+		exlblAdvTotalExpensed.setText("");
+		loadAdvancedExpenseSector();
 	}
 	
 	
@@ -1249,6 +1332,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.showAndWait();
 			} else {
 				new Sector().createSector(typedName);
+				new AdvancedExpense().createSectorToAddList(typedName);
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Message");
@@ -1458,7 +1542,351 @@ public class MakeATransactionController extends MakeATransactionModel {
 		}
 	}
 	
+	
+///////////// Advanced Expense //////////////////////
+	int total;
+	
+	private void loadAdvancedExpenseSector() {
+		TextField AdvancedExtxt[] = {extxtAdvSector1, extxtAdvSector2, extxtAdvSector3, extxtAdvSector4, 
+				extxtAdvSector5, extxtAdvSector6, extxtAdvSector7 };
 		
+		Label AdvancedExlbl[] = {exlblAdvSector1, exlblAdvSector2, exlblAdvSector3, exlblAdvSector4, 
+				exlblAdvSector5, exlblAdvSector6, exlblAdvSector7 };
+		
+		String sectorName[] = new ComboboxList().getAdvancedSectorListActive();
+		
+		for (TextField textField : AdvancedExtxt) {
+			textField.clear();
+			textField.setVisible(false);
+		}
+		for (Label label : AdvancedExlbl) {
+			label.setText("");
+		}
+		
+		int indexLimit = new ComboboxList().getAdvancedSectorActiveArraySize();
+		int index = 0;
+		for (String string : sectorName) {
+			if((indexLimit > 0) && (index < indexLimit)) {
+				AdvancedExtxt[index].setVisible(true);
+				AdvancedExlbl[index].setText(string);
+				++index;
+			}
+		}
+	}
+
+	
+	private void showAdvExTotalEx() {
+		TextField AdvancedExtxt[] = {extxtAdvSector1, extxtAdvSector2, extxtAdvSector3, extxtAdvSector4, 
+				extxtAdvSector5, extxtAdvSector6, extxtAdvSector7 };
+		
+		total = 0;
+		for (TextField textField : AdvancedExtxt) {
+			if (!textField.getText().isEmpty()) {
+				total = total + stringToInt(textField.getText());
+			}
+		}
+		exlblAdvTotalExpensed.setText("Total Expenses = "+addThousandSeparator(intToString(total)));
+	}
+	
+	
+	@FXML
+	private void extxtAdvSector1() {
+		if (!validAmount(extxtAdvSector1.getText())) {
+			if (!extxtAdvSector1.getText().isEmpty()) {
+				exlblAdvWarningMsg.setText(InvalidInput);
+				extxtAdvSector1.clear();				
+			}
+		} else {
+			exlblAdvWarningMsg.setText("");
+			showAdvExTotalEx();
+		}
+	}
+	@FXML
+	private void extxtAdvSector2() {
+		if (!validAmount(extxtAdvSector2.getText())) {
+			if (!extxtAdvSector2.getText().isEmpty()) {
+				exlblAdvWarningMsg.setText(InvalidInput);
+				extxtAdvSector2.clear();				
+			}
+		} else {
+			exlblAdvWarningMsg.setText("");
+			showAdvExTotalEx();
+		}
+	}
+	@FXML
+	private void extxtAdvSector3() {
+		if (!validAmount(extxtAdvSector3.getText())) {
+			if (!extxtAdvSector3.getText().isEmpty()) {
+				exlblAdvWarningMsg.setText(InvalidInput);
+				extxtAdvSector3.clear();				
+			}
+		} else {
+			exlblAdvWarningMsg.setText("");
+			showAdvExTotalEx();
+		}
+	}
+	@FXML
+	private void extxtAdvSector4() {
+		if (!validAmount(extxtAdvSector4.getText())) {
+			if (!extxtAdvSector4.getText().isEmpty()) {
+				exlblAdvWarningMsg.setText(InvalidInput);
+				extxtAdvSector4.clear();				
+			}
+		} else {
+			exlblAdvWarningMsg.setText("");
+			showAdvExTotalEx();
+		}
+	}
+	@FXML
+	private void extxtAdvSector5() {
+		if (!validAmount(extxtAdvSector5.getText())) {
+			if (!extxtAdvSector5.getText().isEmpty()) {
+				exlblAdvWarningMsg.setText(InvalidInput);
+				extxtAdvSector5.clear();				
+			}
+		} else {
+			exlblAdvWarningMsg.setText("");
+			showAdvExTotalEx();
+		}
+	}
+	@FXML
+	private void extxtAdvSector6() {
+		if (!validAmount(extxtAdvSector6.getText())) {
+			if (!extxtAdvSector6.getText().isEmpty()) {
+				exlblAdvWarningMsg.setText(InvalidInput);
+				extxtAdvSector6.clear();				
+			}
+		} else {
+			exlblAdvWarningMsg.setText("");
+			showAdvExTotalEx();
+		}
+	}
+	@FXML
+	private void extxtAdvSector7() {
+		if (!validAmount(extxtAdvSector7.getText())) {
+			if (!extxtAdvSector7.getText().isEmpty()) {
+				exlblAdvWarningMsg.setText(InvalidInput);
+				extxtAdvSector7.clear();				
+			}
+		} else {
+			exlblAdvWarningMsg.setText("");
+			showAdvExTotalEx();
+		}
+	}
+	
+	
+	@FXML
+	private void exAdvDescriptionValidation() {
+		int wordRemain = letterCount(extxtAdvancedDescription.getText());
+		
+		if (wordRemain<0) {
+			extxtAdvancedDescription.setEditable(false);
+			exlblAdvLetterRemainmsg.setText("You cross the limit");
+		} else {
+			exlblAdvWarningMsg.setText("");
+			exlblAdvLetterRemainmsg.setText("Word remain: "+wordRemain+"/100");
+		}
+	}
+	
+	private boolean exIsAdvDescripionEmpty() {
+		if (letterCount(extxtAdvancedDescription.getText()) == 100) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	@FXML
+	private void exbtnAdvancedAdjustBalance(ActionEvent event) {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Adjust Wallet Balance");
+		dialog.setHeaderText("Provide Balance Status at Your Hand Now.");
+		dialog.setContentText("Please enter the amount:");
+		Stage MakeATransactionStage = (Stage) exbtnAdjustBalance.getScene().getWindow();
+		dialog.setX(MakeATransactionStage.getX() + 200);
+		dialog.setY(MakeATransactionStage.getY() + 170);
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+			String typedAmount = result.get();
+			if (!validAmount(typedAmount)) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Transaction Failed");
+				alert.setHeaderText(null);
+				alert.setContentText(InvalidInput);
+				alert.setX(MakeATransactionStage.getX() + 200);
+				alert.setY(MakeATransactionStage.getY() + 170);
+				alert.showAndWait();
+			} else if (amountIsZero(typedAmount)) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Transaction Failed");
+				alert.setHeaderText(null);
+				alert.setContentText("Zero is not approved.");
+				alert.setX(MakeATransactionStage.getX() + 200);
+				alert.setY(MakeATransactionStage.getY() + 170);
+				alert.showAndWait();
+			} else {
+				long dbWalletBalance = currentWalletBalance();
+				long typedBalance = stringToLong(typedAmount);
+				String exAdvAdjustBalAfter = typedAmount;
+				String exAdvAdjustAmount;
+				if (dbWalletBalance<typedBalance) {
+					exAdvAdjustAmount = "added "+longToString(typedBalance - dbWalletBalance)+" to Wallet";
+				} else if(dbWalletBalance>typedBalance) {
+					exAdvAdjustAmount = exWalletBalanceAfter(typedAmount);
+				} else {
+					exAdvAdjustAmount = "0.0";
+				}
+				try {
+					Map<String, String> expenseData = new HashMap<>();
+					
+					expenseData.put("exTime", timeToSave());
+					expenseData.put("exDate", (new DateFormatManager()).toString(exdateAdvancedDate.getValue()));
+					expenseData.put("exMonth", monthToSave(exdateAdvancedDate.getValue()));
+					expenseData.put("exAmount", exAdvAdjustAmount);
+					if (exIsAdvDescripionEmpty()) {
+						expenseData.put("exDescription", "You have adjusted your Wallet Balance");
+					} else {
+						expenseData.put("exDescription", extxtAdvancedDescription.getText());
+					}
+					expenseData.put("exSector", "Adjusted Balance");
+					expenseData.put("exWalletBalanceBefore", getWalletBalance());
+					expenseData.put("exWalletBalanceAfter", exAdvAdjustBalAfter);
+					setCurrentWalletBalance(exAdvAdjustBalAfter);
+					
+					(new Expense()).saveExpenseData(expenseData);
+					(new ComboboxList()).setAllMonth(monthToSave(exdateAdvancedDate.getValue()), yearToSave(exdateAdvancedDate.getValue()));
+					(new ComboboxList()).setAllExMonth(monthToSave(exdateAdvancedDate.getValue()), yearToSave(exdateAdvancedDate.getValue()));
+					
+					exInitialize();
+					extxtAdvancedDescription.clear();
+					
+					Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+					confirmationMsg.setTitle("Successfull Transaction");
+					confirmationMsg.setHeaderText(null);
+					confirmationMsg.setContentText("Your transaction completed successfully.");
+					confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+					confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+					confirmationMsg.showAndWait();
+					
+				} catch (Exception e) {
+					Alert alert = new Alert(AlertType.WARNING);
+					alert.setTitle("Transaction Failed");
+					alert.setHeaderText(null);
+					alert.setContentText("There something is wrong.");
+					alert.setX(MakeATransactionStage.getX() + 200);
+					alert.setY(MakeATransactionStage.getY() + 170);
+					alert.showAndWait();
+				}
+			}
+		}
+	}
+	
+	
+	@FXML
+	private void exbtnGoToExpenseSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabAdvanced");
+		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
+	
+	@FXML
+	private void exbtnAdvancedSave(ActionEvent event) {
+		if (total == 0) {
+			exlblAdvWarningMsg.setText("Empty or Zero is not approved.");
+		} else {
+			TextField AdvancedExtxt[] = {extxtAdvSector1, extxtAdvSector2, extxtAdvSector3, extxtAdvSector4, 
+					extxtAdvSector5, extxtAdvSector6, extxtAdvSector7 };
+			
+			Label AdvancedExlbl[] = {exlblAdvSector1, exlblAdvSector2, exlblAdvSector3, exlblAdvSector4, 
+					exlblAdvSector5, exlblAdvSector6, exlblAdvSector7 };
+			
+			int index = 0;
+			for (TextField textField : AdvancedExtxt) {
+				if ((!textField.getText().isEmpty()) && (!textField.getText().equals("0"))) {
+					exAdvSaveFunction(textField.getText(), AdvancedExlbl[index].getText());
+				}
+				++index;
+			}
+			
+			exInitialize();
+			extxtAdvancedDescription.clear();
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Successfull Transaction");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText("Your transaction completed successfully.");
+			Stage MakeATransactionStage = (Stage) exbtnSave.getScene().getWindow();
+			confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+			confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+			confirmationMsg.show();
+			(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+			MakeATransactionStage.close();
+		}
+	}
+	
+	
+	@FXML
+	private void exbtnAdvancedSaveAndAdd(ActionEvent event) {
+		if (total == 0) {
+			exlblAdvWarningMsg.setText("Empty or Zero is not approved.");
+		} else {
+			TextField AdvancedExtxt[] = {extxtAdvSector1, extxtAdvSector2, extxtAdvSector3, extxtAdvSector4, 
+					extxtAdvSector5, extxtAdvSector6, extxtAdvSector7 };
+			
+			Label AdvancedExlbl[] = {exlblAdvSector1, exlblAdvSector2, exlblAdvSector3, exlblAdvSector4, 
+					exlblAdvSector5, exlblAdvSector6, exlblAdvSector7 };
+			
+			int index = 0;
+			for (TextField textField : AdvancedExtxt) {
+				if ((!textField.getText().isEmpty()) && (!textField.getText().equals("0"))) {
+					exAdvSaveFunction(textField.getText(), AdvancedExlbl[index].getText());
+				}
+				++index;
+			}
+			
+			exInitialize();
+			extxtAdvancedDescription.clear();
+			
+			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+			confirmationMsg.setTitle("Successfull Transaction");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText("Your transaction completed successfully.");
+			Stage MakeATransactionStage = (Stage) exbtnSave.getScene().getWindow();
+			confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+			confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+			confirmationMsg.showAndWait();
+		}
+	}
+	
+		
+	private void exAdvSaveFunction(String amount, String sectorName) {
+		try {
+			Map<String, String> expenseData = new HashMap<>();
+			
+			expenseData.put("exTime", timeToSave());
+			expenseData.put("exDate", (new DateFormatManager()).toString(exdateAdvancedDate.getValue()));
+			expenseData.put("exMonth", monthToSave(exdateAdvancedDate.getValue()));
+			expenseData.put("exAmount", amount);
+			if (exIsAdvDescripionEmpty()) {
+				expenseData.put("exDescription", "None");
+			} else {
+				expenseData.put("exDescription", extxtAdvancedDescription.getText());
+			}
+			expenseData.put("exSector", sectorName);
+			expenseData.put("exWalletBalanceBefore", getWalletBalance());
+			expenseData.put("exWalletBalanceAfter", exWalletBalanceAfter(amount));
+			setCurrentWalletBalance(exWalletBalanceAfter(amount));
+			
+			(new Expense()).saveExpenseData(expenseData);
+			(new ComboboxList()).setAllMonth(monthToSave(exdateAdvancedDate.getValue()), yearToSave(exdateAdvancedDate.getValue()));
+			(new ComboboxList()).setAllExMonth(monthToSave(exdateAdvancedDate.getValue()), yearToSave(exdateAdvancedDate.getValue()));
+			
+		} catch (Exception e) {}
+	}
+	
+	
 ////////////////////////////////////////////     Lend Function    ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
 	private String selectedTabName = "Borrow";

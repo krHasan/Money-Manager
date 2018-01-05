@@ -57,6 +57,7 @@
                   <MenuItem fx:id="mnuSourceSettings" mnemonicParsing="false" onAction="#mnuSourceSettings" text="Source Settings" />
                   <MenuItem fx:id="mnuSectorSettings" mnemonicParsing="false" onAction="#mnuSectorSettings" text="Sector Settingse" />
               <MenuItem fx:id="mnuSystemSettings" mnemonicParsing="false" onAction="#mnuSystemSettings" text="System Settings" />
+                  <MenuItem fx:id="mnuAdvancedSettings" mnemonicParsing="false" onAction="#mnuAdvancedSettings" text="Advanced Expense Settings" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Help">
@@ -560,6 +561,62 @@
                         </Label>
                      </children>
                   </AnchorPane>
+              </content>
+            </Tab>
+            <Tab id="advanceExpenseCSS" fx:id="tabAdvanced" onSelectionChanged="#tabAdvancedInitialize" text="Advanced Expense Settings">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #4B515D;">
+                     <children>
+                        <Label fx:id="advancedlblSectorName" layoutX="457.0" layoutY="121.0" prefHeight="215.0" prefWidth="270.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10px;" />
+                        <Label fx:id="advancedlblSectorName1" alignment="CENTER" layoutX="457.0" layoutY="129.0" prefHeight="25.0" prefWidth="270.0" text="Label" />
+                        <Label fx:id="advancedlblSectorName2" alignment="CENTER" layoutX="457.0" layoutY="157.0" prefHeight="25.0" prefWidth="270.0" text="Label" />
+                        <Label fx:id="advancedlblSectorName3" alignment="CENTER" layoutX="457.0" layoutY="185.0" prefHeight="25.0" prefWidth="270.0" text="Label" />
+                        <Label fx:id="advancedlblSectorName4" alignment="CENTER" layoutX="457.0" layoutY="213.0" prefHeight="25.0" prefWidth="270.0" text="Label" />
+                        <Label fx:id="advancedlblSectorName5" alignment="CENTER" layoutX="457.0" layoutY="241.0" prefHeight="25.0" prefWidth="270.0" text="Label" />
+                        <Label fx:id="advancedlblSectorName6" alignment="CENTER" layoutX="457.0" layoutY="269.0" prefHeight="25.0" prefWidth="270.0" text="Label" />
+                        <Label fx:id="advancedlblSectorName7" alignment="CENTER" layoutX="457.0" layoutY="297.0" prefHeight="25.0" prefWidth="270.0" text="Label" />
+                        <ComboBox fx:id="advancedCmboAdd" focusTraversable="false" layoutX="98.0" layoutY="132.0" prefHeight="28.0" prefWidth="170.0">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                        </ComboBox>
+                        <Label alignment="CENTER" layoutX="97.0" layoutY="94.0" prefHeight="28.0" text="Add Sector to Advanced Expense List" textFill="#ebebeb">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="advancedBtnAdd" focusTraversable="false" layoutX="285.0" layoutY="132.0" mnemonicParsing="false" onAction="#advancedBtnAdd" prefHeight="28.0" prefWidth="100.0" style="-fx-background-color: #1a9544;" text="Add" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Ubuntu Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutX="476.0" layoutY="86.0" prefHeight="28.0" text="Advanced Expense Sector List" textFill="#ebebeb">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="advancedCmboRemove" focusTraversable="false" layoutX="98.0" layoutY="277.0" prefHeight="28.0" prefWidth="170.0">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                        </ComboBox>
+                        <Label alignment="CENTER" layoutX="73.0" layoutY="239.0" prefHeight="28.0" text="Remove Sector Form Advanced Expense List" textFill="#ebebeb">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="advancedBtnRemove" focusTraversable="false" layoutX="285.0" layoutY="277.0" mnemonicParsing="false" onAction="#advancedBtnRemove" prefHeight="28.0" prefWidth="100.0" style="-fx-background-color: #140e0e;" text="Remove" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Ubuntu Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>
