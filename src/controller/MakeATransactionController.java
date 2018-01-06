@@ -875,9 +875,8 @@ public class MakeATransactionController extends MakeATransactionModel {
 		gmtxtDescription.setEditable(true);
 		gmLoadSource();
 		loadMethod();
-		showWalletBalance();
 		gmRocInRbtnHide();
-
+		showWalletBalance();
 	}
 	
 	
@@ -964,15 +963,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 				confirmationMsg.setY(SettingsStage.getY() + 170);
 				confirmationMsg.showAndWait();
 				
-//				gmLoadSource();
-				gmcmboSource.setItems(gmGetSource());
+				gmLoadSource();
 				gmcmboSource.getSelectionModel().selectLast();
 			}
 		}
-//		(new TabAccess()).setTabName("tabSource");
-//		Stage MakeATransactionStage = (Stage) gmbtnCreateSource.getScene().getWindow();
-//		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-//		MakeATransactionStage.close();
 	}
 	
 	
@@ -1037,7 +1031,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				
 				gmInitialize();
 				gmtxtAmount.clear();
-//				gmtxtDescription.clear();
+				gmtxtDescription.clear();
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Successfull Transaction");
@@ -1199,7 +1193,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 				(new GetMoney()).saveGetMoneyData(stringData);
 				(new ComboboxList()).setAllMonth(monthToSave(gmdateDate.getValue()), yearToSave(gmdateDate.getValue()));
 				(new ComboboxList()).setAllGmMonth(monthToSave(gmdateDate.getValue()), yearToSave(gmdateDate.getValue()));
-//				gmInitialize();
+
+				gmInitialize();
+				gmtxtAmount.clear();
+				gmtxtDescription.clear();
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Successfull Transaction");
@@ -1231,10 +1228,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void gmAmountValidation() {
 		if (!validAmount(gmtxtAmount.getText())) {
-			
-			gmlblWarningMsg.setText(InvalidInput);
-			gmtxtAmount.clear();
-		
+			if (!gmtxtAmount.getText().isEmpty()) {
+				gmlblWarningMsg.setText(InvalidInput);
+				gmtxtAmount.clear();				
+			}
 		} else {
 			
 			gmlblWarningMsg.setText(" ");
@@ -1342,8 +1339,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
 				confirmationMsg.showAndWait();
 				
-//				exLoadSector();
-				excmboSector.setItems(exGetSector());
+				exLoadSector();
 				excmboSector.getSelectionModel().selectLast();
 			}
 		}
@@ -1379,8 +1375,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void exAmountValidation() {
 		if (!validAmount(extxtAmount.getText())) {
-			exlblWarningMsg.setText(InvalidInput);
-			extxtAmount.clear();
+			if (!extxtAmount.getText().isEmpty()) {
+				exlblWarningMsg.setText(InvalidInput);
+				extxtAmount.clear();				
+			}
 		} else {
 			exlblWarningMsg.setText(" ");
 		}
@@ -1519,7 +1517,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			
 			exInitialize();
 			extxtAmount.clear();
-//			extxtDescription.clear();
+			extxtDescription.clear();
 			
 			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 			confirmationMsg.setTitle("Successfull Transaction");
@@ -1585,7 +1583,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 				total = total + stringToInt(textField.getText());
 			}
 		}
-		exlblAdvTotalExpensed.setText("Total Expenses = "+addThousandSeparator(intToString(total)));
+		exlblAdvTotalExpensed.setText(addThousandSeparator(intToString(total)));
 	}
 	
 	
@@ -1820,7 +1818,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			Stage MakeATransactionStage = (Stage) exbtnSave.getScene().getWindow();
 			confirmationMsg.setX(MakeATransactionStage.getX() + 200);
 			confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-			confirmationMsg.show();
+			confirmationMsg.showAndWait();
 			(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
 			MakeATransactionStage.close();
 		}
@@ -2109,9 +2107,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void boAmountValidation() {
-		if (!validAmount(botxtAmountWithCharge.getText())) {	
-			bolblAmountValidationMsg.setText(InvalidInput);
-			botxtAmountWithCharge.clear();
+		if (!validAmount(botxtAmountWithCharge.getText())) {
+			if (!botxtAmountWithCharge.getText().isEmpty()) {
+				bolblAmountValidationMsg.setText(InvalidInput);
+				botxtAmountWithCharge.clear();				
+			}
 		} else {
 			bolblAmountValidationMsg.setText(" ");
 			bolblAmountValidationMsg2.setText(" ");
@@ -2126,10 +2126,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void boExactAmountValidation() {
-		if (!validAmount(botxtExactAmount.getText())) {	
-			bolblAmountValidationMsg2.setText(InvalidInput);
-			bolblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
-			botxtExactAmount.clear();
+		if (!validAmount(botxtExactAmount.getText())) {
+			if (!botxtExactAmount.getText().isEmpty()) {
+				bolblAmountValidationMsg2.setText(InvalidInput);
+				bolblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
+				botxtExactAmount.clear();				
+			}
 		} else {
 			bolblAmountValidationMsg2.setText(" ");
 			bolblAmountValidationMsg.setText(" ");
@@ -2508,9 +2510,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 	@FXML
 	private void leAmountValidation() {
-		if (!validAmount(letxtAmountWithCharge.getText())) {	
-			lelblAmountValidationMsg.setText(InvalidInput);
-			letxtAmountWithCharge.clear();
+		if (!validAmount(letxtAmountWithCharge.getText())) {
+			if (!letxtAmountWithCharge.getText().isEmpty()) {
+				lelblAmountValidationMsg.setText(InvalidInput);
+				letxtAmountWithCharge.clear();				
+			}
 		} else {
 			lelblAmountValidationMsg.setText(" ");
 			lelblAmountValidationMsg2.setText(" ");
@@ -2526,9 +2530,11 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void leExactAmountValidation() {
 		if (!validAmount(letxtExactAmount.getText())) {	
-			lelblAmountValidationMsg2.setText(InvalidInput);
-			lelblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
-			letxtExactAmount.clear();
+			if (!letxtExactAmount.getText().isEmpty()) {
+				lelblAmountValidationMsg2.setText(InvalidInput);
+				lelblWarningMsg.setText("Due to Bank Charges, amount may not be accurate. Type exact Amount");
+				letxtExactAmount.clear();				
+			}
 		} else {
 			lelblAmountValidationMsg2.setText(" ");
 			lelblAmountValidationMsg.setText(" ");
@@ -3479,10 +3485,16 @@ public class MakeATransactionController extends MakeATransactionModel {
 		} else {
 			tabRocket.setDisable(false);
 		}
-		if (BankIssue.isbKashActivated()) {
+		if (BankIssue.isbKashActivated() && BankIssue.isRocketActivated()) {
 			bkInitialize();
+			rocInitialize();
+			perInitialize();
 		} else if (BankIssue.isRocketActivated()) {
 			rocInitialize();
+			perInitialize();
+		} else if(BankIssue.isbKashActivated()){
+			bkInitialize();
+			perInitialize();
 		} else {
 			perInitialize();
 		}
@@ -3591,10 +3603,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void bkAmountValidation() {
 		if (!validAmount(bktxtAmount.getText())) {
-			bkAmountValidationMsg.setText(InvalidInput);
-			bktxtAmount.clear();
-			bklblBankChargeName.setText("");
-			bklblBankCharge.setText("");
+			if (!bktxtAmount.getText().isEmpty()) {
+				bkAmountValidationMsg.setText(InvalidInput);
+				bktxtAmount.clear();
+				bklblBankChargeName.setText("");
+				bklblBankCharge.setText("");				
+			}
 		} else {
 			bkAmountValidationMsg.setText(" ");
 			bklblBankChargeName.setText("Bank Charge");
@@ -3839,10 +3853,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void rocAmountValidation() {
 		if (!validAmount(roctxtAmount.getText())) {
-			rocAmountValidationMsg.setText(InvalidInput);
-			roctxtAmount.clear();
-			roclblBankChargeName.setText("");
-			roclblBankCharge.setText("");
+			if (!roctxtAmount.getText().isEmpty()) {
+				rocAmountValidationMsg.setText(InvalidInput);
+				roctxtAmount.clear();
+				roclblBankChargeName.setText("");
+				roclblBankCharge.setText("");				
+			}
 		} else {
 			rocAmountValidationMsg.setText(" ");
 			roclblBankChargeName.setText("Bank Charge");
@@ -4087,8 +4103,10 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void perAmountValidation() {
 		if (!validAmount(pertxtAmount.getText())) {
-			perAmountValidationMsg.setText(InvalidInput);
-			pertxtAmount.clear();
+			if (!pertxtAmount.getText().isEmpty()) {
+				perAmountValidationMsg.setText(InvalidInput);
+				pertxtAmount.clear();				
+			}
 		} else {
 			perAmountValidationMsg.setText("");
 		}

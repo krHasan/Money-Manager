@@ -274,7 +274,7 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #4B515D;">
                                        <children>
-                                          <Button fx:id="exbtnGoToExpenseSettings" focusTraversable="false" layoutX="90.0" layoutY="396.0" mnemonicParsing="false" onAction="#exbtnGoToExpenseSettings" prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #0097a7;" text="Advanced Expense Setting" textFill="WHITE">
+                                          <Button fx:id="exbtnGoToExpenseSettings" focusTraversable="false" layoutX="97.0" layoutY="396.0" mnemonicParsing="false" onAction="#exbtnGoToExpenseSettings" prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #0097a7;" text="Advanced Expense Setting" textFill="WHITE">
                                              <font>
                                                 <Font name="Ubuntu Bold" size="14.0" />
                                              </font>
@@ -285,42 +285,42 @@
                                                 <Insets />
                                              </opaqueInsets>
                                           </Button>
-                                          <DatePicker fx:id="exdateAdvancedDate" editable="false" focusTraversable="false" layoutX="80.0" layoutY="27.0" prefHeight="28.0" prefWidth="240.0" promptText="Select A Date">
+                                          <DatePicker fx:id="exdateAdvancedDate" editable="false" focusTraversable="false" layoutX="87.0" layoutY="27.0" prefHeight="28.0" prefWidth="240.0" promptText="Select A Date">
                                              <cursor>
                                                 <Cursor fx:constant="CLOSED_HAND" />
                                              </cursor>
                                           </DatePicker>
-                                          <Label focusTraversable="false" layoutX="437.0" layoutY="28.0" prefHeight="20.0" prefWidth="290.0" text="Expensed Amount by Multiple Sector" textFill="#eeeeee">
+                                          <Label focusTraversable="false" layoutX="421.0" layoutY="40.0" prefHeight="20.0" prefWidth="290.0" text="Expensed Amount by Multiple Sector" textFill="#eeeeee">
                                              <font>
                                                 <Font name="Arial Bold" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="82.0" layoutY="79.0" prefHeight="20.0" text="Description" textFill="#eeeeee">
+                                          <Label layoutX="89.0" layoutY="79.0" prefHeight="20.0" text="Description" textFill="#eeeeee">
                                              <font>
                                                 <Font name="Arial Bold" size="15.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="47.0" layoutY="250.0" prefHeight="35.0" prefWidth="166.0" text="Wallet Balance :" textFill="#eeeeee">
+                                          <Label alignment="CENTER_RIGHT" layoutX="54.0" layoutY="250.0" prefHeight="35.0" prefWidth="166.0" text="Wallet Balance :" textFill="#eeeeee">
                                              <font>
                                                 <Font name="Arial Bold" size="15.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="exlblAdvWalletBalance" alignment="CENTER" layoutX="214.0" layoutY="250.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa; -fx-border-color: #757575; -fx-border-radius: 5px;">
+                                          <Label fx:id="exlblAdvWalletBalance" alignment="CENTER" layoutX="221.0" layoutY="250.0" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #003200; -fx-text-fill: #fffafa; -fx-border-color: #757575; -fx-border-radius: 5px;">
                                              <font>
                                                 <Font name="Arial Bold" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="exlblAdvWarningMsg" layoutX="437.0" layoutY="88.0" textFill="#ff5e5e">
+                                          <Label fx:id="exlblAdvWarningMsg" layoutX="421.0" layoutY="92.0" textFill="#ff5e5e">
                                              <font>
                                                 <Font name="Ubuntu Bold" size="13.0" />
                                              </font>
                                           </Label>
-                                          <TextArea fx:id="extxtAdvancedDescription" focusTraversable="false" layoutX="80.0" layoutY="105.0" onKeyReleased="#exAdvDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
+                                          <TextArea fx:id="extxtAdvancedDescription" focusTraversable="false" layoutX="87.0" layoutY="105.0" onKeyReleased="#exAdvDescriptionValidation" prefHeight="115.0" prefWidth="240.0" promptText="A little brif description. Max 100 letter" wrapText="true">
                                              <font>
                                                 <Font name="Ubuntu" size="14.0" />
                                              </font>
                                           </TextArea>
-                                          <Button fx:id="exbtnAdvancedAdjustBalance" focusTraversable="false" layoutX="124.0" layoutY="303.0" mnemonicParsing="false" onAction="#exbtnAdvancedAdjustBalance" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Adjust Balance" textFill="WHITE">
+                                          <Button fx:id="exbtnAdvancedAdjustBalance" focusTraversable="false" layoutX="131.0" layoutY="303.0" mnemonicParsing="false" onAction="#exbtnAdvancedAdjustBalance" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #778d9b;" text="Adjust Balance" textFill="WHITE">
                                              <font>
                                                 <Font name="Ubuntu Bold" size="14.0" />
                                              </font>
@@ -331,12 +331,12 @@
                                                 <Insets />
                                              </opaqueInsets>
                                           </Button>
-                                          <Label fx:id="exlblAdvLetterRemainmsg" layoutX="130.0" layoutY="224.0" textFill="#eeeeee">
+                                          <Label fx:id="exlblAdvLetterRemainmsg" layoutX="137.0" layoutY="224.0" textFill="#eeeeee">
                                              <font>
                                                 <Font name="Ubuntu" size="13.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="exbtnGoToAdvancedCashCalculate" focusTraversable="false" layoutX="124.0" layoutY="341.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #0097a7;" text="Cash Calculate" textFill="WHITE">
+                                          <Button fx:id="exbtnGoToAdvancedCashCalculate" focusTraversable="false" layoutX="131.0" layoutY="341.0" mnemonicParsing="false" onAction="#exbtnGoToCashCalculate" prefHeight="28.0" prefWidth="135.0" style="-fx-background-color: #778d9b;" text="Cash Calculate" textFill="WHITE">
                                              <font>
                                                 <Font name="Ubuntu Bold" size="14.0" />
                                              </font>
@@ -347,25 +347,25 @@
                                                 <Insets />
                                              </opaqueInsets>
                                           </Button>
-                                          <Label fx:id="exlblAdvTotalExpensed" alignment="CENTER" layoutX="437.0" layoutY="66.0" prefHeight="20.0" prefWidth="290.0" textFill="#eeeeee">
+                                          <Label fx:id="exlblAdvTotalExpensed" alignment="CENTER" layoutX="423.0" layoutY="72.0" prefHeight="20.0" prefWidth="262.0" textFill="#cad90b">
                                              <font>
-                                                <Font name="Arial Bold" size="15.0" />
+                                                <Font name="Arial Bold" size="16.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="extxtAdvSector1" alignment="CENTER" layoutX="521.0" layoutY="109.0" onKeyReleased="#extxtAdvSector1" prefHeight="25.0" prefWidth="100.0" />
-                                          <Label fx:id="exlblAdvSector1" layoutX="627.0" layoutY="109.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
-                                          <TextField fx:id="extxtAdvSector2" alignment="CENTER" layoutX="521.0" layoutY="144.0" onKeyReleased="#extxtAdvSector2" prefHeight="25.0" prefWidth="100.0" />
-                                          <Label fx:id="exlblAdvSector2" layoutX="627.0" layoutY="144.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
-                                          <TextField fx:id="extxtAdvSector3" alignment="CENTER" layoutX="521.0" layoutY="179.0" onKeyReleased="#extxtAdvSector3" prefHeight="25.0" prefWidth="100.0" />
-                                          <Label fx:id="exlblAdvSector3" layoutX="627.0" layoutY="179.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
-                                          <TextField fx:id="extxtAdvSector4" alignment="CENTER" layoutX="521.0" layoutY="214.0" onKeyReleased="#extxtAdvSector4" prefHeight="25.0" prefWidth="100.0" />
-                                          <Label fx:id="exlblAdvSector4" layoutX="627.0" layoutY="214.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
-                                          <TextField fx:id="extxtAdvSector5" alignment="CENTER" layoutX="521.0" layoutY="249.0" onKeyReleased="#extxtAdvSector5" prefHeight="25.0" prefWidth="100.0" />
-                                          <Label fx:id="exlblAdvSector5" layoutX="627.0" layoutY="249.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
-                                          <TextField fx:id="extxtAdvSector6" alignment="CENTER" layoutX="521.0" layoutY="284.0" onKeyReleased="#extxtAdvSector6" prefHeight="25.0" prefWidth="100.0" />
-                                          <Label fx:id="exlblAdvSector6" layoutX="627.0" layoutY="284.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
-                                          <TextField fx:id="extxtAdvSector7" alignment="CENTER" layoutX="521.0" layoutY="319.0" onKeyReleased="#extxtAdvSector7" prefHeight="25.0" prefWidth="100.0" />
-                                          <Label fx:id="exlblAdvSector7" layoutX="627.0" layoutY="319.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector1" alignment="CENTER" layoutX="505.0" layoutY="109.0" onKeyReleased="#extxtAdvSector1" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector1" layoutX="611.0" layoutY="109.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector2" alignment="CENTER" layoutX="505.0" layoutY="144.0" onKeyReleased="#extxtAdvSector2" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector2" layoutX="611.0" layoutY="144.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector3" alignment="CENTER" layoutX="505.0" layoutY="179.0" onKeyReleased="#extxtAdvSector3" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector3" layoutX="611.0" layoutY="179.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector4" alignment="CENTER" layoutX="505.0" layoutY="214.0" onKeyReleased="#extxtAdvSector4" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector4" layoutX="611.0" layoutY="214.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector5" alignment="CENTER" layoutX="505.0" layoutY="249.0" onKeyReleased="#extxtAdvSector5" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector5" layoutX="611.0" layoutY="249.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector6" alignment="CENTER" layoutX="505.0" layoutY="284.0" onKeyReleased="#extxtAdvSector6" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector6" layoutX="611.0" layoutY="284.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
+                                          <TextField fx:id="extxtAdvSector7" alignment="CENTER" layoutX="505.0" layoutY="319.0" onKeyReleased="#extxtAdvSector7" prefHeight="25.0" prefWidth="100.0" />
+                                          <Label fx:id="exlblAdvSector7" layoutX="611.0" layoutY="319.0" prefHeight="25.0" prefWidth="170.0" textFill="#eeeeee" />
                                           <Button fx:id="exbtnAdvancedSaveAndAdd" defaultButton="true" layoutX="607.0" layoutY="402.0" mnemonicParsing="false" onAction="#exbtnAdvancedSaveAndAdd" prefHeight="28.0" prefWidth="141.0" style="-fx-background-color: #1a9644;" text="Save &amp; Add More" textFill="WHITE">
                                              <font>
                                                 <Font name="Ubuntu Bold" size="14.0" />
@@ -1055,7 +1055,7 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="btnSignOut" layoutX="710.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="29.0" prefWidth="90.0" style="-fx-background-radius: 0px;" text="Sign Out">
+      <Button fx:id="btnSignOut" focusTraversable="false" layoutX="710.0" mnemonicParsing="false" onAction="#btnSignOut" prefHeight="29.0" prefWidth="90.0" style="-fx-background-radius: 0px;" text="Sign Out">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

@@ -13,7 +13,7 @@ import tab.Lend;
 
 public class Undo extends DateAndClock {
 	
-	//Undo last transaction when this method is called, Undo limit is 5
+	//Undo last transaction when this method is called, Undo limit is 10
 	public String actionUndo() {
 		String feedback = null; //return statement for Undo action
 		boolean limit = false; //check the limit range
@@ -38,11 +38,11 @@ public class Undo extends DateAndClock {
 		//check whether Undo limit is over or not
 		if (globalID <= undoId) { 
 			limit = false;
-		} else if((globalID-undoId)>=1 && (globalID-undoId)<=5) {
+		} else if((globalID-undoId)>=1 && (globalID-undoId)<=10) {
 			limit = true;
-		} else if((globalID-undoId)>5) { //set undoID within the limit 5 according to globalID
+		} else if((globalID-undoId)>10) { //set undoID within the limit 10 according to globalID
 			limit = true;
-			GlobalId.setUndoId((globalID-5));
+			GlobalId.setUndoId((globalID-10));
 		}
 		
 		

@@ -375,6 +375,14 @@ public class DashboardController extends DashboardModel {
 	}
 	
 	@FXML
+	private void mnuAdvancedSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabAdvanced");
+		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
+		DashboardStage.close();
+	}
+	
+	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToHelp(DashboardStage.getX(), DashboardStage.getY());

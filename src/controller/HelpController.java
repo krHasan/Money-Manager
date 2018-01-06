@@ -211,6 +211,14 @@ public class HelpController extends DateAndClock {
 	}
 	
 	@FXML
+	private void mnuAdvancedSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabAdvanced");
+		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(HelpStage.getX(), HelpStage.getY());
+		HelpStage.close();
+	}
+	
+	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToHelp(HelpStage.getX(), HelpStage.getY());

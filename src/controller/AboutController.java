@@ -206,6 +206,14 @@ public class AboutController extends DateAndClock {
 	}
 	
 	@FXML
+	private void mnuAdvancedSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabAdvanced");
+		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(AboutStage.getX(), AboutStage.getY());
+		AboutStage.close();
+	}
+	
+	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToHelp(AboutStage.getX(), AboutStage.getY());

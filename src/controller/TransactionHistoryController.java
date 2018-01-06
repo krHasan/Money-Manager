@@ -249,6 +249,14 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	}
 	
 	@FXML
+	private void mnuAdvancedSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabAdvanced");
+		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
+		TransactionHistoryStage.close();
+	}
+	
+	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToHelp(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());

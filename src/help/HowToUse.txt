@@ -6,8 +6,9 @@ Money Manager have three main focusing window
 2. Settings
 3. Transaction History
 
-When you Signed In, program shows the "Dashboard" window first. New user will see a welcome mesage. When you will begin to use Money-Manager, it is sure that your wallet balance will not Zero. There will have some money.So you need to set this balance state as Money-Manager wallet state. To fulfill the need "Adjust Balance" process will help you. Just press "Adjust Balance" button from Expense Tab in Make A Transaction window and type your original wallet amount. It will set to Money-Manager wallet balance. You can also set bKash and Rocket initial balance like this way.
+When you Signed In, program shows the "Dashboard" window first. New user will see a welcome mesage. When you will begin to use Money-Manager, it is sure that your wallet balance will not Zero. There will have some money in your wallet.So you need to set this balance state as Money-Manager wallet state. To fulfill the need "Adjust Balance" process will help you. Just press "Adjust Balance" button from Expense Tab in Make A Transaction window and type your original wallet amount. It will set to Money-Manager wallet balance. You can also set bKash and Rocket initial balance like this way.
 
+You can Undo your last 10 transaction.
 
 
 Make A Transaction

@@ -279,6 +279,14 @@ public class CashCalculateController extends CashCalculateModel {
 	}
 	
 	@FXML
+	private void mnuAdvancedSettings(ActionEvent event) {
+		(new TabAccess()).setTabName("tabAdvanced");
+		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
+		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
+		CashCalculateStage.close();
+	}
+	
+	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
 		(new GoToOperation()).goToHelp(CashCalculateStage.getX(), CashCalculateStage.getY());
