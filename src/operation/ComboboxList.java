@@ -74,23 +74,27 @@ public class ComboboxList extends DatabaseConnection {
 						}
 						list[getSourceArraySize()+1] = "bKash";
 						list[getSourceArraySize()+2] = "Rocket";
+						list[getSourceArraySize()+3] = "Carried Over Amount";
 					} else if (BankIssue.isbKashActivated()) {
 						while (result.next()) {
 							list[index] = result.getString("sourceList");
 							++index;			
 						}
 						list[getSourceArraySize()+1] = "bKash";
+						list[getSourceArraySize()+2] = "Carried Over Amount";
 					} else if (BankIssue.isRocketActivated()) {
 						while (result.next()) {
 							list[index] = result.getString("sourceList");
 							++index;			
 						}
 						list[getSourceArraySize()+1] = "Rocket";
+						list[getSourceArraySize()+2] = "Carried Over Amount";
 					} else {
 						while (result.next()) {
 							list[index] = result.getString("sourceList");
 							++index;			
 						}
+						list[getSourceArraySize()+1] = "Carried Over Amount";
 					}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -105,13 +109,13 @@ public class ComboboxList extends DatabaseConnection {
 	public int getSourceArraySizeForDashboard() {
 		int size = 0;
 		if (BankIssue.isbKashActivated() && BankIssue.isRocketActivated()) {
-			size = getSourceArraySize()+3;
+			size = getSourceArraySize()+4;
 		} else if (BankIssue.isbKashActivated()) {
-			size = getSourceArraySize()+2;
+			size = getSourceArraySize()+3;
 		} else if (BankIssue.isRocketActivated()) {
-			size = getSourceArraySize()+2;
+			size = getSourceArraySize()+3;
 		} else {
-			size = getSourceArraySize()+1;
+			size = getSourceArraySize()+2;
 		}
 		return size;
 	}
@@ -475,6 +479,8 @@ public class ComboboxList extends DatabaseConnection {
 		List<Date>  dates = new ArrayList<Date>();
 		if(getAllGmMonthSize()>0) {
 			String list[] = new String[getAllGmMonthSize()];
+			String list2[] = new String[getAllGmMonthSize()+1];
+			
 			String sql = "SELECT gmAllMonth \n"
 					+ "FROM All_GetMoney_Months \n"
 					+ "ORDER BY gmAllMonth DESC";
@@ -486,6 +492,7 @@ public class ComboboxList extends DatabaseConnection {
 					list[index] = result.getString("gmAllMonth");
 					++index;			
 				}
+				
 				for (String dateString : list) {
 					Date date;
 					date = new SimpleDateFormat("MMM-yy").parse(dateString);
@@ -498,18 +505,20 @@ public class ComboboxList extends DatabaseConnection {
 								return o2.compareTo(o1);
 							}
 				});
-				int index2 = 0;
+				
+				int index2 = 1;
+				list2[0] = "Total";
 				for (Date date : dates) {
-					list[index2] = new SimpleDateFormat("MMM-yy").format(date);
+					list2[index2] = new SimpleDateFormat("MMM-yy").format(date);
 					++index2;
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return list;
+			return list2;
 			
 		} else {
-			String list[] = {"No Month"};
+			String list[] = {"No Month", "No Month"};
 			return list;
 		}
 	}
@@ -558,6 +567,8 @@ public class ComboboxList extends DatabaseConnection {
 		List<Date>  dates = new ArrayList<Date>();
 		if(getAllExMonthSize()>0) {
 			String list[] = new String[getAllExMonthSize()];
+			String list2[] = new String[getAllExMonthSize()+1];
+			
 			String sql = "SELECT exAllMonth \n"
 					+ "FROM All_Expense_Months \n"
 					+ "ORDER BY exAllMonth DESC";
@@ -569,6 +580,7 @@ public class ComboboxList extends DatabaseConnection {
 					list[index] = result.getString("exAllMonth");
 					++index;			
 				}
+				
 				for (String dateString : list) {
 					Date date;
 					date = new SimpleDateFormat("MMM-yy").parse(dateString);
@@ -581,15 +593,17 @@ public class ComboboxList extends DatabaseConnection {
 								return o2.compareTo(o1);
 							}
 				});
-				int index2 = 0;
+				
+				int index2 = 1;
+				list2[0] = "Total";
 				for (Date date : dates) {
-					list[index2] = new SimpleDateFormat("MMM-yy").format(date);
+					list2[index2] = new SimpleDateFormat("MMM-yy").format(date);
 					++index2;
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return list;
+			return list2;
 			
 		} else {
 			String list[] = {"No Month"};

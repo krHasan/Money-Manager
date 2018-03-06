@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.SignInModel;
+import operation.CarriedOver;
 import operation.ComboboxList;
 import operation.GoToRegistration;
 import tab.TabAccess;
@@ -100,6 +101,7 @@ public class SignInController extends SignInModel {
 			new ComboboxList().setAllMonth(getThisMonthName(), getYear());
 			new ComboboxList().setAllGmMonth(getThisMonthName(), getYear());
 			new ComboboxList().setAllExMonth(getThisMonthName(), getYear());
+			new CarriedOver().addCarriedOver(getThisMonthName());
 			
 			if (userIsNew()) {			
 				goToDashboard(SignInStage.getX(), SignInStage.getY());

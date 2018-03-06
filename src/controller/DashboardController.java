@@ -440,10 +440,11 @@ public class DashboardController extends DashboardModel {
 	//load all transacted Get Money month
 	private void showAllGetMoneyMonths() {
 		cmboGetMoneyMonthList.setItems(loadAllGetMoneyMonths());
-		cmboGetMoneyMonthList.getSelectionModel().selectFirst();
+//		cmboGetMoneyMonthList.getSelectionModel().selectFirst();
+		cmboGetMoneyMonthList.getSelectionModel().select(1);
 	}
 	
-	//load all active sources
+//	load all active sources
 	private void showSource() {
 		cmboSourceList.setItems(loadSource());
 		cmboSourceList.getSelectionModel().selectFirst();
@@ -457,7 +458,8 @@ public class DashboardController extends DashboardModel {
 //	load all transacted expense months
 	private void showAllExpenseMonths() {
 		cmboExpenseMonthList.setItems(loadAllExpenseMonths());
-		cmboExpenseMonthList.getSelectionModel().selectFirst();
+//		cmboExpenseMonthList.getSelectionModel().selectFirst();
+		cmboExpenseMonthList.getSelectionModel().select(1);
 	}
 	
 //	load all active sector

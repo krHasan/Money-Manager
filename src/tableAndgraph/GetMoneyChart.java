@@ -2,6 +2,7 @@ package tableAndgraph;
 
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
+import operation.CarriedOver;
 import operation.ComboboxList;
 import tab.Source;
 import system.DateAndClock;
@@ -15,9 +16,15 @@ public class GetMoneyChart extends DateAndClock {
 		
 		for (String sourceName : allSource) {
 			if (!sourceName.equals("All")) {
-				String sourceShortName = getAbbreviateName(sourceName);
-				double amount = longToDouble(new Source().getAmountBySourceFromGM(monthName, sourceName));
-				source.getData().add(new XYChart.Data<>(sourceShortName, amount));
+				if (sourceName.equals("Carried Over Amount")) {
+					String sourceShortName = getAbbreviateName(sourceName);
+					double amount = longToDouble(new CarriedOver().getCOAmount(monthName));
+					source.getData().add(new XYChart.Data<>(sourceShortName, amount));
+				} else {
+					String sourceShortName = getAbbreviateName(sourceName);
+					double amount = longToDouble(new Source().getAmountBySourceFromGM(monthName, sourceName));
+					source.getData().add(new XYChart.Data<>(sourceShortName, amount));
+				}
 			}
 		}		
 		
