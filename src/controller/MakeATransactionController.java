@@ -1271,10 +1271,12 @@ public class MakeATransactionController extends MakeATransactionModel {
 	
 ////////////////////////////////////////////  Expense Function  ////////////////////////////////////////////
 //---------------------------------------------------------------------------------------------------------//
+//	default values
 	private boolean adjustBtnPressed = false;
 	String exAdjustBalAfter = null;
 	String exAdjustAmount = null;
 	
+//	load methods when expense tab is selected
 	@FXML
 	private void tabExpense() {
 		exInitialize();
@@ -1285,7 +1287,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 //		}
 	}
 	
-	
+//	initialize expense tab nodes state
 	private void exInitialize() {
 		exlblWarningMsg.setText("");
 		exlblLetterRemainmsg.setText("");
@@ -1297,72 +1299,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 		exlblAdvTotalExpensed.setText("");
 		loadAdvancedExpenseSector();
 	}
-	
-	
-	@FXML
-	private void exCreateSectorBtn(ActionEvent event) {
-		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Create Sector");
-		dialog.setHeaderText("Create your expenditure sector, where you expense Tk.");
-		dialog.setContentText("Please Type a Name :");
-		Stage MakeATransactionStage = (Stage) exbtnCreateSector.getScene().getWindow();
-		dialog.setX(MakeATransactionStage.getX() + 150);
-		dialog.setY(MakeATransactionStage.getY() + 170);
-		Optional<String> result = dialog.showAndWait();
-		if (result.isPresent()){
-			String typedName = result.get();
-			if (typedName.length() == 0) {
-				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("Operation Failed");
-				alert.setHeaderText(null);
-				alert.setContentText("Write a Sector Name Please");
-				alert.setX(MakeATransactionStage.getX() + 200);
-				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
-			} else if (countWords(typedName) == 0) {
-				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("Operation Failed");
-				alert.setHeaderText(null);
-				alert.setContentText("Write a Sector Name Please");
-				alert.setX(MakeATransactionStage.getX() + 200);
-				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
-			} else {
-				new Sector().createSector(typedName);
-				new AdvancedExpense().createSectorToAddList(typedName);
-				
-				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
-				confirmationMsg.setTitle("Message");
-				confirmationMsg.setHeaderText(null);
-				confirmationMsg.setContentText("Sector "+typedName+ " created successfully");
-				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-				confirmationMsg.showAndWait();
-				
-				exLoadSector();
-				excmboSector.getSelectionModel().selectLast();
-			}
-		}
-	}
-	
-	
-	@FXML
-	private void exbtnGoToCashCalculate(ActionEvent event) {
-		Stage MakeATransactionStage = (Stage) exbtnGoToCashCalculate.getScene().getWindow();
-		(new GoToOperation()).goToCashCalculate(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
-	}
-	
-	
-	@FXML
-	private void exbtnSaveAndAdd(ActionEvent event) {
-		if (amountIsZero(extxtAmount.getText())) {
-			exlblWarningMsg.setText("Empty or Zero is not approved.");
-		} else {
-			exSaveFunction();
-		}
-	}
-	
+		
 	
 	private void exLoadSector() {
 		try {
@@ -1407,6 +1344,62 @@ public class MakeATransactionController extends MakeATransactionModel {
 	}
 	
 	
+//	function for creating a sector
+	@FXML
+	private void exCreateSectorBtn(ActionEvent event) {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Create Sector");
+		dialog.setHeaderText("Create your expenditure sector, where you expense Tk.");
+		dialog.setContentText("Please Type a Name :");
+		Stage MakeATransactionStage = (Stage) exbtnCreateSector.getScene().getWindow();
+		dialog.setX(MakeATransactionStage.getX() + 150);
+		dialog.setY(MakeATransactionStage.getY() + 170);
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+			String typedName = result.get();
+			if (typedName.length() == 0) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Operation Failed");
+				alert.setHeaderText(null);
+				alert.setContentText("Write a Sector Name Please");
+				alert.setX(MakeATransactionStage.getX() + 200);
+				alert.setY(MakeATransactionStage.getY() + 170);
+				alert.showAndWait();
+			} else if (countWords(typedName) == 0) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Operation Failed");
+				alert.setHeaderText(null);
+				alert.setContentText("Write a Sector Name Please");
+				alert.setX(MakeATransactionStage.getX() + 200);
+				alert.setY(MakeATransactionStage.getY() + 170);
+				alert.showAndWait();
+			} else if(new Sector().createSector(typedName)) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Operation Failed");
+				alert.setHeaderText(null);
+				alert.setContentText("Sector Name Already Exist");
+				alert.setX(MakeATransactionStage.getX() + 200);
+				alert.setY(MakeATransactionStage.getY() + 170);
+				alert.showAndWait();				
+			} else {
+				new Sector().createSector(typedName);
+				
+				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
+				confirmationMsg.setTitle("Message");
+				confirmationMsg.setHeaderText(null);
+				confirmationMsg.setContentText("Sector "+typedName+ " created successfully");
+				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
+				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+				confirmationMsg.showAndWait();
+				
+				exLoadSector();
+				excmboSector.getSelectionModel().selectLast();
+			}
+		}
+	}
+	
+	
+//	this function will let user to adjust their balance
 	@FXML
 	private void exAdjustBalance(ActionEvent event) {
 		TextInputDialog dialog = new TextInputDialog();
@@ -1453,6 +1446,14 @@ public class MakeATransactionController extends MakeATransactionModel {
 		adjustBtnPressed = false;
 	}
 	
+		
+	@FXML
+	private void exbtnGoToCashCalculate(ActionEvent event) {
+		Stage MakeATransactionStage = (Stage) exbtnGoToCashCalculate.getScene().getWindow();
+		(new GoToOperation()).goToCashCalculate(MakeATransactionStage.getX(), MakeATransactionStage.getY());
+		MakeATransactionStage.close();
+	}
+	
 	
 	@FXML
 	private void exSaveBtn(ActionEvent event) {
@@ -1467,6 +1468,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 	}
 	
 	
+	@FXML
+	private void exbtnSaveAndAdd(ActionEvent event) {
+		if (amountIsZero(extxtAmount.getText())) {
+			exlblWarningMsg.setText("Empty or Zero is not approved.");
+		} else {
+			exSaveFunction();
+		}
+	}
+	
+	
+//	save user input values to database
 	private void exSaveFunction() {
 		try {
 			Map<String, String> expenseData = new HashMap<>();

@@ -1089,6 +1089,8 @@ public class SettingsController extends SettingsModel {
 	
 //////////////////////////////////////////// Sector Function  ////////////////////////////////////////////
 //----------------------------------------------------------------------------------------------------////
+
+//	create object for the classes
 	Sector sector = new Sector();
 	AdvancedExpense advancedSector = new AdvancedExpense();
 	
@@ -1100,15 +1102,64 @@ public class SettingsController extends SettingsModel {
 		loadArchievedSector();
 	}
 
+	
+	private void loadActiveSector() {
+		try {
+			if (new ComboboxList().getSectorArraySize() == 0) {
+				sectorcmboArchive.setDisable(true);
+				sectorbtnArchive.setDisable(true);
+				sectorcmboDelete.setDisable(true);
+				sectorbtnDelete.setDisable(true);
+			} else {
+				sectorcmboArchive.setDisable(false);
+				sectorbtnArchive.setDisable(false);
+				sectorcmboDelete.setDisable(false);
+				sectorbtnDelete.setDisable(false);
+				sectorcmboArchive.setItems(getActiveSectorList());
+				sectorcmboArchive.getSelectionModel().selectFirst();
+				sectorcmboDelete.setItems(getActiveSectorList());
+				sectorcmboDelete.getSelectionModel().selectFirst();
+			}
+		} catch (Exception e) {}
+	}
+	
+	
+	private void loadArchievedSector() {
+		try {
+			if (new ComboboxList().getArchivedSectorArraySize() == 0) {
+				sectorcmboUnArchive.setDisable(true);
+				sectorbtnUnarchive.setDisable(true);
+			} else {
+				sectorcmboUnArchive.setDisable(false);
+				sectorbtnUnarchive.setDisable(false);
+				sectorcmboUnArchive.setItems(getArchivedSectorList());
+				sectorcmboUnArchive.getSelectionModel().selectFirst();
+			}
+		} catch (Exception e) {}
+	}
+	
 
 	@FXML
 	private void createSector(ActionEvent event) {
 		if ((sectortxtSourceName.getText()).length() == 0 || countWords(sectortxtSourceName.getText()) == 0) {
 			sectorlblWarningMsg.setText("Write a Sector Name Please");
+			
+		} else if(sector.createSector(sectortxtSourceName.getText())) {
+			
+			Alert confirmationMsg = new Alert(AlertType.ERROR);
+			confirmationMsg.setTitle("Operation Failed");
+			confirmationMsg.setHeaderText(null);
+			confirmationMsg.setContentText("Sector Name Already Exist. Please Try Another.");
+			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
+			confirmationMsg.setX(SettingsStage.getX() + 200);
+			confirmationMsg.setY(SettingsStage.getY() + 170);
+			confirmationMsg.showAndWait();
+			
+			tabSectorInitialize();
+			
 		} else {
 			sectorlblWarningMsg.setText("");
 			sector.createSector(sectortxtSourceName.getText());
-			advancedSector.createSectorToAddList(sectortxtSourceName.getText());
 			
 			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 			confirmationMsg.setTitle("Message");
@@ -1145,7 +1196,6 @@ public class SettingsController extends SettingsModel {
 			if (result.get() == ButtonType.OK){
 				
 				sector.deleteSector(sectorcmboDelete.getValue());
-				advancedSector.deleteSectorFromAdvancedList(sectorcmboDelete.getValue());
 				
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Message");
@@ -1199,40 +1249,6 @@ public class SettingsController extends SettingsModel {
 	}
 	
 	
-	private void loadActiveSector() {
-		try {
-			if (new ComboboxList().getSectorArraySize() == 0) {
-				sectorcmboArchive.setDisable(true);
-				sectorbtnArchive.setDisable(true);
-				sectorcmboDelete.setDisable(true);
-				sectorbtnDelete.setDisable(true);
-			} else {
-				sectorcmboArchive.setDisable(false);
-				sectorbtnArchive.setDisable(false);
-				sectorcmboDelete.setDisable(false);
-				sectorbtnDelete.setDisable(false);
-				sectorcmboArchive.setItems(getActiveSectorList());
-				sectorcmboArchive.getSelectionModel().selectFirst();
-				sectorcmboDelete.setItems(getActiveSectorList());
-				sectorcmboDelete.getSelectionModel().selectFirst();
-			}
-		} catch (Exception e) {}
-	}
-	
-	
-	private void loadArchievedSector() {
-		try {
-			if (new ComboboxList().getArchivedSectorArraySize() == 0) {
-				sectorcmboUnArchive.setDisable(true);
-				sectorbtnUnarchive.setDisable(true);
-			} else {
-				sectorcmboUnArchive.setDisable(false);
-				sectorbtnUnarchive.setDisable(false);
-				sectorcmboUnArchive.setItems(getArchivedSectorList());
-				sectorcmboUnArchive.getSelectionModel().selectFirst();
-			}
-		} catch (Exception e) {}
-	}
 
 //////////////////////////////////////////// System Function  ////////////////////////////////////////////
 //----------------------------------------------------------------------------------------------------////
@@ -1538,13 +1554,13 @@ public class SettingsController extends SettingsModel {
 //----------------------------------------------------------------------------------------------------////
 	@FXML
 	private void tabAdvancedInitialize() {
-		loadSectorForAdd();
-		loadSectorForRemove();
+		loadQueuedSector();
+		loadActiveAdvancedSector();
 		loadSectorInList();
 	}
 	
 	
-	private void loadSectorForAdd() {
+	private void loadQueuedSector() {
 		if (new ComboboxList().getAdvancedSectorInactiveArraySize() == 0) {
 			advancedCmboAdd.setDisable(true);
 			advancedBtnAdd.setDisable(true);
@@ -1557,7 +1573,7 @@ public class SettingsController extends SettingsModel {
 	}
 	
 	
-	private void loadSectorForRemove() {
+	private void loadActiveAdvancedSector() {
 		if (new ComboboxList().getAdvancedSectorActiveArraySize() == 0) {
 			advancedCmboRemove.setDisable(true);
 			advancedBtnRemove.setDisable(true);

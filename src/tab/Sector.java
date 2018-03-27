@@ -3,26 +3,59 @@ package tab;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.sqlite.util.StringUtils;
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.regex.Matcher;
+//import java.util.regex.Pattern;
+//
+//import org.sqlite.util.StringUtils;
 
 import model.DashboardModel;
 
 public class Sector extends DashboardModel {
 
-	public void createSector(String sectorName) {
-		String sql = "INSERT INTO Sector_List (sectorList) VALUES(?)";
+	public boolean createSector(String sectorName) {
+		
+		boolean exists = false;
+		
+		String sqlexists = "SELECT sectorList FROM Sector_List WHERE sectorList = ? ";
 		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+				PreparedStatement pstmt = conn.prepareStatement(sqlexists)) {
 			pstmt.setString(1, sectorName);
-			pstmt.executeUpdate();
+			ResultSet result = pstmt.executeQuery();
+			
+			while(result.next()) {
+				exists = true;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		if (!exists) {
+			
+			String sql = "INSERT INTO Sector_List (sectorList) VALUES(?)";
+			try (Connection conn = connector();
+					PreparedStatement pstmt = conn.prepareStatement(sql)) {
+				pstmt.setString(1, sectorName);
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			String sqlupdate = "UPDATE Sector_List SET sectorActive = ?, ASL_Queue = ? WHERE sectorList = ?";
+			try (Connection conn = connector();
+					PreparedStatement pstmt = conn.prepareStatement(sqlupdate)) {
+				pstmt.setString(1, "active");
+				pstmt.setString(2, "aslQueue");
+				pstmt.setString(3, sectorName);
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return exists;
 	}
 
 	
@@ -41,42 +74,33 @@ public class Sector extends DashboardModel {
 	
 	
 	public void archiveSector(String sectorName) {
-		String delete = "DELETE FROM Sector_List WHERE sectorList = ?";
-		String insert = "INSERT INTO Archived_Sector_List (sectorArchiveList) VALUES(?)";
+		String sqlarchived = "UPDATE Sector_List SET sectorActive = ?, sectorArchived = ?, ASL_Queue = ?, ASL_Active = ? WHERE sectorList = ?";
 		
 		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(delete)){
-			pstmt.setString(1, sectorName);
+				PreparedStatement pstmt = conn.prepareStatement(sqlarchived)){
+			pstmt.setString(1, "");
+			pstmt.setString(2, "archived");
+			pstmt.setString(3, "");
+			pstmt.setString(4, "");
+			pstmt.setString(5, sectorName);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(insert)){
-			pstmt.setString(1, sectorName);
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	
 	public void unarchiveSector(String sectorName) {
-		String delete = "DELETE FROM Archived_Sector_List WHERE sectorArchiveList = ?";
-		String insert = "INSERT INTO Sector_List (sectorList) VALUES(?)";
+		String sqlunarchived = "UPDATE Sector_List SET sectorActive = ?, sectorArchived = ?, ASL_Queue = ?, ASL_Active = ? WHERE sectorList = ?";
 		
 		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(delete)){
-			pstmt.setString(1, sectorName);
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(insert)){
-			pstmt.setString(1, sectorName);
+				PreparedStatement pstmt = conn.prepareStatement(sqlunarchived)){
+			pstmt.setString(1, "active");
+			pstmt.setString(2, "");
+			pstmt.setString(3, "aslQueue");
+			pstmt.setString(4, "");
+			pstmt.setString(5, sectorName);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

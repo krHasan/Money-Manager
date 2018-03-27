@@ -54,7 +54,7 @@
             <items>
                   <MenuItem fx:id="mnuBankSettings" mnemonicParsing="false" onAction="#mnuBankSettings" text="Bank Settings" />
                   <MenuItem fx:id="mnuSourceSettings" mnemonicParsing="false" onAction="#mnuSourceSettings" text="Source Settings" />
-                  <MenuItem fx:id="mnuSectorSettings" mnemonicParsing="false" onAction="#mnuSectorSettings" text="Sector Settingse" />
+                  <MenuItem fx:id="mnuSectorSettings" mnemonicParsing="false" onAction="#mnuSectorSettings" text="Sector Settings" />
               <MenuItem fx:id="mnuSystemSettings" mnemonicParsing="false" onAction="#mnuSystemSettings" text="System Settings" />
                   <MenuItem fx:id="mnuAdvancedSettings" mnemonicParsing="false" onAction="#mnuAdvancedSettings" text="Advanced Expense Settings" />
             </items>

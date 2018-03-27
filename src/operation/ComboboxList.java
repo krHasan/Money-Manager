@@ -15,7 +15,8 @@ import database.DatabaseConnection;
 
 public class ComboboxList extends DatabaseConnection {
 	
-	
+//////////////////////////////////////////// Source Settings  ////////////////////////////////////////////
+//---------------------------------------------------------------------------------------------------------//	
 	public String[] getSourceList() {
 		if(getSourceArraySize()>0) {
 			String list[] = new String[getSourceArraySize()];
@@ -162,6 +163,8 @@ public class ComboboxList extends DatabaseConnection {
 	}
 	
 	
+//////////////////////////////////////////// Method Settings  ////////////////////////////////////////////
+//---------------------------------------------------------------------------------------------------------//
 	public String[] getMethodList() {
 		if(getMethodArraySize()>0) {
 			String list[] = new String[getMethodArraySize()];
@@ -203,11 +206,13 @@ public class ComboboxList extends DatabaseConnection {
 	}
 	
 	
+//////////////////////////////////////////// Sector Settings  ////////////////////////////////////////////
+//------------------------------------------------------------------------------------------------------//	
 	public String[] getSectorList() {
 		if(getSectorArraySize()>0) {
 			String list[] = new String[getSectorArraySize()];
 			String sql = "SELECT sectorList \n"
-					+ "FROM Sector_List";
+					+ "FROM Sector_List WHERE sectorActive = \"active\"";
 			try (Connection conn = connector();
 					Statement stmt = conn.createStatement();
 					ResultSet result = stmt.executeQuery(sql)) {
@@ -230,7 +235,7 @@ public class ComboboxList extends DatabaseConnection {
 		if(getSectorArraySize()>0) {
 			String list[] = new String[getSectorArraySize()+2];
 			String sql = "SELECT sectorList \n"
-					+ "FROM Sector_List";
+					+ "FROM Sector_List WHERE sectorActive = \"active\"";
 			try (Connection conn = connector();
 					Statement stmt = conn.createStatement();
 					ResultSet result = stmt.executeQuery(sql)) {
@@ -254,7 +259,7 @@ public class ComboboxList extends DatabaseConnection {
 	public int getSectorArraySize() {
 		int size = 0;
 		String sqlid = "SELECT * \n"
-				+ "FROM Sector_List";
+				+ "FROM Sector_List WHERE sectorActive = \"active\"";
 		
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
@@ -272,14 +277,14 @@ public class ComboboxList extends DatabaseConnection {
 	public String[] getArchivedSectorList() {
 		if(getArchivedSectorArraySize()>0) {
 			String list[] = new String[getArchivedSectorArraySize()];
-			String sql = "SELECT sectorArchiveList \n"
-					+ "FROM Archived_Sector_List";
+			String sql = "SELECT sectorList \n"
+					+ "FROM Sector_List WHERE sectorArchived = \"archived\"";
 			try (Connection conn = connector();
 					Statement stmt = conn.createStatement();
 					ResultSet result = stmt.executeQuery(sql)) {
 					int index = 0;
 					while (result.next()) {
-						list[index] = result.getString("sectorArchiveList");
+						list[index] = result.getString("sectorList");
 						++index;			
 					}
 			} catch (Exception e) {
@@ -295,7 +300,48 @@ public class ComboboxList extends DatabaseConnection {
 	public int getArchivedSectorArraySize() {
 		int size = 0;
 		String sqlid = "SELECT * \n"
-				+ "FROM Archived_Sector_List";
+				+ "FROM Sector_List WHERE sectorArchived = \"archived\"";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
+
+	public String[] getAdvancedSectorListInactive() {
+		if(getAdvancedSectorInactiveArraySize()>0) {
+			String list[] = new String[getAdvancedSectorInactiveArraySize()];
+			String sql = "SELECT sectorList \n"
+					+ "FROM Sector_List WHERE ASL_Queue = \"aslQueue\"";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("sectorList");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Sector"};
+			return list;
+		}
+	}
+	public int getAdvancedSectorInactiveArraySize() {
+		int size = 0;
+		String sqlid = "SELECT * \n"
+				+ "FROM Sector_List WHERE ASL_Queue = \"aslQueue\"";
 		
 		try (Connection conn = connector();
 				Statement stmt = conn.createStatement();
@@ -310,6 +356,49 @@ public class ComboboxList extends DatabaseConnection {
 	}
 	
 	
+	public String[] getAdvancedSectorListActive() {
+		if(getAdvancedSectorActiveArraySize()>0) {
+			String list[] = new String[getAdvancedSectorActiveArraySize()];
+			String sql = "SELECT sectorList \n"
+					+ "FROM Sector_List WHERE ASL_Active = \"aslActive\"";
+			try (Connection conn = connector();
+					Statement stmt = conn.createStatement();
+					ResultSet result = stmt.executeQuery(sql)) {
+					int index = 0;
+					while (result.next()) {
+						list[index] = result.getString("sectorList");
+						++index;			
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+			
+		} else {
+			String list[] = {"No Sector"};
+			return list;
+		}
+	}
+	public int getAdvancedSectorActiveArraySize() {
+		int size = 0;
+		String sqlid = "SELECT * \n"
+				+ "FROM Sector_List WHERE ASL_Active = \"aslActive\"";
+		
+		try (Connection conn = connector();
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery(sqlid)) {
+				while (result.next()) {
+					size = size + 1;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
+	
+//////////////////////////////////////////// Borrow Settings ////////////////////////////////////////////
+//---------------------------------------------------------------------------------------------------------//	
 	public String[] getBoRepayPersonNameList() {
 		if(getBoRepayPersonNameSize()>0) {
 			String list[] = new String[getBoRepayPersonNameSize()];
@@ -351,6 +440,8 @@ public class ComboboxList extends DatabaseConnection {
 	}
 	
 	
+//////////////////////////////////////////// Lend Settings ////////////////////////////////////////////
+//---------------------------------------------------------------------------------------------------------//	
 	public String[] getLeRepayPersonNameList() {
 		if(getLeRepayPersonNameSize()>0) {
 			String list[] = new String[getLeRepayPersonNameSize()];
@@ -392,6 +483,8 @@ public class ComboboxList extends DatabaseConnection {
 	}
 	
 	
+//////////////////////////////////////////// Months Settings ////////////////////////////////////////////
+//---------------------------------------------------------------------------------------------------------//	
 	public String[] getAllMonth() {
 		List<Date>  dates = new ArrayList<Date>();
 		if(getAllMonthSize()>0) {
@@ -693,6 +786,8 @@ public class ComboboxList extends DatabaseConnection {
 //	}
 	
 	
+//////////////////////////////////////////// History Settings ////////////////////////////////////////////
+//---------------------------------------------------------------------------------------------------------//	
 	public String[] getFilterList() {
 		String sourceList[] = getSourceList();
 		String sectorList[] = getSectorList();
@@ -906,87 +1001,6 @@ public class ComboboxList extends DatabaseConnection {
 		return list;
 	}
 	
-	
-	public String[] getAdvancedSectorListInactive() {
-		if(getAdvancedSectorInactiveArraySize()>0) {
-			String list[] = new String[getAdvancedSectorInactiveArraySize()];
-			String sql = "SELECT sectorNameOutOfList \n"
-					+ "FROM Advanced_Sector_List_Add";
-			try (Connection conn = connector();
-					Statement stmt = conn.createStatement();
-					ResultSet result = stmt.executeQuery(sql)) {
-					int index = 0;
-					while (result.next()) {
-						list[index] = result.getString("sectorNameOutOfList");
-						++index;			
-					}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return list;
-			
-		} else {
-			String list[] = {"No Sector"};
-			return list;
-		}
-	}
-	public int getAdvancedSectorInactiveArraySize() {
-		int size = 0;
-		String sqlid = "SELECT * \n"
-				+ "FROM Advanced_Sector_List_Add";
-		
-		try (Connection conn = connector();
-				Statement stmt = conn.createStatement();
-				ResultSet result = stmt.executeQuery(sqlid)) {
-				while (result.next()) {
-					size = size + 1;
-				}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return size;
-	}
-	
-	
-	public String[] getAdvancedSectorListActive() {
-		if(getAdvancedSectorActiveArraySize()>0) {
-			String list[] = new String[getAdvancedSectorActiveArraySize()];
-			String sql = "SELECT sectorNameInTheList \n"
-					+ "FROM Advanced_Sector_List_Remove";
-			try (Connection conn = connector();
-					Statement stmt = conn.createStatement();
-					ResultSet result = stmt.executeQuery(sql)) {
-					int index = 0;
-					while (result.next()) {
-						list[index] = result.getString("sectorNameInTheList");
-						++index;			
-					}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return list;
-			
-		} else {
-			String list[] = {"No Sector"};
-			return list;
-		}
-	}
-	public int getAdvancedSectorActiveArraySize() {
-		int size = 0;
-		String sqlid = "SELECT * \n"
-				+ "FROM Advanced_Sector_List_Remove";
-		
-		try (Connection conn = connector();
-				Statement stmt = conn.createStatement();
-				ResultSet result = stmt.executeQuery(sqlid)) {
-				while (result.next()) {
-					size = size + 1;
-				}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return size;
-	}
 	
 //	public static void main(String[] args) {
 //		ComboboxList access = new ComboboxList();
