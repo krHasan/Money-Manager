@@ -2,7 +2,8 @@
 Money Manager is an application which can help you to keep record of your personal finance. Many of us don't maintain document of how much money we get in a month and how much expense because that seems very painy to us. This application will help us to keep a record of our every transaction.
 
 # Download
-Download Money-Manager for Linux and windows from [Google Drive](https://drive.google.com/open?id=1p5izodhPK-JPNdc5HZo16nLhpiaszzvC) 
+Download Money-Manager for Linux and windows from [Google Drive](https://drive.google.com/open?id=1p5izodhPK-JPNdc5HZo16nLhpiaszzvC)
+You need not to worry about installing JDK on your computer, because Money-Manager have its own JDK support. 
 
 # Technologies
 Here I used Model–view–controller(MVC) architecture to build this application. What I used to develop the application are listed below

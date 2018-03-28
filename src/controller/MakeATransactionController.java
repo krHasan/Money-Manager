@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -28,6 +31,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.MakeATransactionModel;
 import operation.BankIssue;
 import operation.ComboboxList;
@@ -35,7 +39,6 @@ import operation.GoToOperation;
 import system.DateFormatManager;
 import system.Undo;
 import system.UnitConverter;
-import tab.AdvancedExpense;
 import tab.Bkash;
 import tab.Borrow;
 import tab.Expense;
@@ -779,7 +782,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 		alert.setHeaderText(null);
 		alert.setContentText(feedback);
 		alert.setX(MakeATransactionStage.getX() + 190);
-		alert.setY(MakeATransactionStage.getY() + 190);
+		alert.setY(MakeATransactionStage.getY() + 29);
 //		initialize();
 		gmInitialize();
 		exInitialize();
@@ -787,7 +790,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 		bkInitialize();
 		rocInitialize();
 		perInitialize();
-		alert.showAndWait();
+	    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+	    {
+	        @Override
+	        public void handle( ActionEvent event )
+	        {
+	        	alert.hide();
+	        }
+	    } ) );
+	    idlestage.setCycleCount( 1 );
+	    idlestage.play();
+	    alert.showAndWait();
 	}
 
 	@FXML
@@ -942,7 +955,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setContentText("Write a Source Name Please");
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			} else if (countWords(typedName) == 0) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Operation Falied");
@@ -950,7 +973,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setContentText("Write a Source Name Please");
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			} else {
 				new Source().createSource(typedName);
 				
@@ -961,7 +994,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Stage SettingsStage = (Stage) MakeATransactionStage.getScene().getWindow();
 				confirmationMsg.setX(SettingsStage.getX() + 200);
 				confirmationMsg.setY(SettingsStage.getY() + 170);
-				confirmationMsg.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 				
 				gmLoadSource();
 				gmcmboSource.getSelectionModel().selectLast();
@@ -1036,11 +1079,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Successfull Transaction");
 				confirmationMsg.setHeaderText(null);
-				confirmationMsg.setContentText("Your transaction completed successfully.");
+				confirmationMsg.setContentText("Successful");
 				Stage MakeATransactionStage = (Stage) gmbtnSave.getScene().getWindow();
 				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-				confirmationMsg.showAndWait();
+				confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 				
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.WARNING);
@@ -1050,7 +1103,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Stage MakeATransactionStage = (Stage) gmbtnSave.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			}
 		}
 		cancelbtnPressed = true;
@@ -1201,11 +1264,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Successfull Transaction");
 				confirmationMsg.setHeaderText(null);
-				confirmationMsg.setContentText("Your transaction completed successfully.");
+				confirmationMsg.setContentText("Successful.");
 				Stage MakeATransactionStage = (Stage) gmbtnSave.getScene().getWindow();
 				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-				confirmationMsg.showAndWait();
+				confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 				
 				(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
 				MakeATransactionStage.close();
@@ -1218,7 +1291,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Stage MakeATransactionStage = (Stage) gmbtnSave.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			}
 		}
 
@@ -1364,7 +1447,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setContentText("Write a Sector Name Please");
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			} else if (countWords(typedName) == 0) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Operation Failed");
@@ -1372,7 +1465,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setContentText("Write a Sector Name Please");
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			} else if(new Sector().createSector(typedName)) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Operation Failed");
@@ -1380,7 +1483,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setContentText("Sector Name Already Exist");
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();				
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();				
 			} else {
 				new Sector().createSector(typedName);
 				
@@ -1390,7 +1503,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				confirmationMsg.setContentText("Sector "+typedName+ " created successfully");
 				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
 				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-				confirmationMsg.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 				
 				exLoadSector();
 				excmboSector.getSelectionModel().selectLast();
@@ -1419,7 +1542,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setContentText(InvalidInput);
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			} else if (amountIsZero(typedAmount)) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Transaction Failed");
@@ -1427,7 +1560,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setContentText("Zero is not approved.");
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			} else {
 				adjustBtnPressed = true;
 				long dbWalletBalance = currentWalletBalance();
@@ -1534,11 +1677,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 			confirmationMsg.setTitle("Successfull Transaction");
 			confirmationMsg.setHeaderText(null);
-			confirmationMsg.setContentText("Your transaction completed successfully.");
+			confirmationMsg.setContentText("Successful");
 			Stage MakeATransactionStage = (Stage) exbtnSave.getScene().getWindow();
 			confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-			confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-			confirmationMsg.showAndWait();
+			confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 		} catch (Exception e) {
 			Alert alert = new Alert(AlertType.WARNING);
@@ -1548,7 +1701,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 			Stage MakeATransactionStage = (Stage) exbtnSave.getScene().getWindow();
 			alert.setX(MakeATransactionStage.getX() + 200);
 			alert.setY(MakeATransactionStage.getY() + 170);
-			alert.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	alert.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    alert.showAndWait();
 		}
 	}
 	
@@ -1725,7 +1888,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setContentText(InvalidInput);
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			} else if (amountIsZero(typedAmount)) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Transaction Failed");
@@ -1733,7 +1906,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				alert.setContentText("Zero is not approved.");
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			} else {
 				long dbWalletBalance = currentWalletBalance();
 				long typedBalance = stringToLong(typedAmount);
@@ -1773,10 +1956,20 @@ public class MakeATransactionController extends MakeATransactionModel {
 					Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 					confirmationMsg.setTitle("Successfull Transaction");
 					confirmationMsg.setHeaderText(null);
-					confirmationMsg.setContentText("Your transaction completed successfully.");
+					confirmationMsg.setContentText("Successful");
 					confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-					confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-					confirmationMsg.showAndWait();
+					confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+				    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+				    {
+				        @Override
+				        public void handle( ActionEvent event )
+				        {
+				        	confirmationMsg.hide();
+				        }
+				    } ) );
+				    idlestage.setCycleCount( 1 );
+				    idlestage.play();
+				    confirmationMsg.showAndWait();
 					
 				} catch (Exception e) {
 					Alert alert = new Alert(AlertType.WARNING);
@@ -1785,7 +1978,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 					alert.setContentText("There something is wrong.");
 					alert.setX(MakeATransactionStage.getX() + 200);
 					alert.setY(MakeATransactionStage.getY() + 170);
-					alert.showAndWait();
+				    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+				    {
+				        @Override
+				        public void handle( ActionEvent event )
+				        {
+				        	alert.hide();
+				        }
+				    } ) );
+				    idlestage.setCycleCount( 1 );
+				    idlestage.play();
+				    alert.showAndWait();
 				}
 			}
 		}
@@ -1824,13 +2027,23 @@ public class MakeATransactionController extends MakeATransactionModel {
 			extxtAdvancedDescription.clear();
 			
 			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
-			confirmationMsg.setTitle("Successfull Transaction");
+			confirmationMsg.setTitle("Successful Transaction");
 			confirmationMsg.setHeaderText(null);
-			confirmationMsg.setContentText("Your transaction completed successfully.");
+			confirmationMsg.setContentText("Successful");
 			Stage MakeATransactionStage = (Stage) exbtnSave.getScene().getWindow();
 			confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-			confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-			confirmationMsg.showAndWait();
+			confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
 			MakeATransactionStage.close();
 		}
@@ -2841,7 +3054,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							boleData.put("boTime", timeToSave());
 							boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
@@ -2870,11 +3093,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 							confirmationMsg.setTitle("Successfull Transaction");
 							confirmationMsg.setHeaderText(null);
-							confirmationMsg.setContentText("Your transaction completed successfully.");
+							confirmationMsg.setContentText("Successful");
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-							confirmationMsg.showAndWait();
+							confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	confirmationMsg.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    confirmationMsg.showAndWait();
 							
 						}	// Borrow, Money Take, Rocket
 					} else if(bocmboMethod.getValue().equals("Rocket")) {
@@ -2886,7 +3119,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							boleData.put("boTime", timeToSave());
 							boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
@@ -2915,11 +3158,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 							confirmationMsg.setTitle("Successfull Transaction");
 							confirmationMsg.setHeaderText(null);
-							confirmationMsg.setContentText("Your transaction completed successfully.");
+							confirmationMsg.setContentText("Successful");
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-							confirmationMsg.showAndWait();
+							confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	confirmationMsg.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    confirmationMsg.showAndWait();
 						}
 					} else { // Borrow, Money Take, Hand to Hand
 						if (amountIsZero(botxtAmountWithCharge.getText()) || letterCount(botxtFromWhom.getText())==100) {
@@ -2930,7 +3183,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							boleData.put("boTime", timeToSave());
 							boleData.put("boDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
@@ -2959,11 +3222,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 							confirmationMsg.setTitle("Successfull Transaction");
 							confirmationMsg.setHeaderText(null);
-							confirmationMsg.setContentText("Your transaction completed successfully.");
+							confirmationMsg.setContentText("Successful");
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-							confirmationMsg.showAndWait();
+							confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	confirmationMsg.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    confirmationMsg.showAndWait();
 						}
 					}
 					
@@ -2978,7 +3251,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							if (boRepayValidation(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
 								boleData.put("boTime", timeToSave());
@@ -3012,11 +3295,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 								confirmationMsg.setTitle("Successfull Transaction");
 								confirmationMsg.setHeaderText(null);
-								confirmationMsg.setContentText("Your transaction completed successfully.");
+								confirmationMsg.setContentText("Successful");
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-								confirmationMsg.showAndWait();
+								confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	confirmationMsg.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    confirmationMsg.showAndWait();
 							} else {
 								Alert alert = new Alert(AlertType.WARNING);
 								alert.setTitle("Transaction Failed");
@@ -3025,7 +3318,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								alert.setX(MakeATransactionStage.getX() + 200);
 								alert.setY(MakeATransactionStage.getY() + 170);
-								alert.showAndWait();
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	alert.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    alert.showAndWait();
 							}
 						}  // Borrow, Return Borrowed Money, Rocket
 					} else if(bocmboMethod.getValue().equals("Rocket")) {
@@ -3037,7 +3340,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							if (boRepayValidation(botxtExactAmount.getText(), bocmboRepaidPerson.getValue())) {
 								boleData.put("boTime", timeToSave());
@@ -3071,11 +3384,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 								confirmationMsg.setTitle("Successfull Transaction");
 								confirmationMsg.setHeaderText(null);
-								confirmationMsg.setContentText("Your transaction completed successfully.");
+								confirmationMsg.setContentText("Successful");
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-								confirmationMsg.showAndWait();
+								confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	confirmationMsg.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    confirmationMsg.showAndWait();
 							} else {
 								Alert alert = new Alert(AlertType.WARNING);
 								alert.setTitle("Transaction Failed");
@@ -3084,7 +3407,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								alert.setX(MakeATransactionStage.getX() + 200);
 								alert.setY(MakeATransactionStage.getY() + 170);
-								alert.showAndWait();
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	alert.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    alert.showAndWait();
 							}
 						}
 					} else { // Borrow, Return Borrowed Money, Hand to Hand
@@ -3096,7 +3429,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							if (boRepayValidation(botxtAmountWithCharge.getText(), bocmboRepaidPerson.getValue())) {
 								boleData.put("boTime", timeToSave());
@@ -3130,11 +3473,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 								confirmationMsg.setTitle("Successfull Transaction");
 								confirmationMsg.setHeaderText(null);
-								confirmationMsg.setContentText("Your transaction completed successfully.");
+								confirmationMsg.setContentText("Successful");
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-								confirmationMsg.showAndWait();
+								confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	confirmationMsg.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    confirmationMsg.showAndWait();
 							} else {
 								Alert alert = new Alert(AlertType.WARNING);
 								alert.setTitle("Transaction Failed");
@@ -3143,7 +3496,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								alert.setX(MakeATransactionStage.getX() + 200);
 								alert.setY(MakeATransactionStage.getY() + 170);
-								alert.showAndWait();
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	alert.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    alert.showAndWait();
 							}
 						}
 					}
@@ -3162,7 +3525,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							boleData.put("leTime", timeToSave());
 							boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
@@ -3191,11 +3564,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 							confirmationMsg.setTitle("Successfull Transaction");
 							confirmationMsg.setHeaderText(null);
-							confirmationMsg.setContentText("Your transaction completed successfully.");
+							confirmationMsg.setContentText("Successful");
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-							confirmationMsg.showAndWait();
+							confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	confirmationMsg.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    confirmationMsg.showAndWait();
 						}	// Lend, Give Money, Rocket
 					} else if(lecmboMethod.getValue().equals("Rocket")) {
 						if (amountIsZero(letxtAmountWithCharge.getText()) || letterCount(letxtFromWhom.getText())==100 || amountIsZero(letxtExactAmount.getText())) {
@@ -3206,7 +3589,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							boleData.put("leTime", timeToSave());
 							boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
@@ -3235,11 +3628,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 							confirmationMsg.setTitle("Successfull Transaction");
 							confirmationMsg.setHeaderText(null);
-							confirmationMsg.setContentText("Your transaction completed successfully.");
+							confirmationMsg.setContentText("Successful");
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-							confirmationMsg.showAndWait();
+							confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	confirmationMsg.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    confirmationMsg.showAndWait();
 						}	
 					} else {  // Lend, Give Money, Hand to Hand
 						if (amountIsZero(letxtAmountWithCharge.getText()) || letterCount(letxtFromWhom.getText())==100) {
@@ -3250,7 +3653,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							boleData.put("leTime", timeToSave());
 							boleData.put("leDate", (new DateFormatManager()).toString(lenddateDate.getValue()));
@@ -3278,11 +3691,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 							confirmationMsg.setTitle("Successfull Transaction");
 							confirmationMsg.setHeaderText(null);
-							confirmationMsg.setContentText("Your transaction completed successfully.");
+							confirmationMsg.setContentText("Successful");
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-							confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-							confirmationMsg.showAndWait();
+							confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	confirmationMsg.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    confirmationMsg.showAndWait();
 						}	
 					}
 					
@@ -3297,7 +3720,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							if (leRepayValidation(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
 								boleData.put("leTime", timeToSave());
@@ -3331,11 +3764,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 								confirmationMsg.setTitle("Successfull Transaction");
 								confirmationMsg.setHeaderText(null);
-								confirmationMsg.setContentText("Your transaction completed successfully.");
+								confirmationMsg.setContentText("Successful");
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-								confirmationMsg.showAndWait();
+								confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	confirmationMsg.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    confirmationMsg.showAndWait();
 							} else {
 								Alert alert = new Alert(AlertType.WARNING);
 								alert.setTitle("Transaction Failed");
@@ -3344,7 +3787,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								alert.setX(MakeATransactionStage.getX() + 200);
 								alert.setY(MakeATransactionStage.getY() + 170);
-								alert.showAndWait();
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	alert.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    alert.showAndWait();
 							}
 						} 	 // Lend, Take Back Lended Money, Rocket
 					} else if(lecmboMethod.getValue().equals("Rocket")) {
@@ -3356,7 +3809,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							if (leRepayValidation(letxtExactAmount.getText(), lecmboRepaidPerson.getValue())) {
 								boleData.put("leTime", timeToSave());
@@ -3390,11 +3853,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 								confirmationMsg.setTitle("Successfull Transaction");
 								confirmationMsg.setHeaderText(null);
-								confirmationMsg.setContentText("Your transaction completed successfully.");
+								confirmationMsg.setContentText("Successful");
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-								confirmationMsg.showAndWait();
+								confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	confirmationMsg.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    confirmationMsg.showAndWait();
 							} else {
 								Alert alert = new Alert(AlertType.WARNING);
 								alert.setTitle("Transaction Failed");
@@ -3403,7 +3876,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								alert.setX(MakeATransactionStage.getX() + 200);
 								alert.setY(MakeATransactionStage.getY() + 170);
-								alert.showAndWait();
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	alert.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    alert.showAndWait();
 							}
 						}
 					} else { // Lend, Take Back Lended Money, Hand to Hand
@@ -3415,7 +3898,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 							Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 							alert.setX(MakeATransactionStage.getX() + 200);
 							alert.setY(MakeATransactionStage.getY() + 170);
-							alert.showAndWait();
+						    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+						    {
+						        @Override
+						        public void handle( ActionEvent event )
+						        {
+						        	alert.hide();
+						        }
+						    } ) );
+						    idlestage.setCycleCount( 1 );
+						    idlestage.play();
+						    alert.showAndWait();
 						} else {
 							if (leRepayValidation(letxtAmountWithCharge.getText(), lecmboRepaidPerson.getValue())) {
 								boleData.put("leTime", timeToSave());
@@ -3448,11 +3941,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 								confirmationMsg.setTitle("Successfull Transaction");
 								confirmationMsg.setHeaderText(null);
-								confirmationMsg.setContentText("Your transaction completed successfully.");
+								confirmationMsg.setContentText("Successful");
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-								confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-								confirmationMsg.showAndWait();
+								confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	confirmationMsg.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    confirmationMsg.showAndWait();
 							} else {
 								Alert alert = new Alert(AlertType.WARNING);
 								alert.setTitle("Transaction Failed");
@@ -3461,7 +3964,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 								Stage MakeATransactionStage = (Stage) lendbtnSave.getScene().getWindow();
 								alert.setX(MakeATransactionStage.getX() + 200);
 								alert.setY(MakeATransactionStage.getY() + 170);
-								alert.showAndWait();
+							    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+							    {
+							        @Override
+							        public void handle( ActionEvent event )
+							        {
+							        	alert.hide();
+							        }
+							    } ) );
+							    idlestage.setCycleCount( 1 );
+							    idlestage.play();
+							    alert.showAndWait();
 							}
 						}
 					}
@@ -4163,7 +4676,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 					alert.setContentText(InvalidInput);
 					alert.setX(MakeATransactionStage.getX() + 200);
 					alert.setY(MakeATransactionStage.getY() + 170);
-					alert.showAndWait();
+				    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+				    {
+				        @Override
+				        public void handle( ActionEvent event )
+				        {
+				        	alert.hide();
+				        }
+				    } ) );
+				    idlestage.setCycleCount( 1 );
+				    idlestage.play();
+				    alert.showAndWait();
 				} else if (amountIsZero(typedAmount)) {
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setTitle("Transaction Failed");
@@ -4171,7 +4694,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 					alert.setContentText("Zero is not approved.");
 					alert.setX(MakeATransactionStage.getX() + 200);
 					alert.setY(MakeATransactionStage.getY() + 170);
-					alert.showAndWait();
+				    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+				    {
+				        @Override
+				        public void handle( ActionEvent event )
+				        {
+				        	alert.hide();
+				        }
+				    } ) );
+				    idlestage.setCycleCount( 1 );
+				    idlestage.play();
+				    alert.showAndWait();
 				} else {
 					bnkAdjustBtnPressed = true;
 					long dbbKashBalance = currentbKashBalance();
@@ -4206,7 +4739,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 					alert.setContentText(InvalidInput);
 					alert.setX(MakeATransactionStage.getX() + 200);
 					alert.setY(MakeATransactionStage.getY() + 170);
-					alert.showAndWait();
+				    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+				    {
+				        @Override
+				        public void handle( ActionEvent event )
+				        {
+				        	alert.hide();
+				        }
+				    } ) );
+				    idlestage.setCycleCount( 1 );
+				    idlestage.play();
+				    alert.showAndWait();
 				} else if (amountIsZero(typedAmount)) {
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setTitle("Transaction Failed");
@@ -4214,7 +4757,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 					alert.setContentText("Zero is not approved.");
 					alert.setX(MakeATransactionStage.getX() + 200);
 					alert.setY(MakeATransactionStage.getY() + 170);
-					alert.showAndWait();
+				    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+				    {
+				        @Override
+				        public void handle( ActionEvent event )
+				        {
+				        	alert.hide();
+				        }
+				    } ) );
+				    idlestage.setCycleCount( 1 );
+				    idlestage.play();
+				    alert.showAndWait();
 				} else {
 					bnkAdjustBtnPressed = true;
 					long dbrocketBalance = currentRocketBalance();
@@ -4247,7 +4800,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			} else {
 				bnkSaveFunction();
 			}
@@ -4260,7 +4823,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			} else {
 				bnkSaveFunction();
 			}
@@ -4273,7 +4846,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			} else {
 				bnkSaveFunction();
 			}
@@ -4334,11 +4917,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Successful Transaction");
 				confirmationMsg.setHeaderText(null);
-				confirmationMsg.setContentText("Your transaction completed successfully.");
+				confirmationMsg.setContentText("Successful");
 				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-				confirmationMsg.showAndWait();
+				confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Transaction Failed");
@@ -4347,7 +4940,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			}
 			
 		} else if(bnkSelectedTabName.equals("Rocket")) {
@@ -4406,11 +5009,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Successfull Transaction");
 				confirmationMsg.setHeaderText(null);
-				confirmationMsg.setContentText("Your transaction completed successfully.");
+				confirmationMsg.setContentText("Successful");
 				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-				confirmationMsg.showAndWait();
+				confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Transaction Failed");
@@ -4419,7 +5032,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			}
 			
 		} else {
@@ -4452,11 +5075,21 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Successfull Transaction");
 				confirmationMsg.setHeaderText(null);
-				confirmationMsg.setContentText("Your transaction completed successfully.");
+				confirmationMsg.setContentText("Successful");
 				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-				confirmationMsg.setY(MakeATransactionStage.getY() + 170);
-				confirmationMsg.showAndWait();
+				confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Transaction Failed");
@@ -4465,7 +5098,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 				Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
 				alert.setX(MakeATransactionStage.getX() + 200);
 				alert.setY(MakeATransactionStage.getY() + 170);
-				alert.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	alert.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    alert.showAndWait();
 			}
 		}
 	}

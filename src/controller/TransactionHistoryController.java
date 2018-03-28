@@ -3,10 +3,13 @@ package controller;
 import java.net.URL;
 import java.time.LocalDate;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -19,6 +22,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.TransactionHistoryModel;
 import netscape.javascript.JSObject;
 import operation.GoToOperation;
@@ -213,7 +217,17 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 		alert.setX(TransactionHistoryStage.getX() + 190);
 		alert.setY(TransactionHistoryStage.getY() + 190);
 		initialize();
-		alert.showAndWait();
+	    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+	    {
+	        @Override
+	        public void handle( ActionEvent event )
+	        {
+	        	alert.hide();
+	        }
+	    } ) );
+	    idlestage.setCycleCount( 1 );
+	    idlestage.play();
+	    alert.showAndWait();
 	}
 	
 	@FXML

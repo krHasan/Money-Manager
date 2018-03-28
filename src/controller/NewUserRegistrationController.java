@@ -1,6 +1,9 @@
 package controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -11,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.NewUserRegistrationModel;
 import operation.GoToOperation;
 
@@ -155,7 +159,17 @@ public class NewUserRegistrationController extends NewUserRegistrationModel {
 				confirmationMsg.setContentText("Account Created Successfully");
 				confirmationMsg.setX(NewUserRegistrationStage.getX() + 200);
 				confirmationMsg.setY(NewUserRegistrationStage.getY() + 170);
-				confirmationMsg.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 			} else {
 				Alert confirmationMsg = new Alert(AlertType.ERROR);
 				confirmationMsg.setTitle("Sign Up Failed");
@@ -163,7 +177,17 @@ public class NewUserRegistrationController extends NewUserRegistrationModel {
 				confirmationMsg.setContentText("There have some problem.");
 				confirmationMsg.setX(NewUserRegistrationStage.getX() + 200);
 				confirmationMsg.setY(NewUserRegistrationStage.getY() + 170);
-				confirmationMsg.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 			}
 		}
 	}

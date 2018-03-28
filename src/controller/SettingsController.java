@@ -7,7 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -26,6 +29,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.SettingsModel;
 import operation.BankIssue;
 import operation.ComboboxList;
@@ -930,11 +934,21 @@ public class SettingsController extends SettingsModel {
 			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 			confirmationMsg.setTitle("Message");
 			confirmationMsg.setHeaderText(null);
-			confirmationMsg.setContentText("Information updated successfully");
+			confirmationMsg.setContentText("Successful");
 			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 			confirmationMsg.setX(SettingsStage.getX() + 200);
-			confirmationMsg.setY(SettingsStage.getY() + 170);
-			confirmationMsg.showAndWait();
+			confirmationMsg.setY(SettingsStage.getY() + 29);
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -971,7 +985,17 @@ public class SettingsController extends SettingsModel {
 			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 			confirmationMsg.setX(SettingsStage.getX() + 200);
 			confirmationMsg.setY(SettingsStage.getY() + 170);
-			confirmationMsg.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 			tabSourceInitialize();
 		}
@@ -1006,7 +1030,17 @@ public class SettingsController extends SettingsModel {
 				confirmationMsg.setContentText(sourcecmboDelete.getValue()+ " Deleted Successfully");
 				confirmationMsg.setX(SettingsStage.getX() + 190);
 				confirmationMsg.setY(SettingsStage.getY() + 190);
-				confirmationMsg.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 			}
 			
 			tabSourceInitialize();
@@ -1026,7 +1060,17 @@ public class SettingsController extends SettingsModel {
 			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 			confirmationMsg.setX(SettingsStage.getX() + 200);
 			confirmationMsg.setY(SettingsStage.getY() + 170);
-			confirmationMsg.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 			tabSourceInitialize();
 		} catch (Exception e) {}
@@ -1045,7 +1089,17 @@ public class SettingsController extends SettingsModel {
 			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 			confirmationMsg.setX(SettingsStage.getX() + 200);
 			confirmationMsg.setY(SettingsStage.getY() + 170);
-			confirmationMsg.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 			tabSourceInitialize();
 		} catch (Exception e) {}
@@ -1153,7 +1207,17 @@ public class SettingsController extends SettingsModel {
 			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 			confirmationMsg.setX(SettingsStage.getX() + 200);
 			confirmationMsg.setY(SettingsStage.getY() + 170);
-			confirmationMsg.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 			tabSectorInitialize();
 			
@@ -1168,7 +1232,17 @@ public class SettingsController extends SettingsModel {
 			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 			confirmationMsg.setX(SettingsStage.getX() + 200);
 			confirmationMsg.setY(SettingsStage.getY() + 170);
-			confirmationMsg.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 			tabSectorInitialize();
 		}
@@ -1203,7 +1277,17 @@ public class SettingsController extends SettingsModel {
 				confirmationMsg.setContentText(sectorcmboDelete.getValue()+ " Deleted Successfully");
 				confirmationMsg.setX(SettingsStage.getX() + 190);
 				confirmationMsg.setY(SettingsStage.getY() + 190);
-				confirmationMsg.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 			}
 			
 			tabSectorInitialize();
@@ -1223,7 +1307,17 @@ public class SettingsController extends SettingsModel {
 			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 			confirmationMsg.setX(SettingsStage.getX() + 200);
 			confirmationMsg.setY(SettingsStage.getY() + 170);
-			confirmationMsg.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 			tabSectorInitialize();
 		} catch (Exception e) {}
@@ -1242,7 +1336,17 @@ public class SettingsController extends SettingsModel {
 			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 			confirmationMsg.setX(SettingsStage.getX() + 200);
 			confirmationMsg.setY(SettingsStage.getY() + 170);
-			confirmationMsg.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 			tabSectorInitialize();
 		} catch (Exception e) {}
@@ -1284,7 +1388,17 @@ public class SettingsController extends SettingsModel {
 		
 		(new TabAccess()).setTabName("tabExpense");
 		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-		confirmationMsg.showAndWait();
+	    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(5), new EventHandler<ActionEvent>()
+	    {
+	        @Override
+	        public void handle( ActionEvent event )
+	        {
+	        	confirmationMsg.hide();
+	        }
+	    } ) );
+	    idlestage.setCycleCount( 1 );
+	    idlestage.play();
+	    confirmationMsg.showAndWait();
 		SettingsStage.close();
 	}
 	
@@ -1398,7 +1512,17 @@ public class SettingsController extends SettingsModel {
 			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 			confirmationMsg.setX(SettingsStage.getX() + 200);
 			confirmationMsg.setY(SettingsStage.getY() + 170);
-			confirmationMsg.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 			tabSystemInitialize();
 		} catch (Exception e) {
@@ -1449,7 +1573,17 @@ public class SettingsController extends SettingsModel {
 						alert.setContentText("Wrong Password");
 						alert.setX(SettingsStage.getX() + 200);
 						alert.setY(SettingsStage.getY() + 170);
-						alert.showAndWait();
+					    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+					    {
+					        @Override
+					        public void handle( ActionEvent event )
+					        {
+					        	alert.hide();
+					        }
+					    } ) );
+					    idlestage.setCycleCount( 1 );
+					    idlestage.play();
+					    alert.showAndWait();
 					}
 				} 
 				
@@ -1464,7 +1598,17 @@ public class SettingsController extends SettingsModel {
 				Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 				confirmationMsg.setX(SettingsStage.getX() + 200);
 				confirmationMsg.setY(SettingsStage.getY() + 170);
-				confirmationMsg.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 				
 				lblUserFullName.setText(getUserFullName());
 				tabSystemInitialize();
@@ -1501,7 +1645,17 @@ public class SettingsController extends SettingsModel {
 						alert.setContentText("Wrong Password");
 						alert.setX(SettingsStage.getX() + 200);
 						alert.setY(SettingsStage.getY() + 170);
-						alert.showAndWait();
+					    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+					    {
+					        @Override
+					        public void handle( ActionEvent event )
+					        {
+					        	alert.hide();
+					        }
+					    } ) );
+					    idlestage.setCycleCount( 1 );
+					    idlestage.play();
+					    alert.showAndWait();
 					}
 				} 
 				
@@ -1519,7 +1673,17 @@ public class SettingsController extends SettingsModel {
 					Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 					confirmationMsg.setX(SettingsStage.getX() + 200);
 					confirmationMsg.setY(SettingsStage.getY() + 170);
-					confirmationMsg.showAndWait();
+				    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+				    {
+				        @Override
+				        public void handle( ActionEvent event )
+				        {
+				        	confirmationMsg.hide();
+				        }
+				    } ) );
+				    idlestage.setCycleCount( 1 );
+				    idlestage.play();
+				    confirmationMsg.showAndWait();
 					
 					tabSystemInitialize();
 				}
@@ -1599,7 +1763,18 @@ public class SettingsController extends SettingsModel {
 				confirmationMsg.setX(SettingsStage.getX() + 200);
 				confirmationMsg.setY(SettingsStage.getY() + 170);
 				tabAdvancedInitialize();
-				confirmationMsg.showAndWait();
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(7), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.setResult(ButtonType.CANCEL);
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
 				
 			} else {
 				advancedSector.addSectorToList(advancedCmboAdd.getValue());
@@ -1607,12 +1782,24 @@ public class SettingsController extends SettingsModel {
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 				confirmationMsg.setTitle("Message");
 				confirmationMsg.setHeaderText(null);
-				confirmationMsg.setContentText(advancedCmboAdd.getValue()+ " is addedd to list successfully");
+				confirmationMsg.setContentText("Successful");
 				Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 				confirmationMsg.setX(SettingsStage.getX() + 200);
-				confirmationMsg.setY(SettingsStage.getY() + 170);
-				tabAdvancedInitialize();
-				confirmationMsg.showAndWait();
+				confirmationMsg.setY(SettingsStage.getY() + 28);
+				tabAdvancedInitialize();				
+			    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+			    {
+			        @Override
+			        public void handle( ActionEvent event )
+			        {
+			        	confirmationMsg.setResult(ButtonType.CANCEL);
+			        	confirmationMsg.hide();
+			        }
+			    } ) );
+			    idlestage.setCycleCount( 1 );
+			    idlestage.play();
+			    confirmationMsg.showAndWait();
+			    
 			}
 		} catch (Exception e) {}
 	}
@@ -1626,12 +1813,23 @@ public class SettingsController extends SettingsModel {
 			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 			confirmationMsg.setTitle("Message");
 			confirmationMsg.setHeaderText(null);
-			confirmationMsg.setContentText(advancedCmboRemove.getValue()+ " is removed from list successfully");
+			confirmationMsg.setContentText("Successful");
 			Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
 			confirmationMsg.setX(SettingsStage.getX() + 200);
-			confirmationMsg.setY(SettingsStage.getY() + 170);
+			confirmationMsg.setY(SettingsStage.getY() + 28);
 			tabAdvancedInitialize();
-			confirmationMsg.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.setResult(ButtonType.CANCEL);
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 		} catch (Exception e) {}
 	}

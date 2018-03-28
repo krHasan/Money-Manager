@@ -1,6 +1,9 @@
 package controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -11,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.RegistrationIssueModel;
 import operation.GoToOperation;
 import system.DeleteUserCredentials;
@@ -148,7 +152,17 @@ public class RegistrationIssueController extends RegistrationIssueModel {
 			Stage RegistrationIssueStage = (Stage) btnSave.getScene().getWindow();
 			confirmationMsg.setX(RegistrationIssueStage.getX() + 200);
 			confirmationMsg.setY(RegistrationIssueStage.getY() + 170);
-			confirmationMsg.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 			
 			(new GoToOperation()).goToSignIn(RegistrationIssueStage.getX(), RegistrationIssueStage.getY());
 			RegistrationIssueStage.close();
@@ -195,7 +209,17 @@ public class RegistrationIssueController extends RegistrationIssueModel {
 			confirmationMsg.setContentText("User Information Deleted Successfully");
 			confirmationMsg.setX(RegistrationIssueStage.getX() + 200);
 			confirmationMsg.setY(RegistrationIssueStage.getY() + 170);
-			confirmationMsg.showAndWait();
+		    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(3), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
+		    confirmationMsg.showAndWait();
 		}
 	}
 	
