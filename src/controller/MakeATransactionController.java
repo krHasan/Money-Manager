@@ -2078,7 +2078,17 @@ public class MakeATransactionController extends MakeATransactionModel {
 			confirmationMsg.setContentText("Your transaction completed successfully.");
 			Stage MakeATransactionStage = (Stage) exbtnSave.getScene().getWindow();
 			confirmationMsg.setX(MakeATransactionStage.getX() + 200);
-			confirmationMsg.setY(MakeATransactionStage.getY() + 170);
+			confirmationMsg.setY(MakeATransactionStage.getY() + 29);
+			Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(2), new EventHandler<ActionEvent>()
+		    {
+		        @Override
+		        public void handle( ActionEvent event )
+		        {
+		        	confirmationMsg.hide();
+		        }
+		    } ) );
+		    idlestage.setCycleCount( 1 );
+		    idlestage.play();
 			confirmationMsg.showAndWait();
 		}
 	}
