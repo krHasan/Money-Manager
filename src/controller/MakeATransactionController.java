@@ -693,62 +693,54 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void mnuDashboard(ActionEvent event) {
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToDashboard(MakeATransactionStage);
 	}
 	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage);
 	}
 
 	@FXML
 	private void mnuExpense(ActionEvent event) {
 		(new TabAccess()).setTabName("tabExpense");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage);
 	}
 
 	@FXML
 	private void mnuLend(ActionEvent event) {
 		(new TabAccess()).setTabName("tabLend");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage);
 	}
 
 	@FXML
 	private void mnuBank(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToMakeATransaction(MakeATransactionStage);
 	}
 	
 	@FXML
 	private void mnuSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSettings(MakeATransactionStage);
 	}
 	
 	@FXML
 	private void mnuTransactionHistory(ActionEvent event) {
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToTransactionHistory(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToTransactionHistory(MakeATransactionStage);
 	}
 	
 	@FXML
 	private void mnuCashCalculate(ActionEvent event) {
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToCashCalculate(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToCashCalculate(MakeATransactionStage);
 	}
 	
 	@FXML
@@ -761,16 +753,14 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private void mnuCreateSource(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSettings(MakeATransactionStage);
 	}
 
 	@FXML
 	private void mnuCreateSector(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSettings(MakeATransactionStage);
 	}
 	
 	@FXML
@@ -807,61 +797,53 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private void mnuBankSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSettings(MakeATransactionStage);
 	}
 	
 	@FXML
 	private void mnuSourceSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSettings(MakeATransactionStage);
 	}
 
 	@FXML
 	private void mnuSectorSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSettings(MakeATransactionStage);
 	}
 	
 	@FXML
 	private void mnuSystemSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSystem");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSettings(MakeATransactionStage);
 	}
 	
 	@FXML
 	private void mnuAdvancedSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabAdvanced");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSettings(MakeATransactionStage);
 	}
 	
 	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToHelp(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToHelp(MakeATransactionStage);
 	}
 	
 	@FXML
 	private void mnuAbout(ActionEvent event) {
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToAbout(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToAbout(MakeATransactionStage);
 	}
 	
 	@FXML
 	private void btnSignOut(ActionEvent event) {
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSignIn(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSignIn(MakeATransactionStage);
 	}
 	
 ////////////////////////////////////////////  Get Money Function ////////////////////////////////////////////
@@ -931,8 +913,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	public void gmSettingBtn(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage MakeATransactionStage = (Stage) gmbtnSettings.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSettings(MakeATransactionStage);
 	}
 	
 	
@@ -1280,8 +1261,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 			    idlestage.play();
 			    confirmationMsg.showAndWait();
 				
-				(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-				MakeATransactionStage.close();
+				(new GoToOperation()).goToDashboard(MakeATransactionStage);
 				
 			} catch (Exception e) {
 				Alert alert = new Alert(AlertType.WARNING);
@@ -1593,8 +1573,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	@FXML
 	private void exbtnGoToCashCalculate(ActionEvent event) {
 		Stage MakeATransactionStage = (Stage) exbtnGoToCashCalculate.getScene().getWindow();
-		(new GoToOperation()).goToCashCalculate(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToCashCalculate(MakeATransactionStage);
 	}
 	
 	
@@ -1605,8 +1584,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 		} else {
 			exSaveFunction();
 			Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-			(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-			MakeATransactionStage.close();
+			(new GoToOperation()).goToDashboard(MakeATransactionStage);
 		}
 	}
 	
@@ -1999,8 +1977,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private void exbtnGoToExpenseSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabAdvanced");
 		Stage MakeATransactionStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSettings(MakeATransactionStage);
 	}
 	
 	
@@ -2044,8 +2021,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 		    idlestage.setCycleCount( 1 );
 		    idlestage.play();
 		    confirmationMsg.showAndWait();
-			(new GoToOperation()).goToDashboard(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-			MakeATransactionStage.close();
+			(new GoToOperation()).goToDashboard(MakeATransactionStage);
 		}
 	}
 	
@@ -4098,8 +4074,7 @@ public class MakeATransactionController extends MakeATransactionModel {
 	private void bnkSettingBtn(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage MakeATransactionStage = (Stage) bnkbtnSettings.getScene().getWindow();
-		(new GoToOperation()).goToSettings(MakeATransactionStage.getX(), MakeATransactionStage.getY());
-		MakeATransactionStage.close();
+		(new GoToOperation()).goToSettings(MakeATransactionStage);
 	}
 	
 	

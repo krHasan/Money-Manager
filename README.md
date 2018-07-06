@@ -61,7 +61,7 @@ Linux Platform:
  - Create a new JavaFX project named "Money-Manager" and delete its application package on `src`
  - Go to the project folder in your workspace and initiate git `$ git init ` with this command
  - Now [clone](https://help.github.com/articles/cloning-a-repository) the "Money-Manager" repository to that folder
- - Add `json-simple-1.1.1.jar` and `sqlite-jdbc-3.20.0.jar` as external jar file.
+ - Add `json-simple-1.1.1.jar` and `sqlite-jdbc-3.20.0.jar` from Libraries folder as external jar file. 
  
 Windows Platform: I found few differences between Windows platform and Linux platform. Some feature didn't work on Windows. As I develop this application on Linux so the files in repository will work on Linux. Windows user can download windows development files from [here](https://drive.google.com/open?id=1NZ7oglmL26dlb6bOe9LojnhtCSG85D14). Then follow the steps 
  - Create a new JavaFX project named "Money-Manager" and delete its application package on `src`

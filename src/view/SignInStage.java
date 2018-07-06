@@ -14,7 +14,6 @@ public class SignInStage extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
 			Scene scene = new Scene(root,800,550);
-//			scene.getStylesheets().add(getClass().getResource("/css/SignIn.css").toExternalForm());
 			SignInStage.setScene(scene);
 			SignInStage.setResizable(false);
 //			SignInStage.getIcons().add(new Image(SignInStage.class.getResourceAsStream("/imges/purse_2_.ico")));

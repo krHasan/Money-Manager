@@ -71,8 +71,7 @@ public class NewUserRegistrationController extends NewUserRegistrationModel {
 	@FXML
 	private void btnCancel(ActionEvent event) {
 		Stage NewUserRegistrationStage = (Stage) btnCancel.getScene().getWindow();
-		(new GoToOperation()).goToSignIn(NewUserRegistrationStage.getX(), NewUserRegistrationStage.getY());
-		NewUserRegistrationStage.close();
+		(new GoToOperation()).goToSignIn(NewUserRegistrationStage);
 	}
 	
 
@@ -149,8 +148,7 @@ public class NewUserRegistrationController extends NewUserRegistrationModel {
 			setSecurityQuestionAnswer(txtAnswer.getText());
 
 			Stage NewUserRegistrationStage = (Stage) btnRegistration.getScene().getWindow();
-			(new GoToOperation()).goToSignIn(NewUserRegistrationStage.getX(), NewUserRegistrationStage.getY());
-			NewUserRegistrationStage.close();
+			(new GoToOperation()).goToSignIn(NewUserRegistrationStage);
 			
 			if (feedback) {
 				Alert confirmationMsg = new Alert(AlertType.INFORMATION);

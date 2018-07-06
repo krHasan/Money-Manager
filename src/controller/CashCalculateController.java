@@ -149,62 +149,54 @@ public class CashCalculateController extends CashCalculateModel {
 	@FXML
 	private void mnuDashboard(ActionEvent event) {
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow(); //create this stage object
-		(new GoToOperation()).goToDashboard(CashCalculateStage.getX(), CashCalculateStage.getY()); //open expected stage
-		CashCalculateStage.close(); //close this stage
+		(new GoToOperation()).goToDashboard(CashCalculateStage); //open expected stage
 	}
 	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney");//define which tab should open
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToMakeATransaction(CashCalculateStage);
 	}
 
 	@FXML
 	private void mnuExpense(ActionEvent event) {
 		(new TabAccess()).setTabName("tabExpense");
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToMakeATransaction(CashCalculateStage);
 	}
 
 	@FXML
 	private void mnuLend(ActionEvent event) {
 		(new TabAccess()).setTabName("tabLend");
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToMakeATransaction(CashCalculateStage);
 	}
 
 	@FXML
 	private void mnuBank(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToMakeATransaction(CashCalculateStage);
 	}
 	
 	@FXML
 	private void mnuSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToSettings(CashCalculateStage);
 	}
 	
 	@FXML
 	private void mnuTransactionHistory(ActionEvent event) {
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToTransactionHistory(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToTransactionHistory(CashCalculateStage);
 	}
 	
 	@FXML
 	private void mnuCashCalculate(ActionEvent event) {
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToCashCalculate(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToCashCalculate(CashCalculateStage);
 	}
 	
 	@FXML
@@ -217,16 +209,14 @@ public class CashCalculateController extends CashCalculateModel {
 	private void mnuCreateSource(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToSettings(CashCalculateStage);
 	}
 
 	@FXML
 	private void mnuCreateSector(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToSettings(CashCalculateStage);
 	}
 	
 	@FXML
@@ -241,8 +231,7 @@ public class CashCalculateController extends CashCalculateModel {
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			(new TabAccess()).setTabName("tabGetMoney"); //name of which Tab should open
-			(new GoToOperation()).goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
-			CashCalculateStage.close();
+			(new GoToOperation()).goToMakeATransaction(CashCalculateStage);
 		}
 	}
 
@@ -250,77 +239,67 @@ public class CashCalculateController extends CashCalculateModel {
 	private void mnuBankSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToSettings(CashCalculateStage);
 	}
 	
 	@FXML
 	private void mnuSourceSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToSettings(CashCalculateStage);
 	}
 
 	@FXML
 	private void mnuSectorSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToSettings(CashCalculateStage);
 	}
 	
 	@FXML
 	private void mnuSystemSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSystem");
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToSettings(CashCalculateStage);
 	}
 	
 	@FXML
 	private void mnuAdvancedSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabAdvanced");
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToSettings(CashCalculateStage);
 	}
 	
 	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToHelp(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToHelp(CashCalculateStage);
 	}
 	
 	@FXML
 	private void mnuAbout(ActionEvent event) {
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToAbout(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToAbout(CashCalculateStage);
 	}
 	
 ///////////////////// Button Function ///////////////////////////
 	@FXML
 	private void btnSignOut(ActionEvent event) {
 		Stage CashCalculateStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSignIn(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToSignIn(CashCalculateStage);
 	}
 	
 	@FXML
 	private void btnMakeATransaction(ActionEvent event) {
 		(new TabAccess()).setTabName("tabExpense");
 		Stage CashCalculateStage = (Stage) btnMakeATransaction.getScene().getWindow();
-		goToMakeATransaction(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.hide();
+		goToMakeATransaction(CashCalculateStage);
 	}
 	
 	@FXML
 	private void btnDashboard(ActionEvent event) {
 		Stage CashCalculateStage = (Stage) btnDashboard.getScene().getWindow();
-		(new GoToOperation()).goToDashboard(CashCalculateStage.getX(), CashCalculateStage.getY());
-		CashCalculateStage.close();
+		(new GoToOperation()).goToDashboard(CashCalculateStage);
 	}
 	
 	

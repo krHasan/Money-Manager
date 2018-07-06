@@ -236,8 +236,7 @@ public class DashboardController extends DashboardModel {
 	@FXML //open expected stage on click
 	private void btnRefreshCharts(ActionEvent ev) {
 		Stage DashboardStage = (Stage) btnRefreshCharts.getScene().getWindow();//make object for this stage
-		(new GoToOperation()).goToDashboard(DashboardStage.getX(), DashboardStage.getY()); //open expected stage
-		DashboardStage.close(); //close this stage
+		(new GoToOperation()).goToDashboard(DashboardStage); //open expected stage
 	}
 	
 	
@@ -245,62 +244,54 @@ public class DashboardController extends DashboardModel {
 	@FXML
 	private void mnuDashboard(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToDashboard(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToDashboard(DashboardStage);
 	}
 	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney"); //define which tab should open
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToMakeATransaction(DashboardStage);
 	}
 
 	@FXML
 	private void mnuExpense(ActionEvent event) {
 		(new TabAccess()).setTabName("tabExpense");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToMakeATransaction(DashboardStage);
 	}
 
 	@FXML
 	private void mnuLend(ActionEvent event) {
 		(new TabAccess()).setTabName("tabLend");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToMakeATransaction(DashboardStage);
 	}
 
 	@FXML
 	private void mnuBank(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToMakeATransaction(DashboardStage);
 	}
 	
 	@FXML
 	private void mnuSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToSettings(DashboardStage);
 	}
 	
 	@FXML
 	private void mnuTransactionHistory(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToTransactionHistory(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToTransactionHistory(DashboardStage);
 	}
 	
 	@FXML
 	private void mnuCashCalculate(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToCashCalculate(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToCashCalculate(DashboardStage);
 	}
 	
 	@FXML
@@ -313,16 +304,14 @@ public class DashboardController extends DashboardModel {
 	private void mnuCreateSource(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToSettings(DashboardStage);
 	}
 
 	@FXML
 	private void mnuCreateSector(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToSettings(DashboardStage);
 	}
 	
 	@FXML
@@ -337,8 +326,7 @@ public class DashboardController extends DashboardModel {
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			(new TabAccess()).setTabName("tabGetMoney"); //name of which Tab should open
-			(new GoToOperation()).goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
-			DashboardStage.close();
+			(new GoToOperation()).goToMakeATransaction(DashboardStage);
 		}
 	}
 
@@ -346,54 +334,47 @@ public class DashboardController extends DashboardModel {
 	private void mnuBankSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToSettings(DashboardStage);
 	}
 	
 	@FXML
 	private void mnuSourceSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToSettings(DashboardStage);
 	}
 
 	@FXML
 	private void mnuSectorSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToSettings(DashboardStage);
 	}
 	
 	@FXML
 	private void mnuSystemSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSystem");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToSettings(DashboardStage);
 	}
 	
 	@FXML
 	private void mnuAdvancedSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabAdvanced");
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToSettings(DashboardStage);
 	}
 	
 	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToHelp(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToHelp(DashboardStage);
 	}
 	
 	@FXML
 	private void mnuAbout(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToAbout(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToAbout(DashboardStage);
 	}
 
 	
@@ -401,38 +382,33 @@ public class DashboardController extends DashboardModel {
 	@FXML
 	private void btnSignOut(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSignIn(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToSignIn(DashboardStage);
 	}
 	
 	@FXML
 	private void goToMakeAtransaction(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney");
 		Stage DashboardStage = (Stage) btnMakeATransaction.getScene().getWindow();
-		goToMakeATransaction(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.hide();
+		goToMakeATransaction(DashboardStage);
 	}
 	
 	@FXML
 	private void btnCashCalculate(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnCashCalculate.getScene().getWindow();
-		(new GoToOperation()).goToCashCalculate(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToCashCalculate(DashboardStage);
 	}
 	
 	@FXML
 	private void btnTransactionHistory(ActionEvent event) {
 		Stage DashboardStage = (Stage) btnTransactionHistory.getScene().getWindow();
-		(new GoToOperation()).goToTransactionHistory(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToTransactionHistory(DashboardStage);
 	}
 	
 	@FXML
 	private void btnSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage DashboardStage = (Stage) btnSettings.getScene().getWindow();
-		(new GoToOperation()).goToSettings(DashboardStage.getX(), DashboardStage.getY());
-		DashboardStage.close();
+		(new GoToOperation()).goToSettings(DashboardStage);
 	}
 	
 	

@@ -126,62 +126,54 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	@FXML
 	private void mnuDashboard(ActionEvent event) {
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToDashboard(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToDashboard(TransactionHistoryStage);
 	}
 	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage);
 	}
 
 	@FXML
 	private void mnuExpense(ActionEvent event) {
 		(new TabAccess()).setTabName("tabExpense");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage);
 	}
 
 	@FXML
 	private void mnuLend(ActionEvent event) {
 		(new TabAccess()).setTabName("tabLend");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage);
 	}
 
 	@FXML
 	private void mnuBank(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToMakeATransaction(TransactionHistoryStage);
 	}
 	
 	@FXML
 	private void mnuSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage);
 	}
 	
 	@FXML
 	private void mnuTransactionHistory(ActionEvent event) {
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToTransactionHistory(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToTransactionHistory(TransactionHistoryStage);
 	}
 	
 	@FXML
 	private void mnuCashCalculate(ActionEvent event) {
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToCashCalculate(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToCashCalculate(TransactionHistoryStage);
 	}
 	
 	@FXML
@@ -194,16 +186,14 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	private void mnuCreateSource(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage);
 	}
 
 	@FXML
 	private void mnuCreateSector(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage);
 	}
 
 	@FXML
@@ -234,54 +224,47 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	private void mnuBankSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage);
 	}
 	
 	@FXML
 	private void mnuSourceSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage);
 	}
 
 	@FXML
 	private void mnuSectorSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage);
 	}
 	
 	@FXML
 	private void mnuSystemSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSystem");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage);
 	}
 	
 	@FXML
 	private void mnuAdvancedSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabAdvanced");
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToSettings(TransactionHistoryStage);
 	}
 	
 	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToHelp(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToHelp(TransactionHistoryStage);
 	}
 	
 	@FXML
 	private void mnuAbout(ActionEvent event) {
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToAbout(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToAbout(TransactionHistoryStage);
 	}
 	
 	
@@ -290,8 +273,7 @@ public class TransactionHistoryController extends TransactionHistoryModel {
 	@FXML
 	private void btnSignOut(ActionEvent event) {
 		Stage TransactionHistoryStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSignIn(TransactionHistoryStage.getX(), TransactionHistoryStage.getY());
-		TransactionHistoryStage.close();
+		(new GoToOperation()).goToSignIn(TransactionHistoryStage);
 	}
 
 ////////////////////////// Function //////////////////////////////

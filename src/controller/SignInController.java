@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import javafx.event.ActionEvent;
@@ -95,7 +96,7 @@ public class SignInController extends SignInModel {
 	}
 	
 	@FXML
-	private void logIn(ActionEvent event) {
+	private void logIn(ActionEvent event) throws IOException {
 		if (authentication(txtUsername.getText(), passPassword.getText())) {
 			Stage SignInStage = (Stage) btnSignIn.getScene().getWindow();
 			new ComboboxList().setAllMonth(getThisMonthName(), getYear());
@@ -103,13 +104,11 @@ public class SignInController extends SignInModel {
 			new ComboboxList().setAllExMonth(getThisMonthName(), getYear());
 			new CarriedOver().addCarriedOver(getThisMonthName());
 			
-			if (userIsNew()) {			
-				goToDashboard(SignInStage.getX(), SignInStage.getY());
-				SignInStage.close();
+			if (userIsNew()) {
+				goToDashboard(SignInStage);
 			} else {
 				updateLastAccessDate();
-				goToDashboard(SignInStage.getX(), SignInStage.getY());
-				SignInStage.close();
+				goToDashboard(SignInStage);
 			}
 			
 		} else {
@@ -134,13 +133,11 @@ public class SignInController extends SignInModel {
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
 				(new TabAccess()).setreRegistrationLodingStatus("deleteUser");
-				(new GoToRegistration()).goToReRegistration(SignInStage.getX(), SignInStage.getY());
-				SignInStage.close();
+				(new GoToRegistration()).goToReRegistration(SignInStage);
 			}
 		} else {
 			Stage SignInStage = (Stage) lblNewUser.getScene().getWindow();
-			(new GoToRegistration()).goToRegistration(SignInStage.getX(), SignInStage.getY());
-			SignInStage.close();
+			(new GoToRegistration()).goToRegistration(SignInStage);
 		}
 	}
 	
@@ -169,8 +166,7 @@ public class SignInController extends SignInModel {
 		} else {
 			(new TabAccess()).setreRegistrationLodingStatus("forgotPassword");
 			Stage SignInStage = (Stage) btnOk.getScene().getWindow();
-			(new GoToRegistration()).goToReRegistration(SignInStage.getX(), SignInStage.getY());
-			SignInStage.close();
+			(new GoToRegistration()).goToReRegistration(SignInStage);
 		}
 	}
 	

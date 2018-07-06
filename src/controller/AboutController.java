@@ -76,62 +76,54 @@ public class AboutController extends DateAndClock {
 	@FXML 
 	private void mnuDashboard(ActionEvent event) {
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow(); // create stage object
-		(new GoToOperation()).goToDashboard(AboutStage.getX(), AboutStage.getY()); // start expected stage
-		AboutStage.close(); //close this stage
+		(new GoToOperation()).goToDashboard(AboutStage); // start expected stage
 	}
 	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney"); //name of which Tab should open
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToMakeATransaction(AboutStage);
 	}
 
 	@FXML
 	private void mnuExpense(ActionEvent event) {
 		(new TabAccess()).setTabName("tabExpense");
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToMakeATransaction(AboutStage);
 	}
 
 	@FXML
 	private void mnuLend(ActionEvent event) {
 		(new TabAccess()).setTabName("tabLend");
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToMakeATransaction(AboutStage);
 	}
 
 	@FXML
 	private void mnuBank(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToMakeATransaction(AboutStage);
 	}
 	
 	@FXML
 	private void mnuSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToSettings(AboutStage);
 	}
 	
 	@FXML
 	private void mnuTransactionHistory(ActionEvent event) {
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToTransactionHistory(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToTransactionHistory(AboutStage);
 	}
 	
 	@FXML
 	private void mnuCashCalculate(ActionEvent event) {
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToCashCalculate(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToCashCalculate(AboutStage);
 	}
 	
 	@FXML
@@ -144,16 +136,14 @@ public class AboutController extends DateAndClock {
 	private void mnuCreateSource(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToSettings(AboutStage);
 	}
 
 	@FXML
 	private void mnuCreateSector(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToSettings(AboutStage);
 	}
 	
 	@FXML
@@ -168,8 +158,7 @@ public class AboutController extends DateAndClock {
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			(new TabAccess()).setTabName("tabGetMoney"); //name of which Tab should open
-			(new GoToOperation()).goToMakeATransaction(AboutStage.getX(), AboutStage.getY());
-			AboutStage.close();
+			(new GoToOperation()).goToMakeATransaction(AboutStage);
 		}
 	}
 	
@@ -177,61 +166,53 @@ public class AboutController extends DateAndClock {
 	private void mnuBankSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToSettings(AboutStage);
 	}
 	
 	@FXML
 	private void mnuSourceSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToSettings(AboutStage);
 	}
 
 	@FXML
 	private void mnuSectorSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToSettings(AboutStage);
 	}
 	
 	@FXML
 	private void mnuSystemSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSystem");
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToSettings(AboutStage);
 	}
 	
 	@FXML
 	private void mnuAdvancedSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabAdvanced");
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToSettings(AboutStage);
 	}
 	
 	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToHelp(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToHelp(AboutStage);
 	}
 	
 	@FXML
 	private void mnuAbout(ActionEvent event) {
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToAbout(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToAbout(AboutStage);
 	}
 	
 	@FXML
 	private void btnSignOut(ActionEvent event) {
 		Stage AboutStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSignIn(AboutStage.getX(), AboutStage.getY());
-		AboutStage.close();
+		(new GoToOperation()).goToSignIn(AboutStage);
 	}
 	
 	

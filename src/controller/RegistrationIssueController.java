@@ -85,8 +85,7 @@ public class RegistrationIssueController extends RegistrationIssueModel {
 	@FXML
 	private void btnCancel(ActionEvent event) {
 		Stage RegistrationIssueStage = (Stage) btnCancel.getScene().getWindow();
-		(new GoToOperation()).goToSignIn(RegistrationIssueStage.getX(), RegistrationIssueStage.getY());
-		RegistrationIssueStage.close();
+		(new GoToOperation()).goToSignIn(RegistrationIssueStage);
 	}
 	
 	
@@ -164,8 +163,7 @@ public class RegistrationIssueController extends RegistrationIssueModel {
 		    idlestage.play();
 		    confirmationMsg.showAndWait();
 			
-			(new GoToOperation()).goToSignIn(RegistrationIssueStage.getX(), RegistrationIssueStage.getY());
-			RegistrationIssueStage.close();
+			(new GoToOperation()).goToSignIn(RegistrationIssueStage);
 		}
 	}
 	
@@ -200,8 +198,7 @@ public class RegistrationIssueController extends RegistrationIssueModel {
 			new DeleteUserCredentials().initializeApplication();
 			
 			Stage RegistrationIssueStage = (Stage) btnDelete.getScene().getWindow();
-			(new GoToOperation()).goToSignIn(RegistrationIssueStage.getX(), RegistrationIssueStage.getY());
-			RegistrationIssueStage.close();
+			(new GoToOperation()).goToSignIn(RegistrationIssueStage);
 			
 			Alert confirmationMsg = new Alert(AlertType.INFORMATION);
 			confirmationMsg.setTitle("Operation Successful");

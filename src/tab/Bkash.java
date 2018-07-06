@@ -9,19 +9,17 @@ import operation.GlobalId;
 import system.UnitConverter;
 
 public class Bkash extends BalanceStatus {
-	
+
 	public void saveGmBkashData(Map<String, String> gmData) {
 		String sql = "INSERT INTO bKash (globalID, bkTime, bkDate, bkMonth, bkType, bkNature, bkAmount, \n"
-				+ "bkBnkCharge, bkBalanceBefore, bkBalanceAfter) \n"
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
-		
+				+ "bkBnkCharge, bkBalanceBefore, bkBalanceAfter) \n" + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+
 		int globalId = GlobalId.getGlobalid();
 		String bkBalanceBefore = UnitConverter.longToString(currentbKashBalance());
-		
-		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(sql)) {
-			
-			pstmt.setLong(1,globalId);
+
+		try (Connection conn = connector(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			pstmt.setLong(1, globalId);
 			pstmt.setString(2, gmData.get("gmTime"));
 			pstmt.setString(3, gmData.get("gmDate"));
 			pstmt.setString(4, gmData.get("gmMonth"));
@@ -31,42 +29,20 @@ public class Bkash extends BalanceStatus {
 			pstmt.setString(8, gmData.get("gmBankCharge"));
 			pstmt.setString(9, UnitConverter.addThousandSeparator(bkBalanceBefore));
 			pstmt.setString(10, UnitConverter.addThousandSeparator(gmData.get("bkBalanceAfter")));
-			
+
 			pstmt.executeUpdate();
-			
+
 			setCurrentbKashBalance(gmData.get("bkBalanceAfter"));
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
-//	public boolean isbKashActivated() {
-//		String sql = "SELECT activeMethods \n"
-//				+ "FROM Methods_List \n"
-//				+ "WHERE activeMethods = \"bKash\"";
-//
-//		try (Connection conn = connector();
-//				Statement stmt = conn.createStatement();
-//				ResultSet result = stmt.executeQuery(sql)) {
-//			
-//			if (result.next()) {
-//				return true;
-//			} else {
-//				return false;
-//			}
-//		} catch (Exception e) {
-//			return false;
-//		}
-//	}
-//	
-	
+
 	public void saveBnkBkashData(Map<String, String> bnkData) {
 		String sql = "INSERT INTO bKash (globalID, bkTime, bkDate, bkMonth, bkType, bkNature, bkAmount, \n"
-				+ "bkBnkCharge, bkBalanceBefore, bkBalanceAfter) \n"
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
-		
+				+ "bkBnkCharge, bkBalanceBefore, bkBalanceAfter) \n" + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+
 		int globalId = GlobalId.getGlobalid();
 		String bkAmount = null;
 		try {
@@ -74,11 +50,10 @@ public class Bkash extends BalanceStatus {
 		} catch (Exception e) {
 			bkAmount = bnkData.get("bkAmount");
 		}
-		
-		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(sql)) {
-			
-			pstmt.setLong(1,globalId);
+
+		try (Connection conn = connector(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			pstmt.setLong(1, globalId);
 			pstmt.setString(2, bnkData.get("bkTime"));
 			pstmt.setString(3, bnkData.get("bkDate"));
 			pstmt.setString(4, bnkData.get("bkMonth"));
@@ -88,26 +63,23 @@ public class Bkash extends BalanceStatus {
 			pstmt.setString(8, bnkData.get("bkBnkCharge"));
 			pstmt.setString(9, UnitConverter.addThousandSeparator(bnkData.get("bkBalanceBefore")));
 			pstmt.setString(10, UnitConverter.addThousandSeparator(bnkData.get("bkBalanceAfter")));
-			
+
 			pstmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	public void saveBorrowBkashData(Map<String, String> boleData) {
 		String sql = "INSERT INTO bKash (globalID, bkTime, bkDate, bkMonth, bkType, bkNature, bkAmount, \n"
-				+ "bkBnkCharge, bkBalanceBefore, bkBalanceAfter) \n"
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
-		
+				+ "bkBnkCharge, bkBalanceBefore, bkBalanceAfter) \n" + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+
 		int globalId = GlobalId.getGlobalid();
-		
-		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(sql)) {
-			
-			pstmt.setLong(1,globalId);
+
+		try (Connection conn = connector(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			pstmt.setLong(1, globalId);
 			pstmt.setString(2, boleData.get("boTime"));
 			pstmt.setString(3, boleData.get("boDate"));
 			pstmt.setString(4, boleData.get("boMonth"));
@@ -117,27 +89,23 @@ public class Bkash extends BalanceStatus {
 			pstmt.setString(8, boleData.get("boBnkCharge"));
 			pstmt.setString(9, UnitConverter.addThousandSeparator(boleData.get("bkBalanceBefore")));
 			pstmt.setString(10, UnitConverter.addThousandSeparator(boleData.get("bkBalanceAfter")));
-			
+
 			pstmt.executeUpdate();
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
 
 	public void saveLendBkashData(Map<String, String> boleData) {
 		String sql = "INSERT INTO bKash (globalID, bkTime, bkDate, bkMonth, bkType, bkNature, bkAmount, \n"
-				+ "bkBnkCharge, bkBalanceBefore, bkBalanceAfter) \n"
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
-		
+				+ "bkBnkCharge, bkBalanceBefore, bkBalanceAfter) \n" + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+
 		int globalId = GlobalId.getGlobalid();
-		
-		try (Connection conn = connector();
-				PreparedStatement pstmt = conn.prepareStatement(sql)) {
-			
-			pstmt.setLong(1,globalId);
+
+		try (Connection conn = connector(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			pstmt.setLong(1, globalId);
 			pstmt.setString(2, boleData.get("leTime"));
 			pstmt.setString(3, boleData.get("leDate"));
 			pstmt.setString(4, boleData.get("leMonth"));
@@ -147,19 +115,17 @@ public class Bkash extends BalanceStatus {
 			pstmt.setString(8, boleData.get("leBnkCharge"));
 			pstmt.setString(9, UnitConverter.addThousandSeparator(boleData.get("bkBalanceBefore")));
 			pstmt.setString(10, UnitConverter.addThousandSeparator(boleData.get("bkBalanceAfter")));
-			
+
 			pstmt.executeUpdate();
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
-//	public static void main(String[] args) {
-//		Bkash access = new Bkash();
-//		System.out.println(access.isbKashActivated());
-//	}
-	
+
+	// public static void main(String[] args) {
+	// Bkash access = new Bkash();
+	// System.out.println(access.isbKashActivated());
+	// }
+
 }

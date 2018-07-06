@@ -364,62 +364,54 @@ public class SettingsController extends SettingsModel {
 	@FXML
 	private void mnuDashboard(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToDashboard(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToDashboard(SettingsStage);
 	}
 	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToMakeATransaction(SettingsStage);
 	}
 
 	@FXML
 	private void mnuExpense(ActionEvent event) {
 		(new TabAccess()).setTabName("tabExpense");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToMakeATransaction(SettingsStage);
 	}
 
 	@FXML
 	private void mnuLend(ActionEvent event) {
 		(new TabAccess()).setTabName("tabLend");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToMakeATransaction(SettingsStage);
 	}
 
 	@FXML
 	private void mnuBank(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToMakeATransaction(SettingsStage);
 	}
 	
 	@FXML
 	private void mnuSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToSettings(SettingsStage);
 	}
 	
 	@FXML
 	private void mnuTransactionHistory(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToTransactionHistory(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToTransactionHistory(SettingsStage);
 	}
 	
 	@FXML
 	private void mnuCashCalculate(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToCashCalculate(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToCashCalculate(SettingsStage);
 	}
 	
 	@FXML
@@ -432,16 +424,14 @@ public class SettingsController extends SettingsModel {
 	private void mnuCreateSource(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToSettings(SettingsStage);
 	}
 
 	@FXML
 	private void mnuCreateSector(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToSettings(SettingsStage);
 	}
 
 	@FXML
@@ -456,8 +446,7 @@ public class SettingsController extends SettingsModel {
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			(new TabAccess()).setTabName("tabGetMoney"); //name of which Tab should open
-			(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-			SettingsStage.close();
+			(new GoToOperation()).goToMakeATransaction(SettingsStage);
 		}
 	}
 	
@@ -465,54 +454,47 @@ public class SettingsController extends SettingsModel {
 	private void mnuBankSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToSettings(SettingsStage);
 	}
 	
 	@FXML
 	private void mnuSourceSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToSettings(SettingsStage);
 	}
 
 	@FXML
 	private void mnuSectorSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToSettings(SettingsStage);
 	}
 	
 	@FXML
 	private void mnuSystemSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSystem");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToSettings(SettingsStage);
 	}
 	
 	@FXML
 	private void mnuAdvancedSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabAdvanced");
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToSettings(SettingsStage);
 	}
 	
 	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToHelp(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToHelp(SettingsStage);
 	}
 	
 	@FXML
 	private void mnuAbout(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToAbout(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToAbout(SettingsStage);
 	}
 	
 	
@@ -520,30 +502,26 @@ public class SettingsController extends SettingsModel {
 	@FXML
 	private void btnDashboard(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
-		(new GoToOperation()).goToDashboard(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToDashboard(SettingsStage);
 	}
 	
 	@FXML
 	private void btnMakeATransaction(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney");
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToMakeATransaction(SettingsStage);
 	}
 	
 	@FXML
 	private void btnTransactionHistory(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnDashboard.getScene().getWindow();
-		(new GoToOperation()).goToTransactionHistory(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToTransactionHistory(SettingsStage);
 	}
 	
 	@FXML
 	private void btnSignOut(ActionEvent event) {
 		Stage SettingsStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSignIn(SettingsStage.getX(), SettingsStage.getY());
-		SettingsStage.close();
+		(new GoToOperation()).goToSignIn(SettingsStage);
 	}
 	
 	
@@ -1387,7 +1365,7 @@ public class SettingsController extends SettingsModel {
 		confirmationMsg.setY(SettingsStage.getY() + 170);
 		
 		(new TabAccess()).setTabName("tabExpense");
-		(new GoToOperation()).goToMakeATransaction(SettingsStage.getX(), SettingsStage.getY());
+		(new GoToOperation()).goToMakeATransaction(SettingsStage);
 	    Timeline idlestage = new Timeline( new KeyFrame( Duration.seconds(5), new EventHandler<ActionEvent>()
 	    {
 	        @Override
@@ -1399,7 +1377,6 @@ public class SettingsController extends SettingsModel {
 	    idlestage.setCycleCount( 1 );
 	    idlestage.play();
 	    confirmationMsg.showAndWait();
-		SettingsStage.close();
 	}
 	
 	

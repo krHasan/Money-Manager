@@ -81,62 +81,54 @@ public class HelpController extends DateAndClock {
 	@FXML
 	private void mnuDashboard(ActionEvent event) {
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToDashboard(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToDashboard(HelpStage);
 	}
 	
 	@FXML
 	private void mnuGetMoney(ActionEvent event) {
 		(new TabAccess()).setTabName("tabGetMoney");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToMakeATransaction(HelpStage);
 	}
 
 	@FXML
 	private void mnuExpense(ActionEvent event) {
 		(new TabAccess()).setTabName("tabExpense");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToMakeATransaction(HelpStage);
 	}
 
 	@FXML
 	private void mnuLend(ActionEvent event) {
 		(new TabAccess()).setTabName("tabLend");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToMakeATransaction(HelpStage);
 	}
 
 	@FXML
 	private void mnuBank(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToMakeATransaction(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToMakeATransaction(HelpStage);
 	}
 	
 	@FXML
 	private void mnuSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToSettings(HelpStage);
 	}
 	
 	@FXML
 	private void mnuTransactionHistory(ActionEvent event) {
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToTransactionHistory(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToTransactionHistory(HelpStage);
 	}
 	
 	@FXML
 	private void mnuCashCalculate(ActionEvent event) {
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToCashCalculate(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToCashCalculate(HelpStage);
 	}
 	
 	@FXML
@@ -149,16 +141,14 @@ public class HelpController extends DateAndClock {
 	private void mnuCreateSource(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToSettings(HelpStage);
 	}
 
 	@FXML
 	private void mnuCreateSector(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToSettings(HelpStage);
 	}
 	
 	@FXML
@@ -173,8 +163,7 @@ public class HelpController extends DateAndClock {
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			(new TabAccess()).setTabName("tabGetMoney"); //name of which Tab should open
-			(new GoToOperation()).goToMakeATransaction(HelpStage.getX(), HelpStage.getY());
-			HelpStage.close();
+			(new GoToOperation()).goToMakeATransaction(HelpStage);
 		}
 	}
 
@@ -182,61 +171,53 @@ public class HelpController extends DateAndClock {
 	private void mnuBankSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabBank");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToSettings(HelpStage);
 	}
 	
 	@FXML
 	private void mnuSourceSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSource");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToSettings(HelpStage);
 	}
 
 	@FXML
 	private void mnuSectorSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSector");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToSettings(HelpStage);
 	}
 	
 	@FXML
 	private void mnuSystemSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabSystem");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToSettings(HelpStage);
 	}
 	
 	@FXML
 	private void mnuAdvancedSettings(ActionEvent event) {
 		(new TabAccess()).setTabName("tabAdvanced");
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSettings(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToSettings(HelpStage);
 	}
 	
 	@FXML
 	private void mnuHowTo(ActionEvent event) {
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToHelp(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToHelp(HelpStage);
 	}
 	
 	@FXML
 	private void mnuAbout(ActionEvent event) {
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToAbout(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToAbout(HelpStage);
 	}
 	
 	@FXML
 	private void btnSignOut(ActionEvent event) {
 		Stage HelpStage = (Stage) btnSignOut.getScene().getWindow();
-		(new GoToOperation()).goToSignIn(HelpStage.getX(), HelpStage.getY());
-		HelpStage.close();
+		(new GoToOperation()).goToSignIn(HelpStage);
 	}
 	
 	
